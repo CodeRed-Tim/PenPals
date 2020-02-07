@@ -3,27 +3,45 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */; };
+		221E066823ED4F61001A9F67 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066723ED4F61001A9F67 /* FUser.swift */; };
+		221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066923ED4FAF001A9F67 /* Constants.swift */; };
+		221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066B23ED5348001A9F67 /* CollectionReference.swift */; };
+		221E066E23ED5416001A9F67 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066D23ED5416001A9F67 /* HelperFunctions.swift */; };
+		221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E067023ED5A97001A9F67 /* RegisterViewController.swift */; };
+		221E072E23ED6543001A9F67 /* FinishRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E072D23ED6543001A9F67 /* FinishRegistrationViewController.swift */; };
 		225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6A23ED4494007E0273 /* AppDelegate.swift */; };
 		225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6C23ED4494007E0273 /* SceneDelegate.swift */; };
-		225D8D6F23ED4494007E0273 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6E23ED4494007E0273 /* ViewController.swift */; };
 		225D8D7223ED4494007E0273 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7023ED4494007E0273 /* Main.storyboard */; };
 		225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7323ED4495007E0273 /* Assets.xcassets */; };
 		225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */; };
+		225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */; };
+		7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		221E066723ED4F61001A9F67 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
+		221E066923ED4FAF001A9F67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		221E066B23ED5348001A9F67 /* CollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
+		221E066D23ED5416001A9F67 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		221E067023ED5A97001A9F67 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		221E072D23ED6543001A9F67 /* FinishRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishRegistrationViewController.swift; sourceTree = "<group>"; };
 		225D8D6723ED4494007E0273 /* PenPals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225D8D6A23ED4494007E0273 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		225D8D6C23ED4494007E0273 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		225D8D6E23ED4494007E0273 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		225D8D7123ED4494007E0273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		225D8D7323ED4495007E0273 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		225D8D7623ED4495007E0273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225D8D7823ED4495007E0273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.release.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.release.xcconfig"; sourceTree = "<group>"; };
+		BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.debug.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.debug.xcconfig"; sourceTree = "<group>"; };
+		EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PenPals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +49,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221E066F23ED54CF001A9F67 /* Database Files */ = {
+			isa = PBXGroup;
+			children = (
+				221E066723ED4F61001A9F67 /* FUser.swift */,
+				221E066923ED4FAF001A9F67 /* Constants.swift */,
+				221E066B23ED5348001A9F67 /* CollectionReference.swift */,
+				221E066D23ED5416001A9F67 /* HelperFunctions.swift */,
+			);
+			path = "Database Files";
+			sourceTree = "<group>";
+		};
 		225D8D5E23ED4494007E0273 = {
 			isa = PBXGroup;
 			children = (
 				225D8D6923ED4494007E0273 /* PenPals */,
 				225D8D6823ED4494007E0273 /* Products */,
+				34FEDC85161EFA56244B90A2 /* Pods */,
+				9EF17DDAE93D28143C7F266F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +89,35 @@
 			isa = PBXGroup;
 			children = (
 				225D8D6A23ED4494007E0273 /* AppDelegate.swift */,
+				225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */,
+				221E072D23ED6543001A9F67 /* FinishRegistrationViewController.swift */,
+				221E067023ED5A97001A9F67 /* RegisterViewController.swift */,
+				221E066F23ED54CF001A9F67 /* Database Files */,
 				225D8D6C23ED4494007E0273 /* SceneDelegate.swift */,
-				225D8D6E23ED4494007E0273 /* ViewController.swift */,
 				225D8D7023ED4494007E0273 /* Main.storyboard */,
 				225D8D7323ED4495007E0273 /* Assets.xcassets */,
 				225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */,
 				225D8D7823ED4495007E0273 /* Info.plist */,
+				221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */,
 			);
 			path = PenPals;
+			sourceTree = "<group>";
+		};
+		34FEDC85161EFA56244B90A2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */,
+				A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9EF17DDAE93D28143C7F266F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +127,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 225D8D7B23ED4495007E0273 /* Build configuration list for PBXNativeTarget "PenPals" */;
 			buildPhases = (
+				EA49D88EABF6BABE3907E04F /* [CP] Check Pods Manifest.lock */,
 				225D8D6323ED4494007E0273 /* Sources */,
 				225D8D6423ED4494007E0273 /* Frameworks */,
 				225D8D6523ED4494007E0273 /* Resources */,
+				3A6E0F17CCFFC60B5F8C2F78 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */,
+				221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */,
 				225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */,
 				225D8D7223ED4494007E0273 /* Main.storyboard in Resources */,
 			);
@@ -133,14 +189,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3A6E0F17CCFFC60B5F8C2F78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA49D88EABF6BABE3907E04F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PenPals-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		225D8D6323ED4494007E0273 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				225D8D6F23ED4494007E0273 /* ViewController.swift in Sources */,
+				221E066E23ED5416001A9F67 /* HelperFunctions.swift in Sources */,
+				221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */,
+				225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */,
+				221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */,
 				225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */,
 				225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */,
+				221E072E23ED6543001A9F67 /* FinishRegistrationViewController.swift in Sources */,
+				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
+				221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +386,7 @@
 		};
 		225D8D7C23ED4495007E0273 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +405,7 @@
 		};
 		225D8D7D23ED4495007E0273 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

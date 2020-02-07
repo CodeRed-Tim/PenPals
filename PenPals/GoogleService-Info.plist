@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1059630085958-rd5c6rv5rcqfvfiitrpaf1vv3tvdn01i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1059630085958-rd5c6rv5rcqfvfiitrpaf1vv3tvdn01i</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBAu72ReU7ShjfzyfqTuYHalFlEiRGR2oU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1059630085958</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>SeniorProject.PenPals</string>
+	<key>PROJECT_ID</key>
+	<string>penpal-eb7be</string>
+	<key>STORAGE_BUCKET</key>
+	<string>penpal-eb7be.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1059630085958:ios:1da2ace77e3ebcb2391747</string>
+	<key>DATABASE_URL</key>
+	<string>https://penpal-eb7be.firebaseio.com</string>
+</dict>
+</plist>
