@@ -51,7 +51,7 @@ class FinishRegistrationViewController: UIViewController {
                 return
                 
             } else {
-                
+
                 self.registerUser()
                 
             }
@@ -59,15 +59,22 @@ class FinishRegistrationViewController: UIViewController {
         
         
     }
+    
+    @IBAction func backgroundTapped(_ sender: Any) {
+        
+        dismissKeyboard()
+    }
+    
+    
 
     //MARK: Helper Functions
     
     func registerUser() {
         
-        let fullName = lastNameTextField.text! + " " + lastNameTextField.text!
+        let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
         
         //
-        var tempDictionary : Dictionary = [kFIRSTNAME : lastNameTextField.text!, kLASTNAME : lastNameTextField.text!]
+        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!]
         
         //if user doesn't pick a profile picture make the picture their intials
         if avatarImage == nil {

@@ -33,21 +33,21 @@ class WelcomeViewController: UIViewController {
             
         } else {
             
-            ProgressHUD.showError("Email and Password is missing!")
+            ProgressHUD.showError("Email or Password is missing!")
             
         }
     }
     
     @IBAction func backgrounTap(_ sender: Any) {
         
-        print("dismiss")
+        dismissKeyboard()
     }
     
     //MARK: HelperFunctions
     
     func loginUser() {
         
-        ProgressHUD.show("Login...")
+        ProgressHUD.show("Loging You In...")
         
         
         FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error) in
@@ -63,10 +63,6 @@ class WelcomeViewController: UIViewController {
             self.goToApp()
         }
         
-    }
-    
-    func registerUser() {
-        print("registering")
     }
     
     func dismissKeyboard() {
