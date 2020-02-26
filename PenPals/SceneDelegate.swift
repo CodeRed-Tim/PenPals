@@ -7,11 +7,40 @@
 //
 
 import UIKit
+import Firebase
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var authListener: AuthStateDidChangeListenerHandle?
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        FirebaseApp.configure()
+        
+        // AutoLogin
+        authListener = Auth.auth().addStateDidChangeListener({ (auth, user) in
+            
+            Auth.auth().removeStateDidChangeListener(self.authListener!)
+            
+            if user != nil {
+                
+                if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
+                    // there is a user logged in locally
+                    // skip log in screen and go to app
+                    
+                    DispatchQueue.main.async {
+                        self.goToApp()
 
+                    }
+                                        
+                }
+            }
+            
+        })
+        
+        return true
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -48,6 +77,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
+        //MARK: Go To App
+    func goToApp() {
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
+        
+        // present app
+        let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
+        mainView.modalPresentationStyle = .fullScreen
+        
+        // setting root view controller to main app screen
+        self.window?.rootViewController = mainView
+    }
+    
 
 }
 

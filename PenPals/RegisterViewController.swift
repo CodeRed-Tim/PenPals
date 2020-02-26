@@ -138,6 +138,8 @@ class RegisterViewController: UIViewController {
         cleanTextFields()
         dismissKeyboard()
         
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
+        
         // present app
         let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
         mainView.modalPresentationStyle = .fullScreen

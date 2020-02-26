@@ -8,6 +8,7 @@
 
 import UIKit
 import ProgressHUD
+import Firebase
 
 class WelcomeViewController: UIViewController {
 
@@ -49,7 +50,6 @@ class WelcomeViewController: UIViewController {
         
         ProgressHUD.show("Loging You In...")
         
-        
         FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error) in
             
             if error != nil {
@@ -80,13 +80,17 @@ class WelcomeViewController: UIViewController {
     
     func goToApp() {
         
+        
         // clear progress message
         ProgressHUD.dismiss()
         cleanTextFields()
         dismissKeyboard()
         
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
+        
         // present app
         let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
+        mainView.modalPresentationStyle = .fullScreen
         self.present(mainView, animated: true, completion: nil)
     }
 
