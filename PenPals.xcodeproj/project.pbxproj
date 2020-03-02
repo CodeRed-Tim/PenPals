@@ -17,9 +17,10 @@
 		225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6A23ED4494007E0273 /* AppDelegate.swift */; };
 		225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6C23ED4494007E0273 /* SceneDelegate.swift */; };
 		225D8D7223ED4494007E0273 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7023ED4494007E0273 /* Main.storyboard */; };
-		225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7323ED4495007E0273 /* Assets.xcassets */; };
 		225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */; };
 		225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */; };
+		6672C7A524097DEE00AFEC2B /* TranslaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6672C7A424097DEE00AFEC2B /* TranslaterViewController.swift */; };
+		66E6304524096A65000C634E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7323ED4495007E0273 /* Assets.xcassets */; };
 		7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		225D8D7623ED4495007E0273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225D8D7823ED4495007E0273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		6672C7A424097DEE00AFEC2B /* TranslaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterViewController.swift; sourceTree = "<group>"; };
 		A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.release.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.release.xcconfig"; sourceTree = "<group>"; };
 		BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.debug.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.debug.xcconfig"; sourceTree = "<group>"; };
 		EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PenPals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 				225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */,
 				225D8D7823ED4495007E0273 /* Info.plist */,
 				221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */,
+				6672C7A424097DEE00AFEC2B /* TranslaterViewController.swift */,
 			);
 			path = PenPals;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 				225D8D6423ED4494007E0273 /* Frameworks */,
 				225D8D6523ED4494007E0273 /* Resources */,
 				3A6E0F17CCFFC60B5F8C2F78 /* [CP] Embed Pods Frameworks */,
+				E692363E9E76F2B9D0EF56BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -180,9 +184,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E6304524096A65000C634E /* Assets.xcassets in Resources */,
 				225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */,
 				221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */,
-				225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */,
 				225D8D7223ED4494007E0273 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +209,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E692363E9E76F2B9D0EF56BD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA49D88EABF6BABE3907E04F /* [CP] Check Pods Manifest.lock */ = {
@@ -240,6 +261,7 @@
 				221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */,
 				225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */,
 				221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */,
+				6672C7A524097DEE00AFEC2B /* TranslaterViewController.swift in Sources */,
 				225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */,
 				225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */,
 				221E072E23ED6543001A9F67 /* FinishRegistrationViewController.swift in Sources */,
@@ -392,6 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RHJFMU3K87;
 				INFOPLIST_FILE = PenPals/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RHJFMU3K87;
 				INFOPLIST_FILE = PenPals/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
