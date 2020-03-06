@@ -85,7 +85,7 @@ class RegisterViewController: UIViewController {
         if avatarImage == nil {
             
             // get intials then return them
-            imageFromInitials(firstName: lastNameTextField.text!, lastName: lastNameTextField.text!) { (avatarInitials) in
+            imageFromInitials(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!) { (avatarInitials) in
                 
                 // converts image into a string so it can be saved in database
                 let avatarImg = avatarInitials.jpegData(compressionQuality: 0.7)

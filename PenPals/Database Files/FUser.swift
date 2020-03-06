@@ -190,7 +190,6 @@ class FUser {
     class func loginUserWith(email: String, password: String, completion: @escaping (_ error: Error?) -> Void) {
         
         // Firebase login function with email and password
-        
         Auth.auth().signIn(withEmail: email, password: password, completion: { (firUser, error) in
             
             if error != nil {
@@ -352,7 +351,7 @@ func fetchCurrentUserFromFirestore(userId: String) {
             print("updated current users param")
             
             // save the user Id locally as the current user
-            UserDefaults.standard.setValue(snapshot.data() as! NSDictionary, forKeyPath: kCURRENTUSER)
+            UserDefaults.standard.setValue(snapshot.data()! as NSDictionary, forKeyPath: kCURRENTUSER)
             UserDefaults.standard.synchronize()
             
         }
