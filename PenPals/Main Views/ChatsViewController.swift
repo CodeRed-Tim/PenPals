@@ -21,6 +21,7 @@ class ChatsViewController: UIViewController {
     
     @IBAction func createNewChat(_ sender: Any) {
         
+        //segue to contact user's profile view once cell is tapped
         let userVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "contactsTableView") as! ConactsTableViewController
         
         self.navigationController?.pushViewController(userVC, animated: true)
