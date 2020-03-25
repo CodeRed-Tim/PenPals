@@ -45,13 +45,17 @@ func dataImageFromString(pictureString: String, withBlock: (_ image: Data?) -> V
     withBlock(imageData as Data?)
 }
 
-//for calls and chats
+//for chats send an array of message data snapshots and convert it to a dictionary
 func dictionaryFromSnapshots(snapshots: [DocumentSnapshot]) -> [NSDictionary] {
     
     var allMessages: [NSDictionary] = []
+    //loop through every snapshot we recieve
     for snapshot in snapshots {
+        // add it to the dictionary
         allMessages.append(snapshot.data() as! NSDictionary)
     }
+    
+    //return the dictionary
     return allMessages
 }
 
