@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */; };
 		22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22133860240F15120055D06E /* SettingsTableViewController.swift */; };
-		22133863240F22880055D06E /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22133862240F22880055D06E /* UserTableViewCell.swift */; };
-		22133867240F24BF0055D06E /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22133866240F24BF0055D06E /* UsersTableViewController.swift */; };
 		221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */; };
 		221E066823ED4F61001A9F67 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066723ED4F61001A9F67 /* FUser.swift */; };
 		221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066923ED4FAF001A9F67 /* Constants.swift */; };
 		221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066B23ED5348001A9F67 /* CollectionReference.swift */; };
 		221E066E23ED5416001A9F67 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066D23ED5416001A9F67 /* HelperFunctions.swift */; };
 		221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E067023ED5A97001A9F67 /* RegisterViewController.swift */; };
+		224E855D2427007C001FF692 /* ProfileViewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224E855C2427007C001FF692 /* ProfileViewTableViewController.swift */; };
 		225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6A23ED4494007E0273 /* AppDelegate.swift */; };
 		225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D6C23ED4494007E0273 /* SceneDelegate.swift */; };
 		225D8D7223ED4494007E0273 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7023ED4494007E0273 /* Main.storyboard */; };
@@ -23,19 +23,21 @@
 		225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */; };
 		225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */; };
 		227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B4C762412320500A0C235 /* ChatsViewController.swift */; };
+		229C8653242B0A8000088609 /* ConactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8652242B0A8000088609 /* ConactsTableViewController.swift */; };
+		229C8658242B322400088609 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8657242B322400088609 /* Recent.swift */; };
 		7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		22133860240F15120055D06E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		22133862240F22880055D06E /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		22133866240F24BF0055D06E /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		221E066723ED4F61001A9F67 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		221E066923ED4FAF001A9F67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		221E066B23ED5348001A9F67 /* CollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
 		221E066D23ED5416001A9F67 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		221E067023ED5A97001A9F67 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		224E855C2427007C001FF692 /* ProfileViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTableViewController.swift; sourceTree = "<group>"; };
 		225D8D6723ED4494007E0273 /* PenPals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225D8D6A23ED4494007E0273 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		225D8D6C23ED4494007E0273 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		225D8D7823ED4495007E0273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		227B4C762412320500A0C235 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		229C8652242B0A8000088609 /* ConactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConactsTableViewController.swift; sourceTree = "<group>"; };
+		229C8657242B322400088609 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.release.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.release.xcconfig"; sourceTree = "<group>"; };
 		BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.debug.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.debug.xcconfig"; sourceTree = "<group>"; };
 		EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PenPals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,20 +69,21 @@
 		22133868240F366C0055D06E /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				22133862240F22880055D06E /* UserTableViewCell.swift */,
+				220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
-		221E066F23ED54CF001A9F67 /* Database Files */ = {
+		221E066F23ED54CF001A9F67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				221E066723ED4F61001A9F67 /* FUser.swift */,
+				229C8657242B322400088609 /* Recent.swift */,
 				221E066923ED4FAF001A9F67 /* Constants.swift */,
 				221E066B23ED5348001A9F67 /* CollectionReference.swift */,
 				221E066D23ED5416001A9F67 /* HelperFunctions.swift */,
 			);
-			path = "Database Files";
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		225D8D5E23ED4494007E0273 = {
@@ -103,13 +108,11 @@
 			isa = PBXGroup;
 			children = (
 				225D8D6A23ED4494007E0273 /* AppDelegate.swift */,
-				225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */,
-				221E067023ED5A97001A9F67 /* RegisterViewController.swift */,
-				22133860240F15120055D06E /* SettingsTableViewController.swift */,
-				22133866240F24BF0055D06E /* UsersTableViewController.swift */,
-				227B4C762412320500A0C235 /* ChatsViewController.swift */,
+				229C8654242B30C700088609 /* Welcome View */,
+				229C8655242B30FB00088609 /* Main Views */,
+				229C8656242B313500088609 /* Secondary Views */,
 				22133868240F366C0055D06E /* Custom Cells */,
-				221E066F23ED54CF001A9F67 /* Database Files */,
+				221E066F23ED54CF001A9F67 /* Helpers */,
 				225D8D6C23ED4494007E0273 /* SceneDelegate.swift */,
 				225D8D7023ED4494007E0273 /* Main.storyboard */,
 				225D8D7323ED4495007E0273 /* Assets.xcassets */,
@@ -118,6 +121,33 @@
 				221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */,
 			);
 			path = PenPals;
+			sourceTree = "<group>";
+		};
+		229C8654242B30C700088609 /* Welcome View */ = {
+			isa = PBXGroup;
+			children = (
+				225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */,
+				221E067023ED5A97001A9F67 /* RegisterViewController.swift */,
+			);
+			path = "Welcome View";
+			sourceTree = "<group>";
+		};
+		229C8655242B30FB00088609 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				22133860240F15120055D06E /* SettingsTableViewController.swift */,
+				229C8652242B0A8000088609 /* ConactsTableViewController.swift */,
+				227B4C762412320500A0C235 /* ChatsViewController.swift */,
+			);
+			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		229C8656242B313500088609 /* Secondary Views */ = {
+			isa = PBXGroup;
+			children = (
+				224E855C2427007C001FF692 /* ProfileViewTableViewController.swift */,
+			);
+			path = "Secondary Views";
 			sourceTree = "<group>";
 		};
 		34FEDC85161EFA56244B90A2 /* Pods */ = {
@@ -253,17 +283,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */,
 				221E066E23ED5416001A9F67 /* HelperFunctions.swift in Sources */,
 				221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */,
-				22133867240F24BF0055D06E /* UsersTableViewController.swift in Sources */,
-				22133863240F22880055D06E /* UserTableViewCell.swift in Sources */,
 				225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */,
 				221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */,
+				229C8653242B0A8000088609 /* ConactsTableViewController.swift in Sources */,
 				225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */,
 				225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */,
 				22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */,
 				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
+				229C8658242B322400088609 /* Recent.swift in Sources */,
 				227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */,
+				224E855D2427007C001FF692 /* ProfileViewTableViewController.swift in Sources */,
 				221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

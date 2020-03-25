@@ -21,7 +21,7 @@ class ChatsViewController: UIViewController {
     
     @IBAction func createNewChat(_ sender: Any) {
         
-        let userVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "usersTableView") as! UsersTableViewController
+        let userVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "contactsTableView") as! ConactsTableViewController
         
         self.navigationController?.pushViewController(userVC, animated: true)
         

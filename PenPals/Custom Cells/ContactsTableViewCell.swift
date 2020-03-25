@@ -1,18 +1,18 @@
 //
-//  UserTableViewCell.swift
+//  ContactsTableViewCell.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 3/3/20.
+//  Created by MaseratiTim on 3/24/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
 import UIKit
 
-protocol UserTableViewCellDelegate {
+protocol ContactsTableViewCellDelegate {
     func didTapAvatarImage(indexPath: IndexPath)
 }
 
-class UserTableViewCell: UITableViewCell {
+class ContactsTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -20,7 +20,7 @@ class UserTableViewCell: UITableViewCell {
     
     var indexPath: IndexPath!
     
-    var delegate: UserTableViewCellDelegate?
+    var delegate: ContactsTableViewCellDelegate?
     
     let tapGestureRecognizer = UITapGestureRecognizer()
     
@@ -57,10 +57,9 @@ class UserTableViewCell: UITableViewCell {
         
     }
     
-    // notifies delegate which user the current user has selected and take them the user's profile view
     @objc func avatarTap() {
-        
         delegate!.didTapAvatarImage(indexPath: indexPath)
+        print("avatar tap at \(indexPath)")
     }
 
 }
