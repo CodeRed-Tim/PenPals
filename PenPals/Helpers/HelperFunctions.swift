@@ -56,14 +56,15 @@ func dictionaryFromSnapshots(snapshots: [DocumentSnapshot]) -> [NSDictionary] {
 }
 
 
-
+// get a date object
 func timeElapsed(date: Date) -> String {
     
+    //count seconds since message was sent
     let seconds = NSDate().timeIntervalSince(date)
     
     var elapsed: String?
     
-    
+    // check how much time has passed and label accodingly
     if (seconds < 60) {
         elapsed = "Just now"
     } else if (seconds < 60 * 60) {
@@ -114,6 +115,7 @@ func formatCallTime(date: Date) -> String {
         elapsed = "\(currentDateFormater.string(from: date))"
     }
     
+    // return the correct string
     return elapsed!
 }
 

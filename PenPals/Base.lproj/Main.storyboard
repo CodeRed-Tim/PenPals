@@ -547,7 +547,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="100" id="wrN-zv-PEn">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="wrN-zv-PEn" customClass="RecentChatTableViewCell" customModule="PenPals" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wrN-zv-PEn" id="BKQ-jt-fsM">
@@ -631,6 +631,14 @@
                                                 <constraint firstItem="ZWc-8R-7SL" firstAttribute="centerY" secondItem="BKQ-jt-fsM" secondAttribute="centerY" id="yWF-Ki-yRI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="ZWc-8R-7SL" id="Fwz-II-FwS"/>
+                                            <outlet property="counterBackground" destination="x7r-hu-Ccp" id="FgC-SS-98x"/>
+                                            <outlet property="counterLabel" destination="HUt-9g-tYN" id="iNS-go-3eO"/>
+                                            <outlet property="dateLabel" destination="lC8-ee-uHp" id="N5F-ol-wta"/>
+                                            <outlet property="fullNameLabel" destination="NON-JB-VCh" id="eyK-4K-KrI"/>
+                                            <outlet property="lastMessageLabel" destination="vTR-C2-Osm" id="hBS-iu-icq"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */; };
 		220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */; };
 		22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22133860240F15120055D06E /* SettingsTableViewController.swift */; };
 		221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
 		220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		22133860240F15120055D06E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */,
+				220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */,
 				225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */,
 				221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */,
+				220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */,
 				229C8653242B0A8000088609 /* ConactsTableViewController.swift in Sources */,
 				225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */,
 				225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */,
