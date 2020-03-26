@@ -9,7 +9,9 @@
 import UIKit
 import FirebaseFirestore
 
-class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, RecentChatTableViewCellDelegate, UISearchResultsUpdating {
+
+    
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,12 +21,34 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //for lsitening for new messages
     var recentListener: ListenerRegistration!
     
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    //viewWillAppear & willDisapear make sure that the most
+    // recent chat is listened for everytime the view is opened
+    // not just the first time
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadRecentChats()
+        
+        tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        recentListener.remove()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        loadRecentChats()
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = true
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        setTableViewHeader()
     }
     
 
@@ -44,13 +68,28 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //MARK: TableViewDataSource (functions required for table view)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentChats.count
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredChats.count
+
+        } else {
+            return recentChats.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecentChatTableViewCell
         
-        let recent = recentChats[indexPath.row]
+        // generate cell with delegate
+        cell.delegate = self
+        
+        let recent: NSDictionary!
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recent = filteredChats[indexPath.row]
+        } else {
+            recent = recentChats[indexPath.row]
+        }
         
         cell.generateCell(recentChat: recent, indexPath: indexPath)
         
@@ -94,6 +133,100 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
+    //MARK: Custom TableView Header
+    
+    // creates group chat button
+    func setTableViewHeader() {
+        
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
+        
+        let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 35))
+        
+        let groupButton = UIButton(frame: CGRect(x: tableView.frame.width - 110, y: 10, width: 100, height: 28))
+        
+        groupButton.addTarget(self, action: #selector(self.groupButtonPressed), for: .touchUpInside)
+        groupButton.setTitle("New Group", for: .normal)
+        let buttonColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        groupButton.setTitleColor(buttonColor, for: .normal)
+        
+        let lineView = UIView(frame: CGRect(x: 0, y: headerView.frame.height - 1, width: tableView.frame.width, height: 1))
+        lineView.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+        
+        buttonView.addSubview(groupButton)
+        headerView.addSubview(buttonView)
+        headerView.addSubview(lineView)
+        tableView.tableHeaderView = headerView
+    }
+    
+    @objc func groupButtonPressed() {
+        print("hello")
+    }
+    
+    //MARK: Recent chats cell delegate
+    
+    func didTapAvatarImage(indexPath: IndexPath) {
+        
+        let recentChat: NSDictionary!
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recentChat = filteredChats[indexPath.row]
+        } else {
+            recentChat = recentChats[indexPath.row]
+        }
+        
+        //check if it is a private message or groupchat
+        
+        if recentChat[kTYPE] as! String == kPRIVATE {
+            
+            //display profile veiw
+            
+            // get the user ID
+            reference(.User).document(recentChat[kWITHUSERUSERID] as! String).getDocument { (snapshot, error) in
+                
+                guard let snapshot = snapshot else { return }
+                
+                // we have a valid user
+                if snapshot.exists {
+                    
+                    // put the user ina dictionary
+                    let userDictionary = snapshot.data() as! NSDictionary
+                    
+                    // create a temporary user with that info
+                    let tempUser = FUser(_dictionary: userDictionary)
+                    
+                    self.showUserProfile(user: tempUser)
+                }
+            }
+        }
+    }
+    
+    func showUserProfile(user: FUser) {
+        
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "profileView") as! ProfileViewTableViewController
+        
+        profileVC.user = user
+        
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    //MARK: Search Controller functions
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        
+        filteredChats = recentChats.filter({ (recentChat) -> Bool in
+            
+            return (recentChat[kWITHUSERFULLNAME] as! String).lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+        
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
     
     
 }
