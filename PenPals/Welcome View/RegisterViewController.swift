@@ -79,7 +79,7 @@ class RegisterViewController: UIViewController {
         let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
         
         //
-        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!] as [String : Any]
+        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName] as [String : Any]
         
         //if user doesn't pick a profile picture make the picture their intials
         if avatarImage == nil {
@@ -145,18 +145,6 @@ class RegisterViewController: UIViewController {
         mainView.modalPresentationStyle = .fullScreen
         self.present(mainView, animated: true, completion: nil)
     }
-    
-    //MARK: Navigation
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "registerToFinishRegistration" {
-//
-//            let vc = segue.destination as! FinishRegistrationViewController
-//            vc.email = emailTextField.text!
-//            vc.password = passwordTextField.text!
-//        }
-//    }
     
     func dismissKeyboard() {
         // dismisses keyboard
