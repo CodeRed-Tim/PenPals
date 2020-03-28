@@ -27,6 +27,10 @@ class FUser {
     var fullname: String
     var avatar: String
     var isOnline: Bool
+    var phoneNumber: String
+    var countryCode: String
+    var country:String
+    var city: String
     
     var contacts: [String]
     var blockedUsers: [String]
@@ -36,7 +40,7 @@ class FUser {
     
     // standard initializier to give objects to user
     
-    init(_objectId: String, _pushId: String?, _createdAt: Date, _updatedAt: Date, _email: String, _firstname: String, _lastname: String, _avatar: String = "", _loginMethod: String) {
+    init(_objectId: String, _pushId: String?, _createdAt: Date, _updatedAt: Date, _email: String, _firstname: String, _lastname: String, _avatar: String = "", _loginMethod: String, _phoneNumber: String, _city: String, _country: String) {
         
         objectId = _objectId
         pushId = _pushId
@@ -51,8 +55,12 @@ class FUser {
         avatar = _avatar
         isOnline = true
         
+        city = _city
+        country = _country
+        
         loginMethod = _loginMethod
-
+        phoneNumber = _phoneNumber
+        countryCode = ""
         blockedUsers = []
         contacts = []
         
@@ -112,6 +120,16 @@ class FUser {
         } else {
             isOnline = false
         }
+        if let phone = _dictionary[kPHONE] {
+            phoneNumber = phone as! String
+        } else {
+            phoneNumber = ""
+        }
+        if let countryC = _dictionary[kCOUNTRYCODE] {
+            countryCode = countryC as! String
+        } else {
+            countryCode = ""
+        }
         if let cont = _dictionary[kCONTACT] {
             contacts = cont as! [String]
         } else {
@@ -127,6 +145,16 @@ class FUser {
             loginMethod = lgm as! String
         } else {
             loginMethod = ""
+        }
+        if let cit = _dictionary[kCITY] {
+            city = cit as! String
+        } else {
+            city = ""
+        }
+        if let count = _dictionary[kCOUNTRY] {
+            country = count as! String
+        } else {
+            country = ""
         }
         
     }
@@ -193,7 +221,7 @@ class FUser {
                 return
             }
             
-            let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: kEMAIL)
+            let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: kEMAIL, _phoneNumber: "", _city: "", _country: "")
             
             
             saveUserLocally(fUser: fUser)
@@ -203,6 +231,50 @@ class FUser {
         })
         
     }
+    
+    //phoneNumberRegistration
+//
+//    class func registerUserWith(phoneNumber: String, verificationCode: String, verificationId: String!, completion: @escaping (_ error: Error?, _ shouldLogin: Bool) -> Void) {
+//
+//
+//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: verificationCode)
+//
+//        Auth.auth().signInAndRetrieveData(with: credential) { (firuser, error) in
+//
+//            if error != nil {
+//
+//                completion(error!, false)
+//                return
+//            }
+//
+//            //check if user exist - login else register
+//            fetchCurrentUserFromFirestore(userId: firuser!.user.uid, completion: { (user) in
+//
+//                if user != nil && user!.firstname != "" {
+//                    //we have user, login
+//
+//                    saveUserLocally(fUser: user!)
+//                    saveUserToFirestore(fUser: user!)
+//
+//                    completion(error, true)
+//
+//                } else {
+//
+//                    //    we have no user, register
+//                    let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: "", _firstname: "", _lastname: "", _avatar: "", _loginMethod: kPHONE, _phoneNumber: firuser!.user.phoneNumber!, _city: "", _country: "")
+//
+//                    saveUserLocally(fUser: fUser)
+//                    saveUserToFirestore(fUser: fUser)
+//                    completion(error, false)
+//
+//                }
+//
+//            })
+//
+//        }
+//
+//    }
+    
     
     //MARK: LogOut func
     
@@ -241,7 +313,9 @@ class FUser {
         
     }
     
-} //end of class functions
+} //end of class funcs
+
+
 
 
 //MARK: Save user funcs
@@ -312,7 +386,7 @@ func userDictionaryFrom(user: FUser) -> NSDictionary {
     let createdAt = dateFormatter().string(from: user.createdAt)
     let updatedAt = dateFormatter().string(from: user.updatedAt)
     
-    return NSDictionary(objects: [user.objectId,  createdAt, updatedAt, user.email, user.loginMethod, user.pushId!, user.firstname, user.lastname, user.fullname, user.avatar, user.contacts, user.blockedUsers, user.isOnline], forKeys: [kOBJECTID as NSCopying, kCREATEDAT as NSCopying, kUPDATEDAT as NSCopying, kEMAIL as NSCopying, kLOGINMETHOD as NSCopying, kPUSHID as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kAVATAR as NSCopying, kCONTACT as NSCopying, kBLOCKEDUSERID as NSCopying, kISONLINE as NSCopying])
+    return NSDictionary(objects: [user.objectId,  createdAt, updatedAt, user.email, user.loginMethod, user.pushId!, user.firstname, user.lastname, user.fullname, user.avatar, user.contacts, user.blockedUsers, user.isOnline, user.phoneNumber, user.countryCode, user.city, user.country], forKeys: [kOBJECTID as NSCopying, kCREATEDAT as NSCopying, kUPDATEDAT as NSCopying, kEMAIL as NSCopying, kLOGINMETHOD as NSCopying, kPUSHID as NSCopying, kFIRSTNAME as NSCopying, kLASTNAME as NSCopying, kFULLNAME as NSCopying, kAVATAR as NSCopying, kCONTACT as NSCopying, kBLOCKEDUSERID as NSCopying, kISONLINE as NSCopying, kPHONE as NSCopying, kCOUNTRYCODE as NSCopying, kCITY as NSCopying, kCOUNTRY as NSCopying])
     
 }
 

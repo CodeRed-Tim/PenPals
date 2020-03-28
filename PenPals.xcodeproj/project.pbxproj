@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */; };
+		220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */; };
 		220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */; };
 		22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22133860240F15120055D06E /* SettingsTableViewController.swift */; };
 		221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
+		220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		22133860240F15120055D06E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				22133860240F15120055D06E /* SettingsTableViewController.swift */,
 				229C8652242B0A8000088609 /* ConactsTableViewController.swift */,
+				220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */,
 				227B4C762412320500A0C235 /* ChatsViewController.swift */,
 			);
 			path = "Main Views";
@@ -296,6 +299,7 @@
 				225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */,
 				225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */,
 				22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */,
+				220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */,
 				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
 				229C8658242B322400088609 /* Recent.swift in Sources */,
 				227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */,

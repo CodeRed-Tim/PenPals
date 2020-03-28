@@ -10,7 +10,7 @@ import UIKit
 import ProgressHUD
 import ImagePicker
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -19,17 +19,42 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var languageDropDown: UITextField!
+    @IBOutlet weak var languagePicker: UIPickerView!
     
     var email: String!
     var password: String!
     var avatarImage: UIImage?
+    var selectedLanguage: String?
+    var languageList = ["English", "Spanish", "Porteguese", "German", "French", "Mandarin", "Romanian"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         print(email, password)
+        languagePicker.delegate = self as UIPickerViewDelegate
+        languagePicker.dataSource = self as UIPickerViewDataSource
+        
     }
+    
+    //MARK: Picker menu functions
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+       return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return languageList.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+       let row = languageList[row]
+       return row
+    }
+    // change text color
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]) 
+    }
+    
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
@@ -49,11 +74,11 @@ class RegisterViewController: UIViewController {
                         return
                     }
                     self.registerUser()
-
+                    
                 }
                 
             } else {
-
+                
                 ProgressHUD.showError("Passwords Don't Match!")
             }
             
@@ -79,7 +104,7 @@ class RegisterViewController: UIViewController {
         let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
         
         //
-        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName] as [String : Any]
+        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!] as [String : Any]
         
         //if user doesn't pick a profile picture make the picture their intials
         if avatarImage == nil {
@@ -138,13 +163,25 @@ class RegisterViewController: UIViewController {
         cleanTextFields()
         dismissKeyboard()
         
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
         
         // present app
         let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
         mainView.modalPresentationStyle = .fullScreen
         self.present(mainView, animated: true, completion: nil)
     }
+    
+    //MARK: Navigation
+    
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+    //        if segue.identifier == "registerToFinishRegistration" {
+    //
+    //            let vc = segue.destination as! FinishRegistrationViewController
+    //            vc.email = emailTextField.text!
+    //            vc.password = passwordTextField.text!
+    //        }
+    //    }
     
     func dismissKeyboard() {
         // dismisses keyboard
@@ -161,3 +198,38 @@ class RegisterViewController: UIViewController {
         confirmPasswordTextField.text = ""
     }
 }
+
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return languageList.count
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return languageList[row]
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        selectedLanguage = languageList[row]
+//        languageDropDown.text = selectedLanguage
+//    }
+//
+//    func createPickerView() {
+//           let languagePicker = UIPickerView()
+//           languagePicker.delegate = self
+//           languageDropDown.inputView = languageDropDown
+//    }
+//
+//    func dismissPickerView() {
+//       let toolBar = UIToolbar()
+//       toolBar.sizeToFit()
+//        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
+//       toolBar.setItems([button], animated: true)
+//       toolBar.isUserInteractionEnabled = true
+//       languageDropDown.inputAccessoryView = toolBar
+//    }
+//
+//    @objc func action() {
+//          view.endEditing(true)
+//    }

@@ -39,6 +39,8 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.backgroundColor = UIColor.clear
 
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -80,6 +82,8 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecentChatTableViewCell
         
+        cell.contentView.backgroundColor = UIColor.clear
+        
         // generate cell with delegate
         cell.delegate = self
         
@@ -97,6 +101,86 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         return cell
     }
+    
+    //MARK: tableViewDelegate funtctions (for mute/delete options)
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        var tempRecent: NSDictionary!
+        
+        // find user's cell location selected user in messages
+        if searchController.isActive && searchController.searchBar.text != "" {
+            tempRecent = filteredChats[indexPath.row]
+        } else {
+            tempRecent = recentChats[indexPath.row]
+        }
+
+        var muteTitle = "Unmute"
+        var mute = false
+        
+        //check if the user is in the array of members that will recieve push notifications
+        // if they are the user is not muted
+        if (tempRecent[kMEMBERSTOPUSH] as! [String]).contains(FUser.currentId()) {
+            
+            muteTitle = "Mute"
+            mute = true
+        }
+        
+        // create delete button
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            
+            //selected message cell
+            self.recentChats.remove(at: indexPath.row)
+            
+            deleteRecentChat(recentChatDictionary: tempRecent)
+            
+            self.tableView.reloadData()
+        }
+        
+        // create mute button
+        let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { (action, indexPath) in
+            
+         print("mute \(indexPath)")
+        }
+        
+        muteAction.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        
+        return [deleteAction, muteAction]
+        
+    }
+    
+    
+    // tap message cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        var recent: NSDictionary!
+        
+        // find user's cell location selected user in messages
+        if searchController.isActive && searchController.searchBar.text != "" {
+            recent = filteredChats[indexPath.row]
+        } else {
+            recent = recentChats[indexPath.row]
+        }
+        
+        //restart chat
+        restartRecentChat(recent: recent)
+        
+        //showchat view
+        let messageVC = MessageViewController()
+        
+        //hide tabBar at bottom of screen
+        messageVC.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(messageVC, animated: true)
+        
+    }
+    
     
     //MARK: LoadRecentChats
     
@@ -132,6 +216,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         })
         
     }
+    
     
     //MARK: Custom TableView Header
     

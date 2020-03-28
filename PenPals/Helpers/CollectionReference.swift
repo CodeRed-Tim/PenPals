@@ -18,7 +18,7 @@ enum FCollectionReference: String {
     case Recent
     case Message
     case Group
-
+    case Call
 }
 
 // returns path to database location
