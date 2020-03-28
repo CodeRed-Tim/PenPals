@@ -95,7 +95,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     
     //MARK: Helper Functions
     
@@ -116,6 +116,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 let avatarImg = avatarInitials.jpegData(compressionQuality: 0.7)
                 let avatar = avatarImg!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
                 
+                
+                
                 tempDictionary[kAVATAR] = avatar
                 
                 self.finishRegistration(withValues: tempDictionary)
@@ -127,6 +129,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             let avatar = avatarData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             
             tempDictionary[kAVATAR] = avatar
+            
             
             self.finishRegistration(withValues: tempDictionary)
             
@@ -170,6 +173,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         mainView.modalPresentationStyle = .fullScreen
         self.present(mainView, animated: true, completion: nil)
     }
+    
     
     //MARK: Navigation
     

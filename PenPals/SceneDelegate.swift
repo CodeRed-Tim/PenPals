@@ -22,13 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         authListener = Auth.auth().addStateDidChangeListener({ (auth, user) in
             
             Auth.auth().removeStateDidChangeListener(self.authListener!)
-            
+            print("One One ONE ONE ONE")
             if user != nil {
                 
                 if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
                     // there is a user logged in locally
                     // skip log in screen and go to app
                     
+                    
+                    print("two two TWO TWO TWO")
                     DispatchQueue.main.async {
                         self.goToApp()
 
@@ -80,6 +82,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //MARK: Go To App
     func goToApp() {
         
+        print("three three THREE THREE THREE")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
         
         // present app
