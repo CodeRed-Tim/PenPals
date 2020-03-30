@@ -17,6 +17,12 @@ import FirebaseFirestore
 
 class MessageViewController: JSQMessagesViewController {
     
+    
+    var chatRoomId: String!
+    var memeberIds: [String]!
+    var membersToPush: [String]!
+    var titleName: String!
+    
     //apple may have issues with blue bubble bc it
     //is too similar to imessage
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
@@ -129,8 +135,19 @@ class MessageViewController: JSQMessagesViewController {
     
     func sendMessage(text: String?, date: Date, picture: UIImage?, video: NSURL?) {
         
+        var outgoingMessage: OutgoingMessages?
+        let currentUser = FUser.currentUser()!
         
+        //text message
+        //if there is a text message
+        if let text = text {
+            outgoingMessage = OutgoingMessages(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT)
+        }
         
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        self.finishSendingMessage()
+        
+        outgoingMessage!.sendMessage(chatRoomId: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memeberIds, memberToPush: membersToPush)
     }
     
     //MARK: IBActions

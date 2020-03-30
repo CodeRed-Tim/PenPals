@@ -173,9 +173,13 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //showchat view
         let messageVC = MessageViewController()
-        
         //hide tabBar at bottom of screen
         messageVC.hidesBottomBarWhenPushed = true
+        //pass these 4 values to message view
+//        messageVC.titleName = (recent[kWITHUSERUSERNAME] as? String)!
+        messageVC.memeberIds = (recent[kMEMBERS] as? [String])!
+        messageVC.membersToPush = (recent[kMEMBERSTOPUSH] as? [String])!
+        messageVC.chatRoomId = (recent[kCHATROOMID] as? String)!
         
         navigationController?.pushViewController(messageVC, animated: true)
         
