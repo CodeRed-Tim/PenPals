@@ -10,7 +10,7 @@ import UIKit
 import ProgressHUD
 import ImagePicker
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -18,15 +18,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var pickerLanguage: UIPickerView!
+    
     
     var email: String!
     var password: String!
     var avatarImage: UIImage?
+    var arrayOfLanguage = ["English","Spanish","French","Portuguese", "Chinese","Russian", "Italian"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        pickerLanguage.delegate = self
         // Do any additional setup after loading the view.
         print(email, password)
     }
@@ -172,4 +174,20 @@ class RegisterViewController: UIViewController {
         passwordTextField.text = ""
         confirmPasswordTextField.text = ""
     }
+    
+    // UIPicker for desplaying Language
+        func numberOfComponents(in pickerLanguage: UIPickerView) -> Int {
+            return 1
+        }
+        
+        func pickerView(_ pickerLanguage: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return arrayOfLanguage.count
+        }
+        
+        func pickerView(_ pickerLanguage: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+            return arrayOfLanguage[row]
+        }
+        
+        func pickerView(_ pickerLanguage: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        }
 }
