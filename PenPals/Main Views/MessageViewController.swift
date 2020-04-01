@@ -60,21 +60,21 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     }()
     
     let avatarButton: UIButton = {
-       let button = UIButton(frame: CGRect(x: 0, y: 10, width: 25, height: 25))
+       let button = UIButton(frame: CGRect(x: 0, y: 10, width: 33, height: 33))
         return button
     }()
     
     let titleLabel: UILabel = {
-        let title = UILabel(frame: CGRect(x: 30, y: 10, width: 140, height: 15))
+        let title = UILabel(frame: CGRect(x: 40, y: 10, width: 140, height: 15))
         title.textAlignment = .left
-        title.font = UIFont(name: title.font.fontName, size: 14)
+        title.font = UIFont(name: title.font.fontName, size: 18)
         return title
     }()
     
     let subtitleLabel: UILabel = {
-       let subTitle = UILabel(frame: CGRect(x: 30, y: 25, width: 140, height: 15))
+       let subTitle = UILabel(frame: CGRect(x: 40, y: 30, width: 140, height: 15))
         subTitle.textAlignment = .left
-        subTitle.font = UIFont(name: subTitle.font.fontName, size: 10)
+        subTitle.font = UIFont(name: subTitle.font.fontName, size: 14)
         return subTitle
     }()
 
@@ -252,12 +252,11 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { (action) in
             camera.PresentPhotoLibrary(target: self, canEdit: false)
-            print("photo library")
         }
         sharePhoto.setValue(UIImage(named: "picture"), forKey: "image")
         
         let shareVideo = UIAlertAction(title: "Video Library", style: .default) { (action) in
-            print("video library")
+            camera.PresentVideoLibrary(target: self, canEdit: false)
         }
         shareVideo.setValue(UIImage(named: "video"), forKey: "image")
         
@@ -332,7 +331,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                 if imageLink != nil {
                     //have an image
                     
-                    let text = kPICTURE
+                    let text = "[\(kPICTURE)]"
                     
                     outgoingMessage = OutgoingMessages(message: text, pictureLink: imageLink!, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kPICTURE)
                     
@@ -345,10 +344,40 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             return
         }
         
+        //send video
+        if let video = video {
+            
+            let videoData = NSData(contentsOfFile: video.path!)
+            
+            //need to convert thumnbail to data to save it in firebase
+            let dataThumbnail = videoThumbnail(video: video).jpegData(compressionQuality: 0.3)
+            
+            uploadVideo(video: videoData!, chatRoomId: chatRoomId, view: self.navigationController!.view) { (videoLink) in
+                
+                if videoLink != nil {
+                    let text = "[\(kVIDEO)]"
+                    
+                    outgoingMessage = OutgoingMessages(message: text, video: videoLink!, thumbNail: dataThumbnail! as NSData, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kVIDEO)
+                    
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.finishSendingMessage()
+                    
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memeberIds, memberToPush: self.membersToPush)
+                }
+            }
+            return
+        }
+        
+        
+        
+        
+        
+        
+        
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         self.finishSendingMessage()
         
-        outgoingMessage!.sendMessage(chatRoomId: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memeberIds, memberToPush: membersToPush)
+        outgoingMessage?.sendMessage(chatRoomId: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memeberIds, memberToPush: membersToPush)
     }
     
     //MARK: LoadMessages
@@ -654,9 +683,13 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         //sets the header subtitle to their onlne status
         if withUser.isOnline {
             subtitleLabel.text = "Online"
+            //subtitleLabel.textColor = UIColor.green
+            //sea green rgb
+            subtitleLabel.textColor = UIColor(red: (60/255.0), green: (179/255.0), blue: (5/255.0), alpha: 1.0)
             // set text color to green
         } else {
             subtitleLabel.text = "Offline"
+            subtitleLabel.textColor = UIColor.red
             // set text color to red
         }
         

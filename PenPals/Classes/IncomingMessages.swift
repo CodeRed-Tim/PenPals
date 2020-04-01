@@ -40,7 +40,7 @@ class IncomingMessages {
             message = createPictureMessage(messageDictionary: messageDictionary)
         case kVIDEO:
             //create a video message
-            print("create video message")
+            message = createVideoMessage(messageDictionary: messageDictionary)
         default:
             print("Unknown message type")
         }
@@ -119,6 +119,53 @@ class IncomingMessages {
             }
             return JSQMessage(senderId: userId, senderDisplayName: name, date: date, media: mediaItem)
     }
+    
+    func createVideoMessage(messageDictionary: NSDictionary)
+        -> JSQMessage {
+            
+            let name = messageDictionary[kSENDERNAME] as? String
+            let userId = messageDictionary[kSENDERID] as? String
+            
+            var date: Date!
+            
+            // does the date exist
+            if let created = messageDictionary[kDATE] {
+                if (created as! String).count != 14 {
+                    // create new date
+                    date = Date()
+                } else {
+                    date = dateFormatter().date(from: created as! String)
+                }
+            } else {
+                // create new date
+                date = Date()
+            }
+            
+            let videoURL = NSURL(fileURLWithPath: messageDictionary[kVIDEO] as! String)
+            
+            let mediaItem =  VideoMessage(withFileURL: videoURL, maskOutgoing: returnOutgoingStatusForUser(senderId: userId!))
+            
+            //download video
+            downloadVideo(videoUrl: messageDictionary[kVIDEO] as! String) { (isReadyToPlay, fileName) in
+                
+                let url = NSURL(fileURLWithPath: fileInDocumentsDirectory(fileName: fileName))
+                mediaItem.status = kSUCCESS
+                mediaItem.fileURL = url
+                
+                imageFromData(pictureData: messageDictionary[kPICTURE] as! String) { (image) in
+                    
+                    if image != nil {
+                        mediaItem.image = image!
+                        self.collectionView.reloadData()
+                    }
+                }
+                self.collectionView.reloadData()
+            }
+            
+            
+            return JSQMessage(senderId: userId, senderDisplayName: name, date: date, media: mediaItem)
+    }
+    
     
     //MARK: Helper
     

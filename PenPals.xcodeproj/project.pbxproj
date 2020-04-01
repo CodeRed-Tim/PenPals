@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */; };
+		220B6665243446D200081647 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B6664243446D200081647 /* VideoMessage.swift */; };
 		220B98C62433E89400E6BD3B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C52433E89400E6BD3B /* Camera.swift */; };
 		220B98C82433EE4200E6BD3B /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C72433EE4200E6BD3B /* Download.swift */; };
 		220B98CA24340A5F00E6BD3B /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
+		220B6664243446D200081647 /* VideoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		220B98C52433E89400E6BD3B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		220B98C72433EE4200E6BD3B /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
 		220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				22166D262431DBA1007BA45E /* IncomingMessages.swift */,
 				220B98C52433E89400E6BD3B /* Camera.swift */,
 				220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */,
+				220B6664243446D200081647 /* VideoMessage.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				224E855D2427007C001FF692 /* ProfileViewTableViewController.swift in Sources */,
 				221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */,
 				22166D272431DBA1007BA45E /* IncomingMessages.swift in Sources */,
+				220B6665243446D200081647 /* VideoMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

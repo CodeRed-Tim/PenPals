@@ -139,7 +139,7 @@ func uploadVideo(video: NSData, chatRoomId: String, view: UIView, completion: @e
     let progressHUD = MBProgressHUD.showAdded(to: view, animated: true)
     progressHUD.mode = .determinateHorizontalBar
     
-    let dateString = DateFormatter().string(from: Date())
+    let dateString = dateFormatter().string(from: Date())
     
     let videoFileName = "VideoMessages/" + FUser.currentId() + "/" + chatRoomId + "/" + dateString + ".mov"
     
@@ -174,7 +174,92 @@ func uploadVideo(video: NSData, chatRoomId: String, view: UIView, completion: @e
     }
 }
 
+func downloadVideo(videoUrl: String, completion: @escaping(_ isReadyToPlay: Bool, _ videFilename: String) -> Void) {
+    
+    //convert image from url to string
+    let videoURL = NSURL(string: videoUrl)
+    
+    // seperates just the file name away from the rest of the URL
+    let videoFileName = (videoUrl.components(separatedBy: "%").last!).components(separatedBy: "?").first!
+    
+    //save file locally on device
+    // no need to download it every single time
+    
+    if fileExistsAtPath(path: videoFileName) {
+        //exists
+        //if we have a file... return it
+        completion(true, videoFileName)
+        
+    } else {
+        //doesn't exist
+        
+        //if we don't have a file we download it, save it locally, then return it
+        let downloadQueue = DispatchQueue(label: "videoDownloadQueue")
+        
+        downloadQueue.async {
+            //get data from url
+            let data = NSData(contentsOf: videoURL! as URL)
+            
+            if data != nil {
+                
+                var docURL = getDocumentsURL()
+                
+                //save locally
+                docURL = docURL.appendingPathComponent(videoFileName, isDirectory: false)
+                // if you alrady have a file with the same name
+                // a temporary file will be created
+                //once succesful it will delete the current file
+                //if file is corrupt then original file will remain untouched
+                data!.write(to: docURL, atomically: true)
+                                
+                DispatchQueue.main.async {
+                    completion(true, videoFileName)
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                    print("no video in database")
+                }
+            }
+        }
+    }
+    
+}
+
+
 //Helpers
+
+func videoThumbnail(video: NSURL) -> UIImage {
+    
+    //pass through video
+    let asset = AVURLAsset(url: video as URL, options: nil)
+    
+    //generate image fro video
+    let imageGenerator = AVAssetImageGenerator(asset: asset)
+    imageGenerator.appliesPreferredTrackTransform = true
+    
+    //set the time in the video you want to capture to use for thumbnail
+    let time = CMTime(seconds: 0.5, preferredTimescale: 1000)
+    var actualTime = CMTime.zero
+    
+    var image: CGImage?
+    
+    do {
+        //try to copy image
+        image = try imageGenerator.copyCGImage(at: time, actualTime: &actualTime)
+    }
+    catch let error as NSError {
+        print(error.localizedDescription)
+    }
+    
+    // if it passes generate a UIImage of the cgimage of the thumbnail
+    let thumbnail = UIImage(cgImage: image!)
+    
+    return thumbnail
+}
+
+
+
 
 func fileInDocumentsDirectory(fileName: String) -> String {
     
