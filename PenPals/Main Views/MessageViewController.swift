@@ -15,7 +15,7 @@ import AVFoundation
 import AVKit
 import FirebaseFirestore
 
-class MessageViewController: JSQMessagesViewController {
+class MessageViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     var chatRoomId: String!
@@ -238,6 +238,9 @@ class MessageViewController: JSQMessagesViewController {
     //MARK: JSQMessages Delegate Functions (required)
     override func didPressAccessoryButton(_ sender: UIButton!) {
         
+        //create instance of camera class
+        let camera = Camera(delegate_: self)
+        
         // creates option menu (photo, video, photo from library)
         let optionMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -248,6 +251,7 @@ class MessageViewController: JSQMessagesViewController {
         takePhotoOrVideo.setValue(UIImage(named: "camera"), forKey: "image")
         
         let sharePhoto = UIAlertAction(title: "Photo Library", style: .default) { (action) in
+            camera.PresentPhotoLibrary(target: self, canEdit: false)
             print("photo library")
         }
         sharePhoto.setValue(UIImage(named: "picture"), forKey: "image")
@@ -316,6 +320,29 @@ class MessageViewController: JSQMessagesViewController {
         //if there is a text message
         if let text = text {
             outgoingMessage = OutgoingMessages(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT)
+        }
+        
+        //picture message
+        
+        if let pic = picture {
+            //recieved a picture
+            
+            uploadImage(image: pic, chatRoomId: chatRoomId, view: self.navigationController!.view) { (imageLink) in
+                
+                if imageLink != nil {
+                    //have an image
+                    
+                    let text = kPICTURE
+                    
+                    outgoingMessage = OutgoingMessages(message: text, pictureLink: imageLink!, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kPICTURE)
+                    
+                    JSQSystemSoundPlayer.jsq_playMessageSentSound()
+                    self.finishSendingMessage()
+                    
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memeberIds, memberToPush: self.membersToPush)
+                }
+            }
+            return
         }
         
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
@@ -627,16 +654,30 @@ class MessageViewController: JSQMessagesViewController {
         //sets the header subtitle to their onlne status
         if withUser.isOnline {
             subtitleLabel.text = "Online"
+            // set text color to green
         } else {
             subtitleLabel.text = "Offline"
+            // set text color to red
         }
         
         avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
         
     }
     
-    //MARK: Helper Functions
+    //MARK: UIImage Picker Controller Delegate
     
+    //called everytime user picks a picture or video from picker controller
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let video = info[UIImagePickerController.InfoKey.mediaURL] as? NSURL
+        let picture = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        
+        sendMessage(text: nil, date: Date(), picture: picture, video: video)
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Helper Functions
     
     func readTimeFrom(dateString: String) -> String {
         

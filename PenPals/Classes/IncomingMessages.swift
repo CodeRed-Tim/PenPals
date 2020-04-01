@@ -37,7 +37,7 @@ class IncomingMessages {
             message = createTextMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
         case kPICTURE:
             //create a picture message
-            print("create picture message")
+            message = createPictureMessage(messageDictionary: messageDictionary)
         case kVIDEO:
             //create a video message
             print("create video message")
@@ -82,4 +82,49 @@ class IncomingMessages {
         return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: text)
     }
     
+    func createPictureMessage(messageDictionary: NSDictionary)
+        -> JSQMessage {
+            
+            let name = messageDictionary[kSENDERNAME] as? String
+            let userId = messageDictionary[kSENDERID] as? String
+            
+            var date: Date!
+            
+            // does the date exist
+            if let created = messageDictionary[kDATE] {
+                if (created as! String).count != 14 {
+                    // create new date
+                    date = Date()
+                } else {
+                    date = dateFormatter().date(from: created as! String)
+                }
+            } else {
+                // create new date
+                date = Date()
+            }
+            
+            let mediaItem = PhotoMediaItem(image: nil)
+            //outgoing or incoming
+            mediaItem?.appliesMediaViewMaskAsOutgoing = returnOutgoingStatusForUser(senderId: userId!)
+            
+            //download image
+            downloadImage(imageUrl: messageDictionary[kPICTURE] as! String) { (image) in
+                if image != nil {
+                    //set image
+                    mediaItem?.image = image!
+                    //refresh collection view
+                    self.collectionView.reloadData()
+                    
+                }
+            }
+            return JSQMessage(senderId: userId, senderDisplayName: name, date: date, media: mediaItem)
+    }
+    
+    //MARK: Helper
+    
+    //cheks if it is outgoing or incoming message
+    
+    func returnOutgoingStatusForUser(senderId: String) -> Bool {
+        return senderId == FUser.currentId()
+    }
 }

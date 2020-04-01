@@ -25,7 +25,7 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 
 //IDS and Keys
 // Firebase reference key
-public let kFILEREFERENCE = ""
+public let kFILEREFERENCE = "gs://penpal-eb7be.appspot.com"
 // app ID
 public let kONESIGNALAPPID = ""
 // key for call function (if needed)

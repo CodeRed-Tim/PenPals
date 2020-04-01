@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */; };
+		220B98C62433E89400E6BD3B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C52433E89400E6BD3B /* Camera.swift */; };
+		220B98C82433EE4200E6BD3B /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C72433EE4200E6BD3B /* Download.swift */; };
+		220B98CA24340A5F00E6BD3B /* PhotoMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */; };
 		220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */; };
 		220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */; };
 		22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22133860240F15120055D06E /* SettingsTableViewController.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
+		220B98C52433E89400E6BD3B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		220B98C72433EE4200E6BD3B /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
+		220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMediaItem.swift; sourceTree = "<group>"; };
 		220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		22133860240F15120055D06E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220B98C42433E86900E6BD3B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				221E066723ED4F61001A9F67 /* FUser.swift */,
+				229C8657242B322400088609 /* Recent.swift */,
+				22166D242431B707007BA45E /* OutgoingMessages.swift */,
+				22166D262431DBA1007BA45E /* IncomingMessages.swift */,
+				220B98C52433E89400E6BD3B /* Camera.swift */,
+				220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 		22133868240F366C0055D06E /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,11 +105,8 @@
 		221E066F23ED54CF001A9F67 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				221E066723ED4F61001A9F67 /* FUser.swift */,
-				229C8657242B322400088609 /* Recent.swift */,
-				22166D242431B707007BA45E /* OutgoingMessages.swift */,
-				22166D262431DBA1007BA45E /* IncomingMessages.swift */,
 				221E066923ED4FAF001A9F67 /* Constants.swift */,
+				220B98C72433EE4200E6BD3B /* Download.swift */,
 				221E066B23ED5348001A9F67 /* CollectionReference.swift */,
 				221E066D23ED5416001A9F67 /* HelperFunctions.swift */,
 			);
@@ -123,6 +139,7 @@
 				229C8655242B30FB00088609 /* Main Views */,
 				229C8656242B313500088609 /* Secondary Views */,
 				22133868240F366C0055D06E /* Custom Cells */,
+				220B98C42433E86900E6BD3B /* Classes */,
 				221E066F23ED54CF001A9F67 /* Helpers */,
 				225D8D6C23ED4494007E0273 /* SceneDelegate.swift */,
 				225D8D7023ED4494007E0273 /* Main.storyboard */,
@@ -304,9 +321,12 @@
 				220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */,
 				229C8653242B0A8000088609 /* ConactsTableViewController.swift in Sources */,
 				225D8D6B23ED4494007E0273 /* AppDelegate.swift in Sources */,
+				220B98C82433EE4200E6BD3B /* Download.swift in Sources */,
 				225D8D6D23ED4494007E0273 /* SceneDelegate.swift in Sources */,
 				22133861240F15120055D06E /* SettingsTableViewController.swift in Sources */,
+				220B98CA24340A5F00E6BD3B /* PhotoMediaItem.swift in Sources */,
 				220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */,
+				220B98C62433E89400E6BD3B /* Camera.swift in Sources */,
 				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
 				229C8658242B322400088609 /* Recent.swift in Sources */,
 				227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */,
