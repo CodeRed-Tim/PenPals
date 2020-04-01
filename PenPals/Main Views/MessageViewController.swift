@@ -106,6 +106,8 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
+        jsqAvatarDictionary = [ : ]
+        
         setCustomTitle()
         
         loadMessages()
@@ -243,6 +245,21 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         }
     }
     
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        
+        let message = messages[indexPath.row]
+        var avatar: JSQMessageAvatarImageDataSource
+        
+        if let testAvatar = jsqAvatarDictionary!.object(forKey: message.senderId) {
+            avatar = testAvatar as! JSQMessageAvatarImageDataSource
+        } else {
+            avatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        }
+        
+        return avatar
+        
+    }
+    
     
     
     //MARK: JSQMessages Delegate Functions (required)
@@ -320,9 +337,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     
     //for when user tapes on messages, pictures, videos
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
-        
-        print("tap on messae at \(indexPath)")
-        
+                
         let messageDictionary = objectMessages[indexPath.row]
         let messageType = messageDictionary[kTYPE] as! String
         
@@ -359,6 +374,28 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         default:
             print("unknown message type tapped")
         }
+    }
+    
+    //when user taps on other user's avatar
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapAvatarImageView avatarImageView: UIImageView!, at indexPath: IndexPath!) {
+        
+        let senderId = messages[indexPath.row].senderId
+        var selectedUser: FUser?
+        
+        //if user taps on their own avatar
+        if senderId == FUser.currentId() {
+            selectedUser = FUser.currentUser()
+        } else {
+            for user in withUsers {
+                //check whos avatar is being tapped
+                if user.objectId == senderId {
+                    selectedUser = user
+                }
+            }
+        }
+        
+        //show user profile
+        presentUserProfile(forUser: selectedUser!)
     }
     
     //MARK: Send messages
@@ -685,6 +722,14 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
     
+    func presentUserProfile(forUser: FUser) {
+        
+        let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "profileView") as! ProfileViewTableViewController
+        
+        profileVC.user = forUser
+        self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
     //MARK: Typing indicator
     func createtypingObserver() {
         
@@ -801,6 +846,8 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             
             self.withUsers = withUsers
             // get avatars
+            self.getAvatarImages()
+            
             if !self.isGroup! {
                 //update user info
                 self.setUIForSingleChat()
@@ -854,6 +901,83 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         sendMessage(text: nil, date: Date(), picture: picture, video: video)
         
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: get avatars
+    
+    func getAvatarImages() {
+        
+        //check to see if we can show avatars
+        
+        if showAvatars {
+            
+            collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: 30, height: 30)
+            collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: 30, height: 30)
+            
+            //get avatar of current user
+            avatarImageFrom(fUser: FUser.currentUser()!)
+            
+            //get avatar for everyone in message
+            for user in withUsers {
+                avatarImageFrom(fUser: user)
+            }
+            
+            
+        }
+    }
+    
+    func avatarImageFrom(fUser: FUser) {
+        
+        //user has an avatar
+        if fUser.avatar != "" {
+            dataImageFromString(pictureString: fUser.avatar) { (imageData) in
+                
+                if imageData == nil { return }
+                
+                if self.avatarImageDictionary != nil {
+                    //update avatar if user has one
+                    //remove avatar from dictionary
+                    self.avatarImageDictionary!.removeObject(forKey: fUser.objectId)
+                    self.avatarImageDictionary!.setObject(imageData!, forKey: fUser.objectId as NSCopying)
+                    
+                } else {
+                    //creat one
+                    self.avatarImageDictionary = [fUser.objectId : imageData!]
+                }
+                
+                //create JSQ avatars
+                createJSQAvatars(avatarDictionary: self.avatarImageDictionary)
+            }
+        }
+        
+    }
+    
+    func createJSQAvatars(avatarDictionary: NSMutableDictionary?) {
+        
+        //set default avatar if user doesnt have one
+        let defaultAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named: "avatarPlaceholder"), diameter: 70)
+        
+        if avatarDictionary != nil {
+            
+            for userId in memberIds {
+                //access avatar image data
+                if let avatarImageData = avatarDictionary![userId] {
+                    
+                    //create jsq avatar
+                    let jsqAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: avatarImageData as! Data), diameter: 70)
+                    
+                    //set avatar and put it in dictionary
+                    self.jsqAvatarDictionary!.setValue(jsqAvatar, forKey: userId)
+                } else {
+                    self.jsqAvatarDictionary!.setValue(defaultAvatar, forKey: userId)
+
+                }
+            }
+            
+            //refresh collectionview and display avatars
+            self.collectionView.reloadData()
+        }
+        
     }
     
     //MARK: Helper Functions
