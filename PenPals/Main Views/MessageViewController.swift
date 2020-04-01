@@ -19,7 +19,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     
     
     var chatRoomId: String!
-    var memeberIds: [String]!
+    var memberIds: [String]!
     var membersToPush: [String]!
     var titleName: String!
     var isGroup: Bool?
@@ -29,7 +29,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     //listeners
     var newChatListener: ListenerRegistration?
     var typingListener: ListenerRegistration?
-    var updateedChatListener: ListenerRegistration?
+    var updatedChatListener: ListenerRegistration?
     
     let legitTypes = [kPICTURE, kVIDEO, kTEXT]
     
@@ -39,6 +39,8 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     var loadedMessagesCount = 0
     
     //store messages variables
+    var typingCounter = 0
+    
     var messages: [JSQMessage] = []
     var objectMessages: [NSDictionary] = []
     var loadedMessages: [NSDictionary] = []
@@ -47,11 +49,16 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     //checks if first 11 message have been loaded
     var initialLoadComplete = false
     
+    var jsqAvatarDictionary: NSMutableDictionary?
+    var avatarImageDictionary: NSMutableDictionary?
+    var showAvatars = true
+    var firstLoad: Bool?
+    
     //apple may have issues with blue bubble bc it
     //is too similar to imessage
     var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
     
-    var incomingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+    var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     
     //MARK: Custom Message View Header
     let leftBarButtonView: UIView = {
@@ -88,6 +95,9 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //create typing observer
+        createtypingObserver()
         
         navigationItem.largeTitleDisplayMode = .never
         
@@ -246,7 +256,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         
         // set option menu values
         let takePhotoOrVideo = UIAlertAction(title: "Camera", style: .default) { (action) in
-            print("camera")
+            camera.PresentMultyCamera(target: self, canEdit: false)
         }
         takePhotoOrVideo.setValue(UIImage(named: "camera"), forKey: "image")
         
@@ -308,6 +318,49 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         self.collectionView.reloadData()
     }
     
+    //for when user tapes on messages, pictures, videos
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didTapMessageBubbleAt indexPath: IndexPath!) {
+        
+        print("tap on messae at \(indexPath)")
+        
+        let messageDictionary = objectMessages[indexPath.row]
+        let messageType = messageDictionary[kTYPE] as! String
+        
+        switch messageType {
+        case kPICTURE:
+            //open picture to its own photo browser view controller
+            //get correct picture tapped on
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! JSQPhotoMediaItem
+            //get the one image from the array
+            let photos = IDMPhoto.photos(withImages: [mediaItem.image])
+            let browser = IDMPhotoBrowser(photos: photos)
+            
+            self.present(browser!, animated: true, completion: nil)
+        case kVIDEO:
+            //opening video
+            // find the correct message tapped
+            let message = messages[indexPath.row]
+            let mediaItem = message.media as! VideoMessage
+            //create an avplayer
+            let player = AVPlayer(url: mediaItem.fileURL! as URL)
+            //open video to its own avplayer view controller
+            let moviePlayer = AVPlayerViewController()
+            //create session to play audio
+            let session = AVAudioSession.sharedInstance()
+            
+            try! session.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            
+            moviePlayer.player = player
+            //present video
+            self.present(moviePlayer, animated: true) {
+                moviePlayer.player!.play()
+            }
+        default:
+            print("unknown message type tapped")
+        }
+    }
+    
     //MARK: Send messages
     
     func sendMessage(text: String?, date: Date, picture: UIImage?, video: NSURL?) {
@@ -338,7 +391,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     
-                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memeberIds, memberToPush: self.membersToPush)
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memberIds, memberToPush: self.membersToPush)
                 }
             }
             return
@@ -362,7 +415,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     
-                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memeberIds, memberToPush: self.membersToPush)
+                    outgoingMessage?.sendMessage(chatRoomId: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memberIds, memberToPush: self.membersToPush)
                 }
             }
             return
@@ -377,12 +430,29 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         self.finishSendingMessage()
         
-        outgoingMessage?.sendMessage(chatRoomId: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memeberIds, memberToPush: membersToPush)
+        outgoingMessage?.sendMessage(chatRoomId: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memberIds, memberToPush: membersToPush)
     }
     
     //MARK: LoadMessages
     
     func loadMessages() {
+        
+        // to update message status delivered/read
+        updatedChatListener = reference(.Message).document(FUser.currentId()).collection(chatRoomId).addSnapshotListener({ (snapshot, error) in
+            
+            guard let snapshot = snapshot else { return }
+            
+            if !snapshot.isEmpty {
+           //check for difference in documents
+                snapshot.documentChanges.forEach({ (diff) in
+                    
+                    if diff.type == .modified {
+                        //update local message
+                        self.updateMessage(messageDictionary: diff.document.data() as NSDictionary)
+                    }
+                })
+            }
+        })
         
         //get last 11 messages to display (max amount VC can display
         reference(.Message).document(FUser.currentId()).collection(chatRoomId).order(by: kDATE, descending: true).limit(to: 11).getDocuments { (snapshot, error) in
@@ -391,6 +461,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                 //initial loading is done (get 11 messages)
                 self.initialLoadComplete = true
                 // start lsitening for new incoming messages
+                self.listenForNewChats()
                 return
             }
             
@@ -405,10 +476,6 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             self.finishReceivingMessage(animated: true)
             
             self.initialLoadComplete = true
-            
-            print("we have \(self.messages.count) messages loaded")
-            
-            //get picture messages
             
             //get old messages in background
             self.getOldMessagesInBackground()
@@ -530,9 +597,8 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         //check if message is incoming or outgoing
         // if incoming
         if (messageDictionary[kSENDERID] as! String) != FUser.currentId() {
-            
             //update message read status
-            
+            OutgoingMessages.updateMessage(withId: messageDictionary[kMESSAGEID] as! String, chatRoomId: chatRoomId, memberIds: memberIds)
         }
         
         let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
@@ -544,6 +610,19 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         }
         
         return isIncoming(messageDictionary: messageDictionary)
+    }
+    
+    func updateMessage(messageDictionary: NSDictionary) {
+        //update message locally
+        //go through all the messages
+        for index in 0 ..< objectMessages.count {
+            let temp = objectMessages[index]
+            //compare to see which message is the updated one
+            if messageDictionary[kMESSAGEID] as! String == temp[kMESSAGEID] as! String {
+                objectMessages[index] = messageDictionary
+                self.collectionView!.reloadData()
+            }
+        }
     }
     
     //MARK: Load More messages
@@ -586,6 +665,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     //MARK: IBActions
     
     @objc func backAction() {
+        removeListeners()
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -603,6 +683,72 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         
         profileVC.user = withUsers.first!
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    //MARK: Typing indicator
+    func createtypingObserver() {
+        
+        typingListener = reference(.Typing).document(chatRoomId).addSnapshotListener({ (snapshot, error) in
+            
+            guard let snapshot = snapshot else { return }
+            
+            if snapshot.exists {
+                
+                // if it does
+                
+                for data in snapshot.data()! {
+                    
+                    // if the current user is not typing
+                    if data.key != FUser.currentId() {
+                        
+                        let typing = data.value as! Bool
+                        self.showTypingIndicator = typing
+                        
+                        if typing {
+                            //if other user starts typing bring the current user's view down to the bottom
+                            self.scrollToBottom(animated: true)
+                        }
+                    }
+                }
+                
+            } else {
+                //if there is no snapshot set typing indicator to false
+                reference(.Typing).document(self.chatRoomId).setData([FUser.currentId() : false])
+            }
+            
+        })
+        
+    }
+    
+    func typingCounterStart() {
+        
+        typingCounter += 1
+        typingCounterSave(typing: true)
+        self.perform(#selector(self.typingCounterStop), with: nil, afterDelay: 2.0)
+    }
+    
+    @objc func typingCounterStop() {
+        
+        typingCounter -= 1
+        
+        if typingCounter == 0 {
+            typingCounterSave(typing: false)
+        }
+    }
+    
+    func typingCounterSave(typing: Bool) {
+        reference(.Typing).document(chatRoomId).updateData([FUser.currentId() : typing])
+        
+    }
+    
+    //MARK: UI Text View Delegate
+    
+    //notify user everytime other user starts typing
+    override func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        typingCounterStart()
+        
+        return true
     }
     
     //MARK: Custom Send button
@@ -651,7 +797,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)
         }
         
-        getUsersFromFirestore(withIds: memeberIds) { (withUsers) in
+        getUsersFromFirestore(withIds: memberIds) { (withUsers) in
             
             self.withUsers = withUsers
             // get avatars
@@ -714,12 +860,13 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     
     func readTimeFrom(dateString: String) -> String {
         
-        let date = DateFormatter().date(from: dateString)
+        let date = dateFormatter().date(from: dateString)
         
-        let currentdateFormat = DateFormatter()
-        currentdateFormat.dateFormat = "HH:mm"
+        let currentDateFormat = dateFormatter()
+        currentDateFormat.dateFormat = "HH:mm"
         
-        return currentdateFormat.string(from: date!)
+        return currentDateFormat.string(from: date!)
+        
     }
     
     func removeBadMessages(allMessages: [NSDictionary]) -> [NSDictionary] {
@@ -752,6 +899,21 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             return false
         } else {
             return true
+        }
+    }
+    
+    //stop listening for chats when user is not in caht view
+    func removeListeners() {
+        
+        if typingListener != nil {
+            typingListener!.remove()
+        }
+        
+        if newChatListener != nil {
+            newChatListener!.remove()
+        }
+        if updatedChatListener != nil {
+            updatedChatListener!.remove()
         }
     }
     
