@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ProfileViewTableViewController: UITableViewController {
     
@@ -20,7 +21,7 @@ class ProfileViewTableViewController: UITableViewController {
     var user: FUser?
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,7 +34,20 @@ class ProfileViewTableViewController: UITableViewController {
     ///MARK: IBActions
     
     @IBAction func messageButtonPressed(_ sender: Any) {
-        print("chat with user \(user!.fullname)")
+        if !checkBlockedStatus(withUser: user!) {
+            let messageVC = MessageViewController()
+            messageVC.titleName = user!.firstname
+            messageVC.membersToPush = [FUser.currentId(), user!.objectId]
+            messageVC.memberIds = [FUser.currentId(), user!.objectId]
+            
+            messageVC.chatRoomId = startPrivateChat(user1: FUser.currentUser()!, user2: user!)
+            messageVC.isGroup = false
+            messageVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(messageVC, animated: true)
+            
+        } else {
+            ProgressHUD.showError("This user is not available for chat!")
+        }
     }
     
     @IBAction func blockUserButtonPressed(_ sender: Any) {
@@ -57,18 +71,20 @@ class ProfileViewTableViewController: UITableViewController {
             
             self.updateBlockStatus()
         }
+        
+        blockUser(userToBlock: user!)
     }
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
+    
     // remove tableview cell section headers
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
@@ -135,5 +151,5 @@ class ProfileViewTableViewController: UITableViewController {
             blockButtonOutlet.setTitle("Block User", for: .normal)
         }
     }
-
+    
 }

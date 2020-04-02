@@ -144,7 +144,7 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // create mute button
         let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { (action, indexPath) in
             
-         print("mute \(indexPath)")
+            self.updatePushMembers(recent: tempRecent, mute: mute)
         }
         
         muteAction.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
@@ -316,6 +316,26 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func updateSearchResults(for searchController: UISearchController) {
         
         filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
+    //MARK: Helper Functions
+    
+    func updatePushMembers(recent: NSDictionary, mute: Bool) {
+        
+        var membersToPush = recent[kMEMBERSTOPUSH] as! [String]
+        
+        if mute {
+            //unmute user and ut them in unmute array
+            let index = membersToPush.index(of: FUser.currentId())!
+            membersToPush.remove(at: index)
+        } else {
+            //add members to mute array
+            membersToPush.append(FUser.currentId())
+        }
+        
+        //save changes to firebase
+        updateExistingRecentWithNewValues(chatRoomId: recent[kCHATROOMID] as! String, members: recent[kMEMBERS] as! [String], withValues: [kMEMBERSTOPUSH : membersToPush])
+        
     }
     
     

@@ -22,7 +22,7 @@ func startPrivateChat(user1: FUser, user2: FUser) -> String {
     if value < 0 {
         chatRoomId = userId1 + userId2
     } else {
-        chatRoomId = userId2 + userId2
+        chatRoomId = userId2 + userId1
     }
     
     let members = [userId1, userId2]
@@ -139,6 +139,49 @@ func restartRecentChat(recent: NSDictionary) {
     
 }
 
+//update last message in recent
+
+//called everytime we send a message (called in OUtgoingMessages)
+func updateRecents(chatRoomId: String, lastMessage: String) {
+    
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, error) in
+        
+        guard let snapshot = snapshot else { return }
+        
+        if !snapshot.isEmpty {
+            
+            for recent in snapshot.documents {
+                
+                let currentRecent = recent.data() as NSDictionary
+                
+                if currentRecent[kUSERID] as? String == FUser.currentId() {
+                    
+                    updateRecentItem(recent: currentRecent, lastMessage: lastMessage)
+                }
+            }
+        }
+    }
+}
+
+func updateRecentItem(recent: NSDictionary, lastMessage: String) {
+    
+    let date = dateFormatter().string(from: Date())
+    
+    //set counter
+    //check if there are any unread messages
+    var counter = recent[kCOUNTER] as! Int
+    
+    if recent[kUSERID] as? String != FUser.currentId() {
+        counter += 1
+    }
+    
+    //acces what we need to update
+    let values = [kLASTMESSAGE : lastMessage, kCOUNTER : counter, kDATE : date] as [String : Any]
+    
+    reference(.Recent)
+        .document(recent[kRECENTID] as! String).updateData(values)
+}
+
 
 // Delete recent chat
 
@@ -151,6 +194,101 @@ func deleteRecentChat(recentChatDictionary: NSDictionary) {
     }
 }
 
+//clear counter
+
+//give chatroom acces to Recent class
+func clearRecentCounter(chatRoomId: String) {
+    
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, error) in
+        
+        guard let snapshot = snapshot else { return }
+        
+        if !snapshot.isEmpty {
+            
+            for recent in snapshot.documents {
+                
+                let currentRecent = recent.data() as NSDictionary
+                
+                if currentRecent[kUSERID] as? String == FUser.currentId() {
+                    
+                    clearRecentCounterItem(recent: currentRecent)
+                }
+            }
+        }
+    }
+}
+
+func clearRecentCounterItem(recent: NSDictionary) {
+    
+    //update message counter
+    reference(.Recent).document(recent[kRECENTID] as! String).updateData([kCOUNTER : 0])
+}
+
+func updateExistingRecentWithNewValues(chatRoomId: String, members: [String], withValues: [String : Any]) {
+    
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, error) in
+        
+        guard let snapshot = snapshot else { return }
+        
+        if !snapshot.isEmpty {
+            
+            for recent in snapshot.documents {
+                
+                let recent = recent.data() as NSDictionary
+                
+                updateRecent(recentId: recent[kRECENTID] as! String, withValues: withValues)
+            }
+        }
+    }
+}
+
+func updateRecent(recentId: String, withValues: [String : Any]) {
+    
+    reference(.Recent).document(recentId).updateData(withValues)
+    
+}
+
+//Block user
+
+func blockUser(userToBlock: FUser) {
+    
+    let userId = FUser.currentId()
+    let blockedUserId = userToBlock.objectId
+    
+    var chatRoomId = ""
+    
+    let value = userId.compare(blockedUserId).rawValue
+    
+    // whether user1 starts convo with user 2 or vice verse that
+    //chatroom id will equal the same
+    if value < 0 {
+        chatRoomId = userId + blockedUserId
+    } else {
+        chatRoomId = blockedUserId + userId
+    }
+    
+    getRecentsFor(chatRoomId: chatRoomId)
+}
+
+func getRecentsFor(chatRoomId: String) {
+    
+    reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, error) in
+           
+           guard let snapshot = snapshot else { return }
+           
+           if !snapshot.isEmpty {
+               
+               for recent in snapshot.documents {
+                   
+                   let recent = recent.data() as NSDictionary
+                   
+                    //when user is bloked the chats get deleted
+                deleteRecentChat(recentChatDictionary: recent)
+               }
+           }
+       }
+
+}
 
 
 

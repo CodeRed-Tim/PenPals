@@ -147,9 +147,21 @@ class ConactsTableViewController: UITableViewController, UISearchResultsUpdating
         }
         
         // starts 1v1 chat
-        startPrivateChat(user1: FUser.currentUser()!, user2: user)
         
-        
+        if !checkBlockedStatus(withUser: user) {
+            let messageVC = MessageViewController()
+            messageVC.titleName = user.firstname
+            messageVC.membersToPush = [FUser.currentId(), user.objectId]
+            messageVC.memberIds = [FUser.currentId(), user.objectId]
+            
+            messageVC.chatRoomId = startPrivateChat(user1: FUser.currentUser()!, user2: user)
+            messageVC.isGroup = false
+            messageVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(messageVC, animated: true)
+            
+        } else {
+            ProgressHUD.showError("This user is not available for chat!")
+        }
     }
     
     func loadUsers() {

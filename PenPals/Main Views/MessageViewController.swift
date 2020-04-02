@@ -85,6 +85,14 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         return subTitle
     }()
 
+    override func viewWillAppear(_ animated: Bool) {
+        clearRecentCounter(chatRoomId: chatRoomId)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        clearRecentCounter(chatRoomId: chatRoomId)
+    }
+    
     
     //UI fix for iphone X
     override func viewDidLayoutSubviews() {
@@ -706,6 +714,8 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     //MARK: IBActions
     
     @objc func backAction() {
+        
+        clearRecentCounter(chatRoomId: chatRoomId)
         removeListeners()
         self.navigationController?.popViewController(animated: true)
     }
