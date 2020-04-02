@@ -514,6 +514,9 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             
             self.initialLoadComplete = true
             
+            //get picture message
+            self.getPictureMessages()
+            
             //get old messages in background
             self.getOldMessagesInBackground()
             //start listening for new chats
@@ -557,6 +560,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                                 //for picture messages
                                 if type as! String == kPICTURE {
                                     // add to pictures
+                                    self.addNewPictureMessageLink(link: item[kPICTURE] as! String)
                                 }
                                 
                                 if self.insertInitialLoadedMessages(messageDictionary: item) {
@@ -592,7 +596,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                    self.loadedMessages = self.removeBadMessages(allMessages: sorted) + self.loadedMessages
                    
                    //get the picture messages
-
+                self.getPictureMessages()
                    
                    self.maxMessageNumber = self.loadedMessages.count - self.loadedMessagesCount - 1
                    self.minMessageNumber = self.maxMessageNumber - kNUMBEROFMESSAGES
@@ -707,7 +711,11 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     }
     
     @objc func infoButtonPressed() {
-        print("show image messages")
+        let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "mediaView") as! PicturesCollectionViewController
+        
+        mediaVC.allImageLinks = allPictureMessages
+        
+        self.navigationController?.pushViewController(mediaVC, animated: true)
     }
     
     @objc func showGroup() {
@@ -981,6 +989,27 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     }
     
     //MARK: Helper Functions
+    
+    func addNewPictureMessageLink(link: String) {
+        
+        allPictureMessages.append(link)
+    }
+    
+    func getPictureMessages() {
+        
+        //clean array
+        allPictureMessages = []
+        
+        //loop through every message in firebase
+        for message in loadedMessages {
+            
+            if message[kTYPE] as! String == kPICTURE {
+                //add to array
+                allPictureMessages.append(message[kPICTURE] as! String)
+            }
+        }
+        
+    }
     
     func readTimeFrom(dateString: String) -> String {
         

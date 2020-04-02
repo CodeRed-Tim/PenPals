@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220AA6982435A60900833D24 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AA6972435A60900833D24 /* PicturesCollectionViewController.swift */; };
+		220AA69A2435A65E00833D24 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AA6992435A65E00833D24 /* PicturesCollectionViewCell.swift */; };
 		220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */; };
 		220B6665243446D200081647 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B6664243446D200081647 /* VideoMessage.swift */; };
 		220B98C62433E89400E6BD3B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C52433E89400E6BD3B /* Camera.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220AA6972435A60900833D24 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
+		220AA6992435A65E00833D24 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
 		220B6664243446D200081647 /* VideoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		220B98C52433E89400E6BD3B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */,
+				220AA6992435A65E00833D24 /* PicturesCollectionViewCell.swift */,
 				220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */,
 			);
 			path = "Custom Cells";
@@ -178,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				224E855C2427007C001FF692 /* ProfileViewTableViewController.swift */,
+				220AA6972435A60900833D24 /* PicturesCollectionViewController.swift */,
 			);
 			path = "Secondary Views";
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			files = (
 				220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */,
 				221E066E23ED5416001A9F67 /* HelperFunctions.swift in Sources */,
+				220AA69A2435A65E00833D24 /* PicturesCollectionViewCell.swift in Sources */,
 				221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */,
 				225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */,
 				221E067123ED5A97001A9F67 /* RegisterViewController.swift in Sources */,
@@ -331,6 +338,7 @@
 				220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */,
 				220B98C62433E89400E6BD3B /* Camera.swift in Sources */,
 				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
+				220AA6982435A60900833D24 /* PicturesCollectionViewController.swift in Sources */,
 				229C8658242B322400088609 /* Recent.swift in Sources */,
 				227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */,
 				224E855D2427007C001FF692 /* ProfileViewTableViewController.swift in Sources */,
