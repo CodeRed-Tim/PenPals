@@ -1,0 +1,5 @@
+# ignore all files in any directory named build
+Pods/
+PenPals.xcworkspace
+.DS_Store
+
