@@ -106,6 +106,9 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         //create typing observer
         createtypingObserver()
         
+        //for deleting indivudal messages
+        JSQMessagesCollectionViewCell.registerMenuAction(#selector(delete))
+        
         navigationItem.largeTitleDisplayMode = .never
         
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "Back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -403,6 +406,48 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         
         //show user profile
         presentUserProfile(forUser: selectedUser!)
+    }
+    
+    //for deleting individual media messages
+    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+        
+        super.collectionView(collectionView, shouldShowMenuForItemAt: indexPath)
+        
+        return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+        
+        if messages[indexPath.row].isMediaMessage {
+            
+            if action.description == "delete:" {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            if action.description == "delete:" || action.description == "copy:" {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+    }
+    
+    //called everytime user deletes message
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, didDeleteMessageAt indexPath: IndexPath!) {
+        // remove message from collecitonview and firebase
+        
+        let messageId = objectMessages[indexPath.row][kMESSAGEID] as! String
+        
+        //remove from collection view
+        objectMessages.remove(at: indexPath.row)
+        messages.remove(at: indexPath.row)
+        
+        //delete from firebase
+        OutgoingMessages.deleteMessage(withId: messageId, chatRoomId: chatRoomId)
+
     }
     
     //MARK: Send messages
