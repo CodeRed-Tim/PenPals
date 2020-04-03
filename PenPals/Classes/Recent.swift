@@ -27,21 +27,19 @@ func startPrivateChat(user1: FUser, user2: FUser) -> String {
     
     let members = [userId1, userId2]
     
-    
     //create recent chats
-    createRecentChat(members: members, chatRoomId: chatRoomId, withUserName: "", type: kPRIVATE, users: [user1, user2], avatarOfGroup: nil)
-    
+    createRecent(members: members, chatRoomId: chatRoomId, withUserUserName: "", type: kPRIVATE, users: [user1, user2], avatarOfGroup: nil)
     return chatRoomId
-    
 }
 
-func createRecentChat(members: [String], chatRoomId: String, withUserName: String, type: String, users: [FUser]?, avatarOfGroup: String?) {
+
+
+func createRecent(members: [String], chatRoomId: String, withUserUserName: String, type: String, users: [FUser]?, avatarOfGroup: String?) {
     
     var tempMembers = members
     
     // when the chatRoomId is equal to the chatRoomId stored in firebase
     reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, error) in
-        
         
         guard let snapshot = snapshot else { return }
         
@@ -56,31 +54,31 @@ func createRecentChat(members: [String], chatRoomId: String, withUserName: Strin
                 
                 if let currentUserId = currentRecent[kUSERID] {
                     
+                    // remove the most recent message object
                     if tempMembers.contains(currentUserId as! String) {
-                        
-                        // remove the most recent message object
                         tempMembers.remove(at: tempMembers.index(of: currentUserId as! String)!)
                     }
-                    
                 }
-                
             }
             
         }
         
+        
         for userId in tempMembers {
+            
             //create recent items
             // takes on whatever objects was given in the CreateRecenChat method
-            createRecentItems(userId: userId, chatRoomId: chatRoomId, members: members, withUserName: withUserName, type: type, users: users, avatarOfGroup: avatarOfGroup)
+            createRecentItem(userId: userId, chatRoomId: chatRoomId, members: members, withUserUserName: withUserUserName, type: type, users: users, avatarOfGroup: avatarOfGroup)
         }
         
     }
-    
+ 
 }
 
-func createRecentItems(userId: String, chatRoomId: String, members: [String], withUserName: String, type: String, users: [FUser]?, avatarOfGroup: String?) {
+
+func createRecentItem(userId: String, chatRoomId: String, members: [String], withUserUserName: String, type: String, users: [FUser]?, avatarOfGroup: String?) {
     
-    // creates reference to Recent in firebase
+    //creates reference to Recent in firebase
     let localReference = reference(.Recent).document()
     let recentId = localReference.documentID
     
@@ -88,8 +86,9 @@ func createRecentItems(userId: String, chatRoomId: String, members: [String], wi
     
     var recent: [String : Any]!
     
+    
     if type == kPRIVATE {
-        //private chat
+        //private
         
         var withUser: FUser?
         
@@ -98,28 +97,29 @@ func createRecentItems(userId: String, chatRoomId: String, members: [String], wi
             // check which user you are creating the chat for
             if userId == FUser.currentId() {
                 //for current user
-                
                 withUser = users!.last!
             } else {
-                
-                withUser = users!.first
+                withUser = users!.first!
             }
         }
         
         // every object needed to create a recent chat
-        recent = [kRECENTID : recentId, kUSERID : userId, kCHATROOMID : chatRoomId, kMEMBERS : members, kMEMBERSTOPUSH : members, kWITHUSERFULLNAME : withUser!.fullname, kWITHUSERUSERID : withUser!.objectId, kLASTMESSAGE : "", kCOUNTER : 0, kDATE : date, kTYPE : type, kAVATAR : withUser!.avatar] as [String : Any]
+        recent = [kRECENTID : recentId, kUSERID : userId, kCHATROOMID : chatRoomId, kMEMBERS : members, kMEMBERSTOPUSH : members, kWITHUSERFULLNAME : withUser!.fullname, kWITHUSERUSERID : withUser!.objectId, kLASTMESSAGE : "", kCOUNTER : 0, kDATE : date, kTYPE : type, kAVATAR : withUser!.avatar] as [String:Any]
+        
         
     } else {
-        // group chaat
+        
+        //group
         
         if avatarOfGroup != nil {
-            recent = [kRECENTID : recentId, kUSERID : userId, chatRoomId : chatRoomId, kMEMBERS : members, kMEMBERSTOPUSH : members, kWITHUSERFULLNAME : withUserName, kLASTMESSAGE : "", kCOUNTER : 0, kDATE : date, kTYPE : type, kAVATAR : avatarOfGroup!] as [String : Any]
+            
+            recent = [kRECENTID : recentId, kUSERID : userId, kCHATROOMID : chatRoomId, kMEMBERS : members, kMEMBERSTOPUSH : members, kWITHUSERFULLNAME : withUserUserName, kLASTMESSAGE : "", kCOUNTER : 0, kDATE : date, kTYPE : type, kAVATAR : avatarOfGroup!] as [String:Any]
         }
     }
     
+    
     //save recent chat in firebase
     localReference.setData(recent)
-    
 }
 
 
@@ -128,15 +128,14 @@ func createRecentItems(userId: String, chatRoomId: String, members: [String], wi
 func restartRecentChat(recent: NSDictionary) {
     
     if recent[kTYPE] as! String == kPRIVATE {
-        
-        createRecentChat(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomId: recent[kCHATROOMID] as! String, withUserName: FUser.currentUser()!.firstname, type: kPRIVATE, users: [FUser.currentUser()!], avatarOfGroup: nil)
+
+        createRecent(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomId: recent[kCHATROOMID] as! String, withUserUserName: FUser.currentUser()!.firstname, type: kPRIVATE, users: [FUser.currentUser()!], avatarOfGroup: nil)
     }
     
     if recent[kTYPE] as! String == kGROUP {
-        
-        createRecentChat(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomId: recent[kCHATROOMID] as! String, withUserName: recent[kWITHUSERUSERNAME] as! String, type: kGROUP, users: nil, avatarOfGroup: recent[kAVATAR] as? String)
+
+        createRecent(members: recent[kMEMBERSTOPUSH] as! [String], chatRoomId: recent[kCHATROOMID] as! String, withUserUserName: recent[kWITHUSERFULLNAME] as! String, type: kGROUP, users: nil, avatarOfGroup: recent[kAVATAR] as? String)
     }
-    
 }
 
 //update last message in recent
@@ -154,14 +153,12 @@ func updateRecents(chatRoomId: String, lastMessage: String) {
                 
                 let currentRecent = recent.data() as NSDictionary
                 
-                if currentRecent[kUSERID] as? String == FUser.currentId() {
-                    
-                    updateRecentItem(recent: currentRecent, lastMessage: lastMessage)
-                }
+                updateRecentItem(recent: currentRecent, lastMessage: lastMessage)
             }
         }
     }
 }
+
 
 func updateRecentItem(recent: NSDictionary, lastMessage: String) {
     
@@ -178,23 +175,24 @@ func updateRecentItem(recent: NSDictionary, lastMessage: String) {
     //acces what we need to update
     let values = [kLASTMESSAGE : lastMessage, kCOUNTER : counter, kDATE : date] as [String : Any]
     
-    reference(.Recent)
-        .document(recent[kRECENTID] as! String).updateData(values)
+    reference(.Recent).document(recent[kRECENTID] as! String).updateData(values)
 }
 
 
-// Delete recent chat
+//Delete recent
 
 func deleteRecentChat(recentChatDictionary: NSDictionary) {
     
     // check for recent ID
+
     if let recentId = recentChatDictionary[kRECENTID] {
         
         reference(.Recent).document(recentId as! String).delete()
     }
 }
 
-//clear counter
+
+//Clear counter
 
 //give chatroom acces to Recent class
 func clearRecentCounter(chatRoomId: String) {
@@ -210,7 +208,6 @@ func clearRecentCounter(chatRoomId: String) {
                 let currentRecent = recent.data() as NSDictionary
                 
                 if currentRecent[kUSERID] as? String == FUser.currentId() {
-                    
                     clearRecentCounterItem(recent: currentRecent)
                 }
             }
@@ -223,6 +220,23 @@ func clearRecentCounterItem(recent: NSDictionary) {
     //update message counter
     reference(.Recent).document(recent[kRECENTID] as! String).updateData([kCOUNTER : 0])
 }
+
+//group
+
+//func startGroupChat(group: Group) {
+//
+//    let chatRoomId = group.groupDictionary[kGROUPID] as! String
+//    let members = group.groupDictionary[kMEMBERS] as! [String]
+//
+//    createRecent(members: members, chatRoomId: chatRoomId, withUserUserName: group.groupDictionary[kNAME] as! String, type: kGROUP, users: nil, avatarOfGroup: group.groupDictionary[kAVATAR] as? String)
+//}
+
+func createRecentsForNewMembers(groupId: String, groupName: String, membersToPush: [String], avatar: String) {
+    
+    createRecent(members: membersToPush, chatRoomId: groupId, withUserUserName: groupName, type: kGROUP, users: nil, avatarOfGroup: avatar)
+}
+
+
 
 func updateExistingRecentWithNewValues(chatRoomId: String, members: [String], withValues: [String : Any]) {
     
@@ -245,26 +259,25 @@ func updateExistingRecentWithNewValues(chatRoomId: String, members: [String], wi
 func updateRecent(recentId: String, withValues: [String : Any]) {
     
     reference(.Recent).document(recentId).updateData(withValues)
-    
 }
 
-//Block user
+//BlockUser
 
 func blockUser(userToBlock: FUser) {
     
-    let userId = FUser.currentId()
-    let blockedUserId = userToBlock.objectId
+    let userId1 = FUser.currentId()
+    let userId2 = userToBlock.objectId
     
     var chatRoomId = ""
     
-    let value = userId.compare(blockedUserId).rawValue
+    let value = userId1.compare(userId2).rawValue
     
     // whether user1 starts convo with user 2 or vice verse that
     //chatroom id will equal the same
     if value < 0 {
-        chatRoomId = userId + blockedUserId
+        chatRoomId = userId1 + userId2
     } else {
-        chatRoomId = blockedUserId + userId
+        chatRoomId = userId2 + userId1
     }
     
     getRecentsFor(chatRoomId: chatRoomId)
@@ -273,20 +286,20 @@ func blockUser(userToBlock: FUser) {
 func getRecentsFor(chatRoomId: String) {
     
     reference(.Recent).whereField(kCHATROOMID, isEqualTo: chatRoomId).getDocuments { (snapshot, error) in
-           
-           guard let snapshot = snapshot else { return }
-           
-           if !snapshot.isEmpty {
-               
-               for recent in snapshot.documents {
-                   
-                   let recent = recent.data() as NSDictionary
-                   
-                    //when user is bloked the chats get deleted
+        
+        guard let snapshot = snapshot else { return }
+        
+        if !snapshot.isEmpty {
+            
+            for recent in snapshot.documents {
+                
+                let recent = recent.data() as NSDictionary
+                
+                //when user is bloked the chats get deleted
                 deleteRecentChat(recentChatDictionary: recent)
-               }
-           }
-       }
+            }
+        }
+    }
 
 }
 

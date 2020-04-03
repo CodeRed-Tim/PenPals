@@ -26,7 +26,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //viewWillAppear & willDisapear make sure that the most
     // recent chat is listened for everytime the view is opened
     // not just the first time
-    
     override func viewWillAppear(_ animated: Bool) {
         loadRecentChats()
         
@@ -40,16 +39,15 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = UIColor.clear
-
         navigationController?.navigationBar.prefersLargeTitles = true
-        
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
+        
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         
+
         setTableViewHeader()
     }
     
@@ -67,276 +65,287 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    //MARK: TableViewDataSource (functions required for table view)
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       //MARK: TableViewDataSource (functions required for table view)
         
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredChats.count
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            
+            if searchController.isActive && searchController.searchBar.text != "" {
+                return filteredChats.count
+            } else {
+               return recentChats.count
+            }
 
-        } else {
-            return recentChats.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecentChatTableViewCell
-        
-        cell.contentView.backgroundColor = UIColor.clear
-        
-        // generate cell with delegate
-        cell.delegate = self
-        
-        let recent: NSDictionary!
-        
-        if searchController.isActive && searchController.searchBar.text != "" {
-            recent = filteredChats[indexPath.row]
-        } else {
-            recent = recentChats[indexPath.row]
-        }
-        
-        cell.generateCell(recentChat: recent, indexPath: indexPath)
-        
-        
-        
-        return cell
-    }
-    
-    //MARK: tableViewDelegate funtctions (for mute/delete options)
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        var tempRecent: NSDictionary!
-        
-        // find user's cell location selected user in messages
-        if searchController.isActive && searchController.searchBar.text != "" {
-            tempRecent = filteredChats[indexPath.row]
-        } else {
-            tempRecent = recentChats[indexPath.row]
         }
 
-        var muteTitle = "Unmute"
-        var mute = false
         
-        //check if the user is in the array of members that will recieve push notifications
-        // if they are the user is not muted
-        if (tempRecent[kMEMBERSTOPUSH] as! [String]).contains(FUser.currentId()) {
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            muteTitle = "Mute"
-            mute = true
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RecentChatTableViewCell
+            
+            // generate cell with delegate
+            cell.delegate = self
+            
+            var recent: NSDictionary!
+            
+            
+            if searchController.isActive && searchController.searchBar.text != "" {
+                recent = filteredChats[indexPath.row]
+            } else {
+                recent = recentChats[indexPath.row]
+            }
+            
+            cell.generateCell(recentChat: recent, indexPath: indexPath)
+            
+            
+            
+            return cell
         }
         
-        // create delete button
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
-            
-            //selected message cell
-            self.recentChats.remove(at: indexPath.row)
-            
-            deleteRecentChat(recentChatDictionary: tempRecent)
-            
-            self.tableView.reloadData()
+        //MARK: TableViewDelegate functions (for mute/delete options)
+        
+        func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+            return true
         }
         
-        // create mute button
-        let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { (action, indexPath) in
+        func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
             
-            self.updatePushMembers(recent: tempRecent, mute: mute)
-        }
-        
-        muteAction.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        
-        return [deleteAction, muteAction]
-        
-    }
-    
-    
-    // tap message cell
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        var recent: NSDictionary!
-        
-        // find user's cell location selected user in messages
-        if searchController.isActive && searchController.searchBar.text != "" {
-            recent = filteredChats[indexPath.row]
-        } else {
-            recent = recentChats[indexPath.row]
-        }
-        
-        //restart chat
-        restartRecentChat(recent: recent)
-        
-        //showchat view
-        let messageVC = MessageViewController()
-        //hide tabBar at bottom of screen
-        messageVC.hidesBottomBarWhenPushed = true
-        //pass these 4 values to message view
-//        messageVC.titleName = (recent[kWITHUSERUSERNAME] as? String)!
-        messageVC.memberIds = (recent[kMEMBERS] as? [String])!
-        messageVC.membersToPush = (recent[kMEMBERSTOPUSH] as? [String])!
-        messageVC.chatRoomId = (recent[kCHATROOMID] as? String)!
-        messageVC.isGroup = (recent[kTYPE] as! String ) == kGROUP
-        
-        navigationController?.pushViewController(messageVC, animated: true)
-        
-    }
-    
-    
-    //MARK: LoadRecentChats
-    
-    func loadRecentChats() {
-        
-        recentListener = reference(.Recent).whereField(kUSERID, isEqualTo: FUser.currentId()).addSnapshotListener({ (snapshot, error) in
+            var tempRecent: NSDictionary!
             
-            guard let snapshot = snapshot else { return }
+            // find user's cell location selected user in messages
+            if searchController.isActive && searchController.searchBar.text != "" {
+                tempRecent = filteredChats[indexPath.row]
+            } else {
+                tempRecent = recentChats[indexPath.row]
+            }
+
+            var muteTitle = "Unmute"
+            var mute = false
             
-            //stops duplicating the recent messages
-            self.recentChats = []
-            
-            if !snapshot.isEmpty {
+            //check if the user is in the array of members that will recieve push notifications
+            // if they are the user is not muted
+            if (tempRecent[kMEMBERSTOPUSH] as! [String]).contains(FUser.currentId()) {
                 
-                // sort recent messages by date
+                muteTitle = "Mute"
+                mute = true
+            }
+            
+            // create delete button
+            let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
                 
-                let sorted = ((dictionaryFromSnapshots(snapshots: snapshot.documents)) as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: false)]) as! [NSDictionary]
+                self.recentChats.remove(at: indexPath.row)
                 
-                for recent in sorted {
-                    
-                    // if last message is empty, if there is a chatroomID and
-                    //if recent has an ID to make sure it isnt a corrupt file
-                    if recent[kLASTMESSAGE] as! String != "" && recent[kCHATROOMID] != nil && recent[kRECENTID] != nil {
-                        
-                        //add it to recent chat array
-                        self.recentChats.append(recent)
-                    }
-                }
+                deleteRecentChat(recentChatDictionary: tempRecent)
                 
                 self.tableView.reloadData()
             }
             
-        })
-        
-    }
-    
-    
-    //MARK: Custom TableView Header
-    
-    // creates group chat button
-    func setTableViewHeader() {
-        
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
-        
-        let buttonView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 35))
-        
-        let groupButton = UIButton(frame: CGRect(x: tableView.frame.width - 110, y: 10, width: 100, height: 28))
-        
-        groupButton.addTarget(self, action: #selector(self.groupButtonPressed), for: .touchUpInside)
-        groupButton.setTitle("New Group", for: .normal)
-        let buttonColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        groupButton.setTitleColor(buttonColor, for: .normal)
-        
-        let lineView = UIView(frame: CGRect(x: 0, y: headerView.frame.height - 1, width: tableView.frame.width, height: 1))
-        lineView.backgroundColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-        
-        buttonView.addSubview(groupButton)
-        headerView.addSubview(buttonView)
-        headerView.addSubview(lineView)
-        tableView.tableHeaderView = headerView
-    }
-    
-    @objc func groupButtonPressed() {
-        print("hello")
-    }
-    
-    //MARK: Recent chats cell delegate
-    
-    func didTapAvatarImage(indexPath: IndexPath) {
-        
-        let recentChat: NSDictionary!
-        
-        if searchController.isActive && searchController.searchBar.text != "" {
-            recentChat = filteredChats[indexPath.row]
-        } else {
-            recentChat = recentChats[indexPath.row]
+            // create mute button
+            let muteAction = UITableViewRowAction(style: .default, title: muteTitle) { (action, indexPath) in
+                
+                self.updatePushMembers(recent: tempRecent, mute: mute)
+            }
+            
+            muteAction.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+            
+            return [deleteAction, muteAction]
+            
         }
         
-        //check if it is a private message or groupchat
+        // tap message cell
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            var recent: NSDictionary!
+            
+            // find user's cell location selected user in messages
+            if searchController.isActive && searchController.searchBar.text != "" {
+                recent = filteredChats[indexPath.row]
+            } else {
+                recent = recentChats[indexPath.row]
+            }
+
+            //restart chat
+            restartRecentChat(recent: recent)
+            
+            let messageVC = MessageViewController()
+            //hide tabBar at bottom of screen
+            messageVC.hidesBottomBarWhenPushed = true
+            //pass these 4 values to message view
+            messageVC.titleName = (recent[kWITHUSERFULLNAME] as? String)!
+            messageVC.memberIds = (recent[kMEMBERS] as? [String])!
+            messageVC.membersToPush = (recent[kMEMBERSTOPUSH] as? [String])!
+            messageVC.chatRoomId = (recent[kCHATROOMID] as? String)!
+            messageVC.isGroup = (recent[kTYPE] as! String) == kGROUP
+            
+            navigationController?.pushViewController(messageVC, animated: true)
+        }
+
         
-        if recentChat[kTYPE] as! String == kPRIVATE {
+        //MARK: LoadRecentChats
+        
+        func loadRecentChats() {
             
-            //display profile veiw
-            
-            // get the user ID
-            reference(.User).document(recentChat[kWITHUSERUSERID] as! String).getDocument { (snapshot, error) in
+            recentListener = reference(.Recent).whereField(kUSERID, isEqualTo: FUser.currentId()).addSnapshotListener({ (snapshot, error) in
                 
                 guard let snapshot = snapshot else { return }
                 
-                // we have a valid user
-                if snapshot.exists {
+                //stops duplicating the recent messages
+                self.recentChats = []
+                
+                if !snapshot.isEmpty {
                     
-                    // put the user ina dictionary
-                    let userDictionary = snapshot.data() as! NSDictionary
+                    // sort recent messages by date
                     
-                    // create a temporary user with that info
-                    let tempUser = FUser(_dictionary: userDictionary)
+                    let sorted = ((dictionaryFromSnapshots(snapshots: snapshot.documents)) as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: false)]) as! [NSDictionary]
                     
-                    self.showUserProfile(user: tempUser)
+                    for recent in sorted {
+                        
+                        // if last message is empty, if there is a chatroomID and
+                        //if recent has an ID to make sure it isnt a corrupt file
+                        if recent[kLASTMESSAGE] as! String != "" && recent[kCHATROOMID] != nil && recent[kRECENTID] != nil {
+                            
+                            //add it to recent chat array
+                            self.recentChats.append(recent)
+                        }
+                        
+                        reference(.Recent).whereField(kCHATROOMID, isEqualTo: recent[kCHATROOMID] as! String).getDocuments(completion: { (snapshot, error) in
+                            
+                        })
+                    }
+                    
+                    self.tableView.reloadData()
+                }
+
+            })
+
+        }
+
+        //MARK: Custom tableViewHeader
+        
+        // creates group chat button
+        func setTableViewHeader() {
+            
+            let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
+            
+            let buttonView = UIView(frame: CGRect(x: 0, y: 5, width: tableView.frame.width, height: 35))
+            let groupButton = UIButton(frame: CGRect(x: tableView.frame.width - 110, y: 10, width: 100, height: 20))
+            groupButton.addTarget(self, action: #selector(self.groupButtonPressed), for: .touchUpInside)
+            groupButton.setTitle("New Group", for: .normal)
+            let buttonColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            groupButton.setTitleColor(buttonColor, for: .normal)
+            
+            
+            let lineView = UIView(frame: CGRect(x: 0, y: headerView.frame.height - 1, width: tableView.frame.width, height: 1))
+            lineView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            
+            buttonView.addSubview(groupButton)
+            headerView.addSubview(buttonView)
+            headerView.addSubview(lineView)
+            
+            tableView.tableHeaderView = headerView
+        }
+
+
+        @objc func groupButtonPressed() {
+            print("hello")
+        }
+        
+        
+        //MARK: RecentChatsCell delegate
+        
+        func didTapAvatarImage(indexPath: IndexPath) {
+            
+            var recentChat: NSDictionary!
+            
+            if searchController.isActive && searchController.searchBar.text != "" {
+                recentChat = filteredChats[indexPath.row]
+            } else {
+                recentChat = recentChats[indexPath.row]
+            }
+            
+            //check if it is a private message or groupchat
+            if recentChat[kTYPE] as! String == kPRIVATE {
+                
+                //display profile veiw
+                
+                // get the user ID
+                reference(.User).document(recentChat[kWITHUSERUSERID] as! String).getDocument { (snapshot, error) in
+                    
+                    guard let snapshot = snapshot else { return }
+                    
+                    // we have a valid user
+                    if snapshot.exists {
+                        
+                        // put the user ina dictionary
+                        let userDictionary = snapshot.data() as! NSDictionary
+                        
+                        // create a temporary user with that info
+                        let tempUser = FUser(_dictionary: userDictionary)
+                        
+                        self.showUserProfile(user: tempUser)
+                    }
+                    
                 }
             }
-        }
-    }
-    
-    func showUserProfile(user: FUser) {
-        
-        let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "profileView") as! ProfileViewTableViewController
-        
-        profileVC.user = user
-        
-        self.navigationController?.pushViewController(profileVC, animated: true)
-    }
-    
-    //MARK: Search Controller functions
-    
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
-        
-        filteredChats = recentChats.filter({ (recentChat) -> Bool in
             
-            return (recentChat[kWITHUSERFULLNAME] as! String).lowercased().contains(searchText.lowercased())
-        })
-        
-        tableView.reloadData()
-        
-    }
-    
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        filterContentForSearchText(searchText: searchController.searchBar.text!)
-    }
-    
-    //MARK: Helper Functions
-    
-    func updatePushMembers(recent: NSDictionary, mute: Bool) {
-        
-        var membersToPush = recent[kMEMBERSTOPUSH] as! [String]
-        
-        if mute {
-            //unmute user and ut them in unmute array
-            let index = membersToPush.index(of: FUser.currentId())!
-            membersToPush.remove(at: index)
-        } else {
-            //add members to mute array
-            membersToPush.append(FUser.currentId())
         }
         
-        //save changes to firebase
-        updateExistingRecentWithNewValues(chatRoomId: recent[kCHATROOMID] as! String, members: recent[kMEMBERS] as! [String], withValues: [kMEMBERSTOPUSH : membersToPush])
+        func showUserProfile(user: FUser) {
+            
+            let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as! ProfileViewTableViewController
+            
+            profileVC.user = user
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
+        
+        
+        //MARK: Search controller functions
+        
+        func filterContentForSearchText(searchText: String, scope: String = "All") {
+            
+            filteredChats = recentChats.filter({ (recentChat) -> Bool in
+                
+                return (recentChat[kWITHUSERFULLNAME] as! String).lowercased().contains(searchText.lowercased())
+            })
+            
+            tableView.reloadData()
+        }
+        
+        func updateSearchResults(for searchController: UISearchController) {
+            
+            filterContentForSearchText(searchText: searchController.searchBar.text!)
+        }
+        
+        //MARK: Helper functions
+        
+//        func selectUserForChat(isGroup: Bool) {
+//            
+//            let contactsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "contactsView") as! ConactsTableViewController
+//            
+//            contactsVC.isGroup = isGroup
+//            
+//            self.navigationController?.pushViewController(contactsVC, animated: true)
+//        }
+        
+        func updatePushMembers(recent: NSDictionary, mute: Bool) {
+            
+            var membersToPush = recent[kMEMBERSTOPUSH] as! [String]
+            
+            if mute {
+                //unmute user and ut them in unmute array
+                let index = membersToPush.index(of: FUser.currentId())!
+                membersToPush.remove(at: index)
+            } else {
+                //add members to mute array
+                membersToPush.append(FUser.currentId())
+            }
+            
+            //save changes to firebase
+            updateExistingRecentWithNewValues(chatRoomId: recent[kCHATROOMID] as! String, members: recent[kMEMBERS] as! [String], withValues: [kMEMBERSTOPUSH : membersToPush])
+            
+        }
+
+
         
     }
-    
-    
-}

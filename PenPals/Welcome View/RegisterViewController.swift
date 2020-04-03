@@ -8,6 +8,7 @@
 
 import UIKit
 import ProgressHUD
+import JGProgressHUD
 import ImagePicker
 
 class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -60,6 +61,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         dismissKeyboard()
         ProgressHUD.show("Registering You...")
+        
         
         if emailTextField.text != "" && firstNameTextField.text != "" && lastNameTextField.text != "" && phoneNumberTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
             

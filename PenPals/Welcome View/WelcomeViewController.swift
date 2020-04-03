@@ -8,13 +8,16 @@
 //imports
 import UIKit
 import ProgressHUD
+import JGProgressHUD
 import Firebase
 
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    
+    let hud = JGProgressHUD(style: .light)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +38,11 @@ class WelcomeViewController: UIViewController {
         } else {
             
             ProgressHUD.showError("Email or Password is missing!")
+            hud.textLabel.text = "Email or Password is missing!"
+            hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 1.0)
+            
             
         }
     }
@@ -46,10 +54,26 @@ class WelcomeViewController: UIViewController {
     
     //MARK: HelperFunctions
     
+    func hud1() {
+        hud.textLabel.text = "Loging You In...."
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 2.0)
+    }
+    
+    func hud2() {
+        hud.textLabel.text = "Success"
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.dismiss(afterDelay: 1.0)
+    }
+    
     func loginUser() {
         
         ProgressHUD.show("Loging You In...")
         
+        
+        hud1()
+        hud2()
+
         FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error) in
             
             if error != nil {
