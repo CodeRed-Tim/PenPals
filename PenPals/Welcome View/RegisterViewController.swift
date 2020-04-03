@@ -27,7 +27,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var password: String!
     var avatarImage: UIImage?
     var selectedLanguage: String?
-    var languageList = ["English", "Spanish", "Porteguese", "German", "French", "Mandarin", "Romanian"]
+    var languageList = ["Arabic", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Italian", "Japenese", "Korean", "Porteguese", "Romanian", "Russian", "Spanish"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,25 +42,26 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     //MARK: Picker menu functions
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-       return 1
+        return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-       return languageList.count
+        return languageList.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-       let row = languageList[row]
-       return row
+        let row = languageList[row]
+        return row
     }
     // change text color
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]) 
     }
     
-    
     @IBAction func registerButtonTapped(_ sender: Any) {
         
         dismissKeyboard()
         ProgressHUD.show("Registering You...")
+        
+        var languageIndex = languagePicker.selectedRow(inComponent: 0)
         
         
         if emailTextField.text != "" && firstNameTextField.text != "" && lastNameTextField.text != "" && phoneNumberTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
@@ -68,7 +69,11 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             //validates both passwords match
             if passwordTextField.text == confirmPasswordTextField.text {
                 
-                FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!) { (error) in
+                //                FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!) { (error) in
+                
+                FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, language: languageSelect(langIndex: languageIndex)) { (error) in
+                    
+                    
                     
                     if error != nil {
                         ProgressHUD.dismiss()
@@ -78,6 +83,10 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                     self.registerUser()
                     
                 }
+                
+                
+                //                self.languageSelect()
+                self.registerUser()
                 
             } else {
                 
@@ -97,16 +106,17 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         self.dismiss(animated: true, completion: nil)
     }
-
+    
     
     //MARK: Helper Functions
     
     func registerUser() {
         
         let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
+        var languageIndex = languagePicker.selectedRow(inComponent: 0)
         
         //
-        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!] as [String : Any]
+        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!, kLANGUAGE : languageSelect(langIndex: languageIndex)] as [String : Any]
         
         //if user doesn't pick a profile picture make the picture their intials
         if avatarImage == nil {
@@ -156,6 +166,62 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             ProgressHUD.dismiss()
             self.goToApp()
         }
+    }
+    
+    func languageSelect(langIndex: Int) -> String {
+        
+//        ["Arabic", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Italian", "Japenese", "Korean", "Porteguese", "Romanian", "Russian", "Spanish"]
+        
+        var langIndex = langIndex
+        
+        langIndex = languagePicker.selectedRow(inComponent: 0)
+        
+        var languageValue = ""
+        
+        if langIndex == 0 {
+            //arabic
+            languageValue = "ar"
+        } else if langIndex == 1 {
+            //chinese
+            languageValue = "zh"
+        } else if langIndex == 2 {
+            //dutch
+            languageValue = "nl"
+        } else if langIndex == 3 {
+            //english
+            languageValue = "en"
+        } else if langIndex == 4 {
+            //french
+            languageValue = "fr"
+        } else if langIndex == 5 {
+            //german
+            languageValue = "de"
+        } else if langIndex == 6 {
+            //hatian
+            languageValue = "ht"
+        } else if langIndex == 7 {
+            //italian
+            languageValue = "it"
+        } else if langIndex == 8 {
+            //japense
+            languageValue = "ja"
+        } else if langIndex == 9 {
+            //korean
+            languageValue = "ko"
+        } else if langIndex == 10 {
+            //porteguese
+            languageValue = "pt"
+        } else if langIndex == 11 {
+            //romanian
+            languageValue = "ro"
+        } else if langIndex == 12 {
+            //russian
+            languageValue = "ru"
+        } else if langIndex == 13 {
+            //spanish
+            languageValue = "es"
+        }
+        return languageValue
     }
     
     

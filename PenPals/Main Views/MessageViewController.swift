@@ -894,6 +894,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         
         if isGroup! {
             avatarButton.addTarget(self, action: #selector(self.showGroup), for: .touchUpInside)
+
         } else {
             // 1 on 1 chat
             avatarButton.addTarget(self, action: #selector(self.showUserProfile), for: .touchUpInside)

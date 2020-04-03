@@ -147,3 +147,5 @@ public let kWITHUSERFULLNAME = "withUserFullName"
 public let kCALLERAVATAR = "callerAvatar"
 public let kWITHUSERAVATAR = "withUserAvatar"
 
+//translation
+public let kLANGUAGE = "language"

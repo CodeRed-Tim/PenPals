@@ -32,6 +32,8 @@ class FUser {
     var country:String
     var city: String
     
+    var language: String
+    
     var contacts: [String]
     var blockedUsers: [String]
     let loginMethod: String
@@ -40,7 +42,7 @@ class FUser {
     
     // standard initializier to give objects to user
     
-    init(_objectId: String, _pushId: String?, _createdAt: Date, _updatedAt: Date, _email: String, _firstname: String, _lastname: String, _avatar: String = "", _loginMethod: String, _phoneNumber: String, _city: String, _country: String) {
+    init(_objectId: String, _pushId: String?, _createdAt: Date, _updatedAt: Date, _email: String, _firstname: String, _lastname: String, _avatar: String = "", _loginMethod: String, _phoneNumber: String, _city: String, _country: String, _language: String) {
         
         objectId = _objectId
         pushId = _pushId
@@ -57,6 +59,8 @@ class FUser {
         
         city = _city
         country = _country
+        
+        language = _language
         
         loginMethod = _loginMethod
         phoneNumber = _phoneNumber
@@ -156,6 +160,11 @@ class FUser {
         } else {
             country = ""
         }
+        if let lang = _dictionary[kLANGUAGE] {
+            language = lang as! String
+        } else {
+            language = ""
+        }
         
     }
     
@@ -180,7 +189,6 @@ class FUser {
         }
         
         return nil
-        
     }
     
     
@@ -211,7 +219,7 @@ class FUser {
     
     //MARK: Register functions
     
-    class func registerUserWith(email: String, password: String, firstName: String, lastName: String, avatar: String = "", completion: @escaping (_ error: Error?) -> Void ) {
+    class func registerUserWith(email: String, password: String, firstName: String, lastName: String, avatar: String = "", language: String = "", completion: @escaping (_ error: Error?) -> Void ) {
         
         Auth.auth().createUser(withEmail: email, password: password, completion: { (firuser, error) in
             
@@ -221,7 +229,7 @@ class FUser {
                 return
             }
             
-            let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: kEMAIL, _phoneNumber: "", _city: "", _country: "")
+            let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: firuser!.user.email!, _firstname: firstName, _lastname: lastName, _avatar: avatar, _loginMethod: kEMAIL, _phoneNumber: "", _city: "", _country: "", _language: "")
             
             
             saveUserLocally(fUser: fUser)
