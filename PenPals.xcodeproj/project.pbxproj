@@ -217,6 +217,7 @@
 				225D8D6423ED4494007E0273 /* Frameworks */,
 				225D8D6523ED4494007E0273 /* Resources */,
 				3A6E0F17CCFFC60B5F8C2F78 /* [CP] Embed Pods Frameworks */,
+				A795BFDC361D8A26B1A8E2EE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -290,6 +291,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A795BFDC361D8A26B1A8E2EE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PenPals/Pods-PenPals-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA49D88EABF6BABE3907E04F /* [CP] Check Pods Manifest.lock */ = {

@@ -13,6 +13,7 @@ import IDMPhotoBrowser
 import AVFoundation
 import AVKit
 import FirebaseFirestore
+import Firebase
 
 class MessageViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

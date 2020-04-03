@@ -22,4 +22,6 @@ pod 'IDMPhotoBrowser'
 
 pod 'ImagePicker'
 
+pod 'Firebase/MLNLTranslate'
+
 end
