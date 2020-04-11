@@ -154,6 +154,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="DAK-38-07Q" id="IPd-E0-kV0"/>
+                        <outlet property="loginLabel" destination="3cC-FI-XGb" id="lul-Ac-n0i"/>
                         <outlet property="passwordTextField" destination="iLw-mR-A06" id="uhK-EJ-2FK"/>
                     </connections>
                 </viewController>
@@ -1126,6 +1127,6 @@
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="obE-gn-IYX"/>
+        <segue reference="Mx7-7N-LtR"/>
     </inferredMetricsTieBreakers>
 </document>

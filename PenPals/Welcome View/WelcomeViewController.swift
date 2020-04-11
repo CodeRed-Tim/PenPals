@@ -16,12 +16,14 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var loginLabel: UILabel!
+    
+
+    
     let hud = JGProgressHUD(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         
     }
     
@@ -30,6 +32,9 @@ class WelcomeViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         
         dismissKeyboard()
+        
+        detectlanguage()
+        initiateTranslation()
         
         if emailTextField.text != "" && passwordTextField.text != "" {
             
@@ -46,6 +51,88 @@ class WelcomeViewController: UIViewController {
             
         }
     }
+    
+    //change to this 'text' variable after testing
+    var text = "hello"
+    
+    // this will get the language code
+    //for example if text="Good morning" it will get en
+    func detectlanguage() {
+        
+        TranslationManager.shared.detectLanguage(forText: text) { (language) in
+            
+            if let language = language {
+                print("The detected language was \(language)")
+            } else {
+                print("Oops! It seems that something went wrong and language cannot be detected.... detetcLanguage()")
+            }
+            
+        }
+    }
+    
+    func checkForLanguagesExistence() {
+        // Check if supported languages have been fetched by looking at the
+        // number of items in the supported languages collection of the
+        // TranslationManager shared instance.
+        // If it's zero, no languages have been fetched, so ask user
+        // if they want to fetch them now.
+        fetchSupportedLanguages()
+        print("checkForLanguagesExistence()")
+    }
+    
+    func fetchSupportedLanguages() {
+        
+        var getLanguages = true
+        
+        TranslationManager.shared.fetchSupportedLanguages { (success) in
+            
+            if success {
+                //run the translation method
+                getLanguages = true
+                print("got the supported languages... getLanguages()")
+            } else {
+                //error
+                getLanguages = false
+                print("didn't get the supported languages... getLanguages()")
+            }
+            
+        }
+        
+    }
+    
+    func translate() {
+//        checkForLanguagesExistence()
+        getTargetLangCode()
+        TranslationManager.shared.textToTranslate = text
+        print("translate(\(text))")
+    }
+    
+    func getTargetLangCode() {
+        
+        TranslationManager.shared.targetLanguageCode = "fr"
+        print("getTargetLanguage()")
+    }
+    
+    func initiateTranslation() {
+        
+        translate()
+        
+        TranslationManager.shared.translate { (translation) in
+            
+            if let translation = translation {
+                
+                self.text = translation
+                print(self.text)
+            } else {
+                print("Oops! It seems that something went wrong and translation cannot be done... initiateTranslation()")
+            }
+            
+        }
+        
+    }
+    
+    
+    
     
     @IBAction func backgrounTap(_ sender: Any) {
         

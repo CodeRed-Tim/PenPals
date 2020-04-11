@@ -149,3 +149,4 @@ public let kWITHUSERAVATAR = "withUserAvatar"
 
 //translation
 public let kLANGUAGE = "language"
+public let kTMESSAGE = "tMessage"

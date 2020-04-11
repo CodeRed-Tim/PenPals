@@ -330,9 +330,8 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     }
     
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        print("send")
         if text != "" {
-            print(text!)
+            
             self.sendMessage(text: text, date: date, picture: nil, video: nil)
             updateSendButton(isSend: false)
         } else {
@@ -451,17 +450,32 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
 
     }
     
+    //MARK: Translation
+    
+    func translateFunc(withUsers: [FUser], text: String?) {
+        
+        print("Users language is \(withUsers.first!.language)")
+    }
+    
+    
     //MARK: Send messages
     
     func sendMessage(text: String?, date: Date, picture: UIImage?, video: NSURL?) {
         
         var outgoingMessage: OutgoingMessages?
         let currentUser = FUser.currentUser()!
+        var tMessage = "wrong"
         
         //text message
         //if there is a text message
         if let text = text {
-            outgoingMessage = OutgoingMessages(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT)
+            //very important
+            var text = text
+
+            //translateFunc(withUsers: withUsers, text: text)
+            
+            //saves the message
+            outgoingMessage = OutgoingMessages(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT, tMessage: tMessage)
         }
         
         //picture message
@@ -689,6 +703,9 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             //update message read status
             OutgoingMessages.updateMessage(withId: messageDictionary[kMESSAGEID] as! String, chatRoomId: chatRoomId, memberIds: memberIds)
         }
+        
+//        var translate = messageDictionary[kMESSAGE] as! String
+//               translate = "boom boom pow"
         
         let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
         
