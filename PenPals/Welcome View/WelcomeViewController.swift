@@ -18,12 +18,20 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var loginLabel: UILabel!
     
-
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    
     
     let hud = JGProgressHUD(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        signUpButton.layer.borderWidth = 2
+        
+        let myGrayColor = UIColor(red: 0.22, green: 0.33, blue: 0.53, alpha: 1.0 )
+        signUpButton.layer.borderColor = myGrayColor.cgColor
+
         
     }
     

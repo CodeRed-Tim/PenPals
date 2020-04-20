@@ -29,6 +29,8 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var selectedLanguage: String?
     var languageList = ["Arabic", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Italian", "Japenese", "Korean", "Porteguese", "Romanian", "Russian", "Spanish"]
     
+    var startIndex: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +38,10 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         print(email, password)
         languagePicker.delegate = self as UIPickerViewDelegate
         languagePicker.dataSource = self as UIPickerViewDataSource
+        
+        startIndex = languageList.count / 2
+        
+        languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
         
     }
     

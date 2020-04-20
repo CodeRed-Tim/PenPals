@@ -10,6 +10,7 @@
 		220AA6982435A60900833D24 /* PicturesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AA6972435A60900833D24 /* PicturesCollectionViewController.swift */; };
 		220AA69A2435A65E00833D24 /* PicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AA6992435A65E00833D24 /* PicturesCollectionViewCell.swift */; };
 		220AC338242C0574009FE461 /* RecentChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */; };
+		220B3581244E5AE500C84C06 /* ppAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 220B3580244E5AE400C84C06 /* ppAppIcon.png */; };
 		220B6665243446D200081647 /* VideoMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B6664243446D200081647 /* VideoMessage.swift */; };
 		220B98C62433E89400E6BD3B /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C52433E89400E6BD3B /* Camera.swift */; };
 		220B98C82433EE4200E6BD3B /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B98C72433EE4200E6BD3B /* Download.swift */; };
@@ -44,6 +45,7 @@
 		220AA6972435A60900833D24 /* PicturesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewController.swift; sourceTree = "<group>"; };
 		220AA6992435A65E00833D24 /* PicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesCollectionViewCell.swift; sourceTree = "<group>"; };
 		220AC337242C0574009FE461 /* RecentChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentChatTableViewCell.swift; sourceTree = "<group>"; };
+		220B3580244E5AE400C84C06 /* ppAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ppAppIcon.png; sourceTree = "<group>"; };
 		220B6664243446D200081647 /* VideoMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMessage.swift; sourceTree = "<group>"; };
 		220B98C52433E89400E6BD3B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		220B98C72433EE4200E6BD3B /* Download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Download.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				225D8D7323ED4495007E0273 /* Assets.xcassets */,
 				225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */,
 				225D8D7823ED4495007E0273 /* Info.plist */,
+				220B3580244E5AE400C84C06 /* ppAppIcon.png */,
 				221E066523ED4DEF001A9F67 /* GoogleService-Info.plist */,
 			);
 			path = PenPals;
@@ -282,6 +285,7 @@
 			files = (
 				225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */,
 				221E066623ED4DEF001A9F67 /* GoogleService-Info.plist in Resources */,
+				220B3581244E5AE500C84C06 /* ppAppIcon.png in Resources */,
 				225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */,
 				225D8D7223ED4494007E0273 /* Main.storyboard in Resources */,
 			);
