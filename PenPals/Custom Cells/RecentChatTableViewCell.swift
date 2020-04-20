@@ -28,6 +28,10 @@ class RecentChatTableViewCell: UITableViewCell {
     
     var delegate: RecentChatTableViewCellDelegate?
     
+    var code = FUser.currentUser()?.language
+    let semaphore = DispatchSemaphore(value: 0)
+    var translatedText = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -47,9 +51,19 @@ class RecentChatTableViewCell: UITableViewCell {
     
     func generateCell(recentChat: NSDictionary, indexPath: IndexPath) {
         
+        let inputText: String = (recentChat[kLASTMESSAGE] as? String)!
+        
+        self.initiateTranslation(text: inputText) { (outText) in
+            self.translatedText = outText
+            self.semaphore.signal()
+        }
+        _ = self.semaphore.wait(wallTimeout: .distantFuture)
+                                    
+        
         self.indexPath = indexPath
         self.fullNameLabel.text = recentChat[kWITHUSERFULLNAME] as? String
-        self.lastMessageLabel.text = recentChat[kLASTMESSAGE] as? String
+        self.lastMessageLabel.text = self.translatedText
+        //self.lastMessageLabel.text = recentChat[kLASTMESSAGE] as? String
         self.counterLabel.text = recentChat[kCOUNTER] as? String
         
         // check if they have an avatar
@@ -93,6 +107,31 @@ class RecentChatTableViewCell: UITableViewCell {
         
         self.dateLabel.text = timeElapsed(date: date)
         
+    }
+    
+    func initiateTranslation(text: String, completion: @escaping ( _ result: String) -> ()) {
+        
+        var text = text
+        translate(text: text)
+        TranslationManager.shared.translate { (translation) in
+            if let translation = translation {
+                text = translation
+                completion(text)
+            } else {
+                print("language not translated")
+            }
+
+        }
+    }
+    
+    func translate(text: String) {
+        getTargetLangCode()
+        TranslationManager.shared.textToTranslate = text
+        
+    }
+    
+    func getTargetLangCode() {
+        TranslationManager.shared.targetLanguageCode = code
     }
     
     @objc func avatarTap() {

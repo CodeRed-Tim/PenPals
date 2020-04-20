@@ -20,58 +20,39 @@ class IncomingMessages {
         collectionView = collectionView_
     }
     
+    //MARK: Create Message types
+    var code = FUser.currentUser()?.language
+    let semaphore = DispatchSemaphore(value: 0)
+    var translatedText = ""
     
     //MARK: CreateMessage
-    
     // pass through message from Firbase, see if message if text, video, picture
     // creates required JSQ message
     func createMessage(messageDictionary: NSDictionary, chatRoomId: String) -> JSQMessage? {
         
         var message: JSQMessage?
-        
         let type = messageDictionary[kTYPE] as! String
-        
-        //check message typ
         switch type {
         case kTEXT:
-            // possible location to run translation method here
-            // example: translateMessage(message);
-            // create text message
-            //translate here
-            //                print(message)
-            var temp = messageDictionary[kMESSAGE]
-            temp = "Hellooo"
             message = createTextMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
         case kPICTURE:
-            //create a picture message
             message = createPictureMessage(messageDictionary: messageDictionary)
         case kVIDEO:
-            //create a video message
             message = createVideoMessage(messageDictionary: messageDictionary)
         default:
             print("Unknown message type")
         }
-        
-        // message has been created
         if message != nil {
             return message
         }
-        
         return nil
     }
-    
-    //    var messageDictionary: NSDictionary
-    //    var text = messageDictionary[kMESSAGE] as! String
-    
-    
-    //MARK: Create Message types
-    var code = FUser.currentUser()?.language
 
+    
     func createTextMessage(messageDictionary: NSDictionary, chatRoomId: String) -> JSQMessage {
         
         let name = messageDictionary[kSENDERNAME] as? String
         let userId = messageDictionary[kSENDERID] as? String
-        
         var date: Date!
         
         // does the date exist
@@ -87,107 +68,64 @@ class IncomingMessages {
             date = Date()
         }
         
+        //gets current text message
+        let text = messageDictionary[kMESSAGE] as! String
         
-        //            let decryptedText = Encryption.decryptText(chatRoomId: chatRoomId, encryptedMessage: messageDictionary[kMESSAGE] as! String)
+        // set the translation to the text
+        self.initiateTranslation(text: text) { (tText) in
+            self.translatedText = tText
+            self.semaphore.signal()
+        }
         
-        // IMPORTAN
+        // makes application wait until api call is finished
+        _ = semaphore.wait(wallTimeout: .distantFuture)
         
-        var text = messageDictionary[kMESSAGE] as! String
-        
-        detectlanguage(text: text)
-        initiateTranslation(text: text)
-        
-        
-        
-        
-        return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: text)
-        
-        //            return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: decryptedText)
+        return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: translatedText)
     }
     
+    //MARK: Translation Code
     
-    
-//    Mark: Translation Code
-    
-//            var text = "Merci beaucoup"
-//     this will get the language code
-//    for example if text="Good morning" it will get en
-    func detectlanguage(text: String) {
+    func detectlanguage(text: String, completion: @escaping ( _ result: String) -> ()) {
 
         TranslationManager.shared.detectLanguage(forText: text) { (language) in
-
             if let language = language {
                 print("The detected language was \(language)")
+                completion(language)
             } else {
-                print("Oops! It seems that something went wrong and language cannot be detected.... detetcLanguage()")
+                print("language code not detected")
             }
-
         }
     }
-
-    func getTargetLangCode() {
-
-        //works if you hard code it i.e. "fr"
-        TranslationManager.shared.targetLanguageCode = code
-        print("getTargetLanguage(\(code!))")
-    }
-
-    func translate(text: String) {
-        //            checkForLanguagesExistence()
-        getTargetLangCode()
-        TranslationManager.shared.textToTranslate = text
-        print("translate(\(text))")
-
-    }
-
-    func initiateTranslation(text: String) {
-
+    
+    func initiateTranslation(text: String, completion: @escaping ( _ result: String) -> ()) {
+        
         var text = text
-
-        //has the correct code
-
         translate(text: text)
-    print("this the current text message \(text) !!!!!")
-
-        //this code is not being called
         TranslationManager.shared.translate { (translation) in
             if let translation = translation {
-
                 text = translation
-                print("Th translation is... \(text)")
+                print("The translation is... \(text)")
+                completion(text)
             } else {
-                print("Oops! It seems that something went wrong and translation cannot be done... initiateTranslation()")
+                print("language not translated")
             }
 
         }
-
     }
     
     
-    //    // Create an English-German translator:
-    //    func translate() {
-    //        text="good morning"
-    //
-    //        let options = TranslatorOptions(sourceLanguage: .en, targetLanguage: .de)
-    //        let englishGermanTranslator = NaturalLanguage.naturalLanguage().translator(options: options)
-    //
-    //        let conditions = ModelDownloadConditions(
-    //            allowsCellularAccess: false,
-    //            allowsBackgroundDownloading: true
-    //        )
-    //        englishGermanTranslator.downloadModelIfNeeded(with: conditions) { error in
-    //            guard error == nil else { return }
-    //        }
-    //
-    //        englishGermanTranslator.translate(text) { translatedText, error in
-    //            guard error == nil, let translatedText = translatedText else { return }
-    //
-    //            text = translatedText
-    //        }
-    //        print(text)
-    //    }
-    //
+    func translate(text: String) {
+        getTargetLangCode()
+        TranslationManager.shared.textToTranslate = text
+        //print("translate(\(text))")
+        
+    }
     
+    func getTargetLangCode() {
+        TranslationManager.shared.targetLanguageCode = code
+        //print("getTargetLanguage(\(code!))")
+    }
+        
     func createPictureMessage(messageDictionary: NSDictionary) -> JSQMessage {
         
         let name = messageDictionary[kSENDERNAME] as? String
@@ -282,6 +220,6 @@ class IncomingMessages {
         
         return senderId == FUser.currentId()
     }
-    
-    
+
 }
+
