@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ProgressHUD
+import JGProgressHUD
 
 class ProfileViewTableViewController: UITableViewController {
     
@@ -18,8 +20,7 @@ class ProfileViewTableViewController: UITableViewController {
     
     // user that is passed through to get the correct contact view
     var user: FUser?
-    
-    
+    var hud = JGProgressHUD(style: .dark)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,25 @@ class ProfileViewTableViewController: UITableViewController {
     ///MARK: IBActions
     
     @IBAction func messageButtonPressed(_ sender: Any) {
-        print("chat with user \(user!.fullname)")
+        if !checkBlockedStatus(withUser: user!) {
+            let messageVC = MessageViewController()
+            messageVC.titleName = user!.firstname
+            messageVC.membersToPush = [FUser.currentId(), user!.objectId]
+            messageVC.memberIds = [FUser.currentId(), user!.objectId]
+            
+            messageVC.chatRoomId = startPrivateChat(user1: FUser.currentUser()!, user2: user!)
+            messageVC.isGroup = false
+            messageVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(messageVC, animated: true)
+            
+        } else {
+            
+            self.hud.textLabel.text = "This user is not available for chat!"
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.hud.show(in: self.view)
+            self.hud.dismiss(afterDelay: 1.5, animated: true)
+            
+        }
     }
     
     @IBAction func blockUserButtonPressed(_ sender: Any) {
@@ -57,18 +76,20 @@ class ProfileViewTableViewController: UITableViewController {
             
             self.updateBlockStatus()
         }
+        
+        blockUser(userToBlock: user!)
     }
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
+    
     // remove tableview cell section headers
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
@@ -102,7 +123,9 @@ class ProfileViewTableViewController: UITableViewController {
             
             //get currently selected user's information from database
             fullNameLabel.text = user!.fullname
-            //languageLabel.text = user!.language
+            
+            getLanguage(user: user)
+
             
             updateBlockStatus()
             
@@ -135,5 +158,48 @@ class ProfileViewTableViewController: UITableViewController {
             blockButtonOutlet.setTitle("Block User", for: .normal)
         }
     }
-
+    
+    func getLanguage(user: FUser?) {
+        
+        var lang = user?.language
+        
+        //        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
+        
+        if lang == "ar" {
+            languageLabel.text = "Arabic"
+        } else if lang == "bn" {
+            languageLabel.text = "Bengal"
+        } else if lang == "zh" {
+            languageLabel.text = "Chinese"
+        } else if lang == "nl" {
+            languageLabel.text = "Dutch"
+        } else if lang == "en" {
+            languageLabel.text = "English"
+        } else if lang == "fr" {
+            languageLabel.text = "French"
+        } else if lang == "de" {
+            languageLabel.text = "German"
+        } else if lang == "ht" {
+            languageLabel.text = "Haitian"
+        } else if lang == "hi" {
+            languageLabel.text = "Hindi"
+        } else if lang == "it" {
+            languageLabel.text = "Italian"
+        } else if lang == "ja" {
+            languageLabel.text = "Japenese"
+        } else if lang == "ko" {
+            languageLabel.text = "Korean"
+        } else if lang == "ms" {
+            languageLabel.text = "Malay"
+        } else if lang == "pt" {
+            languageLabel.text = "Porteguese"
+        } else if lang == "ro" {
+            languageLabel.text = "Romanian"
+        } else if lang == "ru" {
+            languageLabel.text = "Russian"
+        } else if lang == "es" {
+            languageLabel.text = "Spanish"
+        }
+    }
+    
 }

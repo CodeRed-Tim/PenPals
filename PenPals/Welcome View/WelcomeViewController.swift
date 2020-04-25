@@ -5,20 +5,34 @@
 //  Created by MaseratiTim on 2/6/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
-
+//imports
 import UIKit
-import ProgressHUD
+import JGProgressHUD
 import Firebase
 
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-
+    
+    @IBOutlet weak var loginLabel: UILabel!
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    
+    
+    var hud = JGProgressHUD(style: .dark)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
+        signUpButton.layer.borderWidth = 2
+        
+        let myBorderColor = UIColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0)
+        
+        signUpButton.layer.borderColor = UIColor.lightGray.cgColor
+        //signUpButton.layer.borderColor = myBorderColor.cgColor
+
         
     }
     
@@ -34,8 +48,10 @@ class WelcomeViewController: UIViewController {
             
         } else {
             
-            ProgressHUD.showError("Email or Password is missing!")
-            
+            hud.textLabel.text = "Email or Password is missing!"
+            hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 1.5)
         }
     }
     
@@ -48,14 +64,20 @@ class WelcomeViewController: UIViewController {
     
     func loginUser() {
         
-        ProgressHUD.show("Loging You In...")
-        
+        hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loggin you in..."
+        hud.show(in: self.view)
+
         FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error) in
             
             if error != nil {
                 
                 // if there is an error show the error to us
-                ProgressHUD.showError(error!.localizedDescription)
+                self.hud.textLabel.text = "\(error!.localizedDescription)"
+                self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                self.hud.show(in: self.view)
+                self.hud.dismiss(afterDelay: 1.5)
+                
                 return
             }
             
@@ -80,9 +102,11 @@ class WelcomeViewController: UIViewController {
     
     func goToApp() {
         
+        hud.dismiss()
+        hud.textLabel.text = "Sucess!"
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.dismiss()
         
-        // clear progress message
-        ProgressHUD.dismiss()
         cleanTextFields()
         dismissKeyboard()
         

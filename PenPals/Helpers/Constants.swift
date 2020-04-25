@@ -11,6 +11,7 @@
 import Foundation
 import Firebase
 import FirebaseDatabase
+import FirebaseFirestore
 
 public var recentBadgeHandler: ListenerRegistration?
 let userDefaults = UserDefaults.standard
@@ -24,14 +25,14 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 
 //IDS and Keys
 // Firebase reference key
-public let kFILEREFERENCE = ""
+public let kFILEREFERENCE = "gs://penpals-6dc91.appspot.com"
 // app ID
 public let kONESIGNALAPPID = ""
 // key for call function (if needed)
 public let kSINCHKEY = ""
 public let kSINCHSECRET = ""
 // URL on appstore
-public let kAPPURL = ""
+public let kAPPURL = "https://www.vancauwenberge.com/"
 
 
 
@@ -70,7 +71,7 @@ public let kBLOCKEDUSERID = "blockedUserId"
 
 
 //
-public let kBACKGROUBNDIMAGE = "backgroundImage"
+public let kBACKGROUNDIMAGE = "backgroundImage"
 public let kSHOWAVATAR = "showAvatar"
 public let kPASSWORDPROTECT = "passwordProtect"
 public let kFIRSTRUN = "firstRun"
@@ -146,3 +147,6 @@ public let kWITHUSERFULLNAME = "withUserFullName"
 public let kCALLERAVATAR = "callerAvatar"
 public let kWITHUSERAVATAR = "withUserAvatar"
 
+//translation
+public let kLANGUAGE = "language"
+public let kTMESSAGE = "tMessage"
