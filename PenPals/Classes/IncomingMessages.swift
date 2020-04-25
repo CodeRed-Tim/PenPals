@@ -9,11 +9,12 @@
 import Foundation
 import JSQMessagesViewController
 import Firebase
+import JGProgressHUD
 
 class IncomingMessages {
     
     var collectionView: JSQMessagesCollectionView
-    
+    var hud = JGProgressHUD(style: .dark)
     
     init(collectionView_: JSQMessagesCollectionView) {
         // set the variable
@@ -108,6 +109,7 @@ class IncomingMessages {
                 completion(text)
             } else {
                 print("language not translated")
+                self.semaphore.signal()
             }
 
         }
@@ -122,8 +124,10 @@ class IncomingMessages {
     }
     
     func getTargetLangCode() {
+        if code == nil {
+            code = FUser.currentUser()?.language
+        }
         TranslationManager.shared.targetLanguageCode = code
-        //print("getTargetLanguage(\(code!))")
     }
         
     func createPictureMessage(messageDictionary: NSDictionary) -> JSQMessage {

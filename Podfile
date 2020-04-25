@@ -12,15 +12,18 @@ pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Firestore'
+pod 'Firebase/Analytics'
 
 pod 'ProgressHUD'
 pod 'MBProgressHUD'
 pod 'JGProgressHUD'
+pod 'SVProgressHUD'
 
 pod 'JSQMessagesViewController', '7.3.3'
 pod 'IDMPhotoBrowser'
 
 pod 'ImagePicker'
+pod 'Gallery'
 
 pod 'Firebase/MLNLTranslate'
 

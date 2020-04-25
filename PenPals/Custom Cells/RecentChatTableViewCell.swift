@@ -118,7 +118,8 @@ class RecentChatTableViewCell: UITableViewCell {
                 text = translation
                 completion(text)
             } else {
-                print("language not translated")
+                print("language not translated2")
+                self.semaphore.signal()
             }
 
         }
@@ -131,6 +132,9 @@ class RecentChatTableViewCell: UITableViewCell {
     }
     
     func getTargetLangCode() {
+        if code == nil {
+            code = FUser.currentUser()?.language
+        }
         TranslationManager.shared.targetLanguageCode = code
     }
     

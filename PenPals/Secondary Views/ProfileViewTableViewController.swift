@@ -8,6 +8,7 @@
 
 import UIKit
 import ProgressHUD
+import JGProgressHUD
 
 class ProfileViewTableViewController: UITableViewController {
     
@@ -19,9 +20,8 @@ class ProfileViewTableViewController: UITableViewController {
     
     // user that is passed through to get the correct contact view
     var user: FUser?
-    
-    
-    
+    var hud = JGProgressHUD(style: .dark)
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +46,12 @@ class ProfileViewTableViewController: UITableViewController {
             self.navigationController?.pushViewController(messageVC, animated: true)
             
         } else {
-            ProgressHUD.showError("This user is not available for chat!")
+            
+            self.hud.textLabel.text = "This user is not available for chat!"
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            self.hud.show(in: self.view)
+            self.hud.dismiss(afterDelay: 1.5, animated: true)
+            
         }
     }
     
@@ -118,7 +123,9 @@ class ProfileViewTableViewController: UITableViewController {
             
             //get currently selected user's information from database
             fullNameLabel.text = user!.fullname
-            //languageLabel.text = user!.language
+            
+            getLanguage(user: user)
+
             
             updateBlockStatus()
             
@@ -149,6 +156,49 @@ class ProfileViewTableViewController: UITableViewController {
             blockButtonOutlet.setTitle("Unblock User", for: .normal)
         } else {
             blockButtonOutlet.setTitle("Block User", for: .normal)
+        }
+    }
+    
+    func getLanguage(user: FUser?) {
+        
+        var lang = user?.language
+        
+        //        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
+        
+        if lang == "ar" {
+            languageLabel.text = "Arabic"
+        } else if lang == "bn" {
+            languageLabel.text = "Bengal"
+        } else if lang == "zh" {
+            languageLabel.text = "Chinese"
+        } else if lang == "nl" {
+            languageLabel.text = "Dutch"
+        } else if lang == "en" {
+            languageLabel.text = "English"
+        } else if lang == "fr" {
+            languageLabel.text = "French"
+        } else if lang == "de" {
+            languageLabel.text = "German"
+        } else if lang == "ht" {
+            languageLabel.text = "Haitian"
+        } else if lang == "hi" {
+            languageLabel.text = "Hindi"
+        } else if lang == "it" {
+            languageLabel.text = "Italian"
+        } else if lang == "ja" {
+            languageLabel.text = "Japenese"
+        } else if lang == "ko" {
+            languageLabel.text = "Korean"
+        } else if lang == "ms" {
+            languageLabel.text = "Malay"
+        } else if lang == "pt" {
+            languageLabel.text = "Porteguese"
+        } else if lang == "ro" {
+            languageLabel.text = "Romanian"
+        } else if lang == "ru" {
+            languageLabel.text = "Russian"
+        } else if lang == "es" {
+            languageLabel.text = "Spanish"
         }
     }
     

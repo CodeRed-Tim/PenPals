@@ -288,15 +288,20 @@ class FUser {
     
     class func logOutCurrentUser(completion: @escaping (_ success: Bool) -> Void) {
         
+        
         userDefaults.removeObject(forKey: kPUSHID)
         removeOneSignalId()
         
+        //remove the object that corresponds to the current user saved in user defaults
         userDefaults.removeObject(forKey: kCURRENTUSER)
+        //save it
         userDefaults.synchronize()
         
+        // logout user
         do {
             try Auth.auth().signOut()
             
+            //complete the logout
             completion(true)
             
         } catch let error as NSError {

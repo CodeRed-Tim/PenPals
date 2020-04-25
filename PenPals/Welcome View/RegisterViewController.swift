@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import ProgressHUD
 import JGProgressHUD
 import ImagePicker
 
-class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -27,20 +26,24 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var password: String!
     var avatarImage: UIImage?
     var selectedLanguage: String?
-    var languageList = ["Arabic", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Italian", "Japenese", "Korean", "Porteguese", "Romanian", "Russian", "Spanish"]
+    
+    var languageList = ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
     
     var startIndex: Int?
+    
+    var hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        avatarImageView.isUserInteractionEnabled = true
+        
         // Do any additional setup after loading the view.
-        print(email, password)
         languagePicker.delegate = self as UIPickerViewDelegate
         languagePicker.dataSource = self as UIPickerViewDataSource
         
         startIndex = languageList.count / 2
-        
+
         languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
         
     }
@@ -58,14 +61,28 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return row
     }
     // change text color
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.yellow]) 
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
     }
+    
+    
+    //MARK: IBActions
+    
+    @IBAction func avatarImageTapped(_ sender: Any) {
+        
+        let imagePickerController = ImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.imageLimit = 1
+        
+        present(imagePickerController, animated: true, completion: nil)
+        dismissKeyboard()
+        
+    }
+    
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
         dismissKeyboard()
-        ProgressHUD.show("Registering You...")
         
         var languageIndex = languagePicker.selectedRow(inComponent: 0)
         
@@ -75,15 +92,18 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             //validates both passwords match
             if passwordTextField.text == confirmPasswordTextField.text {
                 
-                //                FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!) { (error) in
-                
                 FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, language: languageSelect(langIndex: languageIndex)) { (error) in
                     
                     
                     
                     if error != nil {
-                        ProgressHUD.dismiss()
-                        ProgressHUD.showError(error!.localizedDescription)
+                        
+                        self.hud.dismiss()
+                        self.hud.textLabel.text = "\(error!.localizedDescription)"
+                        self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                        self.hud.show(in: self.view)
+                        self.hud.dismiss(afterDelay: 1.5)
+
                         return
                     }
                     self.registerUser()
@@ -96,12 +116,19 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 
             } else {
                 
-                ProgressHUD.showError("Passwords Don't Match!")
+                hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                hud.textLabel.text = "Passwords don't match!"
+                hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                hud.show(in: self.view)
+                hud.dismiss(afterDelay: 1.5)
             }
             
         } else {
             
-            ProgressHUD.showError("All Field are Required!")
+            hud.indicatorView = JGProgressHUDErrorIndicatorView()
+            hud.textLabel.text = "All Fields are Required!"
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 1.75)
             
         }
     }
@@ -118,10 +145,13 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func registerUser() {
         
+        hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Registering you..."
+        hud.show(in: self.view)
+        
         let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
         var languageIndex = languagePicker.selectedRow(inComponent: 0)
         
-        //
         var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!, kLANGUAGE : languageSelect(langIndex: languageIndex)] as [String : Any]
         
         //if user doesn't pick a profile picture make the picture their intials
@@ -143,11 +173,10 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
         } else {
             
-            let avatarData = avatarImage?.jpegData(compressionQuality: 0.7)
+            let avatarData = avatarImage?.jpegData(compressionQuality: 0.5)
             let avatar = avatarData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             
             tempDictionary[kAVATAR] = avatar
-            
             
             self.finishRegistration(withValues: tempDictionary)
             
@@ -163,20 +192,25 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if error != nil {
                 
                 DispatchQueue.main.async {
-                    ProgressHUD.showError(error!.localizedDescription)
+                    self.hud.dismiss()
+                    self.hud.textLabel.text = "\(error!.localizedDescription)"
+                    self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                    self.hud.show(in: self.view)
+                    self.hud.dismiss(afterDelay: 1.5)
+                    
                     print(error!.localizedDescription)
                 }
                 return
             }
             
-            ProgressHUD.dismiss()
+            self.hud.dismiss()
             self.goToApp()
         }
     }
     
     func languageSelect(langIndex: Int) -> String {
         
-//        ["Arabic", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Italian", "Japenese", "Korean", "Porteguese", "Romanian", "Russian", "Spanish"]
+//        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
         
         var langIndex = langIndex
         
@@ -188,42 +222,51 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             //arabic
             languageValue = "ar"
         } else if langIndex == 1 {
+            //Bengali
+            languageValue = "bn"
+        } else if langIndex == 2 {
             //chinese
             languageValue = "zh"
-        } else if langIndex == 2 {
+        } else if langIndex == 3 {
             //dutch
             languageValue = "nl"
-        } else if langIndex == 3 {
+        } else if langIndex == 4 {
             //english
             languageValue = "en"
-        } else if langIndex == 4 {
+        } else if langIndex == 5 {
             //french
             languageValue = "fr"
-        } else if langIndex == 5 {
+        } else if langIndex == 6 {
             //german
             languageValue = "de"
-        } else if langIndex == 6 {
+        } else if langIndex == 7 {
             //hatian
             languageValue = "ht"
-        } else if langIndex == 7 {
+        } else if langIndex == 8 {
+            //hindi
+            languageValue = "hi"
+        } else if langIndex == 9 {
             //italian
             languageValue = "it"
-        } else if langIndex == 8 {
+        } else if langIndex == 10 {
             //japense
             languageValue = "ja"
-        } else if langIndex == 9 {
+        } else if langIndex == 11 {
             //korean
             languageValue = "ko"
-        } else if langIndex == 10 {
+        } else if langIndex == 12 {
+            //malay
+            languageValue = "ms"
+        } else if langIndex == 13 {
             //porteguese
             languageValue = "pt"
-        } else if langIndex == 11 {
+        } else if langIndex == 14 {
             //romanian
             languageValue = "ro"
-        } else if langIndex == 12 {
+        } else if langIndex == 15 {
             //russian
             languageValue = "ru"
-        } else if langIndex == 13 {
+        } else if langIndex == 16 {
             //spanish
             languageValue = "es"
         }
@@ -236,11 +279,9 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func goToApp() {
         
         // clear progress message
-        ProgressHUD.dismiss()
+        hud.dismiss()
         cleanTextFields()
         dismissKeyboard()
-        
-        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: USER_DID_LOGIN_NOTIFICATION), object: nil, userInfo: [kUSERID : FUser.currentId()])
         
         // present app
         let mainView = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainApplication") as! UITabBarController
@@ -250,16 +291,6 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     
     //MARK: Navigation
-    
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //
-    //        if segue.identifier == "registerToFinishRegistration" {
-    //
-    //            let vc = segue.destination as! FinishRegistrationViewController
-    //            vc.email = emailTextField.text!
-    //            vc.password = passwordTextField.text!
-    //        }
-    //    }
     
     func dismissKeyboard() {
         // dismisses keyboard
@@ -275,39 +306,26 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         passwordTextField.text = ""
         confirmPasswordTextField.text = ""
     }
-}
+    
+    //MARK: IMage PIcker Delegate
+    
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
 
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return languageList.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return languageList[row]
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        selectedLanguage = languageList[row]
-//        languageDropDown.text = selectedLanguage
-//    }
-//
-//    func createPickerView() {
-//           let languagePicker = UIPickerView()
-//           languagePicker.delegate = self
-//           languageDropDown.inputView = languageDropDown
-//    }
-//
-//    func dismissPickerView() {
-//       let toolBar = UIToolbar()
-//       toolBar.sizeToFit()
-//        let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.action))
-//       toolBar.setItems([button], animated: true)
-//       toolBar.isUserInteractionEnabled = true
-//       languageDropDown.inputAccessoryView = toolBar
-//    }
-//
-//    @objc func action() {
-//          view.endEditing(true)
-//    }
+        if images.count > 0 {
+            self.avatarImage = images.first!
+            self.avatarImageView.image = self.avatarImage?.circleMasked
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}

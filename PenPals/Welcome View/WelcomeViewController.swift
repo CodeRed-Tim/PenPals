@@ -7,7 +7,6 @@
 //
 //imports
 import UIKit
-import ProgressHUD
 import JGProgressHUD
 import Firebase
 
@@ -22,15 +21,17 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
     
-    let hud = JGProgressHUD(style: .light)
+    var hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         signUpButton.layer.borderWidth = 2
         
-        let myGrayColor = UIColor(red: 0.22, green: 0.33, blue: 0.53, alpha: 1.0 )
-        signUpButton.layer.borderColor = myGrayColor.cgColor
+        let myBorderColor = UIColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0)
+        
+        signUpButton.layer.borderColor = UIColor.lightGray.cgColor
+        //signUpButton.layer.borderColor = myBorderColor.cgColor
 
         
     }
@@ -41,106 +42,18 @@ class WelcomeViewController: UIViewController {
         
         dismissKeyboard()
         
-        detectlanguage()
-        initiateTranslation()
-        
         if emailTextField.text != "" && passwordTextField.text != "" {
             
             loginUser()
             
         } else {
             
-            ProgressHUD.showError("Email or Password is missing!")
             hud.textLabel.text = "Email or Password is missing!"
             hud.indicatorView = JGProgressHUDErrorIndicatorView()
             hud.show(in: self.view)
-            hud.dismiss(afterDelay: 1.0)
-            
-            
+            hud.dismiss(afterDelay: 1.5)
         }
     }
-    
-    //change to this 'text' variable after testing
-    var text = "hello"
-    
-    // this will get the language code
-    //for example if text="Good morning" it will get en
-    func detectlanguage() {
-        
-        TranslationManager.shared.detectLanguage(forText: text) { (language) in
-            
-            if let language = language {
-                print("The detected language was \(language)")
-            } else {
-                print("Oops! It seems that something went wrong and language cannot be detected.... detetcLanguage()")
-            }
-            
-        }
-    }
-    
-    func checkForLanguagesExistence() {
-        // Check if supported languages have been fetched by looking at the
-        // number of items in the supported languages collection of the
-        // TranslationManager shared instance.
-        // If it's zero, no languages have been fetched, so ask user
-        // if they want to fetch them now.
-        fetchSupportedLanguages()
-        print("checkForLanguagesExistence()")
-    }
-    
-    func fetchSupportedLanguages() {
-        
-        var getLanguages = true
-        
-        TranslationManager.shared.fetchSupportedLanguages { (success) in
-            
-            if success {
-                //run the translation method
-                getLanguages = true
-                print("got the supported languages... getLanguages()")
-            } else {
-                //error
-                getLanguages = false
-                print("didn't get the supported languages... getLanguages()")
-            }
-            
-        }
-        
-    }
-    
-    func translate() {
-//        checkForLanguagesExistence()
-        getTargetLangCode()
-        TranslationManager.shared.textToTranslate = text
-        print("translate(\(text))")
-    }
-    
-    func getTargetLangCode() {
-        
-        TranslationManager.shared.targetLanguageCode = "fr"
-        print("getTargetLanguage()")
-    }
-    
-    func initiateTranslation() {
-        
-        translate()
-        
-        TranslationManager.shared.translate { (translation) in
-            
-            if let translation = translation {
-                
-                self.text = translation
-                print(self.text)
-            } else {
-                print("Oops! It seems that something went wrong and translation cannot be done... initiateTranslation()")
-            }
-            
-        }
-        
-    }
-    
-    
-    
     
     @IBAction func backgrounTap(_ sender: Any) {
         
@@ -149,32 +62,22 @@ class WelcomeViewController: UIViewController {
     
     //MARK: HelperFunctions
     
-    func hud1() {
-        hud.textLabel.text = "Loging You In...."
-        hud.show(in: self.view)
-        hud.dismiss(afterDelay: 2.0)
-    }
-    
-    func hud2() {
-        hud.textLabel.text = "Success"
-        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-        hud.dismiss(afterDelay: 1.0)
-    }
-    
     func loginUser() {
         
-        ProgressHUD.show("Loging You In...")
-        
-        
-        hud1()
-        hud2()
+        hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Loggin you in..."
+        hud.show(in: self.view)
 
         FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error) in
             
             if error != nil {
                 
                 // if there is an error show the error to us
-                ProgressHUD.showError(error!.localizedDescription)
+                self.hud.textLabel.text = "\(error!.localizedDescription)"
+                self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                self.hud.show(in: self.view)
+                self.hud.dismiss(afterDelay: 1.5)
+                
                 return
             }
             
@@ -199,9 +102,11 @@ class WelcomeViewController: UIViewController {
     
     func goToApp() {
         
+        hud.dismiss()
+        hud.textLabel.text = "Sucess!"
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.dismiss()
         
-        // clear progress message
-        ProgressHUD.dismiss()
         cleanTextFields()
         dismissKeyboard()
         

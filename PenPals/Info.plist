@@ -70,9 +70,5 @@
 	<string>Penpals would like to access your photo library</string>
 	<key>NSContactsUsageDescription</key>
 	<string>PenPals would like to access your contacts</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>ppAppIcon.png</string>
-	</array>
 </dict>
 </plist>
