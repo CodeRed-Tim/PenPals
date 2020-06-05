@@ -2,7 +2,7 @@
 //  Recent.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 3/24/20.
+//  Created by Tim Van Cauwenberge on 3/24/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -220,16 +220,6 @@ func clearRecentCounterItem(recent: NSDictionary) {
     //update message counter
     reference(.Recent).document(recent[kRECENTID] as! String).updateData([kCOUNTER : 0])
 }
-
-//group
-
-//func startGroupChat(group: Group) {
-//
-//    let chatRoomId = group.groupDictionary[kGROUPID] as! String
-//    let members = group.groupDictionary[kMEMBERS] as! [String]
-//
-//    createRecent(members: members, chatRoomId: chatRoomId, withUserUserName: group.groupDictionary[kNAME] as! String, type: kGROUP, users: nil, avatarOfGroup: group.groupDictionary[kAVATAR] as? String)
-//}
 
 func createRecentsForNewMembers(groupId: String, groupName: String, membersToPush: [String], avatar: String) {
     

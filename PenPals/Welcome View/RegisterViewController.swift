@@ -2,7 +2,7 @@
 //  RegisterViewController.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 2/7/20.
+//  Created by Tim Van Cauwenberge on 2/7/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -83,9 +83,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBAction func registerButtonTapped(_ sender: Any) {
         
         dismissKeyboard()
-        
-        var languageIndex = languagePicker.selectedRow(inComponent: 0)
-        
+        let languageIndex = languagePicker.selectedRow(inComponent: 0)
         
         if emailTextField.text != "" && firstNameTextField.text != "" && lastNameTextField.text != "" && phoneNumberTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
             
@@ -93,43 +91,29 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             if passwordTextField.text == confirmPasswordTextField.text {
                 
                 FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, language: languageSelect(langIndex: languageIndex)) { (error) in
-                    
-                    
-                    
+
                     if error != nil {
-                        
                         self.hud.dismiss()
                         self.hud.textLabel.text = "\(error!.localizedDescription)"
                         self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
                         self.hud.show(in: self.view)
                         self.hud.dismiss(afterDelay: 1.5)
-
                         return
                     }
                     self.registerUser()
-                    
                 }
-                
-                
-                //                self.languageSelect()
-                self.registerUser()
-                
             } else {
-                
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
                 hud.textLabel.text = "Passwords don't match!"
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
                 hud.show(in: self.view)
                 hud.dismiss(afterDelay: 1.5)
             }
-            
         } else {
-            
             hud.indicatorView = JGProgressHUDErrorIndicatorView()
             hud.textLabel.text = "All Fields are Required!"
             hud.show(in: self.view)
             hud.dismiss(afterDelay: 1.75)
-            
         }
     }
     
@@ -150,7 +134,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         hud.show(in: self.view)
         
         let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
-        var languageIndex = languagePicker.selectedRow(inComponent: 0)
+        let languageIndex = languagePicker.selectedRow(inComponent: 0)
         
         var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!, kLANGUAGE : languageSelect(langIndex: languageIndex)] as [String : Any]
         

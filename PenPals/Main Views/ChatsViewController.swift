@@ -2,7 +2,7 @@
 //  ChatsViewController.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 3/5/20.
+//  Created by Tim Van Cauwenberge on 3/5/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -202,29 +202,12 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let sorted = ((dictionaryFromSnapshots(snapshots: snapshot.documents)) as NSArray).sortedArray(using: [NSSortDescriptor(key: kDATE, ascending: false)]) as! [NSDictionary]
                 
                 for recent in sorted {
-                    
-                    // makes application wait until api call is finished
-                   // _ = self.semaphore.wait(wallTimeout: .distantFuture)
-                    
-                    
+
                     // if last message is empty, if there is a chatroomID and
                     //if recent has an ID to make sure it isnt a corrupt file
                     if recent[kLASTMESSAGE] as! String != "" && recent[kCHATROOMID] != nil && recent[kRECENTID] != nil {
                         
                         var text = recent[kLASTMESSAGE] as! String
-                        
-//                        // set the translation to the text
-//                        self.initiateTranslation(text: text) { (tText) in
-//                            self.translatedText = tText
-//                            print("\(self.translatedText) !!!!!!!!")
-//                            text = tText
-//                            print("\(text) !!!!!!!!")
-//
-//                            self.semaphore.signal()
-//
-//                        }
-//                        text = self.translatedText
-//                        print("\(text) !!!!!!!!")
                                                 
                         //add it to recent chat array
                         self.recentChats.append(recent)
@@ -285,37 +268,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         TranslationManager.shared.targetLanguageCode = code
         //print("getTargetLanguage(\(code!))")
     }
-    
-    //MARK: Custom tableViewHeader
-    
-    // creates group chat button
-//    func setTableViewHeader() {
-//
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 45))
-//
-//        let buttonView = UIView(frame: CGRect(x: 0, y: 5, width: tableView.frame.width, height: 35))
-//        let groupButton = UIButton(frame: CGRect(x: tableView.frame.width - 110, y: 10, width: 100, height: 20))
-//        groupButton.addTarget(self, action: #selector(self.groupButtonPressed), for: .touchUpInside)
-//        groupButton.setTitle("New Group", for: .normal)
-//        let buttonColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-//        groupButton.setTitleColor(buttonColor, for: .normal)
-//
-//
-//        let lineView = UIView(frame: CGRect(x: 0, y: headerView.frame.height - 1, width: tableView.frame.width, height: 1))
-//        lineView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-//
-//        buttonView.addSubview(groupButton)
-//        headerView.addSubview(buttonView)
-//        headerView.addSubview(lineView)
-//
-//        tableView.tableHeaderView = headerView
-//    }
-    
-    
-    @objc func groupButtonPressed() {
-        print("hello")
-    }
-    
     
     //MARK: RecentChatsCell delegate
     
@@ -383,15 +335,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     //MARK: Helper functions
-    
-    //        func selectUserForChat(isGroup: Bool) {
-    //
-    //            let contactsVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "contactsView") as! UsersTableViewController
-    //
-    //            contactsVC.isGroup = isGroup
-    //
-    //            self.navigationController?.pushViewController(contactsVC, animated: true)
-    //        }
     
     func updatePushMembers(recent: NSDictionary, mute: Bool) {
         

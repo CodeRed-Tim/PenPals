@@ -2,7 +2,7 @@
 //  MessageViewController.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 3/26/20.
+//  Created by Tim Van Cauwenberge on 3/26/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -467,30 +467,22 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         
         var outgoingMessage: OutgoingMessages?
         let currentUser = FUser.currentUser()!
-        var tMessage = "wrong"
         
         //text message
         //if there is a text message
         if let text = text {
-            //very important
-            var text = text
-
-            //translateFunc(withUsers: withUsers, text: text)
-            
+            let text = text
             //saves the message
-            outgoingMessage = OutgoingMessages(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT, tMessage: tMessage)
+            outgoingMessage = OutgoingMessages(message: text, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kTEXT)
         }
         
         //picture message
-        
         if let pic = picture {
             //recieved a picture
-            
             uploadImage(image: pic, chatRoomId: chatRoomId, view: self.navigationController!.view) { (imageLink) in
                 
                 if imageLink != nil {
                     //have an image
-                    
                     let text = "[\(kPICTURE)]"
                     
                     outgoingMessage = OutgoingMessages(message: text, pictureLink: imageLink!, senderId: currentUser.objectId, senderName: currentUser.firstname, date: date, status: kDELIVERED, type: kPICTURE)
@@ -498,7 +490,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     
-                    outgoingMessage?.sendMessage(chatRoomID: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memberIds, membersToPush: self.membersToPush)
+                    outgoingMessage?.createMessage(chatRoomID: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memberIds, membersToPush: self.membersToPush)
                 }
             }
             return
@@ -508,7 +500,6 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         if let video = video {
             
             let videoData = NSData(contentsOfFile: video.path!)
-            
             //need to convert thumnbail to data to save it in firebase
             let dataThumbnail = videoThumbnail(video: video).jpegData(compressionQuality: 0.3)
             
@@ -522,7 +513,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
                     JSQSystemSoundPlayer.jsq_playMessageSentSound()
                     self.finishSendingMessage()
                     
-                    outgoingMessage?.sendMessage(chatRoomID: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memberIds, membersToPush: self.membersToPush)
+                    outgoingMessage?.createMessage(chatRoomID: self.chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: self.memberIds, membersToPush: self.membersToPush)
                 }
             }
             return
@@ -532,7 +523,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         self.finishSendingMessage()
         
-        outgoingMessage?.sendMessage(chatRoomID: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memberIds, membersToPush: membersToPush)
+        outgoingMessage?.createMessage(chatRoomID: chatRoomId, messageDictionary: outgoingMessage!.messageDictionary, memberIds: memberIds, membersToPush: membersToPush)
     }
     
     //MARK: LoadMessages
@@ -711,9 +702,6 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
             //update message read status
             OutgoingMessages.updateMessage(withId: messageDictionary[kMESSAGEID] as! String, chatRoomId: chatRoomId, memberIds: memberIds)
         }
-        
-//        var translate = messageDictionary[kMESSAGE] as! String
-//               translate = "boom boom pow"
         
         let message = incomingMessage.createMessage(messageDictionary: messageDictionary, chatRoomId: chatRoomId)
         

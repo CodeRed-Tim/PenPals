@@ -20,7 +20,6 @@
 		220CCD5D2450F1BC000A35AA /* BackgroundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220CCD5C2450F1BC000A35AA /* BackgroundCollectionViewCell.swift */; };
 		220CCD5F245101EB000A35AA /* T&CViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220CCD5E245101EB000A35AA /* T&CViewController.swift */; };
 		220CCD6124510452000A35AA /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220CCD6024510452000A35AA /* EditProfileTableViewController.swift */; };
-		220CCD63245125BB000A35AA /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220CCD62245125BB000A35AA /* AlertService.swift */; };
 		220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */; };
 		220E9DAC243EAE6C0085D25C /* TranslationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E9DAB243EAE6C0085D25C /* TranslationManager.swift */; };
 		220E9DB0243EAECD0085D25C /* TranslationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220E9DAF243EAECD0085D25C /* TranslationApi.swift */; };
@@ -62,7 +61,6 @@
 		220CCD5C2450F1BC000A35AA /* BackgroundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewCell.swift; sourceTree = "<group>"; };
 		220CCD5E245101EB000A35AA /* T&CViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "T&CViewController.swift"; sourceTree = "<group>"; };
 		220CCD6024510452000A35AA /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
-		220CCD62245125BB000A35AA /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		220E9DAB243EAE6C0085D25C /* TranslationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationManager.swift; sourceTree = "<group>"; };
 		220E9DAF243EAECD0085D25C /* TranslationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationApi.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				220B98C72433EE4200E6BD3B /* Download.swift */,
 				221E066B23ED5348001A9F67 /* CollectionReference.swift */,
 				221E066D23ED5416001A9F67 /* HelperFunctions.swift */,
-				220CCD62245125BB000A35AA /* AlertService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -407,7 +404,6 @@
 				220DB7D9242DAE7C006FBAD1 /* MessageViewController.swift in Sources */,
 				220B98C62433E89400E6BD3B /* Camera.swift in Sources */,
 				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
-				220CCD63245125BB000A35AA /* AlertService.swift in Sources */,
 				220AA6982435A60900833D24 /* PicturesCollectionViewController.swift in Sources */,
 				229C8658242B322400088609 /* Recent.swift in Sources */,
 				220CCD572450C399000A35AA /* SetTableViewController.swift in Sources */,

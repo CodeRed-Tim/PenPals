@@ -2,7 +2,7 @@
 //  IncomingMessages.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 3/30/20.
+//  Created by Tim Van Cauwenberge on 3/30/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -27,7 +27,7 @@ class IncomingMessages {
     var translatedText = ""
     
     //MARK: CreateMessage
-    // pass through message from Firbase, see if message if text, video, picture
+    // pass through message from Firebase, see if message if text, video, picture
     // creates required JSQ message
     func createMessage(messageDictionary: NSDictionary, chatRoomId: String) -> JSQMessage? {
         
@@ -68,17 +68,21 @@ class IncomingMessages {
             // create new date
             date = Date()
         }
+        //getTargetLangCode()
+        let tempID = FUser.currentUser()?.objectId
+        var isCurrentUser: Bool = false
         
-        //gets current text message
+        if userId == tempID {
+            isCurrentUser = true
+        }
+        
         let text = messageDictionary[kMESSAGE] as! String
         
-        // set the translation to the text
-        self.initiateTranslation(text: text) { (tText) in
+        self.initiateTranslation(text: text, isCurrentUser: isCurrentUser) { (tText) in
             self.translatedText = tText
             self.semaphore.signal()
         }
         
-        // makes application wait until api call is finished
         _ = semaphore.wait(wallTimeout: .distantFuture)
         
         return JSQMessage(senderId: userId, senderDisplayName: name, date: date, text: translatedText)
@@ -98,29 +102,29 @@ class IncomingMessages {
         }
     }
     
-    func initiateTranslation(text: String, completion: @escaping ( _ result: String) -> ()) {
-        
+    func initiateTranslation(text: String, isCurrentUser: Bool, completion: @escaping ( _ result: String) -> ()) {
         var text = text
-        translate(text: text)
-        TranslationManager.shared.translate { (translation) in
-            if let translation = translation {
-                text = translation
-                print("The translation is... \(text)")
-                completion(text)
-            } else {
-                print("language not translated")
-                self.semaphore.signal()
+        if isCurrentUser {
+            completion(text)
+        } else {
+            translate(text: text)
+            TranslationManager.shared.translate { (translation) in
+                if let translation = translation {
+                    text = translation
+                    print("The translation is... \(text)")
+                    completion(text)
+                } else {
+                    print("language not translated")
+                    self.semaphore.signal()
+                }
+                
             }
-
         }
     }
-    
     
     func translate(text: String) {
         getTargetLangCode()
         TranslationManager.shared.textToTranslate = text
-        //print("translate(\(text))")
-        
     }
     
     func getTargetLangCode() {
@@ -226,4 +230,5 @@ class IncomingMessages {
     }
 
 }
+
 

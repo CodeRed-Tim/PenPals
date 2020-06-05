@@ -2,7 +2,7 @@
 //  HelperFunctions.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 2/7/20.
+//  Created by Tim Van Cauwenberge on 2/7/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -96,35 +96,6 @@ func timeElapsed(date: Date) -> String {
     
     return elapsed!
 }
-
-func formatCallTime(date: Date) -> String {
-    
-    let seconds = NSDate().timeIntervalSince(date)
-    
-    var elapsed: String?
-    
-    
-    if (seconds < 60) {
-        elapsed = "Just now"
-    }  else if (seconds < 24 * 60 * 60) {
-       
-        let currentDateFormater = dateFormatter()
-        currentDateFormater.dateFormat = "HH:mm"
-
-        elapsed = "\(currentDateFormater.string(from: date))"
-    } else {
-        let currentDateFormater = dateFormatter()
-        currentDateFormater.dateFormat = "dd/MM/YYYY"
-        
-        elapsed = "\(currentDateFormater.string(from: date))"
-    }
-    
-    // return the correct string
-    return elapsed!
-}
-
-
-
 
 //MARK: UIImageExtension
 

@@ -2,7 +2,7 @@
 //  SetTableViewController.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 4/22/20.
+//  Created by Tim Van Cauwenberge on 4/22/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  StartScreenViewController.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 4/24/20.
+//  Created by Tim Van Cauwenberge on 4/24/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 

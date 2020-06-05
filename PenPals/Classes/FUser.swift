@@ -2,7 +2,7 @@
 //  FUser.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 2/6/20.
+//  Created by Tim Van Cauwenberge on 2/6/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
@@ -72,7 +72,7 @@ class FUser {
     
     
     // all users are saved as dictionaries
-
+    
     init(_dictionary: NSDictionary) {
         
         objectId = _dictionary[kOBJECTID] as! String
@@ -201,16 +201,29 @@ class FUser {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (firUser, error) in
             
             if error != nil {
-                
                 // pass error through
                 completion(error)
                 return
                 
             } else {
-                
                 //get user from firebase and save locally
-                fetchCurrentUserFromFirestore(userId: firUser!.user.uid)
-                completion(error)
+                //fetchCurrentUserFromFirestore(userId: firUser!.user.uid)
+                reference(.User).document(firUser!.user.uid).getDocument { (snapshot, error) in
+                    
+                    guard let snapshot = snapshot else {  return }
+                    
+                    // if there is a user that matches an id...
+                    if snapshot.exists {
+                        print("updated current users param")
+                        
+                        // save the user Id locally as the current user
+                        UserDefaults.standard.setValue(snapshot.data()! as NSDictionary, forKeyPath: kCURRENTUSER)
+                        UserDefaults.standard.synchronize()
+                        completion(error)
+                    }
+                    
+                }
+                
             }
             
         })
@@ -239,50 +252,6 @@ class FUser {
         })
         
     }
-    
-    //phoneNumberRegistration
-//
-//    class func registerUserWith(phoneNumber: String, verificationCode: String, verificationId: String!, completion: @escaping (_ error: Error?, _ shouldLogin: Bool) -> Void) {
-//
-//
-//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: verificationCode)
-//
-//        Auth.auth().signInAndRetrieveData(with: credential) { (firuser, error) in
-//
-//            if error != nil {
-//
-//                completion(error!, false)
-//                return
-//            }
-//
-//            //check if user exist - login else register
-//            fetchCurrentUserFromFirestore(userId: firuser!.user.uid, completion: { (user) in
-//
-//                if user != nil && user!.firstname != "" {
-//                    //we have user, login
-//
-//                    saveUserLocally(fUser: user!)
-//                    saveUserToFirestore(fUser: user!)
-//
-//                    completion(error, true)
-//
-//                } else {
-//
-//                    //    we have no user, register
-//                    let fUser = FUser(_objectId: firuser!.user.uid, _pushId: "", _createdAt: Date(), _updatedAt: Date(), _email: "", _firstname: "", _lastname: "", _avatar: "", _loginMethod: kPHONE, _phoneNumber: firuser!.user.phoneNumber!, _city: "", _country: "")
-//
-//                    saveUserLocally(fUser: fUser)
-//                    saveUserToFirestore(fUser: fUser)
-//                    completion(error, false)
-//
-//                }
-//
-//            })
-//
-//        }
-//
-//    }
-    
     
     //MARK: LogOut func
     
@@ -334,6 +303,7 @@ class FUser {
 //MARK: Save user funcs
 
 func saveUserToFirestore(fUser: FUser) {
+    
     reference(.User).document(fUser.objectId).setData(userDictionaryFrom(user: fUser) as! [String : Any]) { (error) in
         
         print("error is \(error?.localizedDescription)")

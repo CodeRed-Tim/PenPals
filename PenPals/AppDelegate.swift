@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 2/6/20.
+//  Created by Tim Van Cauwenberge on 2/6/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 

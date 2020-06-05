@@ -2,7 +2,7 @@
 //  PicturesCollectionViewCell.swift
 //  PenPals
 //
-//  Created by MaseratiTim on 4/1/20.
+//  Created by Tim Van Cauwenberge on 4/1/20.
 //  Copyright © 2020 SeniorProject. All rights reserved.
 //
 
