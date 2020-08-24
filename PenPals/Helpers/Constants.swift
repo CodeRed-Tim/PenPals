@@ -25,7 +25,7 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 
 //IDS and Keys
 // Firebase reference key
-public let kFILEREFERENCE = "gs://penpals-6dc91.appspot.com"
+public let kFILEREFERENCE = "gs://slate-official.appspot.com"
 // app ID
 public let kONESIGNALAPPID = ""
 // key for call function (if needed)
@@ -67,6 +67,7 @@ public let kVERIFICATIONCODE = "firebase_verification"
 public let kCITY = "city"
 public let kCOUNTRY = "country"
 public let kBLOCKEDUSERID = "blockedUserId"
+public let kFRIENDLISTIDS = "friendListIds"
 
 
 

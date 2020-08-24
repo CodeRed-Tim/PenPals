@@ -180,8 +180,8 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK: Create Message types
     var code = FUser.currentUser()?.language
-    let semaphore = DispatchSemaphore(value: 0)
-    var translatedText = ""
+//    let semaphore = DispatchSemaphore(value: 0)
+//    var translatedText = ""
     
     
     //MARK: LoadRecentChats
@@ -223,50 +223,6 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
         })
         
-    }
-    
-    //MARK: Translation Code
-    
-    func detectlanguage(text: String, completion: @escaping ( _ result: String) -> ()) {
-        
-        TranslationManager.shared.detectLanguage(forText: text) { (language) in
-            if let language = language {
-                print("The detected language was \(language)")
-                completion(language)
-            } else {
-                print("language code not detected")
-            }
-        }
-    }
-    
-    //make this a completion handler
-    func initiateTranslation(text: String, completion: @escaping ( _ result: String) -> ()) {
-        
-        var text = text
-        translate(text: text)
-        TranslationManager.shared.translate { (translation) in
-            if let translation = translation {
-                text = translation
-                print("The translation is... \(text)")
-                completion(text)
-            } else {
-                print("language not translated")
-            }
-            
-        }
-    }
-    
-    
-    func translate(text: String) {
-        getTargetLangCode()
-        TranslationManager.shared.textToTranslate = text
-        //print("translate(\(text))")
-        
-    }
-    
-    func getTargetLangCode() {
-        TranslationManager.shared.targetLanguageCode = code
-        //print("getTargetLanguage(\(code!))")
     }
     
     //MARK: RecentChatsCell delegate

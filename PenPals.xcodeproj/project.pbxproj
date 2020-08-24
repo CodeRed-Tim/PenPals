@@ -28,7 +28,6 @@
 		220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */; };
 		22166D252431B707007BA45E /* OutgoingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166D242431B707007BA45E /* OutgoingMessages.swift */; };
 		22166D272431DBA1007BA45E /* IncomingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166D262431DBA1007BA45E /* IncomingMessages.swift */; };
-		22168E44244F91ED002C7862 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22168E43244F91ED002C7862 /* GoogleService-Info.plist */; };
 		221E066823ED4F61001A9F67 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066723ED4F61001A9F67 /* FUser.swift */; };
 		221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066923ED4FAF001A9F67 /* Constants.swift */; };
 		221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066B23ED5348001A9F67 /* CollectionReference.swift */; };
@@ -41,6 +40,7 @@
 		225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7323ED4495007E0273 /* Assets.xcassets */; };
 		225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */; };
 		225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */; };
+		225FEA1424D09F90004C9DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */; };
 		227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B4C762412320500A0C235 /* ChatsViewController.swift */; };
 		229C8653242B0A8000088609 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8652242B0A8000088609 /* UsersTableViewController.swift */; };
 		229C8658242B322400088609 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8657242B322400088609 /* Recent.swift */; };
@@ -69,14 +69,13 @@
 		220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		22166D242431B707007BA45E /* OutgoingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		22166D262431DBA1007BA45E /* IncomingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessages.swift; sourceTree = "<group>"; };
-		22168E43244F91ED002C7862 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		221E066723ED4F61001A9F67 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		221E066923ED4FAF001A9F67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		221E066B23ED5348001A9F67 /* CollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
 		221E066D23ED5416001A9F67 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
 		221E067023ED5A97001A9F67 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		224E855C2427007C001FF692 /* ProfileViewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewTableViewController.swift; sourceTree = "<group>"; };
-		225D8D6723ED4494007E0273 /* PenPals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PenPals.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		225D8D6723ED4494007E0273 /* Slate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225D8D6A23ED4494007E0273 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		225D8D6C23ED4494007E0273 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		225D8D7123ED4494007E0273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		225D8D7623ED4495007E0273 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		225D8D7823ED4495007E0273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		227B4C762412320500A0C235 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		229C8652242B0A8000088609 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		229C8657242B322400088609 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		225D8D6823ED4494007E0273 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				225D8D6723ED4494007E0273 /* PenPals.app */,
+				225D8D6723ED4494007E0273 /* Slate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,7 +194,7 @@
 				225D8D7323ED4495007E0273 /* Assets.xcassets */,
 				225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */,
 				225D8D7823ED4495007E0273 /* Info.plist */,
-				22168E43244F91ED002C7862 /* GoogleService-Info.plist */,
+				225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */,
 			);
 			path = PenPals;
 			sourceTree = "<group>";
@@ -269,7 +269,7 @@
 			);
 			name = PenPals;
 			productName = PenPals;
-			productReference = 225D8D6723ED4494007E0273 /* PenPals.app */;
+			productReference = 225D8D6723ED4494007E0273 /* Slate.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -311,7 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */,
-				22168E44244F91ED002C7862 /* GoogleService-Info.plist in Resources */,
+				225FEA1424D09F90004C9DC5 /* GoogleService-Info.plist in Resources */,
 				225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */,
 				225D8D7223ED4494007E0273 /* Main.storyboard in Resources */,
 			);
@@ -566,8 +566,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SeniorProject.PenPals;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = CodeRed.Slate;
+				PRODUCT_NAME = Slate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -585,8 +585,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = SeniorProject.PenPals;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = CodeRed.Slate;
+				PRODUCT_NAME = Slate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -35,7 +35,8 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating, 
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         
-        loadUsers()
+        self.loadTheFriendUsers()
+        //loadUsers()
         
     }
     
@@ -168,6 +169,27 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating, 
             self.hud.dismiss(afterDelay: 1.5, animated: true)
             
         }
+    }
+    
+    func loadTheFriendUsers() {
+        if FUser.currentUser()!.friendListIds.count > 0 {
+            
+            hud.show(in: self.view)
+            
+            getUsersFromFirestore(withIds:  FUser.currentUser()!.friendListIds) { (allFriendUsers) in
+                
+                self.hud.dismiss()
+                
+                self.allUsers = allFriendUsers
+                
+                self.splitDataIntoSections()
+                self.tableView.reloadData()
+                
+            }
+            self.tableView.reloadData()
+        }
+        self.tableView.reloadData()
+        
     }
     
     func loadUsers() {

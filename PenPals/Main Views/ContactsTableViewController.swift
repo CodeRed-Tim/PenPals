@@ -35,27 +35,56 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
         
-        loadUsers()
+        
+        self.loadTheFriendUsers()
+        //loadUsers()
         setupButtons()
         
     }
     
     //MARK: IBActions
+    @objc func addFriendButtonPressed() {
+        print("addFriendButtonPressed")
+        addFriend()
+    }
     @objc func inviteButtonPressed() {
-          
-          let text = "Hey! Lets chat on PenPal \(kAPPURL)"
-          
-          let objectsToShare:[Any] = [text]
-          
-          let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-          
-          activityViewController.popoverPresentationController?.sourceView = self.view
-          
-          activityViewController.setValue("Lets Chat on PenPal", forKey: "subject")
-          
-          self.present(activityViewController, animated: true, completion: nil)
-
-      }
+        
+        let text = "Hey! Lets chat on PenPal \(kAPPURL)"
+        
+        let objectsToShare:[Any] = [text]
+        
+        let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        activityViewController.setValue("Lets Chat on PenPal", forKey: "subject")
+        
+        self.present(activityViewController, animated: true, completion: nil)
+        
+    }
+    
+    func addFriend() {
+        
+        let alert = UIAlertController(title: "Add Friend", message: "Please enter phone number", preferredStyle: UIAlertController.Style.alert )
+        
+        let add = UIAlertAction(title: "Add", style: .default) { (alertAction) in
+            let textField = alert.textFields![0] as UITextField
+            if textField.text != "" {
+                self.checkPhoneNumberInDatabase(phoneNum: textField.text!)
+            }
+        }
+        
+        alert.addTextField { (textField) in
+            
+        }
+        
+        alert.addAction(add)
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
+        alert.addAction(cancel)
+        self.present(alert, animated:true, completion: nil)
+        
+    }
+    
     
     // MARK: - Table view data source
     
@@ -166,10 +195,10 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             user = users![indexPath.row]
         }
         
-          print("User cell tap at \(indexPath)")
+        print("User cell tap at \(indexPath)")
         
         let profileVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "profileView") as! ProfileViewTableViewController
-                
+        
         // if we have a search
         if searchController.isActive && searchController.searchBar.text != "" {
             
@@ -188,6 +217,159 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         
         profileVC.user = user
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+    
+    var isnumberNotFound = true
+    var isFriendExists = false
+    var isFriendAddedSuccessfully = false
+    
+    func checkPhoneNumberInDatabase(phoneNum: String) {
+        
+        // show loading bar
+        hud.show(in: self.view)
+        
+        var query: Query!
+        query = reference(.User).order(by: kFIRSTNAME, descending: false)
+        
+        // snapshot = each users data
+        query.getDocuments { (snapshot, error) in
+            
+            self.allUsers = []
+            //            self.sectionTitleList = []
+            self.allUsersGrouped = [:]
+            
+            if error != nil {
+                print(error!.localizedDescription)
+                
+                self.hud.textLabel.text = "\(error!.localizedDescription)"
+                self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                self.hud.show(in: self.view)
+                self.hud.dismiss(afterDelay: 1.5, animated: true)
+                
+                self.tableView.reloadData()
+                return
+            }
+            
+            guard let snapshot = snapshot else {
+                self.hud.dismiss()
+                return
+            }
+            
+            // if we have data then present it
+            if !snapshot.isEmpty {
+                
+                for userDictionary in snapshot.documents {
+                    
+                    let userDictionary = userDictionary.data() as NSDictionary
+                    
+                    // create an instance of the user's contacts in an array
+                    let fUser = FUser(_dictionary: userDictionary)
+                    
+                    // check to make sure the current user in the contacts
+                    // is not the same as the current user logged in
+                    if fUser.objectId != FUser.currentId() {
+                        if fUser.phoneNumber == phoneNum {
+                            print("number added....")
+                            self.isnumberNotFound = false
+                            var currentFriendListIds = FUser.currentUser()!.friendListIds
+                        
+                            if currentFriendListIds.contains(fUser.objectId) {
+                                self.isFriendExists = true
+                            } else {
+                                currentFriendListIds.append(fUser.objectId)
+                                self.isFriendAddedSuccessfully = true
+                                updateCurrentUserInFirestore(withValues: [kFRIENDLISTIDS : currentFriendListIds]) { (error) in
+                                    if error != nil {
+                                        self.isFriendAddedSuccessfully = false
+                                        print("error updating user \(error!.localizedDescription)")
+                                        return
+                                    }
+                                    
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            if self.isnumberNotFound {
+                self.numberNotFoundAlert()
+                self.isnumberNotFound = true
+                
+            }
+            
+            if self.isFriendExists {
+                self.friendAlreadyExistsAlert()
+                self.isFriendExists = false
+                self.isnumberNotFound = true
+                
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.loadTheFriendUsers()
+                self.hud.dismiss()
+                if self.isFriendAddedSuccessfully {
+                    self.friendAddSuccessAlert()
+                    self.isFriendAddedSuccessfully = false
+                }
+            }
+        }
+    }
+
+    func numberNotFoundAlert() {
+        
+        let alert = UIAlertController(title: "Not Found", message: "Phone Number not found.", preferredStyle: UIAlertController.Style.alert )
+        
+        let Ok = UIAlertAction(title: "Ok", style: .default) { (alertAction) in }
+        alert.addAction(Ok)
+        self.present(alert, animated:true, completion: nil)
+        
+    }
+    
+    func friendAddSuccessAlert() {
+        
+        let alert = UIAlertController(title: "Success", message: "Contact Added Successfully.", preferredStyle: UIAlertController.Style.alert )
+        
+        let Ok = UIAlertAction(title: "Ok", style: .default) { (alertAction) in }
+        alert.addAction(Ok)
+        self.present(alert, animated:true, completion: nil)
+        
+    }
+    
+    func friendAlreadyExistsAlert() {
+        
+        let alert = UIAlertController(title: "Contact exists", message: "This contact number already exists.", preferredStyle: UIAlertController.Style.alert )
+        
+        let Ok = UIAlertAction(title: "Ok", style: .default) { (alertAction) in }
+        alert.addAction(Ok)
+        self.present(alert, animated:true, completion: nil)
+        
+    }
+    
+    func loadTheFriendUsers() {
+        if FUser.currentUser()!.friendListIds.count > 0 {
+            
+            hud.show(in: self.view)
+            
+            getUsersFromFirestore(withIds:  FUser.currentUser()!.friendListIds) { (allFriendUsers) in
+                
+                self.hud.dismiss()
+                
+                self.allUsers = allFriendUsers
+                
+                self.splitDataIntoSections()
+                self.tableView.reloadData()
+                
+            }
+            self.tableView.reloadData()
+        }
+        self.tableView.reloadData()
+        
     }
     
     func loadUsers() {
@@ -304,12 +486,16 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         }
     }
     
-       func setupButtons() {
-            
-                let inviteButton = UIBarButtonItem(image: UIImage(named: "invite"), style: .plain, target: self, action: #selector(self.inviteButtonPressed))
-                
-                self.navigationItem.rightBarButtonItems = [inviteButton]
-        }
+    func setupButtons() {
+        
+        let inviteButton = UIBarButtonItem(image: UIImage(named: "invite"), style: .plain, target: self, action: #selector(self.inviteButtonPressed))
+        
+        self.navigationItem.rightBarButtonItems = [inviteButton]
+        
+        let addFriendButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.addFriendButtonPressed))
+        
+        self.navigationItem.leftBarButtonItems = [addFriendButton]
+    }
     
     //MARK: UserTableViewCellDelegate
     
@@ -341,3 +527,4 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
 }
+  

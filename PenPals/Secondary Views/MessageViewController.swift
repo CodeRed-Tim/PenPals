@@ -57,7 +57,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     
     //apple may have issues with blue bubble bc it
     //is too similar to imessage
-    var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+    var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.black)
     
     var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
     

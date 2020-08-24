@@ -28,7 +28,7 @@ class WelcomeViewController: UIViewController {
         
         signUpButton.layer.borderWidth = 2
         
-        let myBorderColor = UIColor(red: 1.0, green: 0.5, blue: 0.0, alpha: 1.0)
+        let myBorderColor = UIColor.white
         
         signUpButton.layer.borderColor = UIColor.lightGray.cgColor
         //signUpButton.layer.borderColor = myBorderColor.cgColor
