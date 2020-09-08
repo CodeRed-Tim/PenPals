@@ -47,22 +47,22 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         print("addFriendButtonPressed")
         addFriend()
     }
-    @objc func inviteButtonPressed() {
-        
-        let text = "Hey! Lets chat on PenPal \(kAPPURL)"
-        
-        let objectsToShare:[Any] = [text]
-        
-        let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-        
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        
-        activityViewController.setValue("Lets Chat on PenPal", forKey: "subject")
-        
-        self.present(activityViewController, animated: true, completion: nil)
-        
-    }
-    
+//    @objc func inviteButtonPressed() {
+//
+//        let text = "Hey! Lets chat on PenPal \(kAPPURL)"
+//
+//        let objectsToShare:[Any] = [text]
+//
+//        let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//
+//        activityViewController.popoverPresentationController?.sourceView = self.view
+//
+//        activityViewController.setValue("Lets Chat on PenPal", forKey: "subject")
+//
+//        self.present(activityViewController, animated: true, completion: nil)
+//
+//    }
+//
     func addFriend() {
         
         let alert = UIAlertController(title: "Add Friend", message: "Please enter phone number", preferredStyle: UIAlertController.Style.alert )
@@ -488,9 +488,9 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     func setupButtons() {
         
-        let inviteButton = UIBarButtonItem(image: UIImage(named: "invite"), style: .plain, target: self, action: #selector(self.inviteButtonPressed))
+//        let inviteButton = UIBarButtonItem(image: UIImage(named: "invite"), style: .plain, target: self, action: #selector(self.inviteButtonPressed))
         
-        self.navigationItem.rightBarButtonItems = [inviteButton]
+//        self.navigationItem.rightBarButtonItems = [inviteButton]
         
         let addFriendButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(self.addFriendButtonPressed))
         

@@ -9,6 +9,9 @@
 import UIKit
 import JGProgressHUD
 import ImagePicker
+import PasswordTextField
+import FlagPhoneNumber
+import CountryPickerView
 
 class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate {
     
@@ -22,6 +25,9 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var languageDropDown: UITextField!
     @IBOutlet weak var languagePicker: UIPickerView!
     
+    weak var cpvTextField: CountryPickerView!
+    let cpvInternal = CountryPickerView()
+    
     var email: String!
     var password: String!
     var avatarImage: UIImage?
@@ -33,6 +39,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     var hud = JGProgressHUD(style: .dark)
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +50,16 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         languagePicker.dataSource = self as UIPickerViewDataSource
         
         startIndex = languageList.count / 2
-
+        
         languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
+        
+        let cp = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 120, height: 20))
+        phoneNumberTextField.leftView = cp
+        phoneNumberTextField.leftViewMode = .always
+        self.cpvTextField = cp
+        
+        cpvTextField.tag = 2
+
         
     }
     
@@ -62,7 +77,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     // change text color
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     
@@ -79,29 +94,65 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
     }
     
+    func validatePhone(value: String) -> Bool {
+        let PHONE_REGEX = "^\\d{3}\\d{3}\\d{4}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result = phoneTest.evaluate(with: value)
+        return result
+    }
+    
+    func validatePass(value: String) -> Bool {
+        let PASS_REGEX = "^(?=.*[a-z])(?=.*[$@$#!%*?&]).{6,}$"
+        let passTest = NSPredicate(format: "SELF MATCHES %@ ", PASS_REGEX)
+        let result = passTest.evaluate(with: value)
+        return result
+    }
+    
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         
         dismissKeyboard()
         let languageIndex = languagePicker.selectedRow(inComponent: 0)
         
+        
         if emailTextField.text != "" && firstNameTextField.text != "" && lastNameTextField.text != "" && phoneNumberTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
             
             //validates both passwords match
             if passwordTextField.text == confirmPasswordTextField.text {
                 
-                FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, language: languageSelect(langIndex: languageIndex)) { (error) in
-
-                    if error != nil {
-                        self.hud.dismiss()
-                        self.hud.textLabel.text = "\(error!.localizedDescription)"
-                        self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
-                        self.hud.show(in: self.view)
-                        self.hud.dismiss(afterDelay: 1.5)
-                        return
+                if validatePhone(value: phoneNumberTextField.text!) == true {
+                    
+                    if validatePass(value: passwordTextField.text!) == true {
+                    
+                    FUser.registerUserWith(email: emailTextField.text!, password: passwordTextField.text!, firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, language: languageSelect(langIndex: languageIndex)) { (error) in
+                        
+                        if error != nil {
+                            self.hud.dismiss()
+                            self.hud.textLabel.text = "\(error!.localizedDescription)"
+                            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                            self.hud.show(in: self.view)
+                            self.hud.dismiss(afterDelay: 1.5)
+                            return
+                        }
+                        self.registerUser()
                     }
-                    self.registerUser()
+                        
+                    } else {
+                        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                        hud.textLabel.text = "Password must contain atleast 1 uppercase, 1 lowercase, 1 special character and be 6 letters or longer"
+                        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                        hud.show(in: self.view)
+                        hud.dismiss(afterDelay: 1.5)
+                    }
+                    
+                } else {
+                    hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                    hud.textLabel.text = "Invalid Phone Number Format!"
+                    hud.indicatorView = JGProgressHUDErrorIndicatorView()
+                    hud.show(in: self.view)
+                    hud.dismiss(afterDelay: 1.5)
                 }
+                
             } else {
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
                 hud.textLabel.text = "Passwords don't match!"
@@ -133,10 +184,14 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         hud.textLabel.text = "Registering you..."
         hud.show(in: self.view)
         
-        let fullName = firstNameTextField.text! + " " + lastNameTextField.text!
+        let firstName = firstNameTextField.text?.capitalizingFirstLetter()
+        let lastName = lastNameTextField.text?.capitalizingFirstLetter()
+        
+        
+        let fullName = firstName! + " " + lastName!
         let languageIndex = languagePicker.selectedRow(inComponent: 0)
         
-        var tempDictionary : Dictionary = [kFIRSTNAME : firstNameTextField.text!, kLASTNAME : lastNameTextField.text!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!, kLANGUAGE : languageSelect(langIndex: languageIndex)] as [String : Any]
+        var tempDictionary : Dictionary = [kFIRSTNAME : firstName!, kLASTNAME : lastName!, kFULLNAME : fullName, kPHONE : phoneNumberTextField.text!, kLANGUAGE : languageSelect(langIndex: languageIndex)] as [String : Any]
         
         //if user doesn't pick a profile picture make the picture their intials
         if avatarImage == nil {
@@ -194,7 +249,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func languageSelect(langIndex: Int) -> String {
         
-//        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
+        //        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
         
         var langIndex = langIndex
         
@@ -299,17 +354,56 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-
+        
         if images.count > 0 {
             self.avatarImage = images.first!
             self.avatarImageView.image = self.avatarImage?.circleMasked
         }
         
         self.dismiss(animated: true, completion: nil)
-
+        
     }
     
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+
+extension RegisterViewController: CountryPickerViewDataSource {
+    
+    func navigationTitle(in countryPickerView: CountryPickerView) -> String? {
+        return "Select a Country"
+    }
+        
+    func searchBarPosition(in countryPickerView: CountryPickerView) -> SearchBarPosition {
+        return .tableViewHeader
+    }
+}
+
+
+extension UITextField {
+    func showDoneButtonOnKeyboard() {
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(resignFirstResponder))
+        
+        var toolBarItems = [UIBarButtonItem]()
+        toolBarItems.append(flexSpace)
+        toolBarItems.append(doneButton)
+        
+        let doneToolbar = UIToolbar()
+        doneToolbar.items = toolBarItems
+        doneToolbar.sizeToFit()
+        
+        inputAccessoryView = doneToolbar
     }
 }

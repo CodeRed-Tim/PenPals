@@ -14,6 +14,7 @@ class ProfileViewTableViewController: UITableViewController {
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var messageButtonOutlet: UIButton!
     @IBOutlet weak var blockButtonOutlet: UIButton!
@@ -123,6 +124,8 @@ class ProfileViewTableViewController: UITableViewController {
             
             //get currently selected user's information from database
             fullNameLabel.text = user!.fullname
+            
+            phoneLabel.text = user!.phoneNumber
             
             getLanguage(user: user)
 

@@ -27,4 +27,10 @@ pod 'Gallery'
 
 pod 'Firebase/MLNLTranslate'
 
+pod 'PasswordTextField'
+
+pod 'FlagPhoneNumber'
+
+pod 'CountryPickerView'
+
 end

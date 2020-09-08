@@ -26,6 +26,9 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Localization
+        loginLabel.text? = NSLocalizedString("Sign Up", comment: "")
+        
         signUpButton.layer.borderWidth = 2
         
         let myBorderColor = UIColor.white

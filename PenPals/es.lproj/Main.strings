@@ -1,0 +1,219 @@
+
+/* Class = "UITableViewSection"; headerTitle = "Section-4"; ObjectID = "09z-9z-NWZ"; */
+"09z-9z-NWZ.headerTitle" = "Section-4";
+
+/* Class = "UILabel"; text = "Last Name"; ObjectID = "0ts-UP-osc"; */
+"0ts-UP-osc.text" = "Last Name";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "13B-66-mdQ"; */
+"13B-66-mdQ.text" = "Phone Number";
+
+/* Class = "UILabel"; text = "Select Profile Picture:"; ObjectID = "1Nb-cx-ZtP"; */
+"1Nb-cx-ZtP.text" = "Select Profile Picture:";
+
+/* Class = "UILabel"; text = "FULL NAME"; ObjectID = "3M4-Of-xaB"; */
+"3M4-Of-xaB.text" = "FULL NAME";
+
+/* Class = "UILabel"; text = "FULL NAME"; ObjectID = "3jp-FX-a7h"; */
+"3jp-FX-a7h.text" = "FULL NAME";
+
+/* Class = "UITabBarController"; title = "Messages"; ObjectID = "6XB-Kf-Lqh"; */
+"6XB-Kf-Lqh.title" = "Messages";
+
+/* Class = "UILabel"; text = "Phone Number"; ObjectID = "6YH-AS-ykm"; */
+"6YH-AS-ykm.text" = "Phone Number";
+
+/* Class = "UILabel"; text = "Show Avatar"; ObjectID = "8yM-tk-2ot"; */
+"8yM-tk-2ot.text" = "Show Avatar";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "99v-Z6-qjr"; */
+"99v-Z6-qjr.text" = "Email";
+
+/* Class = "UINavigationItem"; title = "Contacts"; ObjectID = "A50-iu-FWW"; */
+"A50-iu-FWW.title" = "Contacts";
+
+/* Class = "UILabel"; text = "English"; ObjectID = "Cpu-2R-GRW"; */
+"Cpu-2R-GRW.text" = "English";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "DAK-38-07Q"; */
+"DAK-38-07Q.placeholder" = "Email";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "Dfl-qt-F8H"; */
+"Dfl-qt-F8H.placeholder" = "First Name";
+
+/* Class = "UILabel"; text = "Must be atleast 6 characters long, contain 1 uppercase, 1 lowercase & 1 special character"; ObjectID = "G16-Tt-7uc"; */
+"G16-Tt-7uc.text" = "Must be atleast 6 characters long, contain 1 uppercase, 1 lowercase & 1 special character";
+
+/* Class = "UILabel"; text = "You Have No Blocked Users"; ObjectID = "G2b-hd-f8J"; */
+"G2b-hd-f8J.text" = "You Have No Blocked Users";
+
+/* Class = "UITextView"; text = "Camembert de normandie the big cheese stilton. Swiss chalk and cheese chalk and cheese paneer taleggio halloumi brie macaroni cheese. Port-salut red leicester ricotta cheese strings chalk and cheese gouda everyone loves everyone loves. Cheese triangles monterey jack cheese on toast pecorino everyone loves cow cheeseburger emmental. Cheesy feet.\n\nSquirty cheese roquefort red leicester. Croque monsieur queso everyone loves emmental who moved my cheese monterey jack cheese on toast manchego. Caerphilly rubber cheese the big cheese cheese on toast roquefort brie red leicester fromage frais. Taleggio manchego cheese slices edam cheesy feet port-salut mozzarella who moved my cheese. Cauliflower cheese caerphilly.\n\nDolcelatte hard cheese stilton. Caerphilly smelly cheese rubber cheese cheeseburger rubber cheese camembert de normandie everyone loves blue castello. Brie cottage cheese stinking bishop queso danish fontina cut the cheese cut the cheese cheddar. Edam dolcelatte red leicester swiss melted cheese cow paneer parmesan. Smelly cheese emmental.\n\nCheesy grin brie red leicester. Stilton st. agur blue cheese monterey jack mozzarella airedale cheesy feet cream cheese cheese and wine. Melted cheese babybel bavarian bergkase mascarpone babybel cheese and biscuits everyone loves caerphilly. Fromage frais.\n\nDolcelatte feta ricotta. Smelly cheese pepper jack brie bocconcini cauliflower cheese cheesy feet squirty cheese blue castello. Manchego babybel who moved my cheese cauliflower cheese feta dolcelatte smelly cheese cheese and biscuits. Pepper jack monterey jack edam halloumi queso cheesecake brie.\n\nMacaroni cheese cut the cheese bocconcini. Cheesy feet monterey jack pecorino cheesy feet the big cheese cheese and wine parmesan cheeseburger. Cheesecake chalk and cheese goat cottage cheese cow say cheese port-salut bavarian bergkase. Mascarpone lancashire melted cheese cheese strings camembert de normandie bavarian bergkase cream cheese cow. Cheese and biscuits parmesan.\n\nWhen the cheese comes out everybody's happy hard cheese blue castello. Parmesan halloumi chalk and cheese macaroni cheese say cheese babybel monterey jack stilton. Cauliflower cheese port-salut gouda smelly cheese cheese strings the big cheese goat everyone loves. Blue castello camembert de normandie pepper jack fondue cut the cheese pecorino paneer smelly cheese. Goat cheddar fromage.\n\nJarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk and cheese stilton gouda red leicester port-salut. Gouda cottage cheese mozzarella who moved my cheese cut the cheese brie danish fontina boursin. Stilton red leicester fondue blue castello edam."; ObjectID = "GoJ-oe-5zG"; */
+"GoJ-oe-5zG.text" = "Camembert de normandie the big cheese stilton. Swiss chalk and cheese chalk and cheese paneer taleggio halloumi brie macaroni cheese. Port-salut red leicester ricotta cheese strings chalk and cheese gouda everyone loves everyone loves. Cheese triangles monterey jack cheese on toast pecorino everyone loves cow cheeseburger emmental. Cheesy feet.\n\nSquirty cheese roquefort red leicester. Croque monsieur queso everyone loves emmental who moved my cheese monterey jack cheese on toast manchego. Caerphilly rubber cheese the big cheese cheese on toast roquefort brie red leicester fromage frais. Taleggio manchego cheese slices edam cheesy feet port-salut mozzarella who moved my cheese. Cauliflower cheese caerphilly.\n\nDolcelatte hard cheese stilton. Caerphilly smelly cheese rubber cheese cheeseburger rubber cheese camembert de normandie everyone loves blue castello. Brie cottage cheese stinking bishop queso danish fontina cut the cheese cut the cheese cheddar. Edam dolcelatte red leicester swiss melted cheese cow paneer parmesan. Smelly cheese emmental.\n\nCheesy grin brie red leicester. Stilton st. agur blue cheese monterey jack mozzarella airedale cheesy feet cream cheese cheese and wine. Melted cheese babybel bavarian bergkase mascarpone babybel cheese and biscuits everyone loves caerphilly. Fromage frais.\n\nDolcelatte feta ricotta. Smelly cheese pepper jack brie bocconcini cauliflower cheese cheesy feet squirty cheese blue castello. Manchego babybel who moved my cheese cauliflower cheese feta dolcelatte smelly cheese cheese and biscuits. Pepper jack monterey jack edam halloumi queso cheesecake brie.\n\nMacaroni cheese cut the cheese bocconcini. Cheesy feet monterey jack pecorino cheesy feet the big cheese cheese and wine parmesan cheeseburger. Cheesecake chalk and cheese goat cottage cheese cow say cheese port-salut bavarian bergkase. Mascarpone lancashire melted cheese cheese strings camembert de normandie bavarian bergkase cream cheese cow. Cheese and biscuits parmesan.\n\nWhen the cheese comes out everybody's happy hard cheese blue castello. Parmesan halloumi chalk and cheese macaroni cheese say cheese babybel monterey jack stilton. Cauliflower cheese port-salut gouda smelly cheese cheese strings the big cheese goat everyone loves. Blue castello camembert de normandie pepper jack fondue cut the cheese pecorino paneer smelly cheese. Goat cheddar fromage.\n\nJarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk and cheese stilton gouda red leicester port-salut. Gouda cottage cheese mozzarella who moved my cheese cut the cheese brie danish fontina boursin. Stilton red leicester fondue blue castello edam.";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "HUt-9g-tYN"; */
+"HUt-9g-tYN.text" = "100";
+
+/* Class = "UILabel"; text = "PenPal Version"; ObjectID = "IDN-C6-Xdr"; */
+"IDN-C6-Xdr.text" = "PenPal Version";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "IaV-pw-LXQ"; */
+"IaV-pw-LXQ.text" = "Confirm Password";
+
+/* Class = "UIButton"; normalTitle = "Tell a Friend"; ObjectID = "J7z-mE-zns"; */
+"J7z-mE-zns.normalTitle" = "Tell a Friend";
+
+/* Class = "UIButton"; normalTitle = "Log Out"; ObjectID = "JU7-KS-pPP"; */
+"JU7-KS-pPP.normalTitle" = "Log Out";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "JyG-Ap-yTj"; */
+"JyG-Ap-yTj.text" = "Full Name";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "LBO-ZO-ysB"; */
+"LBO-ZO-ysB.text" = "Full Name";
+
+/* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "Lfw-YO-Ca8"; */
+"Lfw-YO-Ca8.placeholder" = "Phone Number";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "N8F-QN-lKG"; */
+"N8F-QN-lKG.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "FULL NAME"; ObjectID = "NON-JB-VCh"; */
+"NON-JB-VCh.text" = "FULL NAME";
+
+/* Class = "UINavigationItem"; title = "Blocked Users"; ObjectID = "NTO-Xx-uqy"; */
+"NTO-Xx-uqy.title" = "Blocked Users";
+
+/* Class = "UILabel"; text = "Select language:"; ObjectID = "Ndw-rm-R0x"; */
+"Ndw-rm-R0x.text" = "Select language:";
+
+/* Class = "UIButton"; normalTitle = "Terms & Conditions"; ObjectID = "PKx-DL-6sb"; */
+"PKx-DL-6sb.normalTitle" = "Terms & Conditions";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-1"; ObjectID = "RfV-y4-wwJ"; */
+"RfV-y4-wwJ.headerTitle" = "Section-1";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "S3I-do-kKK"; */
+"S3I-do-kKK.text" = "Password";
+
+/* Class = "UILabel"; text = "Tap Profile Picture"; ObjectID = "SJn-lg-gv9"; */
+"SJn-lg-gv9.text" = "Tap Profile Picture";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "SWP-MV-zBy"; */
+"SWP-MV-zBy.placeholder" = "Confirm Password";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-2"; ObjectID = "WHt-vJ-2tv"; */
+"WHt-vJ-2tv.headerTitle" = "Section-2";
+
+/* Class = "UITabBarItem"; title = "Your Friends"; ObjectID = "WML-ck-04G"; */
+"WML-ck-04G.title" = "Your Friends";
+
+/* Class = "UIButton"; normalTitle = "Delete Account"; ObjectID = "WUq-YT-YnO"; */
+"WUq-YT-YnO.normalTitle" = "Delete Account";
+
+/* Class = "UINavigationItem"; title = "Chats"; ObjectID = "XL5-AL-0Si"; */
+"XL5-AL-0Si.title" = "Chats";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-2"; ObjectID = "Y0V-8H-krH"; */
+"Y0V-8H-krH.headerTitle" = "Section-2";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "Y3I-79-Vt0"; */
+"Y3I-79-Vt0.normalTitle" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Block User"; ObjectID = "YtK-th-Zd6"; */
+"YtK-th-Zd6.normalTitle" = "Block User";
+
+/* Class = "UIButton"; normalTitle = "Message"; ObjectID = "ZRW-z6-RAf"; */
+"ZRW-z6-RAf.normalTitle" = "Message";
+
+/* Class = "UILabel"; text = "123456"; ObjectID = "aOg-XV-k1Z"; */
+"aOg-XV-k1Z.text" = "123456";
+
+/* Class = "UILabel"; text = "Tap Profile Picture"; ObjectID = "cjA-17-eFa"; */
+"cjA-17-eFa.text" = "Tap Profile Picture";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "d66-Ms-N5T"; */
+"d66-Ms-N5T.normalTitle" = "Register";
+
+/* Class = "UIButton"; normalTitle = "Clean Cache"; ObjectID = "ddW-Px-fJI"; */
+"ddW-Px-fJI.normalTitle" = "Clean Cache";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "eH9-L3-9EG"; */
+"eH9-L3-9EG.placeholder" = "Last Name";
+
+/* Class = "UITabBarItem"; title = "Chats"; ObjectID = "eof-QZ-EgR"; */
+"eof-QZ-EgR.title" = "Chats";
+
+/* Class = "UIButton"; normalTitle = "Forgot password?"; ObjectID = "fSF-pM-laU"; */
+"fSF-pM-laU.normalTitle" = "Forgot password?";
+
+/* Class = "UILabel"; text = "Sign Up"; ObjectID = "fkq-5E-aal"; */
+"fkq-5E-aal.text" = "Sign Up";
+
+/* Class = "UILabel"; text = "FULL NAME"; ObjectID = "g2A-t5-ho4"; */
+"g2A-t5-ho4.text" = "FULL NAME";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "hOD-5p-z3L"; */
+"hOD-5p-z3L.normalTitle" = "Sign Up";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-1"; ObjectID = "hSN-iV-eqw"; */
+"hSN-iV-eqw.headerTitle" = "Section-1";
+
+/* Class = "UILabel"; text = "First Name"; ObjectID = "iEZ-qs-TxC"; */
+"iEZ-qs-TxC.text" = "First Name";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "iLw-mR-A06"; */
+"iLw-mR-A06.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "jtp-GV-7XS"; */
+"jtp-GV-7XS.placeholder" = "Email";
+
+/* Class = "UILabel"; text = "3/25/2020"; ObjectID = "lC8-ee-uHp"; */
+"lC8-ee-uHp.text" = "3/25/2020";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "lPK-KQ-2QY"; */
+"lPK-KQ-2QY.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "1234"; ObjectID = "mZ0-Q4-nYO"; */
+"mZ0-Q4-nYO.text" = "1234";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "nZJ-U3-x9Z"; */
+"nZJ-U3-x9Z.text" = "Email";
+
+/* Class = "UINavigationItem"; title = "Edit Profile"; ObjectID = "oc9-Dg-PTv"; */
+"oc9-Dg-PTv.title" = "Edit Profile";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "p5G-QM-kic"; */
+"p5G-QM-kic.text" = "Password";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-3"; ObjectID = "pJo-Lj-VUv"; */
+"pJo-Lj-VUv.headerTitle" = "Section-3";
+
+/* Class = "UIButton"; normalTitle = "Blocked Users"; ObjectID = "qlZ-YD-sRQ"; */
+"qlZ-YD-sRQ.normalTitle" = "Blocked Users";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "qoz-4b-gSA"; */
+"qoz-4b-gSA.normalTitle" = "Login";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "rcC-dX-Pnl"; */
+"rcC-dX-Pnl.title" = "Settings";
+
+/* Class = "UINavigationItem"; title = "Terms & Conditions"; ObjectID = "uKv-YT-ORT"; */
+"uKv-YT-ORT.title" = "Terms & Conditions";
+
+/* Class = "UITextField"; placeholder = "Last Name"; ObjectID = "v1z-3G-Nn3"; */
+"v1z-3G-Nn3.placeholder" = "Last Name";
+
+/* Class = "UITextField"; placeholder = "First Name"; ObjectID = "vC7-VW-p1h"; */
+"vC7-VW-p1h.placeholder" = "First Name";
+
+/* Class = "UILabel"; text = "last message 2 linesholds 2 lines holds 2 lines holds 2 lines"; ObjectID = "vTR-C2-Osm"; */
+"vTR-C2-Osm.text" = "last message 2 linesholds 2 lines holds 2 lines holds 2 lines";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "wzx-6x-Ius"; */
+"wzx-6x-Ius.text" = "Version";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "zCs-Hh-a9x"; */
+"zCs-Hh-a9x.title" = "Settings";
+
+/* Class = "UITableViewSection"; headerTitle = "Section-3"; ObjectID = "zMx-Jl-pOj"; */
+"zMx-Jl-pOj.headerTitle" = "Section-3";

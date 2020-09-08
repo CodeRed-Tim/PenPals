@@ -14,6 +14,8 @@ class StartScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        versionNumLabel.text = NSLocalizedString("Version", comment: "")
 
         //set app version
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
