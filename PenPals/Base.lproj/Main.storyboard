@@ -80,6 +80,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="vrs-1a-ZpF"/>
                     <connections>
+                        <outlet property="loginButton" destination="lPK-KQ-2QY" id="6gA-DD-yqA"/>
+                        <outlet property="signUpButton" destination="hOD-5p-z3L" id="Vnc-Rm-tpG"/>
+                        <outlet property="versionLabel" destination="wzx-6x-Ius" id="CjT-hM-tVq"/>
                         <outlet property="versionNumLabel" destination="mZ0-Q4-nYO" id="DeM-Ey-dvQ"/>
                     </connections>
                 </viewController>
@@ -223,6 +226,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="DAK-38-07Q" id="IPd-E0-kV0"/>
                         <outlet property="forgotPasswordButton" destination="fSF-pM-laU" id="qiW-Le-NdX"/>
+                        <outlet property="passwordLab" destination="S3I-do-kKK" id="5Mf-CB-biR"/>
                         <outlet property="passwordTextField" destination="iLw-mR-A06" id="uhK-EJ-2FK"/>
                         <outlet property="signUpButton" destination="Y3I-79-Vt0" id="bp7-7h-SrH"/>
                     </connections>
@@ -267,11 +271,6 @@
                                                     <userDefinedRuntimeAttribute type="image" keyPath="customShowSecureTextImage" value="locked"/>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="customHideSecureTextImage" value="openLock"/>
                                                 </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfw-YO-Ca8">
-                                                <rect key="frame" x="18" y="369" width="382" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="slateLogo" translatesAutoresizingMaskIntoConstraints="NO" id="D2H-nD-HKU">
                                                 <rect key="frame" x="131" y="25" width="176" height="101"/>
@@ -369,8 +368,8 @@
                                                 <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select language:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndw-rm-R0x">
-                                                <rect key="frame" x="39" y="554" width="135" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Language:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndw-rm-R0x">
+                                                <rect key="frame" x="39" y="554" width="140.5" height="22"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -421,6 +420,11 @@
                                                 <color key="textColor" white="0.2719302939497717" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfw-YO-Ca8">
+                                                <rect key="frame" x="18" y="369" width="382" height="34"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.45098039220000002" green="0.58431372550000005" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
@@ -513,13 +517,25 @@
                     <size key="freeformSize" width="414" height="1175"/>
                     <connections>
                         <outlet property="avatarImageView" destination="nY5-QN-yjJ" id="DH7-Hu-Z5h"/>
+                        <outlet property="confirmPasswordLabel" destination="IaV-pw-LXQ" id="Hfl-fe-nra"/>
                         <outlet property="confirmPasswordTextField" destination="SWP-MV-zBy" id="k4j-U4-pPA"/>
+                        <outlet property="emailLabel" destination="99v-Z6-qjr" id="eI1-ZN-hcs"/>
                         <outlet property="emailTextField" destination="jtp-GV-7XS" id="JMQ-Rr-Goi"/>
+                        <outlet property="firstNameLabel" destination="iEZ-qs-TxC" id="cOD-Ik-XFL"/>
                         <outlet property="firstNameTextField" destination="vC7-VW-p1h" id="KIA-Qc-mBO"/>
                         <outlet property="languagePicker" destination="POZ-ex-QpL" id="zdk-G3-lt0"/>
+                        <outlet property="lastNameLabel" destination="0ts-UP-osc" id="2eF-AB-G3y"/>
                         <outlet property="lastNameTextField" destination="v1z-3G-Nn3" id="BXp-Kg-peK"/>
+                        <outlet property="passwordLabel" destination="p5G-QM-kic" id="a3v-5P-Q2H"/>
+                        <outlet property="passwordRulesLabel" destination="G16-Tt-7uc" id="73K-NZ-Yt2"/>
                         <outlet property="passwordTextField" destination="N8F-QN-lKG" id="u7Y-Yg-wLE"/>
+                        <outlet property="phoneNumberLabel" destination="6YH-AS-ykm" id="RcT-Xr-70e"/>
                         <outlet property="phoneNumberTextField" destination="Lfw-YO-Ca8" id="GB6-dP-va2"/>
+                        <outlet property="registerButton" destination="d66-Ms-N5T" id="Zlw-aa-jhA"/>
+                        <outlet property="selectLabel" destination="Ndw-rm-R0x" id="6ye-Fb-ZtJ"/>
+                        <outlet property="selectPpLabel" destination="1Nb-cx-ZtP" id="aih-Xp-XPz"/>
+                        <outlet property="signUpLabel" destination="fkq-5E-aal" id="BlW-FW-uzv"/>
+                        <outlet property="tapPpLabel" destination="cjA-17-eFa" id="cSb-y5-6W4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4AG-mv-UMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1007,7 +1023,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PenPal Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDN-C6-Xdr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slate Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IDN-C6-Xdr">
                                                     <rect key="frame" x="20" y="11.5" width="169" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="169" id="RDb-wH-Q74"/>
@@ -1104,10 +1120,18 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blockedUsersButton" destination="qlZ-YD-sRQ" id="kn4-T8-P9j"/>
+                        <outlet property="cleanCacheButton" destination="ddW-Px-fJI" id="fe2-YB-GwT"/>
+                        <outlet property="deleteAccountButton" destination="WUq-YT-YnO" id="wSi-c2-FtO"/>
                         <outlet property="deleteUserAccountButton" destination="WUq-YT-YnO" id="XXX-39-Hn1"/>
                         <outlet property="fullNamesLabel" destination="JyG-Ap-yTj" id="fxA-SB-eeO"/>
+                        <outlet property="logOutButton" destination="JU7-KS-pPP" id="Ana-dc-4P9"/>
                         <outlet property="profileImageView" destination="5h5-0v-4BC" id="0sr-Tg-IGq"/>
+                        <outlet property="showAvatarLabel" destination="8yM-tk-2ot" id="Xs7-o9-I9s"/>
                         <outlet property="showAvatarStatusSwitch" destination="nga-0J-gfp" id="Tlc-Oz-vxQ"/>
+                        <outlet property="slateVersionLabel" destination="IDN-C6-Xdr" id="cfA-X9-C1g"/>
+                        <outlet property="tCButton" destination="PKx-DL-6sb" id="tYS-fs-ZGQ"/>
+                        <outlet property="tellFriendButton" destination="J7z-mE-zns" id="6Iy-Vy-A3X"/>
                         <outlet property="versionLabel" destination="aOg-XV-k1Z" id="xps-9T-6iy"/>
                     </connections>
                 </tableViewController>
@@ -1302,6 +1326,7 @@
                         <outlet property="firstNametextField" destination="Dfl-qt-F8H" id="TrL-40-6ae"/>
                         <outlet property="lastNameTextField" destination="eH9-L3-9EG" id="aDi-N1-t5S"/>
                         <outlet property="saveButtonOutlet" destination="Jy1-P5-Lay" id="srV-Uq-6bf"/>
+                        <outlet property="tapPpLabel" destination="SJn-lg-gv9" id="DlF-3A-jN9"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YIH-aS-pfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

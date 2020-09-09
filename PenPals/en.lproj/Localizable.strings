@@ -9,3 +9,52 @@
 "Sign Up" = "Sign Up";
 
 "Version" = "Version";
+
+// login page
+
+"Email" = "Email";
+
+"Password" = "Password";
+
+"Forgot Password" = "Forgot Password";
+
+// sign up page
+"First Name" = "First Name";
+
+"Last Name" = "Last Name";
+
+"Phone Number" = "Phone Number";
+
+"Password Rules" = "Must be atleast 6 characters long, contain 1 uppercase, 1 lowercase & 1 special character";
+
+"Confirm Password" = "Confirm Password";
+
+"Select Language" = "Select Language";
+
+"Select Profile Picture" = "Select Profile Picture";
+
+"Tap Profile Picture" = "Tap Profile Picture";
+
+//settings
+
+"Cache Cleaned!" = "Cache Cleaned!";
+
+"Couldn't clean Media files" = "Couldn't clean Media files";
+
+"Hey! Lets chat on Slate " = "Hey! Lets chat on Slate";
+
+"Unblock" = "Unblock";
+
+"Delete Account" = "Delete Account";
+
+"Are You Sure" = "Are you sure you want to delete your account?";
+
+"Delete" = "Delete";
+
+"Cancel" = "Cancel";
+
+"Couldn't delete user" = "Couldn't delete user";
+
+
+
+

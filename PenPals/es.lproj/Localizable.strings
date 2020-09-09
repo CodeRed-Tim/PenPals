@@ -6,6 +6,108 @@
   Copyright © 2020 SeniorProject. All rights reserved.
 */
 
+// start page
+
 "Sign Up" = "Registrar";
 
 "Version" = "Versión";
+
+// login page
+
+"Email" = "Email";
+
+"Password" = "Contraseña";
+
+"Forgot Password" = "¿lividar la Contraseña?";
+
+// sign up page
+"First Name" = "Nombre de Pila";
+
+"Last Name" = "Apellido";
+
+"Phone Number" = "Teléfono";
+
+"Password Rules" = "Debe tener al menos 6 caracteres de largo, contener 1 mayúscula, 1 minúscula y 1 carácter especial";
+
+"Confirm Password" = "Confirmar la Contraseña";
+
+"Select Language" = "Seleccionar Idioma";
+
+"Select Profile Picture" = "Seleccionar Imagen de Perfil";
+
+"Tap Profile Picture" = "Toque la Imagen del Perfil";
+
+"Arabic" = "Árabe";
+"Bengali" = "Bengalí";
+"Chinese" = "Chino";
+"Dutch" = "Holandés";
+"English" = "Inglés";
+"French" = "Francés";
+"German" = "Alemán";
+"Haitian" = "Haitiano";
+"Hindi" = "Hindi";
+"Italian" = "Italiano";
+"Japenese" = "Japonés";
+"Korean" = "Coreano";
+"Malay" = "Malayo";
+"Portuguese" = "Portugués";
+"Romanian" = "Rumano";
+"Russian" = "Ruso";
+"Spanish" = "Español";
+
+// Main Chat View
+
+"Chats" = "Menajes";
+
+// Contact View
+
+"Your Friends" = "Tus Amigos";
+
+//Profile View
+
+
+// Settings
+
+"Settings" = "Escenario";
+
+"Blocked Users" = "Usuarios Bloqueados";
+
+"Show Avatar" = "Mostrar Avatar";
+
+"Clean Cache" = "Caché Limpia";
+
+"Tell a Friend" = "Decirle a un Amigo";
+
+"T & C" = "Términos y Condiciones";
+
+"Slate Version" = "Slate Versión";
+
+"Log Out" = "Cerrar Sesión";
+
+"Delete Account" = "Eliminar Cuenta";
+
+"Unblock" = "Desatascar";
+
+"Cache Cleaned!" = "¡Caché Limpiada!";
+
+"Couldn't clean Media files" = "no podía limpiar archivos multimedia";
+
+"Hey! Lets chat on Slate " = "¡Oye! Vamos a chatear en Slate";
+
+"Delete Account" = "Eliminar Cuenta";
+
+"Are You Sure" = "¿Confirma que desea eliminar su cuenta?";
+
+"Delete" = "Borrar";
+
+"Cancel" = "Cancelar";
+
+"Couldn't delete user" = "No se pudo eliminar el usuario";
+
+// Edit Profile
+
+"Edit Profile" = "Editar Perfil";
+
+// Blocked Users
+
+"Notifcation Label" = "No Tiene Usuarios Bloqueados";

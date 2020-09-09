@@ -14,6 +14,9 @@ class T_CViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.largeTitleDisplayMode = .never
+        
+        self.title = NSLocalizedString("T & C", comment: "")
+        
 
 
     }

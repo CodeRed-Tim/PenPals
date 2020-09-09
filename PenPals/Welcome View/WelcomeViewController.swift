@@ -17,6 +17,7 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var loginLabel: UILabel!
     
+    @IBOutlet weak var passwordLab: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     
@@ -27,8 +28,15 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         //Localization
-        loginLabel.text? = NSLocalizedString("Sign Up", comment: "")
+        passwordLab.text = NSLocalizedString("Password", comment: "")
         
+        forgotPasswordButton.setTitle(NSLocalizedString("Forgot Password", comment: ""), for: .normal)
+        
+        signUpButton.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
+        
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
+
+
         signUpButton.layer.borderWidth = 2
         
         let myBorderColor = UIColor.white

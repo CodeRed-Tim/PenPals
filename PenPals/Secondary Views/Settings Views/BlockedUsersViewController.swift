@@ -24,6 +24,9 @@ class BlockedUsersViewController: UIViewController, UITableViewDataSource, UITab
         navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
         
+        self.title = NSLocalizedString("Blocked Users", comment: "")
+        notificationLabel.text = NSLocalizedString("Notifcation Label", comment: "")
+        
         loadUsers()
 
     }
@@ -59,7 +62,7 @@ class BlockedUsersViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Unblock"
+        return NSLocalizedString("Unblock", comment: "")
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

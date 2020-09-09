@@ -25,7 +25,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Your Friends"
+        self.title = NSLocalizedString("Your Friends", comment: "")
         navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
         
@@ -34,6 +34,11 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         definesPresentationContext = true
+        
+        tabBarController?.tabBar.items?[0].title = NSLocalizedString("Chats", comment: "")
+        tabBarController?.tabBar.items?[1].title = NSLocalizedString("Your Friends", comment: "")
+        tabBarController?.tabBar.items?[2].title = NSLocalizedString("Settings", comment: "")
+
         
         
         self.loadTheFriendUsers()

@@ -2,6 +2,10 @@
 /* Class = "UITableViewSection"; headerTitle = "Section-4"; ObjectID = "09z-9z-NWZ"; */
 "09z-9z-NWZ.headerTitle" = "Section-4";
 
+"Sign Up" = "Registrar";
+
+"Version" = "Versión";
+
 /* Class = "UILabel"; text = "Last Name"; ObjectID = "0ts-UP-osc"; */
 "0ts-UP-osc.text" = "Last Name";
 

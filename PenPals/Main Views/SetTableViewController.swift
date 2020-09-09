@@ -13,9 +13,17 @@ class SetTableViewController: UITableViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var fullNamesLabel: UILabel!
+    @IBOutlet weak var blockedUsersButton: UIButton!
+    @IBOutlet weak var showAvatarLabel: UILabel!
+    @IBOutlet weak var cleanCacheButton: UIButton!
+    @IBOutlet weak var tellFriendButton: UIButton!
+    @IBOutlet weak var tCButton: UIButton!
+    @IBOutlet weak var slateVersionLabel: UILabel!
     @IBOutlet weak var deleteUserAccountButton: UIButton!
     @IBOutlet weak var showAvatarStatusSwitch: UISwitch!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var deleteAccountButton: UIButton!
     
     let userDefaults = UserDefaults.standard
     
@@ -41,6 +49,28 @@ class SetTableViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.tableFooterView = UIView()
+        
+        navigationItem.title = NSLocalizedString("Settings", comment: "")
+        
+        tabBarController?.tabBar.items?[0].title = NSLocalizedString("Chats", comment: "")
+        tabBarController?.tabBar.items?[1].title = NSLocalizedString("Your Friends", comment: "")
+        tabBarController?.tabBar.items?[2].title = NSLocalizedString("Settings", comment: "")
+        
+        blockedUsersButton.setTitle(NSLocalizedString("Blocked Users", comment: ""), for: .normal)
+        showAvatarLabel.text = NSLocalizedString("Show Avatar", comment: "")
+        cleanCacheButton.setTitle(NSLocalizedString("Clean Casche", comment: ""), for: .normal)
+        tellFriendButton.setTitle(NSLocalizedString("Tell a Friend", comment: ""), for: .normal)
+        
+        
+        tCButton.setTitle(NSLocalizedString("T & C", comment: ""), for: .normal)
+        slateVersionLabel.text = NSLocalizedString("Slate Version", comment: "")
+//        versionLabel.text = NSLocalizedString("Version Number", comment: "")
+        
+        logOutButton.setTitle(NSLocalizedString("Log Out", comment: ""), for: .normal)
+        deleteAccountButton.setTitle(NSLocalizedString("Delete Account", comment: ""), for: .normal)
+        
+        
+
         
     }
     
@@ -103,7 +133,7 @@ class SetTableViewController: UITableViewController {
             for file in files {
                 try FileManager.default.removeItem(atPath: "\(getDocumentsURL().path)/\(file)")            }
             
-            hud.textLabel.text = "Cache Cleaned!"
+            hud.textLabel.text = NSLocalizedString("Cache Cleaned!", comment: "")
             hud.indicatorView = JGProgressHUDSuccessIndicatorView()
             hud.show(in: self.view)
             hud.dismiss(afterDelay: 2.0, animated: true)
@@ -111,7 +141,7 @@ class SetTableViewController: UITableViewController {
             
         } catch {
             
-            hud.textLabel.text = "Couldn't clean Media files."
+            hud.textLabel.text = NSLocalizedString("Couldn't clean Media files", comment: "")
             hud.indicatorView = JGProgressHUDErrorIndicatorView()
             hud.show(in: self.view)
             hud.dismiss(afterDelay: 2.0, animated: true)
@@ -122,13 +152,14 @@ class SetTableViewController: UITableViewController {
     @IBAction func tellFriendButtonTapped(_ sender: Any) {
         
         //implement translation for message
-        let text = "Hey! Lets chat on PenPal \(kAPPURL)"
+        let text = NSLocalizedString("Hey! Lets chat on Slate ", comment: "") + " \(kAPPURL)"
+//        "Hey! Lets chat on Slate \(kAPPURL)"
         let objectsToShare : [Any] = [text]
         let activityViewController = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
         
         activityViewController.popoverPresentationController?.sourceView = self.view
         
-        activityViewController.setValue("Lets Chat on PenPal", forKey: "subject")
+        activityViewController.setValue(NSLocalizedString("Hey! Lets chat on Slate ", comment: ""), forKey: "subject")
         
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -147,15 +178,19 @@ class SetTableViewController: UITableViewController {
     @IBAction func deleteAccountButtonTapped(_ sender: Any) {
         
         //implement translation
-        let optionMenu = UIAlertController(title: "Delete Account", message: "Are you sure you want to delete your account?", preferredStyle: .actionSheet)
+        let firstTitle = NSLocalizedString("Delete Account", comment: "")
+        let message = NSLocalizedString("Are you sure", comment: "")
+        let secondTitle = NSLocalizedString("Delete", comment: "")
         
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (alert) in
+        let optionMenu = UIAlertController(title: firstTitle, message: message, preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: secondTitle, style: .destructive) { (alert) in
             
             self.deleteUser()
             
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (alert) in
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (alert) in
             
         }
         
@@ -237,7 +272,7 @@ class SetTableViewController: UITableViewController {
                 //if we can't delete user
                 DispatchQueue.main.async {
                     
-                    self.hud.textLabel.text = "Couldn't delete user"
+                    self.hud.textLabel.text = NSLocalizedString("Couldn't delete user", comment: "")
                     self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
                     self.hud.dismiss(afterDelay: 2.0, animated: true)
                     

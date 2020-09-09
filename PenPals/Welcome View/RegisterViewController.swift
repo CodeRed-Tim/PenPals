@@ -14,6 +14,21 @@ import FlagPhoneNumber
 import CountryPickerView
 
 class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate {
+
+    
+    
+    @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var passwordRulesLabel: UILabel!
+    @IBOutlet weak var confirmPasswordLabel: UILabel!
+    @IBOutlet weak var selectLabel: UILabel!
+    @IBOutlet weak var selectPpLabel: UILabel!
+    @IBOutlet weak var tapPpLabel: UILabel!
+    
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -24,6 +39,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var languageDropDown: UITextField!
     @IBOutlet weak var languagePicker: UIPickerView!
+    @IBOutlet weak var registerButton: UIButton!
     
     weak var cpvTextField: CountryPickerView!
     let cpvInternal = CountryPickerView()
@@ -33,15 +49,41 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var avatarImage: UIImage?
     var selectedLanguage: String?
     
-    var languageList = ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
+    var languageList = [NSLocalizedString("Arabic", comment: ""), NSLocalizedString("Bengali", comment: ""), NSLocalizedString("Chinese", comment: ""), NSLocalizedString("Dutch", comment: ""), NSLocalizedString("English", comment: ""), NSLocalizedString("French", comment: ""), NSLocalizedString("German", comment: ""), NSLocalizedString("Haitian", comment: ""), NSLocalizedString("Hindi", comment: ""), NSLocalizedString("Italian", comment: ""), NSLocalizedString("Japenese", comment: ""), NSLocalizedString("Korean", comment: ""), NSLocalizedString("Malay", comment: ""), NSLocalizedString("Portuguese", comment: ""), NSLocalizedString("Romanian", comment: ""), NSLocalizedString("Russian", comment: ""), NSLocalizedString("Spanish", comment: "")]
     
     var startIndex: Int?
     
     var hud = JGProgressHUD(style: .dark)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Localization
+        signUpLabel.text = NSLocalizedString("Sign Up", comment: "")
+        firstNameLabel.text = NSLocalizedString("First Name", comment: "")
+        firstNameTextField.placeholder = NSLocalizedString("First Name", comment: "")
+        
+        lastNameLabel.text = NSLocalizedString("Last Name", comment: "")
+        lastNameTextField.placeholder = NSLocalizedString("Last Name", comment: "")
+        
+        emailLabel.text = NSLocalizedString("Email", comment: "")
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "")
+        
+        phoneNumberLabel.text = NSLocalizedString("Phone Number", comment: "")
+        phoneNumberTextField.placeholder = NSLocalizedString("Phone Number", comment: "")
+        
+        passwordLabel.text = NSLocalizedString("Passsword", comment: "")
+        passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
+        passwordRulesLabel.text = NSLocalizedString("Password Rules", comment: "")
+        
+        confirmPasswordLabel.text = NSLocalizedString("Confirm Password", comment: "")
+        confirmPasswordTextField.placeholder = NSLocalizedString("Confirm Password", comment: "")
+        
+        selectLabel.text = NSLocalizedString("Select Language", comment: "")
+        selectPpLabel.text = NSLocalizedString("Select Profile Picture", comment: "")
+        tapPpLabel.text = NSLocalizedString("Tap Profile Picture", comment: "")
+        
+        registerButton.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
         
         avatarImageView.isUserInteractionEnabled = true
         
@@ -53,9 +95,20 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
         
-        let cp = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 120, height: 20))
+        let cp = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
+//        cp.delegate = self
+//        cp.dataSource = self
+        [ cpvTextField, cpvInternal].forEach {
+            $0?.dataSource = self
+        }
+        
+        cpvInternal.delegate = self
+        
+//        cellImageViewSize(in: cp)
+        
         phoneNumberTextField.leftView = cp
         phoneNumberTextField.leftViewMode = .always
+        
         self.cpvTextField = cp
         
         cpvTextField.tag = 2
@@ -63,6 +116,9 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
     }
     
+    func cellImageViewSize(in countryPickerView: CountryPickerView) -> CGSize {
+        return cpvTextField.flagImageView.sizeThatFits(CGSize(width: 2000, height: 2000))
+    }
     //MARK: Picker menu functions
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -376,6 +432,15 @@ extension String {
     
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
+    }
+}
+
+extension RegisterViewController: CountryPickerViewDelegate {
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
+        // Only countryPickerInternal has it's delegate set
+        let title = "Selected Country"
+        let message = "Name: \(country.name) \nCode: \(country.code) \nPhone: \(country.phoneCode)"
+//        showAlert(title: title, message: message)
     }
 }
 

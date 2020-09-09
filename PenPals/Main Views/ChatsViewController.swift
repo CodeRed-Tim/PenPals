@@ -47,6 +47,13 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         
+        navigationItem.title = NSLocalizedString("Chats", comment: "")
+        
+        tabBarController?.tabBar.items?[0].title = NSLocalizedString("Chats", comment: "")
+        tabBarController?.tabBar.items?[1].title = NSLocalizedString("Your Friends", comment: "")
+        tabBarController?.tabBar.items?[2].title = NSLocalizedString("Settings", comment: "")
+
+        
         
         //setTableViewHeader()
     }

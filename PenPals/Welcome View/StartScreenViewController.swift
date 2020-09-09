@@ -10,13 +10,18 @@ import UIKit
 
 class StartScreenViewController: UIViewController {
 
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var versionNumLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        versionNumLabel.text = NSLocalizedString("Version", comment: "")
-
+        //Localization
+        signUpButton.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
+        versionLabel.text = NSLocalizedString("Version", comment: "")
+        
         //set app version
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             

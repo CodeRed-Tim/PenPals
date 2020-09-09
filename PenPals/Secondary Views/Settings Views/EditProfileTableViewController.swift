@@ -15,6 +15,7 @@ class EditProfileTableViewController: UITableViewController, ImagePickerDelegate
 
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var tapPpLabel: UILabel!
     @IBOutlet weak var firstNametextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet var avatarTapGesturerecognizer: UITapGestureRecognizer!
@@ -30,6 +31,11 @@ class EditProfileTableViewController: UITableViewController, ImagePickerDelegate
         navigationItem.largeTitleDisplayMode = .never
         
         tableView.tableFooterView = UIView()
+        
+        self.title = NSLocalizedString("Edit Profile", comment: "")
+        tapPpLabel.text = NSLocalizedString("Tap Profile Picture", comment: "")
+        firstNametextField.placeholder = NSLocalizedString("First Name", comment: "")
+        lastNameTextField.placeholder = NSLocalizedString("Last Name", comment: "")
         
         setUpUI()
 
