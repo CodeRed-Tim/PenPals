@@ -122,19 +122,19 @@ class ChatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             tempRecent = recentChats[indexPath.row]
         }
         
-        var muteTitle = "Unmute"
+        var muteTitle = NSLocalizedString("Unmute", comment: "")
         var mute = false
         
         //check if the user is in the array of members that will recieve push notifications
         // if they are the user is not muted
         if (tempRecent[kMEMBERSTOPUSH] as! [String]).contains(FUser.currentId()) {
             
-            muteTitle = "Mute"
+            muteTitle = NSLocalizedString("Mute", comment: "")
             mute = true
         }
         
         // create delete button
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+        let deleteAction = UITableViewRowAction(style: .default, title: NSLocalizedString("Delete", comment: "")) { (action, indexPath) in
             
             self.recentChats.remove(at: indexPath.row)
             

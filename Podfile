@@ -25,8 +25,6 @@ pod 'IDMPhotoBrowser'
 pod 'ImagePicker'
 pod 'Gallery'
 
-pod 'Firebase/MLNLTranslate'
-
 pod 'PasswordTextField'
 
 pod 'FlagPhoneNumber'

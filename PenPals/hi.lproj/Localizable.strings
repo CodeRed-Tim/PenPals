@@ -1,0 +1,176 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+
+"Login" = "लॉग इन करें";
+
+"Sign Up" = "साइन अप करें";
+
+"Version" = "संस्करण";
+
+// login page
+
+"Email" = "संस्करण";
+
+"Password" = "कुंजिका";
+
+"Forgot Password" = "पासवर्ड भूल गए?";
+
+// sign up page
+"First Name" = "पहला नाम";
+
+"Last Name" = "अंतिम नाम";
+
+"Phone Number" = "फ़ोन नंबर";
+
+"Password Rules" = "कम से कम 6 अक्षर लंबे होने चाहिए, इसमें 1 अपरकेस लेटर, 1 लोअरकेस लेटर और 1 स्पेशल कैरेक्टर होना चाहिए";
+
+"Confirm Password" = "पुष्टि करें";
+
+"Select Language" = "भाषा का चयन करें:";
+
+"Select Profile Picture" = "प्रोफ़ाइल चित्र चुनें:";
+
+"Tap Profile Picture" = "प्रोफ़ाइल चित्र टैप करें";
+
+"Arabic" = "अरबी";
+"Standard Chinese (Mandarin)" = "मानक चीनी (मंदारिन)";
+"English" = "अंग्रेज़ी";
+"French" = "फ्रेंच";
+"German" = "जर्मन";
+"Hindi" = "हिन्दी";
+"Italian" = "इतालवी";
+"Japanese" = "जापानी";
+"Korean" = "कोरियाई";
+"Portuguese" = "पुर्तगाली";
+"Russian" = "रूसी";
+"Spanish" = "स्पेनिश";
+
+// Main Chat View
+
+"Chats" = "संदेश";
+
+//Photo gallery overview
+
+"Picture Gallery" = "चित्रशाला";
+
+// Contact View
+
+"Your Friends" = "आपके मित्र";
+
+//Profile View
+
+"Profile" = "प्रोफ़ाइल";
+
+"Message" = "संदेश";
+
+"Block User" = "उपयोगकर्ता को रोक देना, ब्लॉक यूजर";
+
+"Unblock User" = "उपयोगकर्ता को अनब्लॉक करें";
+
+"Not Available" = "यह उपयोगकर्ता कॉल के लिए उपलब्ध नहीं है!";
+
+// Settings
+
+"Settings" = "समायोजन";
+
+"Blocked Users" = "रोके गए उपयोगकर्ता";
+
+"Show Avatar" = "अवतार दिखाओ";
+
+"Clean Cache" = "साफ कैश";
+
+"Tell a Friend" = "दोस्त को बताओ";
+
+"T & C" = "नियम और शर्तें";
+
+"Slate Version" = "स्लेट संस्करण";
+
+"Log Out" = "लॉग आउट";
+
+"Delete Account" = "खाता हटा दो";
+
+"Unblock" = "अनब्लॉक";
+
+"Cache Cleaned!" = "कैश साफ!";
+
+"Couldn't clean Media files" = "मीडिया फ़ाइलों को साफ़ नहीं कर सका";
+
+"Hey! Lets chat on Slate " = "नमस्ते! चलो स्लेट पर चैट करते हैं";
+
+"Delete Account" = "खाता हटा दो";
+
+"Are You Sure" = "क्या आपको यकीन है?";
+
+"Delete" = "हटाएं";
+
+"Cancel" = "रद्द करना";
+
+"Couldn't delete user" = "उपयोगकर्ता को हटा नहीं सका";
+
+// Edit Profile
+
+"Edit Profile" = "प्रोफ़ाइल संपादित करें";
+
+// Blocked Users
+
+"Notifcation Label" = "कोई अवरुद्ध उपयोगकर्ता नहीं है";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "ईमेल या पासवर्ड गायब है!";
+
+"Loggin you in..." = "आपको लॉग इन कर रहा है ...";
+
+"Sucess!" = "सफलता!";
+
+"Invalid Phone Number Format!" = "अमान्य फ़ोन नंबर प्रारूप!";
+
+"Passwords don't match!" = "पासवर्ड मेल नहीं खाते!";
+
+"All Fields are Required!" = "सभी फ़ील्ड आवश्यक हैं!";
+
+"Registering you..." = "आपको पंजीकृत कर रहा है ...";
+
+"Select a Country" = "एक देश चुनें";
+
+"Unmute" = "अनम्यूट";
+
+"Mute" = "मूक";
+
+"Just now" = "अभी";
+
+"min" = "मिनट";
+
+"mins" = "मिनट";
+
+"hour" = "घंटा";
+
+"hours" = "घंटे";
+
+// extras
+
+"Add Friend" = "दोस्त जोड़ें";
+
+"Please enter phone number" = "कृपया फ़ोन नंबर दर्ज करें:";
+
+"Add" = "जोड़ना";
+
+"Contact Added Successfully." = "संपर्क सफलतापूर्वक जोड़ा गया";
+
+"Not Found" = "नहीं मिला";
+
+"Phone Number not found." = "फ़ोन नंबर नहीं मिला.";
+
+"Ok" = "ठीक";
+
+"Contact exists" = "संपर्क मौजूद है";
+
+"This contact number already exists." = "यह संपर्क नंबर पहले से मौजूद है.";

@@ -31,27 +31,27 @@
 
 "Confirm Password" = "Confirmar la Contraseña";
 
-"Select Language" = "Seleccionar Idioma";
+"Select Language" = "Seleccionar Idioma:";
 
-"Select Profile Picture" = "Seleccionar Imagen de Perfil";
+"Select Profile Picture" = "Seleccionar Imagen de Perfil:";
 
 "Tap Profile Picture" = "Toque la Imagen del Perfil";
 
 "Arabic" = "Árabe";
-"Bengali" = "Bengalí";
-"Chinese" = "Chino";
-"Dutch" = "Holandés";
+//"Bengali" = "Bengalí";
+"Standard Chinese (Mandarin)" = "Chino Estándar (Mandarín)";
+//"Dutch" = "Holandés";
 "English" = "Inglés";
 "French" = "Francés";
 "German" = "Alemán";
-"Haitian" = "Haitiano";
+//"Haitian" = "Haitiano";
 "Hindi" = "Hindi";
 "Italian" = "Italiano";
 "Japenese" = "Japonés";
 "Korean" = "Coreano";
-"Malay" = "Malayo";
+//"Malay" = "Malayo";
 "Portuguese" = "Portugués";
-"Romanian" = "Rumano";
+//"Romanian" = "Rumano";
 "Russian" = "Ruso";
 "Spanish" = "Español";
 
@@ -59,12 +59,25 @@
 
 "Chats" = "Menajes";
 
+//Photo gallery overview
+
+"Picture Gallery" = "Galería de fotos";
+
 // Contact View
 
 "Your Friends" = "Tus Amigos";
 
 //Profile View
 
+"Profile" = "Perfil";
+
+"Message" = "Mensaje";
+
+"Block User" = "Bloquear Usuario";
+
+"Unblock User" = "Desbloquear Usuario";
+
+"Not Available" = "¡Este usuario no está disponible para la conversación!";
 
 // Settings
 
@@ -111,3 +124,55 @@
 // Blocked Users
 
 "Notifcation Label" = "No Tiene Usuarios Bloqueados";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "¡Falta correo electrónico o contraseña!";
+
+"Loggin you in..." = "Iniciando sesión...";
+
+"Sucess!" = "¡Éxito!";
+
+"Invalid Phone Number Format!" = "¡Formato de número de teléfono no válido!";
+
+"Passwords don't match!" = "¡Las contraseñas no hacen juego!";
+
+"All Fields are Required!" = "¡Todos los campos son obligatorios!";
+
+"Registering you..." = "Registrarte...";
+
+"Select a Country" = "Seleccione un país";
+
+"Unmute" = "No Muda";
+
+"Mute" = "Muda";
+
+"Just now" = "Justo ahora";
+
+"min" = "min";
+
+"mins" = "mins";
+
+"hour" = "hora";
+
+"hours" = "horas";
+
+//extrs
+"Add Friend" = "Agregar amigo";
+
+"Please enter phone number" = "Introduzca el número de teléfono:";
+
+"Add" = "Sumar";
+
+"Contact Added Successfully." = "Contacto Añadido con éxito.";
+
+"Not Found" = "No Encontrado";
+
+"Phone Number not found." = "Número de teléfono no encontrado";
+
+"Ok" = "Esá bien";
+
+"Contact exists" = "Contacto ya existe";
+
+"This contact number already exists." = "Este número de contacto ya existe.";

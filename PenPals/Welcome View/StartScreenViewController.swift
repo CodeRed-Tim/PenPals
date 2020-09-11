@@ -19,6 +19,7 @@ class StartScreenViewController: UIViewController {
         super.viewDidLoad()
         
         //Localization
+        loginButton.setTitle(NSLocalizedString("Login", comment: ""), for: .normal)
         signUpButton.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
         versionLabel.text = NSLocalizedString("Version", comment: "")
         

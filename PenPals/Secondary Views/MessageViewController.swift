@@ -774,7 +774,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     }
     
     @objc func infoButtonPressed() {
-        let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "mediaView") as! PicturesCollectionViewController
+        let mediaVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "mediaView") as! GalleryCollectionViewController
         
         mediaVC.allImageLinks = allPictureMessages
         

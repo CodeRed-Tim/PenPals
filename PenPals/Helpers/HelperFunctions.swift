@@ -70,21 +70,21 @@ func timeElapsed(date: Date) -> String {
     
     // check how much time has passed and label accodingly
     if (seconds < 60) {
-        elapsed = "Just now"
+        elapsed = NSLocalizedString("Just now", comment: "")
     } else if (seconds < 60 * 60) {
         let minutes = Int(seconds / 60)
         
-        var minText = "min"
+        var minText = NSLocalizedString("", comment: "")
         if minutes > 1 {
-            minText = "mins"
+            minText = NSLocalizedString("mins", comment: "")
         }
         elapsed = "\(minutes) \(minText)"
         
     } else if (seconds < 24 * 60 * 60) {
         let hours = Int(seconds / (60 * 60))
-        var hourText = "hour"
+        var hourText = NSLocalizedString("hour", comment: "")
         if hours > 1 {
-            hourText = "hours"
+            hourText = NSLocalizedString("hours", comment: "")
         }
         elapsed = "\(hours) \(hourText)"
     } else {

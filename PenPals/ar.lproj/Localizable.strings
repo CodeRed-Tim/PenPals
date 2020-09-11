@@ -1,0 +1,181 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+
+"Login" = "تسجيل الدخول";
+
+"Sign Up" = "سجل";
+
+"Version" = "الإصدار";
+
+// login page
+
+"Email" = "البريد الإلكتروني";
+
+"Password" = "كلمه السر";
+
+"Forgot Password" = "هل نسيت كلمة المرور؟";
+
+// sign up page
+"First Name" = "الاسم الاول";
+
+"Last Name" = "الكنية";
+
+"Phone Number" = "رقم الهاتف";
+
+"Password Rules" = "يجب ألا يقل طوله عن 6 أحرف ، وأن يحتوي على حرف واحد كبير ، وحرف صغير ، وحرف خاص واحد";
+
+"Confirm Password" = "تأكيد كلمة المرور";
+
+"Select Language" = "اختار اللغة";
+
+"Select Profile Picture" = "حدد صورة الملف الشخصي";
+
+"Tap Profile Picture" = "المس صورة الملف الشخصي";
+
+"Arabic" = "عربى";
+//"Bengali" = "Bengalí";
+"Standard Chinese (Mandarin)" = "الصينية القياسية (الماندرين)";
+//"Dutch" = "Holandés";
+"English" = "الإنجليزية";
+"French" = "فرنسي";
+"German" = "ألمانية";
+//"Haitian" = "Haitiano";
+"Hindi" = "الهندية";
+"Italian" = "الايطالية";
+"Japenese" = "اليابانية";
+"Korean" = "الكورية";
+"Portuguese" = "البرتغالية";
+"Russian" = "الروسية";
+"Spanish" = "الأسبانية";
+
+// Main Chat View
+
+"Chats" = "الرسائل";
+
+//Photo gallery overview
+
+"Picture Gallery" = "معرض صور";
+
+// Contact View
+
+"Your Friends" = "أصدقائك";
+
+//Profile View
+
+"Profile" = "الملف الشخصي";
+
+"Message" = "رسالة";
+
+"Block User" = "مستخدم محضور";
+
+"Unblock User" = "إلغاء حظر عن مستخدم";
+
+"Not Available" = "هذا المستخدم غير متاح للمحادثة!";
+
+// Settings
+
+"Settings" = "الإعدادات";
+
+"Blocked Users" = "مستخدمين محجوبين";
+
+"Show Avatar" = "عرض الصورة الرمزية";
+
+"Clean Cache" = "مسح ذاكرة التخزين المؤقت";
+
+"Tell a Friend" = "اخبر صديق";
+
+"T & C" = "الأحكام والشروط";
+
+"Slate Version" = "نسخة سليت";
+
+"Log Out" = "تسجيل خروج";
+
+"Delete Account" = "حذف الحساب";
+
+"Unblock" = "رفع الحظر";
+
+"Cache Cleaned!" = "تم تنظيف ذاكرة التخزين المؤقت!";
+
+"Couldn't clean Media files" = "تعذر تنظيف ملفات الوسائط";
+
+"Hey! Lets chat on Slate " = "دعنا ندردش على Slate مهلا";
+
+"Delete Account" = "حذف الحساب";
+
+"Are You Sure" = "هل أنت واثق؟";
+
+"Delete" = "حذف";
+
+"Cancel" = "إلغاء";
+
+"Couldn't delete user" = "تعذر حذف المستخدم";
+
+// Edit Profile
+
+"Edit Profile" = "تعديل الملف الشخصي";
+
+// Blocked Users
+
+"Notifcation Label" = "لا يوجد مستخدمون محظورون";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "البريد الإلكتروني أو كلمة المرور مفقودة!";
+
+"Loggin you in..." = "تسجيل الدخول...";
+
+"Sucess!" = "نجاح!";
+
+"Invalid Phone Number Format!" = "تنسيق رقم الهاتف غير صالح!";
+
+"Passwords don't match!" = "كلمات المرور غير متطابقة!";
+
+"All Fields are Required!" = "جميع الحقول مطلوبة!";
+
+"Registering you..." = "تسجيل ...";
+
+"Select a Country" = "اختر دولة";
+
+"Unmute" = "لا كتم الصوت";
+
+"Mute" = "كتم الصوت";
+
+"Just now" = "الآن فقط";
+
+"min" = "دقيقة";
+
+"mins" = "دقيقة";
+
+"hour" = "ساعة";
+
+"hours" = "ساعات";
+
+// extras
+
+"Add Friend" = "أضف صديق";
+
+"Please enter phone number" = "الرجاء إدخال رقم الهاتف";
+
+"Add" = "أضف";
+
+"Contact Added Successfully." = "تمت إضافة جهة الاتصال بنجاح";
+
+"Not Found" = "غير موجود";
+
+"Phone Number not found." = "رقم الهاتف غير موجود.";
+
+"Ok" = "حسنا";
+
+"Contact exists" = "الاتصال موجود";
+
+"This contact number already exists." = "رقم الاتصال هذا موجود بالفعل.";
+
+

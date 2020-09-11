@@ -49,7 +49,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var avatarImage: UIImage?
     var selectedLanguage: String?
     
-    var languageList = [NSLocalizedString("Arabic", comment: ""), NSLocalizedString("Bengali", comment: ""), NSLocalizedString("Chinese", comment: ""), NSLocalizedString("Dutch", comment: ""), NSLocalizedString("English", comment: ""), NSLocalizedString("French", comment: ""), NSLocalizedString("German", comment: ""), NSLocalizedString("Haitian", comment: ""), NSLocalizedString("Hindi", comment: ""), NSLocalizedString("Italian", comment: ""), NSLocalizedString("Japenese", comment: ""), NSLocalizedString("Korean", comment: ""), NSLocalizedString("Malay", comment: ""), NSLocalizedString("Portuguese", comment: ""), NSLocalizedString("Romanian", comment: ""), NSLocalizedString("Russian", comment: ""), NSLocalizedString("Spanish", comment: "")]
+    var languageList = [NSLocalizedString("Arabic", comment: ""), NSLocalizedString("Standard Chinese (Mandarin)", comment: ""), NSLocalizedString("English", comment: ""), NSLocalizedString("French", comment: ""), NSLocalizedString("German", comment: ""),  NSLocalizedString("Hindi", comment: ""), NSLocalizedString("Italian", comment: ""), NSLocalizedString("Japanese", comment: ""), NSLocalizedString("Korean", comment: ""),  NSLocalizedString("Portuguese", comment: ""),  NSLocalizedString("Russian", comment: ""), NSLocalizedString("Spanish", comment: "")]
     
     var startIndex: Int?
     
@@ -195,7 +195,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                         
                     } else {
                         hud.indicatorView = JGProgressHUDErrorIndicatorView()
-                        hud.textLabel.text = "Password must contain atleast 1 uppercase, 1 lowercase, 1 special character and be 6 letters or longer"
+                        hud.textLabel.text = NSLocalizedString("Password Rules", comment: "")
                         hud.indicatorView = JGProgressHUDErrorIndicatorView()
                         hud.show(in: self.view)
                         hud.dismiss(afterDelay: 1.5)
@@ -203,7 +203,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                     
                 } else {
                     hud.indicatorView = JGProgressHUDErrorIndicatorView()
-                    hud.textLabel.text = "Invalid Phone Number Format!"
+                    hud.textLabel.text = NSLocalizedString("Invalid Phone Number Format!", comment: "")
                     hud.indicatorView = JGProgressHUDErrorIndicatorView()
                     hud.show(in: self.view)
                     hud.dismiss(afterDelay: 1.5)
@@ -211,14 +211,14 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 
             } else {
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
-                hud.textLabel.text = "Passwords don't match!"
+                hud.textLabel.text = NSLocalizedString("Passwords don't match!", comment: "")
                 hud.indicatorView = JGProgressHUDErrorIndicatorView()
                 hud.show(in: self.view)
                 hud.dismiss(afterDelay: 1.5)
             }
         } else {
             hud.indicatorView = JGProgressHUDErrorIndicatorView()
-            hud.textLabel.text = "All Fields are Required!"
+            hud.textLabel.text = NSLocalizedString("All Fields are Required!", comment: "")
             hud.show(in: self.view)
             hud.dismiss(afterDelay: 1.75)
         }
@@ -237,7 +237,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func registerUser() {
         
         hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Registering you..."
+        hud.textLabel.text = NSLocalizedString("Registering you...", comment: "")
         hud.show(in: self.view)
         
         let firstName = firstNameTextField.text?.capitalizingFirstLetter()
@@ -447,7 +447,7 @@ extension RegisterViewController: CountryPickerViewDelegate {
 extension RegisterViewController: CountryPickerViewDataSource {
     
     func navigationTitle(in countryPickerView: CountryPickerView) -> String? {
-        return "Select a Country"
+        return NSLocalizedString("Select a Country", comment: "")
     }
         
     func searchBarPosition(in countryPickerView: CountryPickerView) -> SearchBarPosition {

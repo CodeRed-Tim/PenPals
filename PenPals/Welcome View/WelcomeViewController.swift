@@ -12,9 +12,11 @@ import Firebase
 
 class WelcomeViewController: UIViewController {
 
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginLabel: UILabel!
     
     @IBOutlet weak var passwordLab: UILabel!
@@ -29,6 +31,11 @@ class WelcomeViewController: UIViewController {
         
         //Localization
         passwordLab.text = NSLocalizedString("Password", comment: "")
+        
+        loginButton.setTitle(NSLocalizedString("Login", comment: ""), for: .normal)
+        
+        emailLabel.text = NSLocalizedString("Email", comment: "")
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "")
         
         forgotPasswordButton.setTitle(NSLocalizedString("Forgot Password", comment: ""), for: .normal)
         
@@ -59,7 +66,7 @@ class WelcomeViewController: UIViewController {
             
         } else {
             
-            hud.textLabel.text = "Email or Password is missing!"
+            hud.textLabel.text = NSLocalizedString("Email or Password is missing!", comment: "")
             hud.indicatorView = JGProgressHUDErrorIndicatorView()
             hud.show(in: self.view)
             hud.dismiss(afterDelay: 1.5)
@@ -76,7 +83,7 @@ class WelcomeViewController: UIViewController {
     func loginUser() {
         
         hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Loggin you in..."
+        hud.textLabel.text = NSLocalizedString("Loggin you in...", comment: "")
         hud.show(in: self.view)
 
         FUser.loginUserWith(email: emailTextField.text!, password: passwordTextField.text!) { (error) in
@@ -114,7 +121,7 @@ class WelcomeViewController: UIViewController {
     func goToApp() {
         
         hud.dismiss()
-        hud.textLabel.text = "Sucess!"
+        hud.textLabel.text = NSLocalizedString("Sucess!", comment: "")
         hud.indicatorView = JGProgressHUDSuccessIndicatorView()
         hud.dismiss()
         

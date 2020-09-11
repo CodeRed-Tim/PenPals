@@ -179,7 +179,7 @@ class SetTableViewController: UITableViewController {
         
         //implement translation
         let firstTitle = NSLocalizedString("Delete Account", comment: "")
-        let message = NSLocalizedString("Are you sure", comment: "")
+        let message = NSLocalizedString("Are You Sure", comment: "")
         let secondTitle = NSLocalizedString("Delete", comment: "")
         
         let optionMenu = UIAlertController(title: firstTitle, message: message, preferredStyle: .actionSheet)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dqH-7r-jnt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dqH-7r-jnt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -224,8 +224,10 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="emailLabel" destination="nZJ-U3-x9Z" id="McT-dM-fix"/>
                         <outlet property="emailTextField" destination="DAK-38-07Q" id="IPd-E0-kV0"/>
                         <outlet property="forgotPasswordButton" destination="fSF-pM-laU" id="qiW-Le-NdX"/>
+                        <outlet property="loginButton" destination="qoz-4b-gSA" id="Yks-N0-uqG"/>
                         <outlet property="passwordLab" destination="S3I-do-kKK" id="5Mf-CB-biR"/>
                         <outlet property="passwordTextField" destination="iLw-mR-A06" id="uhK-EJ-2FK"/>
                         <outlet property="signUpButton" destination="Y3I-79-Vt0" id="bp7-7h-SrH"/>
@@ -1555,10 +1557,10 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
             </objects>
             <point key="canvasLocation" x="128" y="980"/>
         </scene>
-        <!--Pictures Collection View Controller-->
+        <!--Gallery Collection View Controller-->
         <scene sceneID="Fij-TD-Zte">
             <objects>
-                <collectionViewController storyboardIdentifier="mediaView" id="Nhm-sV-AcK" customClass="PicturesCollectionViewController" customModule="PenPals" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="mediaView" id="Nhm-sV-AcK" customClass="GalleryCollectionViewController" customModule="Slate" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="7Vp-ke-Qu3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1570,7 +1572,7 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
                             <inset key="sectionInset" minX="10" minY="10" maxX="25" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="xdr-cC-dHt" customClass="PicturesCollectionViewCell" customModule="PenPals">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="xdr-cC-dHt" customClass="PicturesCollectionViewCell" customModule="Slate">
                                 <rect key="frame" x="10" y="10" width="105" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -1644,7 +1646,7 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="beo-eV-go1"/>
-        <segue reference="obE-gn-IYX"/>
+        <segue reference="Mx7-7N-LtR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Back" width="25" height="25"/>

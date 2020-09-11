@@ -1,0 +1,176 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+
+"Login" = "Accesso";
+
+"Sign Up" = "Iscriviti";
+
+"Version" = "Iscriviti";
+
+// login page
+
+"Email" = "Email";
+
+"Password" = "Password";
+
+"Forgot Password" = "Ha dimenticato la password?";
+
+// sign up page
+"First Name" = "Nome di battesimo";
+
+"Last Name" = "Cognome";
+
+"Phone Number" = "Numero di telefono";
+
+"Password Rules" = "Deve contenere almeno 6 caratteri, contiene 1 lettera maiuscola, 1 lettera minuscola e 1 carattere speciale";
+
+"Confirm Password" = "Conferma Password";
+
+"Select Language" = "Seleziona la lingua:";
+
+"Select Profile Picture" = "Seleziona immagine profilo:";
+
+"Tap Profile Picture" = "Tocca Immagine del profilo";
+
+"Arabic" = "Arabo";
+"Standard Chinese (Mandarin)" = "Cinese standard (Mandarino)";
+"English" = "Inglese";
+"French" = "Francese";
+"German" = "Tedesco";
+"Hindi" = "Hindi";
+"Italian" = "Italiano";
+"Japanese" = "Giapponese";
+"Korean" = "Coreano";
+"Portuguese" = "Portoghese";
+"Russian" = "Russo";
+"Spanish" = "Spagnolo";
+
+// Main Chat View
+
+"Chats" = "Messaggi";
+
+//Photo gallery overview
+
+"Picture Gallery" = "Galleria di foto";
+
+// Contact View
+
+"Your Friends" = "I Tuoi Amici";
+
+//Profile View
+
+"Profile" = "Profilo";
+
+"Message" = "Messaggio";
+
+"Block User" = "Blocca utente";
+
+"Unblock User" = "Blocca utente";
+
+"Not Available" = "Questo utente non è disponibile per le chiamate!";
+
+// Settings
+
+"Settings" = "Impostazioni";
+
+"Blocked Users" = "Utenti bloccati";
+
+"Show Avatar" = "Mostra avatar";
+
+"Clean Cache" = "Pulisci cache";
+
+"Tell a Friend" = "Dillo a un amico";
+
+"T & C" = "Termini e condizioni";
+
+"Slate Version" = "Slate Versione";
+
+"Log Out" = "Disconnettersi";
+
+"Delete Account" = "Eliminare l'account";
+
+"Unblock" = "Sbloccare";
+
+"Cache Cleaned!" = "Cache Cleaned!";
+
+"Couldn't clean Media files" = "Impossibile pulire i file multimediali";
+
+"Hey! Lets chat on Slate " = "Ciao! Parliamo su Slate";
+
+"Delete Account" = "Eliminare l'account";
+
+"Are You Sure" = "Sei sicuro?";
+
+"Delete" = "Elimina";
+
+"Cancel" = "Annulla";
+
+"Couldn't delete user" = "Impossibile eliminare l'utente";
+
+// Edit Profile
+
+"Edit Profile" = "Modifica Profilo";
+
+// Blocked Users
+
+"Notifcation Label" = "Non ha utenti bloccati";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "Email o password mancanti!";
+
+"Loggin you in..." = "Accesso in corso ...";
+
+"Sucess!" = "Successo!";
+
+"Invalid Phone Number Format!" = "Formato numero di telefono non valido";
+
+"Passwords don't match!" = "Le password non corrispondono!";
+
+"All Fields are Required!" = "Tutti i campi sono obbligatori!";
+
+"Registering you..." = "Registrazione di te ...";
+
+"Select a Country" = "Seleziona un Paese";
+
+"Unmute" = "Riattiva";
+
+"Mute" = "Mute";
+
+"Just now" = "Proprio adesso";
+
+"min" = "min";
+
+"mins" = "mins";
+
+"hour" = "ora";
+
+"hours" = "ore";
+
+// extras
+
+"Add Friend" = "Aggiungi amico";
+
+"Please enter phone number" = "Inserisci il numero di telefono:";
+
+"Add" = "Inserisci";
+
+"Contact Added Successfully." = "Contatto aggiunto con successo!";
+
+"Not Found" = "Non trovato";
+
+"Phone Number not found." = "Numero di telefono non trovato";
+
+"Ok" = "Ok";
+
+"Contact exists" = "Il contatto esiste";
+
+"This contact number already exists." = "Questo numero di contatto esiste già.";

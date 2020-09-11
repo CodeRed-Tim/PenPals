@@ -16,7 +16,7 @@
 
 "Password" = "Password";
 
-"Forgot Password" = "Forgot Password";
+"Forgot Password" = "Forgot Password?";
 
 // sign up page
 "First Name" = "First Name";
@@ -34,6 +34,11 @@
 "Select Profile Picture" = "Select Profile Picture";
 
 "Tap Profile Picture" = "Tap Profile Picture";
+
+
+// Profile view
+
+"Not Available" = "This user is not available for chat!";
 
 //settings
 
@@ -55,6 +60,34 @@
 
 "Couldn't delete user" = "Couldn't delete user";
 
+"Unmute" = "Unmute";
 
+"Mute" = "Mute";
 
+"Just now" = "Just now";
 
+"min" = "min";
+
+"mins" = "mins";
+
+"hour" = "hour";
+
+"hours" = "hours";
+
+"Add Friend" = "Add Friend";
+
+"Please enter phone number" = "Please enter phone number:";
+
+"Add" = "Add";
+
+"Contact Added Successfully." = "Contact Added Successfully.";
+
+"Not Found" = "Not Found";
+
+"Phone Number not found." = "Phone Number not found.";
+
+"Ok" = "Ok";
+
+"Contact exists" = "Contact exists";
+
+"This contact number already exists." = "This contact number already exists.";

@@ -70,9 +70,9 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
 //
     func addFriend() {
         
-        let alert = UIAlertController(title: "Add Friend", message: "Please enter phone number", preferredStyle: UIAlertController.Style.alert )
+        let alert = UIAlertController(title: NSLocalizedString("Add Friend", comment: ""), message: NSLocalizedString("Please enter phone number", comment: ""), preferredStyle: UIAlertController.Style.alert )
         
-        let add = UIAlertAction(title: "Add", style: .default) { (alertAction) in
+        let add = UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if textField.text != "" {
                 self.checkPhoneNumberInDatabase(phoneNum: textField.text!)
@@ -84,7 +84,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         }
         
         alert.addAction(add)
-        let cancel = UIAlertAction(title: "Cancel", style: .default) { (alertAction) in }
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (alertAction) in }
         alert.addAction(cancel)
         self.present(alert, animated:true, completion: nil)
         
@@ -328,9 +328,9 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
 
     func numberNotFoundAlert() {
         
-        let alert = UIAlertController(title: "Not Found", message: "Phone Number not found.", preferredStyle: UIAlertController.Style.alert )
+        let alert = UIAlertController(title: NSLocalizedString("Not Found", comment: ""), message: NSLocalizedString("Phone Number not found.", comment: ""), preferredStyle: UIAlertController.Style.alert )
         
-        let Ok = UIAlertAction(title: "Ok", style: .default) { (alertAction) in }
+        let Ok = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { (alertAction) in }
         alert.addAction(Ok)
         self.present(alert, animated:true, completion: nil)
         
@@ -338,7 +338,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     func friendAddSuccessAlert() {
         
-        let alert = UIAlertController(title: "Success", message: "Contact Added Successfully.", preferredStyle: UIAlertController.Style.alert )
+        let alert = UIAlertController(title: NSLocalizedString("Success!", comment: ""), message: NSLocalizedString("Contact Added Successfully.", comment: ""), preferredStyle: UIAlertController.Style.alert )
         
         let Ok = UIAlertAction(title: "Ok", style: .default) { (alertAction) in }
         alert.addAction(Ok)
@@ -348,9 +348,9 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     func friendAlreadyExistsAlert() {
         
-        let alert = UIAlertController(title: "Contact exists", message: "This contact number already exists.", preferredStyle: UIAlertController.Style.alert )
+        let alert = UIAlertController(title: NSLocalizedString("Contact exists", comment: ""), message: NSLocalizedString("This contact number already exists.", comment: ""), preferredStyle: UIAlertController.Style.alert )
         
-        let Ok = UIAlertAction(title: "Ok", style: .default) { (alertAction) in }
+        let Ok = UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default) { (alertAction) in }
         alert.addAction(Ok)
         self.present(alert, animated:true, completion: nil)
         

@@ -25,7 +25,7 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Your Friends"
+        self.title = NSLocalizedString("Your Friends", comment: "")
         navigationItem.largeTitleDisplayMode = .never
         tableView.tableFooterView = UIView()
         

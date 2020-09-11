@@ -26,6 +26,9 @@ class ProfileViewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        messageButtonOutlet.setTitle(NSLocalizedString("Message", comment: ""), for: .normal)
+        blockButtonOutlet.setTitle(NSLocalizedString("Block User", comment: ""), for: .normal)
+        
         // when view is opened..
         setupUI()
         
@@ -48,7 +51,7 @@ class ProfileViewTableViewController: UITableViewController {
             
         } else {
             
-            self.hud.textLabel.text = "This user is not available for chat!"
+            self.hud.textLabel.text = NSLocalizedString("Not Available", comment: "")
             self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
             self.hud.show(in: self.view)
             self.hud.dismiss(afterDelay: 1.5, animated: true)
@@ -119,7 +122,7 @@ class ProfileViewTableViewController: UITableViewController {
         //make sure there is a user clicked on
         if user != nil {
             
-            self.title = "Profile"
+            self.title = NSLocalizedString("Profile", comment: "")
             
             
             //get currently selected user's information from database
@@ -156,9 +159,9 @@ class ProfileViewTableViewController: UITableViewController {
         
         // if the user is in the current user's array of blocked users
         if FUser.currentUser()!.blockedUsers.contains(user!.objectId) {
-            blockButtonOutlet.setTitle("Unblock User", for: .normal)
+            blockButtonOutlet.setTitle(NSLocalizedString("Unblock User", comment: ""), for: .normal)
         } else {
-            blockButtonOutlet.setTitle("Block User", for: .normal)
+            blockButtonOutlet.setTitle(NSLocalizedString("Block User", comment: ""), for: .normal)
         }
     }
     
@@ -169,39 +172,39 @@ class ProfileViewTableViewController: UITableViewController {
         //        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
         
         if lang == "ar" {
-            languageLabel.text = "Arabic"
+            languageLabel.text = NSLocalizedString("Arabic", comment: "")
         } else if lang == "bn" {
-            languageLabel.text = "Bengal"
+            languageLabel.text = NSLocalizedString("Bengali", comment: "")
         } else if lang == "zh" {
-            languageLabel.text = "Chinese"
+            languageLabel.text = NSLocalizedString("Standard Chinese (Mandarin)", comment: "")
         } else if lang == "nl" {
-            languageLabel.text = "Dutch"
+            languageLabel.text = NSLocalizedString("Dutch", comment: "")
         } else if lang == "en" {
-            languageLabel.text = "English"
+            languageLabel.text = NSLocalizedString("English", comment: "")
         } else if lang == "fr" {
-            languageLabel.text = "French"
+            languageLabel.text = NSLocalizedString("French", comment: "")
         } else if lang == "de" {
-            languageLabel.text = "German"
+            languageLabel.text = NSLocalizedString("German", comment: "")
         } else if lang == "ht" {
-            languageLabel.text = "Haitian"
+            languageLabel.text = NSLocalizedString("Haitian", comment: "")
         } else if lang == "hi" {
-            languageLabel.text = "Hindi"
+            languageLabel.text = NSLocalizedString("Hindi", comment: "")
         } else if lang == "it" {
-            languageLabel.text = "Italian"
+            languageLabel.text = NSLocalizedString("Italian", comment: "")
         } else if lang == "ja" {
-            languageLabel.text = "Japenese"
+            languageLabel.text = NSLocalizedString("Japenese", comment: "")
         } else if lang == "ko" {
-            languageLabel.text = "Korean"
+            languageLabel.text = NSLocalizedString("Korean", comment: "")
         } else if lang == "ms" {
-            languageLabel.text = "Malay"
+            languageLabel.text = NSLocalizedString("Malay", comment: "")
         } else if lang == "pt" {
-            languageLabel.text = "Porteguese"
+            languageLabel.text = NSLocalizedString("Porteguese", comment: "")
         } else if lang == "ro" {
-            languageLabel.text = "Romanian"
+            languageLabel.text = NSLocalizedString("Romanian", comment: "")
         } else if lang == "ru" {
-            languageLabel.text = "Russian"
+            languageLabel.text = NSLocalizedString("Russian", comment: "")
         } else if lang == "es" {
-            languageLabel.text = "Spanish"
+            languageLabel.text = NSLocalizedString("Spanish", comment: "")
         }
     }
     
