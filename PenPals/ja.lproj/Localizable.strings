@@ -1,0 +1,178 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+
+"Terms" = "サインアップすると、Slateの利用規約とプライバシーポリシーに同意したことになります";
+
+"Login" = "ログインする";
+
+"Sign Up" = "サインアップする";
+
+"Version" = "バージョン";
+
+// login page
+
+"Email" = "メルアド";
+
+"Password" = "パスワード";
+
+"Forgot Password" = "パスワードをお忘れですか？";
+
+// sign up page
+"First Name" = "ファーストネーム";
+
+"Last Name" = "苗字";
+
+"Phone Number" = "電話番号";
+
+"Password Rules" = "6文字以上で、大文字1文字、小文字1文字、特殊文字1文字が含まれている必要があります";
+
+"Confirm Password" = "パスワードを認証する";
+
+"Select Language" = "言語を選択する：";
+
+"Select Profile Picture" = "プロフィール写真を選択：";
+
+"Tap Profile Picture" = "プロフィール写真をタップ";
+
+"Arabic" = "アラビア語";
+"Standard Chinese (Mandarin)" = "標準中国語 （マンダリン）";
+"English" = "英語";
+"French" = "フランス語";
+"German" = "ドイツ人";
+"Hindi" = "ヒンディー語";
+"Italian" = "イタリア語";
+"Japanese" = "日本人";
+"Korean" = "韓国語語";
+"Portuguese" = "ポルトガル語";
+"Russian" = "ロシア";
+"Spanish" = "スペイン語";
+
+// Main Chat View
+
+"Chats" = "メッセージ";
+
+//Photo gallery overview
+
+"Picture Gallery" = "画廊";
+
+// Contact View
+
+"Your Friends" = "あなたの友人";
+
+//Profile View
+
+"Profile" = "プロフィール";
+
+"Message" = "メッセージ";
+
+"Block User" = "ユーザをブロックする";
+
+"Unblock User" = "ユーザーのブロックを解除";
+
+"Not Available" = "このユーザーは通話できません！";
+
+// Settings
+
+"Settings" = "設定";
+
+"Blocked Users" = "ブロックされたユーザー";
+
+"Show Avatar" = "アバターを表示";
+
+"Clean Cache" = "キャッシュを消去";
+
+"Tell a Friend" = "友達に教える";
+
+"T & C" = "規約と条件";
+
+"Slate Version" = "Slateバージョン";
+
+"Log Out" = "ログアウト";
+
+"Delete Account" = "アカウントを削除する";
+
+"Unblock" = "ブロックを解除";
+
+"Cache Cleaned!" = "キャッシュを消去しました！";
+
+"Couldn't clean Media files" = "メディアファイルをクリーニングできませんでした";
+
+"Hey! Lets chat on Slate " = "こんにちは！Slateで話そう！";
+
+"Delete Account" = "アカウントを削除する";
+
+"Are You Sure" = "本気ですか？";
+
+"Delete" = "削除する";
+
+"Cancel" = "キャンセル";
+
+"Couldn't delete user" = "ユーザーを削除できませんでした";
+
+// Edit Profile
+
+"Edit Profile" = "プロファイル編集";
+
+// Blocked Users
+
+"Notifcation Label" = "ブロックされたユーザーはいません";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "メールアドレスまたはパスワードがありません！";
+
+"Loggin you in..." = "ログインしています...";
+
+"Sucess!" = "成功！";
+
+"Invalid Phone Number Format!" = "電話番号の形式が無効です！";
+
+"Passwords don't match!" = "パスワードが一致しません!";
+
+"All Fields are Required!" = "全て必須項目です！";
+
+"Registering you..." = "登録しています...";
+
+"Select a Country" = "国を選択";
+
+"Unmute" = "ミュートを解除";
+
+"Mute" = "ミュート";
+
+"Just now" = "ちょうど今";
+
+"min" = "分";
+
+"mins" = "分";
+
+"hour" = "時間";
+
+"hours" = "時間";
+
+// extras
+
+"Add Friend" = "友人を追加する";
+
+"Please enter phone number" = "電話番号を入力してください：";
+
+"Add" = "追加";
+
+"Contact Added Successfully." = "連絡先が正常に追加されました！";
+
+"Not Found" = "見つかりません";
+
+"Phone Number not found." = "電話番号が見つかりません";
+
+"Ok" = "はい";
+
+"Contact exists" = "連絡先が存在します";
+
+"This contact number already exists." = "この連絡先番号は既に存在します";

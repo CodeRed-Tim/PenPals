@@ -1,0 +1,178 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+
+"Terms" = "签署即表示您同意Slate的使用条款和隐私政策";
+
+"Login" = "登录";
+
+"Sign Up" = "注册";
+
+"Version" = "版";
+
+// login page
+
+"Email" = "电子邮件";
+
+"Password" = "密码";
+
+"Forgot Password" = "忘记密码？";
+
+// sign up page
+"First Name" = "名字";
+
+"Last Name" = "姓";
+
+"Phone Number" = "电话号码";
+
+"Password Rules" = "它必须至少6个字符长，包含1个大写字母，1个小写字母和1个特殊字符。";
+
+"Confirm Password" = "确认密码";
+
+"Select Language" = "选择语言：";
+
+"Select Profile Picture" = "选择个人资料图片：";
+
+"Tap Profile Picture" = "点按个人资料图片";
+
+"Arabic" = "阿拉伯";
+"Standard Chinese (Mandarin)" = "标准中文（普通话）";
+"English" = "英语";
+"French" = "法文";
+"German" = "德语";
+"Hindi" = "印地语";
+"Italian" = "义大利文";
+"Japanese" = "日本";
+"Korean" = "韩语";
+"Portuguese" = "葡萄牙语";
+"Russian" = "俄语";
+"Spanish" = "西班牙文";
+
+// Main Chat View
+
+"Chats" = "留言内容";
+
+//Photo gallery overview
+
+"Picture Gallery" = "图片集";
+
+// Contact View
+
+"Your Friends" = "你的朋友们";
+
+//Profile View
+
+"Profile" = "个人资料";
+
+"Message" = "信息";
+
+"Block User" = "阻止用户";
+
+"Unblock User" = "解除封锁使用者";
+
+"Not Available" = "该用户无法通话";
+
+// Settings
+
+"Settings" = "设定值";
+
+"Blocked Users" = "被封锁的使用者";
+
+"Show Avatar" = "显示头像";
+
+"Clean Cache" = "清理缓存";
+
+"Tell a Friend" = "告诉一个朋友";
+
+"T & C" = "条款和条件";
+
+"Slate Version" = "Slate版本";
+
+"Log Out" = "登出";
+
+"Delete Account" = "删除帐户";
+
+"Unblock" = "解除封锁";
+
+"Cache Cleaned!" = "缓存已清除！";
+
+"Couldn't clean Media files" = "无法清除媒体文件";
+
+"Hey! Lets chat on Slate " = "嗨！让我们在Slate上聊天！";
+
+"Delete Account" = "删除帐户";
+
+"Are You Sure" = "你确定吗？";
+
+"Delete" = "删除";
+
+"Cancel" = "取消";
+
+"Couldn't delete user" = "无法删除用户";
+
+// Edit Profile
+
+"Edit Profile" = "编辑个人资料";
+
+// Blocked Users
+
+"Notifcation Label" = "没有封锁的使用者";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "电子邮件或密码丢失！";
+
+"Loggin you in..." = "正在登录...";
+
+"Sucess!" = "成功！";
+
+"Invalid Phone Number Format!" = "电话号码格式无效！";
+
+"Passwords don't match!" = "密码不匹配！";
+
+"All Fields are Required!" = "各个领域都需要！";
+
+"Registering you..." = "正在注册您...";
+
+"Select a Country" = "选择一个国家";
+
+"Unmute" = "取消静音";
+
+"Mute" = "静音";
+
+"Just now" = "现在";
+
+"min" = "分";
+
+"mins" = "分钟";
+
+"hour" = "小时";
+
+"hours" = "小时";
+
+// extras
+
+"Add Friend" = "添加好友";
+
+"Please enter phone number" = "请输入电话号码：";
+
+"Add" = "加";
+
+"Contact Added Successfully." = "联系人已成功添加！";
+
+"Not Found" = "未找到";
+
+"Phone Number not found." = "找不到电话号码";
+
+"Ok" = "好的";
+
+"Contact exists" = "联系存在";
+
+"This contact number already exists." = "该联系电话已经存在";

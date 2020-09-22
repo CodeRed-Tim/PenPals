@@ -32,7 +32,7 @@ public let kONESIGNALAPPID = ""
 public let kSINCHKEY = ""
 public let kSINCHSECRET = ""
 // URL on appstore
-public let kAPPURL = "https://www.vancauwenberge.com/"
+public let kAPPURL = "https://www.slateofficial.com"
 
 
 

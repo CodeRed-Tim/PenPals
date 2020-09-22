@@ -40,6 +40,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var languageDropDown: UITextField!
     @IBOutlet weak var languagePicker: UIPickerView!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var termsButton: UIButton!
     
     weak var cpvTextField: CountryPickerView!
     let cpvInternal = CountryPickerView()
@@ -84,6 +85,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         tapPpLabel.text = NSLocalizedString("Tap Profile Picture", comment: "")
         
         registerButton.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
+        termsButton.setTitle(NSLocalizedString("Terms", comment: ""), for: .normal)
         
         avatarImageView.isUserInteractionEnabled = true
         
@@ -231,6 +233,10 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func termsButtonTapped(_ sender: Any) {
+        let urlComponents = URLComponents (string: "http://www.slateofficial.com/terms.html")!
+        UIApplication.shared.open (urlComponents.url!)
+    }
     
     //MARK: Helper Functions
     

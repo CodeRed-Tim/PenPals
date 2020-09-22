@@ -8,11 +8,15 @@
 
 // start page
 
+"Terms" = "Al registrarse, acepta los Términos de uso y la Política de privacidad de Slate";
+
 "Sign Up" = "Registrar";
 
 "Version" = "Versión";
 
 // login page
+
+"Login" = "Iniciar Sesión";
 
 "Email" = "Email";
 
@@ -144,7 +148,7 @@
 
 "Select a Country" = "Seleccione un país";
 
-"Unmute" = "No Muda";
+"Unmute" = "Activar Sonido";
 
 "Mute" = "Muda";
 
@@ -171,7 +175,7 @@
 
 "Phone Number not found." = "Número de teléfono no encontrado";
 
-"Ok" = "Esá bien";
+"Ok" = "Está bien";
 
 "Contact exists" = "Contacto ya existe";
 

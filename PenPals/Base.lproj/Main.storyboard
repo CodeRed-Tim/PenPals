@@ -376,43 +376,6 @@
                                                 <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Profile Picture:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nb-cx-ZtP">
-                                                <rect key="frame" x="39" y="824" width="174" height="22"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-QN-yjJ">
-                                                <rect key="frame" x="105" y="854" width="208" height="110"/>
-                                                <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="208" id="FZR-Sf-wMI"/>
-                                                    <constraint firstAttribute="height" constant="110" id="pC9-OB-Jpd"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="H5i-Ad-AbD" appends="YES" id="1HP-g3-Fhl"/>
-                                                </connections>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Profile Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjA-17-eFa">
-                                                <rect key="frame" x="142.5" y="972" width="133" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                                <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d66-Ms-N5T">
-                                                <rect key="frame" x="112.5" y="1018" width="193" height="40"/>
-                                                <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="193" id="0kq-5h-5ln"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <state key="normal" title="Register">
-                                                    <color key="titleColor" red="0.36470588240000001" green="0.53333333329999999" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="registerButtonTapped:" destination="Nga-9S-RoF" eventType="touchUpInside" id="3Ou-jy-bTe"/>
-                                                </connections>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Must be atleast 6 characters long, contain 1 uppercase, 1 lowercase &amp; 1 special character" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G16-Tt-7uc">
                                                 <rect key="frame" x="109" y="407" width="297" height="30"/>
                                                 <constraints>
@@ -427,16 +390,66 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Profile Picture:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nb-cx-ZtP">
+                                                <rect key="frame" x="41" y="794" width="174" height="22"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="nY5-QN-yjJ">
+                                                <rect key="frame" x="107" y="824" width="208" height="110"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="208" id="FZR-Sf-wMI"/>
+                                                    <constraint firstAttribute="height" constant="110" id="pC9-OB-Jpd"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="H5i-Ad-AbD" appends="YES" id="1HP-g3-Fhl"/>
+                                                </connections>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Profile Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjA-17-eFa">
+                                                <rect key="frame" x="144" y="942" width="133" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                                <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d66-Ms-N5T">
+                                                <rect key="frame" x="114" y="988" width="193" height="40"/>
+                                                <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="193" id="0kq-5h-5ln"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                <state key="normal" title="Register">
+                                                    <color key="titleColor" red="0.36470588240000001" green="0.53333333329999999" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="registerButtonTapped:" destination="Nga-9S-RoF" eventType="touchUpInside" id="3Ou-jy-bTe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAo-xf-DTk">
+                                                <rect key="frame" x="10" y="1036" width="398" height="23"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                <state key="normal" title="By signing up, you agree to Slate's Terms of Use &amp; Privacy Policy">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="termsButtonTapped:" destination="Nga-9S-RoF" eventType="touchUpInside" id="2Xa-tc-lp2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.45098039220000002" green="0.58431372550000005" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="zAo-xf-DTk" secondAttribute="trailing" constant="20" id="0ql-jr-6pR"/>
                                             <constraint firstItem="cjA-17-eFa" firstAttribute="top" secondItem="nY5-QN-yjJ" secondAttribute="bottom" constant="8" id="16U-jW-VqU"/>
-                                            <constraint firstAttribute="trailing" secondItem="nY5-QN-yjJ" secondAttribute="trailing" constant="115" id="1Ze-ke-0OI"/>
+                                            <constraint firstAttribute="trailing" secondItem="nY5-QN-yjJ" secondAttribute="trailing" constant="113" id="1Ze-ke-0OI"/>
+                                            <constraint firstItem="zAo-xf-DTk" firstAttribute="top" secondItem="d66-Ms-N5T" secondAttribute="bottom" constant="8" id="1dl-Xs-2EX"/>
                                             <constraint firstItem="jtp-GV-7XS" firstAttribute="leading" secondItem="zLE-Ek-GTC" secondAttribute="leading" constant="18" id="2an-UR-EoD"/>
+                                            <constraint firstItem="zAo-xf-DTk" firstAttribute="leading" secondItem="zLE-Ek-GTC" secondAttribute="leading" constant="10" id="2rp-Yr-K9Y"/>
                                             <constraint firstItem="shJ-9k-gPo" firstAttribute="top" secondItem="zLE-Ek-GTC" secondAttribute="top" constant="47" id="4yS-fS-QYI"/>
                                             <constraint firstAttribute="trailing" secondItem="Lfw-YO-Ca8" secondAttribute="trailing" constant="28" id="5eP-yh-HN3"/>
-                                            <constraint firstItem="1Nb-cx-ZtP" firstAttribute="leading" secondItem="zLE-Ek-GTC" secondAttribute="leading" constant="39" id="5fJ-ho-Q6L"/>
+                                            <constraint firstItem="1Nb-cx-ZtP" firstAttribute="leading" secondItem="zLE-Ek-GTC" secondAttribute="leading" constant="41" id="5fJ-ho-Q6L"/>
                                             <constraint firstItem="vC7-VW-p1h" firstAttribute="top" secondItem="iEZ-qs-TxC" secondAttribute="bottom" constant="8" id="8rr-Qm-EH1"/>
                                             <constraint firstItem="iEZ-qs-TxC" firstAttribute="leading" secondItem="vC7-VW-p1h" secondAttribute="leading" id="A3G-rd-Ee2"/>
                                             <constraint firstItem="v1z-3G-Nn3" firstAttribute="leading" secondItem="vC7-VW-p1h" secondAttribute="trailing" constant="30" id="AGF-Wg-uGi"/>
@@ -446,7 +459,7 @@
                                             <constraint firstItem="6YH-AS-ykm" firstAttribute="top" secondItem="zLE-Ek-GTC" secondAttribute="top" constant="340" id="DxO-df-dqd"/>
                                             <constraint firstAttribute="trailing" secondItem="0ts-UP-osc" secondAttribute="trailing" constant="112.5" id="E4r-MI-sSc"/>
                                             <constraint firstItem="vC7-VW-p1h" firstAttribute="leading" secondItem="99v-Z6-qjr" secondAttribute="trailing" constant="-46" id="GMq-Yb-eD0"/>
-                                            <constraint firstItem="1Nb-cx-ZtP" firstAttribute="top" secondItem="POZ-ex-QpL" secondAttribute="bottom" constant="24" id="IT4-4G-x40"/>
+                                            <constraint firstItem="1Nb-cx-ZtP" firstAttribute="top" secondItem="POZ-ex-QpL" secondAttribute="bottom" constant="-6" id="IT4-4G-x40"/>
                                             <constraint firstAttribute="trailing" secondItem="jtp-GV-7XS" secondAttribute="trailing" constant="28" id="JJT-YA-tNk"/>
                                             <constraint firstItem="nY5-QN-yjJ" firstAttribute="top" secondItem="1Nb-cx-ZtP" secondAttribute="bottom" constant="8" id="KDj-2a-c8g"/>
                                             <constraint firstItem="6YH-AS-ykm" firstAttribute="top" secondItem="jtp-GV-7XS" secondAttribute="bottom" constant="8" symbolic="YES" id="KX9-qr-nJD"/>
@@ -538,6 +551,7 @@
                         <outlet property="selectPpLabel" destination="1Nb-cx-ZtP" id="aih-Xp-XPz"/>
                         <outlet property="signUpLabel" destination="fkq-5E-aal" id="BlW-FW-uzv"/>
                         <outlet property="tapPpLabel" destination="cjA-17-eFa" id="cSb-y5-6W4"/>
+                        <outlet property="termsButton" destination="zAo-xf-DTk" id="JRw-w9-nIr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4AG-mv-UMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1646,7 +1660,7 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="beo-eV-go1"/>
-        <segue reference="Mx7-7N-LtR"/>
+        <segue reference="obE-gn-IYX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Back" width="25" height="25"/>
@@ -1656,6 +1670,6 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
         <image name="locked" width="24" height="24"/>
         <image name="openLock" width="24" height="24"/>
         <image name="settings" width="25" height="25"/>
-        <image name="slateLogo" width="200" height="200"/>
+        <image name="slateLogo" width="60" height="60"/>
     </resources>
 </document>

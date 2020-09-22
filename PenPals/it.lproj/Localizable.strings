@@ -7,12 +7,14 @@
 */
 
 // start page
+"Terms" = "Registrandoti, accetti i Termini di utilizzo e l'Informativa sulla privacy di Slate";
+
 
 "Login" = "Accesso";
 
 "Sign Up" = "Iscriviti";
 
-"Version" = "Iscriviti";
+"Version" = "Versione";
 
 // login page
 

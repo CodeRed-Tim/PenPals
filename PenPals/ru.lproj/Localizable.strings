@@ -1,0 +1,178 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+"Terms" = "Регистрируясь, вы соглашаетесь с Условиями использования и Политикой конфиденциальности Slate.";
+
+
+"Login" = "Авторизоваться";
+
+"Sign Up" = "Зарегистрироваться";
+
+"Version" = "Версия";
+
+// login page
+
+"Email" = "Эл. адрес";
+
+"Password" = "пароль";
+
+"Forgot Password" = "Забыли пароль?";
+
+// sign up page
+"First Name" = "Имя";
+
+"Last Name" = "Фамилия";
+
+"Phone Number" = "Телефонный номер";
+
+"Password Rules" = "Он должен содержать не менее 6 символов, содержать 1 заглавную букву, 1 строчную букву и 1 специальный символ.";
+
+"Confirm Password" = "Подтвердите Пароль";
+
+"Select Language" = "Выберите язык:";
+
+"Select Profile Picture" = "Выберите изображение профиля:";
+
+"Tap Profile Picture" = "Коснитесь изображения профиля";
+
+"Arabic" = "арабский";
+"Standard Chinese (Mandarin)" = "Стандартный китайский (Мандаринский)";
+"English" = "английский";
+"French" = "французский язык";
+"German" = "Немецкий";
+"Hindi" = "хинди";
+"Italian" = "Итальянский";
+"Japanese" = "японский язык";
+"Korean" = "корейский язык";
+"Portuguese" = "португальский";
+"Russian" = "русский";
+"Spanish" = "испанский";
+
+// Main Chat View
+
+"Chats" = "Сообщения";
+
+//Photo gallery overview
+
+"Picture Gallery" = "Картинная галерея";
+
+// Contact View
+
+"Your Friends" = "Твои друзья";
+
+//Profile View
+
+"Profile" = "Профиль";
+
+"Message" = "Сообщение";
+
+"Block User" = "Заблокировать пользователя";
+
+"Unblock User" = "BРазблокировать пользователя";
+
+"Not Available" = "Этот пользователь недоступен для звонков!";
+
+// Settings
+
+"Settings" = "Настройки";
+
+"Blocked Users" = "Заблокированные пользователи";
+
+"Show Avatar" = "Показать аватар";
+
+"Clean Cache" = "Чистый кеш";
+
+"Tell a Friend" = "Рассказать другу";
+
+"T & C" = "Условия и положения";
+
+"Slate Version" = "Версия для Slate";
+
+"Log Out" = "Выйти";
+
+"Delete Account" = "Удалить аккаунт";
+
+"Unblock" = "Разблокировать";
+
+"Cache Cleaned!" = "Кэш очищен!";
+
+"Couldn't clean Media files" = "Не удалось очистить медиафайлы";
+
+"Hey! Lets chat on Slate " = "Здравствуй! Поговорим в Slate!";
+
+"Delete Account" = "Удалить аккаунт";
+
+"Are You Sure" = "Ты уверен?";
+
+"Delete" = "Удалить";
+
+"Cancel" = "Отмена";
+
+"Couldn't delete user" = "Не удалось удалить пользователя";
+
+// Edit Profile
+
+"Edit Profile" = "Редактировать профиль";
+
+// Blocked Users
+
+"Notifcation Label" = "Нет заблокированных пользователей";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "Электронная почта или пароль отсутствует!";
+
+"Loggin you in..." = "Вход в систему ...";
+
+"Sucess!" = "Успех!";
+
+"Invalid Phone Number Format!" = "Неверный формат номера телефона!";
+
+"Passwords don't match!" = "Пароли не совпадают!";
+
+"All Fields are Required!" = "Все поля обязательны к заполнению!";
+
+"Registering you..." = "Регистрируем вас ...";
+
+"Select a Country" = "Выберите страну";
+
+"Unmute" = "Включить звук";
+
+"Mute" = "Без звука";
+
+"Just now" = "Прямо сейчас";
+
+"min" = "мин";
+
+"mins" = "минут";
+
+"hour" = "час";
+
+"hours" = "часы";
+
+// extras
+
+"Add Friend" = "Добавить в друзья";
+
+"Please enter phone number" = "Пожалуйста, введите номер телефона:";
+
+"Add" = "Добавить";
+
+"Contact Added Successfully." = "Контакт успешно добавлен!";
+
+"Not Found" = "не обнаружена";
+
+"Phone Number not found." = "Номер телефона не найден";
+
+"Ok" = "Ладно";
+
+"Contact exists" = "Контакт существует";
+
+"This contact number already exists." = "Этот контактный номер уже существует";
