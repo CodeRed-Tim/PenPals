@@ -14,9 +14,7 @@
 
 "Sign Up" = "注册";
 
-"Version" = "版";
-
-// login page
+"Version" = "版本";
 
 "Email" = "电子邮件";
 
@@ -24,7 +22,6 @@
 
 "Forgot Password" = "忘记密码？";
 
-// sign up page
 "First Name" = "名字";
 
 "Last Name" = "姓";
@@ -47,38 +44,28 @@
 "French" = "法文";
 "German" = "德语";
 "Hindi" = "印地语";
-"Italian" = "义大利文";
+"Italian" = "意大利文";
 "Japanese" = "日本";
 "Korean" = "韩语";
 "Portuguese" = "葡萄牙语";
 "Russian" = "俄语";
 "Spanish" = "西班牙文";
 
-// Main Chat View
-
 "Chats" = "留言内容";
-
-//Photo gallery overview
 
 "Picture Gallery" = "图片集";
 
-// Contact View
-
 "Your Friends" = "你的朋友们";
-
-//Profile View
 
 "Profile" = "个人资料";
 
 "Message" = "信息";
 
-"Block User" = "阻止用户";
+"Block User" = "禁止用户";
 
 "Unblock User" = "解除封锁使用者";
 
 "Not Available" = "该用户无法通话";
-
-// Settings
 
 "Settings" = "设定值";
 
@@ -90,7 +77,7 @@
 
 "Tell a Friend" = "告诉一个朋友";
 
-"T & C" = "条款和条件";
+"Terms and Conditions" = "条款和条件";
 
 "Slate Version" = "Slate版本";
 
@@ -116,22 +103,15 @@
 
 "Couldn't delete user" = "无法删除用户";
 
-// Edit Profile
-
 "Edit Profile" = "编辑个人资料";
 
-// Blocked Users
-
-"Notifcation Label" = "没有封锁的使用者";
-
-
-// errors/hud mesage
+"Has no blocked users" = "没有封锁的使用者";
 
 "Email or Password is missing!" = "电子邮件或密码丢失！";
 
-"Loggin you in..." = "正在登录...";
+"Logging you in..." = "正在登录...";
 
-"Sucess!" = "成功！";
+"Success!" = "成功！";
 
 "Invalid Phone Number Format!" = "电话号码格式无效！";
 
@@ -139,7 +119,7 @@
 
 "All Fields are Required!" = "各个领域都需要！";
 
-"Registering you..." = "正在注册您...";
+"Registering you..." = "正在帮您注册...";
 
 "Select a Country" = "选择一个国家";
 
@@ -156,8 +136,6 @@
 "hour" = "小时";
 
 "hours" = "小时";
-
-// extras
 
 "Add Friend" = "添加好友";
 
@@ -176,3 +154,5 @@
 "Contact exists" = "联系存在";
 
 "This contact number already exists." = "该联系电话已经存在";
+
+

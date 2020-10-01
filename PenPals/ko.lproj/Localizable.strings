@@ -16,15 +16,12 @@
 
 "Version" = "버전";
 
-// login page
-
 "Email" = "이메일";
 
 "Password" = "암호";
 
-"Forgot Password" = "비밀번호를 잊으 셨나요?";
+"Forgot Password" = "비밀번호를 잊으셨나요?";
 
-// sign up page
 "First Name" = "이름";
 
 "Last Name" = "성";
@@ -41,32 +38,35 @@
 
 "Tap Profile Picture" = "프로필 사진을 누릅니다.";
 
-"Arabic" = "아라비아 말語";
-"Standard Chinese (Mandarin)" = "표준 중국어 (만다린 오렌지)";
-"English" = "영어";
-"French" = "프랑스 국민";
-"German" = "독일 사람";
-"Hindi" = "힌디 어";
-"Italian" = "이탈리아 사람";
-"Japanese" = "일본어";
-"Korean" = "한국어";
-"Portuguese" = "포르투갈 인";
-"Russian" = "러시아인";
-"Spanish" = "스페인의";
+"Arabic" = "아라비아어";
 
-// Main Chat View
+"Standard Chinese (Mandarin)" = "표준 중국어(만다린) ";
+
+"English" = "영어";
+
+"French" = "프랑스어";
+
+"German" =  "독일어";
+
+"Hindi" = "힌디어";
+
+"Italian" = "이탈리아 어";
+
+"Japanese" = "일본어";
+
+"Korean" = "한국어";
+
+"Portuguese" = "포르투갈어";
+
+"Russian" = "러시아어";
+
+"Spanish" = "스페인어";
 
 "Chats" = "메시지";
 
-//Photo gallery overview
+"Picture Gallery" = "갤러리";
 
-"Picture Gallery" = "화랑";
-
-// Contact View
-
-"Your Friends" = "너의 친구들";
-
-//Profile View
+"Your Friends" = "친구들 ";
 
 "Profile" = "프로필";
 
@@ -76,25 +76,23 @@
 
 "Unblock User" = "사용자 차단 해제";
 
-"Not Available" = "이 사용자는 통화 할 수 없습니다!";
-
-// Settings
+"Not Available" = "이 유저는 현재 통화가 불가능합니다.";
 
 "Settings" = "설정";
 
-"Blocked Users" = "차단 된 사용자";
+"Blocked Users" = "차단된 사용자";
 
-"Show Avatar" = "아바타보기";
+"Show Avatar" =  "아바타 보기";
 
 "Clean Cache" = "캐시 정리";
 
 "Tell a Friend" = "친구에게";
 
-"T & C" = "이용 약관";
+"Terms and Conditions" = "이용약관";
 
 "Slate Version" = "Slate 버전";
 
-"Log Out" = "로그 아웃";
+"Log Out" = "로그아웃";
 
 "Delete Account" = "계정 삭제";
 
@@ -102,9 +100,9 @@
 
 "Cache Cleaned!" = "캐시가 정리되었습니다!";
 
-"Couldn't clean Media files" = "I미디어 파일을 정리할 수 없습니다.";
+"Couldn't clean Media files" = "미디어 파일을 정리할 수 없습니다.";
 
-"Hey! Lets chat on Slate " = "안녕하세요! Slate에서 이야기합시다!";
+"Hey! Lets chat on Slate " = "Slate 에서 더 이야기하기";
 
 "Delete Account" = "계정 삭제";
 
@@ -116,24 +114,17 @@
 
 "Couldn't delete user" = "사용자를 삭제할 수 없습니다.";
 
-// Edit Profile
-
 "Edit Profile" = "프로필 편집";
 
-// Blocked Users
-
-"Notifcation Label" = "차단 된 사용자가 없습니다.";
-
-
-// errors/hud mesage
+"Has no blocked users" = "차단된 사용자가 없습니다.";
 
 "Email or Password is missing!" = "이메일 또는 비밀번호가 없습니다!";
 
-"Loggin you in..." = "로그인 중 ...";
+"Logging you in..." = "로그인 중 ...";
 
-"Sucess!" = "성공!";
+"Success!" = "성공!";
 
-"Invalid Phone Number Format!" = "전화 번호 형식이 잘못되었습니다!";
+"Invalid Phone Number Format!" = "전화번호 형식이 잘못되었습니다.";
 
 "Passwords don't match!" = "비밀번호가 일치하지 않습니다";
 
@@ -141,7 +132,7 @@
 
 "Registering you..." = "등록 중 ...";
 
-"Select a Country" = "국가를 고르시 오";
+"Select a Country" = "국가를 고르세요.";
 
 "Unmute" = "음소거 해제";
 
@@ -157,8 +148,6 @@
 
 "hours" = "시간";
 
-// extras
-
 "Add Friend" = "친구 추가";
 
 "Please enter phone number" = "전화 번호를 입력하세요 :";
@@ -171,8 +160,10 @@
 
 "Phone Number not found." = "전화 번호를 찾을 수 없습니다.";
 
-"Ok" = "괜찮아";
+"Ok" = "네";
 
 "Contact exists" = "연락처가 있습니다.";
 
-"This contact number already exists." = "이 연락처 번호는 이미 존재합니다.";
+"This contact number already exists." = "이 연락처는 이미 존재합니다.";
+
+

@@ -16,20 +16,17 @@
 
 "Version" = "Versão";
 
-// login page
-
 "Email" = "Email";
 
 "Password" = "Senha";
 
-"Forgot Password" = "Esqueceu a senha?";
+"Forgot Password" = "Esqueceste a senha?";
 
-// sign up page
 "First Name" = "Primeiro nome";
 
-"Last Name" = "Último nome";
+"Last Name" = "sobrenome";
 
-"Phone Number" = "Número de telefone";
+"Phone Number" = "numero telefonico";
 
 "Password Rules" = "Deve ter pelo menos 6 caracteres, conter 1 letra maiúscula, 1 letra minúscula e 1 caractere especial.";
 
@@ -39,7 +36,7 @@
 
 "Select Profile Picture" = "Selecione a foto do perfil:";
 
-"Tap Profile Picture" = "Toque na foto do perfil";
+"Tap Profile Picture" = "Tocas na foto do perfil";
 
 "Arabic" = "Árabe";
 "Standard Chinese (Mandarin)" = "Chinês padrão (Mandarim)";
@@ -54,31 +51,21 @@
 "Russian" = "Russo";
 "Spanish" = "Espanhol";
 
-// Main Chat View
-
 "Chats" = "Mensagens";
-
-//Photo gallery overview
 
 "Picture Gallery" = "Galeria de imagens";
 
-// Contact View
-
 "Your Friends" = "Seus Amigos";
-
-//Profile View
 
 "Profile" = "Perfil";
 
 "Message" = "mensagem";
 
-"Block User" = "BBloquear usuário";
+"Block User" = "Bloquear usuário";
 
 "Unblock User" = "Desbloquear usuário";
 
 "Not Available" = "Este usuário não está disponível para conversar";
-
-// Settings
 
 "Settings" = "Configurações";
 
@@ -86,11 +73,11 @@
 
 "Show Avatar" = "Mostrar Avatar";
 
-"Clean Cache" = "Limpar Cache";
+"Clean Cache" = "Limpara Cache";
 
 "Tell a Friend" = "Diga à um amigo";
 
-"T & C" = "Termos e Condições";
+"Terms and Conditions" = "Termos e Condições";
 
 "Slate Version" = "Versão do Slate";
 
@@ -116,22 +103,15 @@
 
 "Couldn't delete user" = "Não foi possível excluir o usuário";
 
-// Edit Profile
-
 "Edit Profile" = "Editar Perfil";
 
-// Blocked Users
-
-"Notifcation Label" = "Nenhum usuário bloqueado";
-
-
-// errors/hud mesage
+"Has no blocked users" = "Nenhum usuário bloqueado";
 
 "Email or Password is missing!" = "Falta e-mail ou senha!";
 
-"Loggin you in..." = "Fazendo login ...";
+"Logging you in..." = "Fazendo login ...";
 
-"Sucess!" = "Sucesso!";
+"Success!" = "Sucesso!";
 
 "Invalid Phone Number Format!" = "Formato de número de telefone inválido!";
 
@@ -157,8 +137,6 @@
 
 "hours" = "horas";
 
-// extras
-
 "Add Friend" = "Adicionar amigo";
 
 "Please enter phone number" = "Insira o número de telefone:";
@@ -176,3 +154,5 @@
 "Contact exists" = "Existe contato";
 
 "This contact number already exists." = "Este número de contato já existe";
+
+

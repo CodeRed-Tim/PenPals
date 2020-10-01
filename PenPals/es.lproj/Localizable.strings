@@ -10,22 +10,19 @@
 
 "Terms" = "Al registrarse, acepta los Términos de uso y la Política de privacidad de Slate";
 
+"Login" = "Login";
+
 "Sign Up" = "Registrar";
 
 "Version" = "Versión";
 
-// login page
-
-"Login" = "Iniciar Sesión";
-
-"Email" = "Email";
+"Email" = "correo electrónico";
 
 "Password" = "Contraseña";
 
-"Forgot Password" = "¿lividar la Contraseña?";
+"Forgot Password" = "¿olvido su contraseña?";
 
-// sign up page
-"First Name" = "Nombre de Pila";
+"First Name" = "primer nombre";
 
 "Last Name" = "Apellido";
 
@@ -42,36 +39,23 @@
 "Tap Profile Picture" = "Toque la Imagen del Perfil";
 
 "Arabic" = "Árabe";
-//"Bengali" = "Bengalí";
 "Standard Chinese (Mandarin)" = "Chino Estándar (Mandarín)";
-//"Dutch" = "Holandés";
 "English" = "Inglés";
 "French" = "Francés";
 "German" = "Alemán";
-//"Haitian" = "Haitiano";
 "Hindi" = "Hindi";
 "Italian" = "Italiano";
-"Japenese" = "Japonés";
+"Japanese" = "Japonés";
 "Korean" = "Coreano";
-//"Malay" = "Malayo";
 "Portuguese" = "Portugués";
-//"Romanian" = "Rumano";
 "Russian" = "Ruso";
 "Spanish" = "Español";
 
-// Main Chat View
-
-"Chats" = "Menajes";
-
-//Photo gallery overview
+"Chats" = "conversaciones";
 
 "Picture Gallery" = "Galería de fotos";
 
-// Contact View
-
 "Your Friends" = "Tus Amigos";
-
-//Profile View
 
 "Profile" = "Perfil";
 
@@ -83,9 +67,7 @@
 
 "Not Available" = "¡Este usuario no está disponible para la conversación!";
 
-// Settings
-
-"Settings" = "Escenario";
+"Settings" = "ajustes";
 
 "Blocked Users" = "Usuarios Bloqueados";
 
@@ -95,7 +77,7 @@
 
 "Tell a Friend" = "Decirle a un Amigo";
 
-"T & C" = "Términos y Condiciones";
+"Terms and Conditions" = "Términos y Condiciones";
 
 "Slate Version" = "Slate Versión";
 
@@ -103,7 +85,7 @@
 
 "Delete Account" = "Eliminar Cuenta";
 
-"Unblock" = "Desatascar";
+"Unblock" = "desbloquear";
 
 "Cache Cleaned!" = "¡Caché Limpiada!";
 
@@ -121,22 +103,15 @@
 
 "Couldn't delete user" = "No se pudo eliminar el usuario";
 
-// Edit Profile
-
 "Edit Profile" = "Editar Perfil";
 
-// Blocked Users
-
-"Notifcation Label" = "No Tiene Usuarios Bloqueados";
-
-
-// errors/hud mesage
+"Has No Blocked Users" = "No Tiene Usuarios Bloqueados";
 
 "Email or Password is missing!" = "¡Falta correo electrónico o contraseña!";
 
-"Loggin you in..." = "Iniciando sesión...";
+"Logging you in..." = "Iniciando sesión...";
 
-"Sucess!" = "¡Éxito!";
+"Success!" = "¡Éxito!";
 
 "Invalid Phone Number Format!" = "¡Formato de número de teléfono no válido!";
 
@@ -148,7 +123,7 @@
 
 "Select a Country" = "Seleccione un país";
 
-"Unmute" = "Activar Sonido";
+"Unmute" = "No Muda";
 
 "Mute" = "Muda";
 
@@ -162,7 +137,6 @@
 
 "hours" = "horas";
 
-//extrs
 "Add Friend" = "Agregar amigo";
 
 "Please enter phone number" = "Introduzca el número de teléfono:";
@@ -175,7 +149,7 @@
 
 "Phone Number not found." = "Número de teléfono no encontrado";
 
-"Ok" = "Está bien";
+"Ok" = "Esá bien";
 
 "Contact exists" = "Contacto ya existe";
 

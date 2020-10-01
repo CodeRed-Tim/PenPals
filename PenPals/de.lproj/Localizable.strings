@@ -1,0 +1,178 @@
+/* 
+  Localizable.strings
+  PenPals
+
+  Created by MaseratiTim on 9/6/20.
+  Copyright © 2020 SeniorProject. All rights reserved.
+*/
+
+// start page
+
+"Terms" = "Mit Ihrer Anmeldung stimmen Sie den Nutzungsbedingungen und Datenschutzbestimmungen von Slate zu";
+
+"Login" = "Anmeldung";
+
+"Sign Up" = "Anmelden";
+
+"Version" = "Ausführung";
+
+// login page
+
+"Email" = "Email";
+
+"Password" = "Passwort";
+
+"Forgot Password" = "Passwort vergessen?";
+
+// sign up page
+"First Name" = "Vorname";
+
+"Last Name" = "Nachname";
+
+"Phone Number" = "Telefonnummer";
+
+"Password Rules" = "Muss mindestens 6 Zeichen lang sein, 1 Großbuchstaben, 1 Kleinbuchstaben und 1 Sonderzeichen enthalten";
+
+"Confirm Password" = "Bestätige das Passwort";
+
+"Select Language" = "Sprache auswählen:";
+
+"Select Profile Picture" = "Wählen Sie Profilbild:";
+
+"Tap Profile Picture" = "Tippen Sie auf Profilbild";
+
+"Arabic" = "Arabisch";
+"Standard Chinese (Mandarin)" = "Standard Chinesisch (Mandarin)";
+"English" = "Englisch";
+"French" = "Französisch";
+"German" = "Deutsche";
+"Hindi" = "Hindi";
+"Italian" = "Italienisch";
+"Japenese" = "Japanisch";
+"Korean" = "Koreanisch";
+"Portuguese" = "Portugiesisch";
+"Russian" = "Russisch";
+"Spanish" = "Spanisch";
+
+// Main Chat View
+
+"Chats" = "Mitteilungen";
+
+//Photo gallery overview
+
+"Picture Gallery" = "Bildergalerie";
+
+// Contact View
+
+"Your Friends" = "Deine Freunde";
+
+//Profile View
+
+"Profile" = "Profil";
+
+"Message" = "Botschaft";
+
+"Block User" = "Benutzer blockieren";
+
+"Unblock User" = "Nutzer entblockieren";
+
+"Not Available" = "Dieser Benutzer ist nicht für Gespräche verfügbar!";
+
+// Settings
+
+"Settings" = "Einstellungen";
+
+"Blocked Users" = "Blockierte Benutzer";
+
+"Show Avatar" = "Avatar anzeigen";
+
+"Clean Cache" = "Cache bereinigen";
+
+"Tell a Friend" = "Erzählen Sie einem Freund";
+
+"T & C" = "Geschäftsbedingungen";
+
+"Slate Version" = "Slate Ausführung";
+
+"Log Out" = "Ausloggen";
+
+"Delete Account" = "Konto löschen";
+
+"Unblock" = "Entsperren";
+
+"Cache Cleaned!" = "Cache bereinigt!";
+
+"Couldn't clean Media files" = "Mediendateien konnten nicht bereinigt werden";
+
+"Hey! Lets chat on Slate " = "Hallo! Lass uns auf Slate reden";
+
+"Delete Account" = "Konto löschen";
+
+"Are You Sure" = "Bist du sicher?";
+
+"Delete" = "Löschen";
+
+"Cancel" = "Stornieren";
+
+"Couldn't delete user" = "Benutzer konnte nicht gelöscht werden";
+
+// Edit Profile
+
+"Edit Profile" = "Profil bearbeiten";
+
+// Blocked Users
+
+"Notifcation Label" = "Hat keine blockierten Benutzer";
+
+
+// errors/hud mesage
+
+"Email or Password is missing!" = "Email oder Passwort fehlt!";
+
+"Loggin you in..." = "Anmelden ...";
+
+"Sucess!" = "Erfolg!";
+
+"Invalid Phone Number Format!" = "Ungültiges Telefonnummernformat!";
+
+"Passwords don't match!" = "Passwörter stimmen nicht überein!";
+
+"All Fields are Required!" = "Alle Felder sind erforderlich!";
+
+"Registering you..." = "Registrieren Sie ...";
+
+"Select a Country" = "Wähle ein Land";
+
+"Unmute" = "Stummschaltung aufheben";
+
+"Mute" = "Stumm";
+
+"Just now" = "Gerade jetzt";
+
+"min" = "min";
+
+"mins" = "mins";
+
+"hour" = "stunde";
+
+"hours" = "std";
+
+// extras
+
+"Add Friend" = "Freund hinzufügen";
+
+"Please enter phone number" = "Bitte geben Sie die Telefonnummer ein:";
+
+"Add" = "Hinzufügen";
+
+"Contact Added Successfully." = "Kontakt erfolgreich hinzugefügt";
+
+"Not Found" = "Nicht gefunden";
+
+"Phone Number not found." = "Telefonnummer nicht gefunden.";
+
+"Ok" = "Ok";
+
+"Contact exists" = "Kontakt existiert";
+
+"This contact number already exists." = "Diese Kontaktnummer existiert bereits.";
