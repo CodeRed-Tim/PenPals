@@ -88,7 +88,7 @@
 
 "Tell a Friend" = "친구에게";
 
-"Terms and Conditions" = "이용약관";
+"T & C" = "이용약관";
 
 "Slate Version" = "Slate 버전";
 
@@ -166,4 +166,4 @@
 
 "This contact number already exists." = "이 연락처는 이미 존재합니다.";
 
-
+"terms" = "";

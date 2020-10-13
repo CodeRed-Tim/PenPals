@@ -48,6 +48,14 @@ class OutgoingMessages {
             }
             //update recent to display the latest message
             updateRecents(chatRoomId: chatRoomID, lastMessage: messageDictionary[kMESSAGE] as! String)
+            
+            //send oush notifications
+            var message: String
+            
+            message = NSLocalizedString("Select Language", comment: "")
+            let pushText = "[  \(messageDictionary[kTYPE] as! String) \(message)]"
+            
+            sendPushNotification(memberToPush: membersToPush, message: pushText)
         }
 
         

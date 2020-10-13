@@ -408,13 +408,13 @@
                                                 </connections>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Profile Picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjA-17-eFa">
-                                                <rect key="frame" x="144" y="942" width="133" height="21"/>
+                                                <rect key="frame" x="144.5" y="942" width="133" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <color key="textColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d66-Ms-N5T">
-                                                <rect key="frame" x="114" y="988" width="193" height="40"/>
+                                                <rect key="frame" x="114.5" y="988" width="193" height="40"/>
                                                 <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="193" id="0kq-5h-5ln"/>
@@ -1010,18 +1010,18 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Section-3" id="pJo-Lj-VUv">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="TOX-db-Cig">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TOX-db-Cig">
                                         <rect key="frame" x="0.0" y="429" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TOX-db-Cig" id="k9U-MP-uDJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKx-DL-6sb">
-                                                    <rect key="frame" x="20" y="7" width="355" height="30"/>
+                                                    <rect key="frame" x="20" y="7" width="386" height="30"/>
                                                     <state key="normal" title="Terms &amp; Conditions"/>
                                                     <connections>
-                                                        <segue destination="443-pz-P7M" kind="show" identifier="" id="nbE-HM-pvD"/>
+                                                        <action selector="TCButtonPressed:" destination="gLO-Vx-tGv" eventType="touchUpInside" id="aHd-uh-PNp"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1363,7 +1363,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GoJ-oe-5zG">
-                                <rect key="frame" x="16" y="98" width="382" height="764"/>
+                                <rect key="frame" x="16" y="54" width="382" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <string key="text">Camembert de normandie the big cheese stilton. Swiss chalk and cheese chalk and cheese paneer taleggio halloumi brie macaroni cheese. Port-salut red leicester ricotta cheese strings chalk and cheese gouda everyone loves everyone loves. Cheese triangles monterey jack cheese on toast pecorino everyone loves cow cheeseburger emmental. Cheesy feet.
 

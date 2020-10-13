@@ -31,4 +31,6 @@ pod 'FlagPhoneNumber'
 
 pod 'CountryPickerView'
 
+pod 'OneSignal'
+
 end

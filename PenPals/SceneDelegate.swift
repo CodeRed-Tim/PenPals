@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import OneSignal
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -16,8 +17,57 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        return true
-    }
+        FirebaseApp.configure()
+               
+               // one signal
+                           
+               func userDidLogin(userId: String) {
+                   
+                   self.startOneSignal()
+               }
+               
+               NotificationCenter.default.addObserver(forName: NSNotification.Name(USER_DID_LOGIN_NOTIFICATION), object: nil, queue: nil) { (note) in
+                   
+                   //code runs everytime there is a "broadcasting on this channel"
+                   
+                   let userId = note.userInfo![kUSERID] as! String
+                   UserDefaults.standard.set(userId, forKey: kUSERID)
+                   UserDefaults.standard.synchronize()
+                   
+                   print("user has logged in..............")
+                   userDidLogin(userId: userId)
+                   
+               }
+               
+               OneSignal.initWithLaunchOptions(launchOptions, appId: kONESIGNALAPPID)
+               
+               return true
+           }
+    
+    //MARK: OneSignal
+        
+        func startOneSignal() {
+         
+            let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+            
+            let userID = status.subscriptionStatus.userId
+            let pushToken = status.subscriptionStatus.pushToken
+            
+            if pushToken != nil {
+                if let playerID = userID {
+                    UserDefaults.standard.set(playerID, forKey: kPUSHID)
+                } else {
+                    UserDefaults.standard.removeObject(forKey: kPUSHID)
+                }
+                // save changes
+                UserDefaults.standard.synchronize()
+            }
+            
+            //update OneSignal ID
+            updateOneSignalId()
+            
+        }
+        
     
     
     func autoLogin() {
@@ -95,6 +145,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.rootViewController = mainView
     }
     
-    
 }
-

@@ -27,6 +27,7 @@
 		220FDBC8242B023D00D5B33D /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */; };
 		22166D252431B707007BA45E /* OutgoingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166D242431B707007BA45E /* OutgoingMessages.swift */; };
 		22166D272431DBA1007BA45E /* IncomingMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22166D262431DBA1007BA45E /* IncomingMessages.swift */; };
+		221A705D2534F903004AE1AD /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221A705C2534F903004AE1AD /* PushNotifications.swift */; };
 		221E066823ED4F61001A9F67 /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066723ED4F61001A9F67 /* FUser.swift */; };
 		221E066A23ED4FAF001A9F67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066923ED4FAF001A9F67 /* Constants.swift */; };
 		221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221E066B23ED5348001A9F67 /* CollectionReference.swift */; };
@@ -69,6 +70,7 @@
 		220FDBC7242B023D00D5B33D /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
 		22166D242431B707007BA45E /* OutgoingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessages.swift; sourceTree = "<group>"; };
 		22166D262431DBA1007BA45E /* IncomingMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessages.swift; sourceTree = "<group>"; };
+		221A705C2534F903004AE1AD /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		221E066723ED4F61001A9F67 /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		221E066923ED4FAF001A9F67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		221E066B23ED5348001A9F67 /* CollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReference.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		2265A1922504B90C00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2265A1942504B92900E38714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		227B4C762412320500A0C235 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		228A3F1F252BD6940021C56C /* Slate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slate.entitlements; sourceTree = "<group>"; };
 		228E050C25097BD900C09E79 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		228E050D25097BD900C09E79 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		228E050E25099BA900C09E79 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 				220B98C52433E89400E6BD3B /* Camera.swift */,
 				220B98C924340A5F00E6BD3B /* PhotoMediaItem.swift */,
 				220B6664243446D200081647 /* VideoMessage.swift */,
+				221A705C2534F903004AE1AD /* PushNotifications.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -207,6 +211,7 @@
 		225D8D6923ED4494007E0273 /* PenPals */ = {
 			isa = PBXGroup;
 			children = (
+				228A3F1F252BD6940021C56C /* Slate.entitlements */,
 				225D8D6A23ED4494007E0273 /* AppDelegate.swift */,
 				229C8654242B30C700088609 /* Welcome View */,
 				229C8655242B30FB00088609 /* Main Views */,
@@ -426,6 +431,7 @@
 				221E066823ED4F61001A9F67 /* FUser.swift in Sources */,
 				229C8658242B322400088609 /* Recent.swift in Sources */,
 				220CCD572450C399000A35AA /* SetTableViewController.swift in Sources */,
+				221A705D2534F903004AE1AD /* PushNotifications.swift in Sources */,
 				220E9DB0243EAECD0085D25C /* TranslationApi.swift in Sources */,
 				220FAABD24523515000C8D78 /* ContactsTableViewController.swift in Sources */,
 				227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */,
@@ -542,7 +548,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -597,7 +603,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -612,6 +618,7 @@
 			baseConfigurationReference = BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PenPals/Slate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RHJFMU3K87;
 				INFOPLIST_FILE = PenPals/Info.plist;
@@ -619,7 +626,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CodeRed.Slate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancauwenberge.slate;
 				PRODUCT_NAME = Slate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -631,6 +638,7 @@
 			baseConfigurationReference = A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PenPals/Slate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RHJFMU3K87;
 				INFOPLIST_FILE = PenPals/Info.plist;
@@ -638,7 +646,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CodeRed.Slate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancauwenberge.slate;
 				PRODUCT_NAME = Slate;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

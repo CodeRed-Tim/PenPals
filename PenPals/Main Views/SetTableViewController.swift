@@ -123,6 +123,10 @@ class SetTableViewController: UITableViewController {
         
     }
     
+    @IBAction func TCButtonPressed(_ sender: Any) {
+        let urlComponents = URLComponents (string: "http://www.slateofficial.com/terms.html")!
+        UIApplication.shared.open (urlComponents.url!)
+    }
     @IBAction func cleanCacheButtonTapped(_ sender: Any) {
         
         do {

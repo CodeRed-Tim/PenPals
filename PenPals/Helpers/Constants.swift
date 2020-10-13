@@ -27,7 +27,7 @@ public let APP_STARTED_NOTIFICATION = "AppStartedNotification"
 // Firebase reference key
 public let kFILEREFERENCE = "gs://slate-official.appspot.com"
 // app ID
-public let kONESIGNALAPPID = ""
+public let kONESIGNALAPPID = "f9e87345-1edd-4b3f-bc5a-62f17892f27d"
 // key for call function (if needed)
 public let kSINCHKEY = ""
 public let kSINCHSECRET = ""
