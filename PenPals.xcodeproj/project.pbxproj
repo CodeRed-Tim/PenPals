@@ -43,11 +43,39 @@
 		225E0362250969A2004817F5 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E0361250969A2004817F5 /* GalleryCollectionViewController.swift */; };
 		225FEA1424D09F90004C9DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */; };
 		2265A1912504B90C00E38714 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2265A1932504B90C00E38714 /* Localizable.strings */; };
+		2266F00525379C2A005FB84A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266F00425379C2A005FB84A /* NotificationService.swift */; };
+		2266F00925379C2A005FB84A /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2266F00225379C2A005FB84A /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2266F00F2537A350005FB84A /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266F00E2537A350005FB84A /* ForgotPasswordViewController.swift */; };
 		227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B4C762412320500A0C235 /* ChatsViewController.swift */; };
 		229C8653242B0A8000088609 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8652242B0A8000088609 /* UsersTableViewController.swift */; };
 		229C8658242B322400088609 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8657242B322400088609 /* Recent.swift */; };
 		7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */; };
+		BF9C68DC7463E79124F4874D /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EC6031051502FD7E2B521D /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2266F00725379C2A005FB84A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 225D8D5F23ED4494007E0273 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2266F00125379C2A005FB84A;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2266F00A25379C2A005FB84A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2266F00925379C2A005FB84A /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		220908692453C0F200FD504A /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +133,10 @@
 		2265A1892504B47B00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2265A1922504B90C00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2265A1942504B92900E38714 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2266F00225379C2A005FB84A /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2266F00425379C2A005FB84A /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		2266F00625379C2A005FB84A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2266F00E2537A350005FB84A /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		227B4C762412320500A0C235 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		228A3F1F252BD6940021C56C /* Slate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Slate.entitlements; sourceTree = "<group>"; };
 		228E050C25097BD900C09E79 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
@@ -115,9 +147,12 @@
 		228E05132509AE6100C09E79 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		229C8652242B0A8000088609 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		229C8657242B322400088609 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		42EC6031051502FD7E2B521D /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84411BB3C22C5F387E12C459 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.release.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.release.xcconfig"; sourceTree = "<group>"; };
 		BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.debug.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.debug.xcconfig"; sourceTree = "<group>"; };
 		EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PenPals.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCA78CA2D1D77A193FD7587A /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +162,14 @@
 			files = (
 				220FAABF24524965000C8D78 /* ImagePicker.framework in Frameworks */,
 				7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2266EFFF25379C2A005FB84A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF9C68DC7463E79124F4874D /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				225D8D6923ED4494007E0273 /* PenPals */,
+				2266F00325379C2A005FB84A /* OneSignalNotificationServiceExtension */,
 				225D8D6823ED4494007E0273 /* Products */,
 				34FEDC85161EFA56244B90A2 /* Pods */,
 				9EF17DDAE93D28143C7F266F /* Frameworks */,
@@ -204,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				225D8D6723ED4494007E0273 /* Slate.app */,
+				2266F00225379C2A005FB84A /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,6 +275,15 @@
 			path = PenPals;
 			sourceTree = "<group>";
 		};
+		2266F00325379C2A005FB84A /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				2266F00425379C2A005FB84A /* NotificationService.swift */,
+				2266F00625379C2A005FB84A /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		229C8654242B30C700088609 /* Welcome View */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				220DB7D8242DAE7C006FBAD1 /* MessageViewController.swift */,
+				2266F00E2537A350005FB84A /* ForgotPasswordViewController.swift */,
 				229C8652242B0A8000088609 /* UsersTableViewController.swift */,
 				224E855C2427007C001FF692 /* ProfileViewTableViewController.swift */,
 				225E0361250969A2004817F5 /* GalleryCollectionViewController.swift */,
@@ -267,6 +322,8 @@
 			children = (
 				BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */,
 				A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */,
+				84411BB3C22C5F387E12C459 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				FCA78CA2D1D77A193FD7587A /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -276,6 +333,7 @@
 			children = (
 				220FAABE24524965000C8D78 /* ImagePicker.framework */,
 				EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */,
+				42EC6031051502FD7E2B521D /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -292,15 +350,35 @@
 				225D8D6423ED4494007E0273 /* Frameworks */,
 				225D8D6523ED4494007E0273 /* Resources */,
 				3A6E0F17CCFFC60B5F8C2F78 /* [CP] Embed Pods Frameworks */,
+				2266F00A25379C2A005FB84A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2266F00825379C2A005FB84A /* PBXTargetDependency */,
 			);
 			name = PenPals;
 			productName = PenPals;
 			productReference = 225D8D6723ED4494007E0273 /* Slate.app */;
 			productType = "com.apple.product-type.application";
+		};
+		2266F00125379C2A005FB84A /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2266F00D25379C2A005FB84A /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				2F3B57B05FB9EFC558D19DBB /* [CP] Check Pods Manifest.lock */,
+				2266EFFE25379C2A005FB84A /* Sources */,
+				2266EFFF25379C2A005FB84A /* Frameworks */,
+				2266F00025379C2A005FB84A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 2266F00225379C2A005FB84A /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -308,12 +386,15 @@
 		225D8D5F23ED4494007E0273 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1170;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = SeniorProject;
 				TargetAttributes = {
 					225D8D6623ED4494007E0273 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					2266F00125379C2A005FB84A = {
+						CreatedOnToolsVersion = 11.7;
 					};
 				};
 			};
@@ -342,6 +423,7 @@
 			projectRoot = "";
 			targets = (
 				225D8D6623ED4494007E0273 /* PenPals */,
+				2266F00125379C2A005FB84A /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -359,9 +441,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2266F00025379C2A005FB84A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2F3B57B05FB9EFC558D19DBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3A6E0F17CCFFC60B5F8C2F78 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -436,6 +547,7 @@
 				220FAABD24523515000C8D78 /* ContactsTableViewController.swift in Sources */,
 				227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */,
 				224E855D2427007C001FF692 /* ProfileViewTableViewController.swift in Sources */,
+				2266F00F2537A350005FB84A /* ForgotPasswordViewController.swift in Sources */,
 				225E0362250969A2004817F5 /* GalleryCollectionViewController.swift in Sources */,
 				220CCD592450E4AD000A35AA /* BlockedUsersViewController.swift in Sources */,
 				221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */,
@@ -444,7 +556,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2266EFFE25379C2A005FB84A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2266F00525379C2A005FB84A /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2266F00825379C2A005FB84A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2266F00125379C2A005FB84A /* OneSignalNotificationServiceExtension */;
+			targetProxy = 2266F00725379C2A005FB84A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		225D8D7023ED4494007E0273 /* Main.storyboard */ = {
@@ -617,6 +745,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD8735295FCB1374B225251E /* Pods-PenPals.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PenPals/Slate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -637,6 +766,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PenPals/Slate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -648,6 +778,46 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vancauwenberge.slate;
 				PRODUCT_NAME = Slate;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2266F00B25379C2A005FB84A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84411BB3C22C5F387E12C459 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RHJFMU3K87;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancauwenberge.slate.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2266F00C25379C2A005FB84A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCA78CA2D1D77A193FD7587A /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RHJFMU3K87;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vancauwenberge.slate.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -670,6 +840,15 @@
 			buildConfigurations = (
 				225D8D7C23ED4495007E0273 /* Debug */,
 				225D8D7D23ED4495007E0273 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2266F00D25379C2A005FB84A /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2266F00B25379C2A005FB84A /* Debug */,
+				2266F00C25379C2A005FB84A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -34,3 +34,8 @@ pod 'CountryPickerView'
 pod 'OneSignal'
 
 end
+
+target 'OneSignalNotificationServiceExtension' do
+  use_frameworks!
+  pod 'OneSignal'
+end

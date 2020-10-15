@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseFirestore
+import Firebase
 
 //MARK: GLOBAL FUNCTIONS
 private let dateFormat = "yyyyMMddHHmmss"

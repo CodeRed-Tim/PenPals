@@ -323,51 +323,36 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             //arabic
             languageValue = "ar"
         } else if langIndex == 1 {
-            //Bengali
-            languageValue = "bn"
-        } else if langIndex == 2 {
             //chinese
             languageValue = "zh"
-        } else if langIndex == 3 {
-            //dutch
-            languageValue = "nl"
-        } else if langIndex == 4 {
+        } else if langIndex == 2 {
             //english
             languageValue = "en"
-        } else if langIndex == 5 {
+        } else if langIndex == 3 {
             //french
             languageValue = "fr"
-        } else if langIndex == 6 {
+        } else if langIndex == 4 {
             //german
             languageValue = "de"
-        } else if langIndex == 7 {
-            //hatian
-            languageValue = "ht"
-        } else if langIndex == 8 {
+        } else if langIndex == 5 {
             //hindi
             languageValue = "hi"
-        } else if langIndex == 9 {
+        } else if langIndex == 6 {
             //italian
             languageValue = "it"
-        } else if langIndex == 10 {
+        } else if langIndex == 7 {
             //japense
             languageValue = "ja"
-        } else if langIndex == 11 {
+        } else if langIndex == 8 {
             //korean
             languageValue = "ko"
-        } else if langIndex == 12 {
-            //malay
-            languageValue = "ms"
-        } else if langIndex == 13 {
+        } else if langIndex == 9 {
             //porteguese
             languageValue = "pt"
-        } else if langIndex == 14 {
-            //romanian
-            languageValue = "ro"
-        } else if langIndex == 15 {
+        } else if langIndex == 10 {
             //russian
             languageValue = "ru"
-        } else if langIndex == 16 {
+        } else if langIndex == 11 {
             //spanish
             languageValue = "es"
         }

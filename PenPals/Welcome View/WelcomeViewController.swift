@@ -78,6 +78,12 @@ class WelcomeViewController: UIViewController {
         dismissKeyboard()
     }
     
+    @IBAction func forgotPasswordTapped(_ sender: Any) {
+        
+        
+    }
+    
+    
     //MARK: HelperFunctions
     
     func loginUser() {

@@ -90,6 +90,74 @@
             </objects>
             <point key="canvasLocation" x="1462" y="-700"/>
         </scene>
+        <!--Forgot Password View Controller-->
+        <scene sceneID="8HV-Ki-Oy9">
+            <objects>
+                <viewController id="a4K-oe-0gH" customClass="ForgotPasswordViewController" customModule="Slate" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fkC-OS-nKH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FEp-AG-HmQ">
+                                <rect key="frame" x="46" y="150" width="320" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0O5-BK-zbG">
+                                <rect key="frame" x="87" y="525" width="240" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.84313725490000002" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="PZb-k6-g61" eventType="touchUpInside" id="4VN-Xp-urM"/>
+                                    <action selector="resetPasswordTapped:" destination="a4K-oe-0gH" eventType="touchUpInside" id="0x5-QX-wnO"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sxk-tY-BKv">
+                                <rect key="frame" x="46" y="251" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qK-VD-aTP">
+                                <rect key="frame" x="20" y="82" width="43" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="Nga-9S-RoF" eventType="touchUpInside" id="84Z-4e-AMc"/>
+                                    <segue destination="PZb-k6-g61" kind="presentation" modalPresentationStyle="fullScreen" id="dLB-gr-IBS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45098039220000002" green="0.58431372550000005" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="X2e-16-Wxw"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Dzp-Am-KqD" appends="YES" id="2Ht-bL-GSW"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="B6x-OS-moA"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="FEp-AG-HmQ" id="Qv9-vY-JKi"/>
+                        <outlet property="languagePicker" destination="sxk-tY-BKv" id="Ukx-Gs-9CZ"/>
+                        <outlet property="resetPasswordButton" destination="0O5-BK-zbG" id="NN0-Uh-xu1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qbj-9U-aQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Dzp-Am-KqD">
+                    <connections>
+                        <action selector="backgroundTapped:" destination="a4K-oe-0gH" id="Kpx-fq-D1W"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-371.01449275362324" y="-133.25892857142856"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="EhK-0B-NO5">
             <objects>
@@ -191,6 +259,10 @@
                                 <state key="normal" title="Forgot password?">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotPasswordTapped:" destination="PZb-k6-g61" eventType="touchUpInside" id="afr-4K-N4C"/>
+                                    <segue destination="a4K-oe-0gH" kind="presentation" modalPresentationStyle="fullScreen" id="2cf-k7-8w9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.45098039220000002" green="0.58431372550000005" blue="0.68235294120000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -240,7 +312,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="61.607142857142854"/>
+            <point key="canvasLocation" x="549" y="-137"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="snc-ea-wUL">
@@ -561,7 +633,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2075.36231884058" y="154.35267857142856"/>
+            <point key="canvasLocation" x="2151" y="90"/>
         </scene>
         <!--Users Table View Controller-->
         <scene sceneID="uJ8-Y1-DeO">
@@ -1660,7 +1732,8 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="beo-eV-go1"/>
-        <segue reference="obE-gn-IYX"/>
+        <segue reference="dLB-gr-IBS"/>
+        <segue reference="Mx7-7N-LtR"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Back" width="25" height="25"/>

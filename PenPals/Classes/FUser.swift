@@ -302,8 +302,23 @@ class FUser {
         
     }
     
-} //end of class funcs
+    //MARK: Password Reset
 
+    func resetpassword(email: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {
+        
+//        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            
+//            if error == nil {
+//                onSuccess()
+//            } else {
+//                onError(error!.localizedDescription)
+//            }
+//
+//        }
+        
+    }
+    
+} //end of class funcs
 
 
 
@@ -366,7 +381,6 @@ func fetchCurrentUserFromFirestore(userId: String, completion: @escaping (_ user
         
     }
 }
-
 
 //MARK: Helper funcs
 
