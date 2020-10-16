@@ -97,30 +97,31 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
         
-        let cp = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
-//        cp.delegate = self
-//        cp.dataSource = self
-        [ cpvTextField, cpvInternal].forEach {
-            $0?.dataSource = self
-        }
-        
-        cpvInternal.delegate = self
-        
-//        cellImageViewSize(in: cp)
-        
-        phoneNumberTextField.leftView = cp
-        phoneNumberTextField.leftViewMode = .always
-        
-        self.cpvTextField = cp
-        
-        cpvTextField.tag = 2
-
-        
+        //MARK: code for country flag cocoapods implementation
+//        let cp = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
+////        cp.delegate = self
+////        cp.dataSource = self
+//        [ cpvTextField, cpvInternal].forEach {
+//            $0?.dataSource = self
+//        }
+//
+//        cpvInternal.delegate = self
+//
+////        cellImageViewSize(in: cp)
+//
+//        phoneNumberTextField.leftView = cp
+//        phoneNumberTextField.leftViewMode = .always
+//
+//        self.cpvTextField = cp
+//
+//        cpvTextField.tag = 2
+//
+//
     }
-    
-    func cellImageViewSize(in countryPickerView: CountryPickerView) -> CGSize {
-        return cpvTextField.flagImageView.sizeThatFits(CGSize(width: 2000, height: 2000))
-    }
+//
+//    func cellImageViewSize(in countryPickerView: CountryPickerView) -> CGSize {
+//        return cpvTextField.flagImageView.sizeThatFits(CGSize(width: 2000, height: 2000))
+//    }
     //MARK: Picker menu functions
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

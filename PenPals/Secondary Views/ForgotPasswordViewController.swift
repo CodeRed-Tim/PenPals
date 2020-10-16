@@ -10,19 +10,14 @@ import UIKit
 import JGProgressHUD
 import Firebase
 
-class ForgotPasswordViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ForgotPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
-    @IBOutlet weak var languagePicker: UIPickerView!
+    @IBOutlet weak var contactLabel: UILabel!
+    @IBOutlet weak var contactTextView: UITextView!
     
     var user: FUser?
-    
-    var selectedLanguage: String?
-    
-    var languageList = [NSLocalizedString("Arabic", comment: ""), NSLocalizedString("Standard Chinese (Mandarin)", comment: ""), NSLocalizedString("English", comment: ""), NSLocalizedString("French", comment: ""), NSLocalizedString("German", comment: ""),  NSLocalizedString("Hindi", comment: ""), NSLocalizedString("Italian", comment: ""), NSLocalizedString("Japanese", comment: ""), NSLocalizedString("Korean", comment: ""),  NSLocalizedString("Portuguese", comment: ""),  NSLocalizedString("Russian", comment: ""), NSLocalizedString("Spanish", comment: "")]
-    
-    var startIndex: Int?
     
     var hud = JGProgressHUD(style: .dark)
     
@@ -33,23 +28,35 @@ class ForgotPasswordViewController: UIViewController, UIPickerViewDelegate, UIPi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        Do any additional setup after loading the view.
-        languagePicker.delegate = self as UIPickerViewDelegate
-        languagePicker.dataSource = self as UIPickerViewDataSource
-        
-        startIndex = languageList.count / 2
-        
-        languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
-
-        // Do any additional setup after loading the view.
+        updateTextView()
     }
+    
+    func updateTextView() {
+        
+        let path = "https://www.slateofficial.com/"
+        let text = contactTextView.text ?? ""
+        let attributedString = NSAttributedString.makeHyperLink(for: path, in: text, as: "contact our Support Team")
+        let font = contactTextView.font
+        let textColor = contactTextView.textColor
+        let align = contactTextView.textAlignment
+        contactTextView.attributedText = attributedString
+        contactTextView.font = font
+        contactTextView.textColor = textColor
+        contactTextView.textAlignment = align
+        
+    }
+    
+//    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+//        UIApplication.shared.open(URL)
+//        return false
+//    }
     
     @IBAction func resetPasswordTapped(_ sender: Any) {
         
-        let languageIndex = languagePicker.selectedRow(inComponent: 0)
+//        let languageIndex = languagePicker.selectedRow(inComponent: 0)
         
-        let selectedLanguage = languageSelect(langIndex: languageIndex)
-        print("!!!!!!!!! \(selectedLanguage) !!!!!!!!!")
+//        let selectedLanguage = languageSelect(langIndex: languageIndex)
+//        print("!!!!!!!!! \(selectedLanguage) !!!!!!!!!")
         
 
         guard let email = emailTextField.text, email != "" else {
@@ -115,72 +122,4 @@ class ForgotPasswordViewController: UIViewController, UIPickerViewDelegate, UIPi
         emailTextField.text = ""
     }
     
-    
-    
-//MARK: Picker menu functions
-
-func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-}
-func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return languageList.count
-}
-func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    let row = languageList[row]
-    return row
-}
-// change text color
-func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-    return NSAttributedString(string: languageList[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-}
-    
-    func languageSelect(langIndex: Int) -> String {
-           
-           //        ["Arabic", "Bengali", "Chinese", "Dutch", "English", "French", "German", "Haitian", "Hindi", "Italian", "Japenese", "Korean", "Malay", "Porteguese", "Romanian", "Russian", "Spanish"]
-           
-           var langIndex = langIndex
-           
-           langIndex = languagePicker.selectedRow(inComponent: 0)
-           
-           var languageValue = ""
-           
-                   if langIndex == 0 {
-                   //arabic
-                   languageValue = "ar"
-               } else if langIndex == 1 {
-                   //chinese
-                   languageValue = "zh"
-               } else if langIndex == 2 {
-                   //english
-                   languageValue = "en"
-               } else if langIndex == 3 {
-                   //french
-                   languageValue = "fr"
-               } else if langIndex == 4 {
-                   //german
-                   languageValue = "de"
-               } else if langIndex == 5 {
-                   //hindi
-                   languageValue = "hi"
-               } else if langIndex == 6 {
-                   //italian
-                   languageValue = "it"
-               } else if langIndex == 7 {
-                   //japense
-                   languageValue = "ja"
-               } else if langIndex == 8 {
-                   //korean
-                   languageValue = "ko"
-               } else if langIndex == 9 {
-                   //porteguese
-                   languageValue = "pt"
-               } else if langIndex == 10 {
-                   //russian
-                   languageValue = "ru"
-               } else if langIndex == 11 {
-                   //spanish
-                   languageValue = "es"
-               }
-               return languageValue
-           }
 }

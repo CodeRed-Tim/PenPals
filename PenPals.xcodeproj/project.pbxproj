@@ -42,6 +42,7 @@
 		225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */; };
 		225E0362250969A2004817F5 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E0361250969A2004817F5 /* GalleryCollectionViewController.swift */; };
 		225FEA1424D09F90004C9DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */; };
+		2262B8302538DA11001D68E7 /* NSAttributedSTringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262B82F2538DA11001D68E7 /* NSAttributedSTringExtension.swift */; };
 		2265A1912504B90C00E38714 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2265A1932504B90C00E38714 /* Localizable.strings */; };
 		2266F00525379C2A005FB84A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266F00425379C2A005FB84A /* NotificationService.swift */; };
 		2266F00925379C2A005FB84A /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2266F00225379C2A005FB84A /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -129,6 +130,7 @@
 		225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		225E0361250969A2004817F5 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2262B82F2538DA11001D68E7 /* NSAttributedSTringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedSTringExtension.swift; sourceTree = "<group>"; };
 		2265A1882504B47A00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		2265A1892504B47B00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		2265A1922504B90C00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				221E066923ED4FAF001A9F67 /* Constants.swift */,
 				221E066B23ED5348001A9F67 /* CollectionReference.swift */,
 				221E066D23ED5416001A9F67 /* HelperFunctions.swift */,
+				2262B82F2538DA11001D68E7 /* NSAttributedSTringExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				225E0362250969A2004817F5 /* GalleryCollectionViewController.swift in Sources */,
 				220CCD592450E4AD000A35AA /* BlockedUsersViewController.swift in Sources */,
 				221E066C23ED5349001A9F67 /* CollectionReference.swift in Sources */,
+				2262B8302538DA11001D68E7 /* NSAttributedSTringExtension.swift in Sources */,
 				22166D272431DBA1007BA45E /* IncomingMessages.swift in Sources */,
 				220B6665243446D200081647 /* VideoMessage.swift in Sources */,
 			);

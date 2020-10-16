@@ -70,7 +70,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
 //
     func addFriend() {
         
-        let alert = UIAlertController(title: NSLocalizedString("Add Friend", comment: ""), message: NSLocalizedString("Please enter phone number", comment: ""), preferredStyle: UIAlertController.Style.alert )
+        let alert = UIAlertController(title: NSLocalizedString("Add Friend", comment: ""), message: NSLocalizedString("Please enter phone number (Country Code not needed)", comment: ""), preferredStyle: UIAlertController.Style.alert )
         
         let add = UIAlertAction(title: NSLocalizedString("Add", comment: ""), style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
