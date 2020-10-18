@@ -150,7 +150,7 @@
 
 "Add Friend" = "친구 추가";
 
-"Please enter phone number" = "전화 번호를 입력하세요 :";
+"Please enter phone number" = "전화 번호를 입력하십시오 (국가 코드 불필요) :";
 
 "Add" = "더하다";
 
@@ -167,3 +167,17 @@
 "This contact number already exists." = "이 연락처는 이미 존재합니다.";
 
 "terms" = "";
+
+"Instructions" = "이메일을 입력하면 비밀번호 재설정 방법에 대한 지침이 포함 된 링크를 보내드립니다.";
+
+"Reset Password" = "암호를 재설정";
+
+"Forgot Email" = "이메일을 잊어 버렸거나 링크를받지 못한 경우 지원 팀에 문의하십시오.";
+
+"Forgot" = "이메일을 잊어 버렸거나 링크를받지 못한 경우 ";
+
+"Support Team" = "지원팀에 문의";
+
+// succes message fr forgot password
+
+"Email Sent" = "비밀번호 재설정 이메일을 방금 보냈습니다. 받은 편지함을 확인하고 지침에 따라 암호를 재설정하십시오.";

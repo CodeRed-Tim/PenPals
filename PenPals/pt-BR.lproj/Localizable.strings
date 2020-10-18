@@ -139,7 +139,7 @@
 
 "Add Friend" = "Adicionar amigo";
 
-"Please enter phone number" = "Insira o número de telefone:";
+"Please enter phone number" = "Insira o número de telefone (o código do país não é necessário):";
 
 "Add" = "Adicionar";
 
@@ -156,3 +156,17 @@
 "This contact number already exists." = "Este número de contato já existe";
 
 "terms" = "";
+
+"Instructions" = "Digite seu e-mail e enviaremos um link com instruções sobre como redefinir sua senha";
+
+"Reset Password" = "Redefinir senha";
+
+"Forgot Email" = "Se você esqueceu seu e-mail ou não recebeu um link entre em contato com nossa Equipe de Suporte";
+
+"Forgot" = "Se você esqueceu seu e-mail ou não recebeu um link";
+
+"Support Team" = "entre em contato com nossa equipe de suporte";
+
+// succes message fr forgot password
+
+"Email Sent" = "Acabamos de enviar a você um e-mail de redefinição de senha. Por favor, verifique sua caixa de entrada e siga as instruções para redefinir sua senha";

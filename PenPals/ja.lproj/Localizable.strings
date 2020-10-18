@@ -161,7 +161,7 @@
 
 "Add Friend" = "友人を追加する";
 
-"Please enter phone number" = "電話番号を入力してください：";
+"Please enter phone number" = "電話番号を入力してください（国コードは不要です）：";
 
 "Add" = "追加";
 
@@ -178,3 +178,17 @@
 "This contact number already exists." = "この連絡先番号は既に存在します";
 
 "terms" = "";
+
+"Instructions" = "メールアドレスを入力すると、パスワードをリセットする方法の説明が記載されたリンクが送信されます";
+
+"Reset Password" = "パスワードを再設定する";
+
+"Forgot Email" = "メールを忘れた場合やリンクが届かない場合は、サポートチームにご連絡ください";
+
+"Forgot" = "メールを忘れた場合やリンクが届かない場合 ";
+
+"Support Team" = "サポートチームにお問い合わせください";
+
+// succes message fr forgot password
+
+"Email Sent" = "パスワードリセットのメールをお送りしました。 受信トレイを確認し、指示に従ってパスワードをリセットしてください";

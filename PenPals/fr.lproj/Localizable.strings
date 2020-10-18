@@ -161,7 +161,7 @@
 
 "Add Friend" = "Ajouter un ami";
 
-"Please enter phone number" = "Veuillez entrer le numéro de téléphone:";
+"Please enter phone number" = "Veuillez entrer le numéro de téléphone (code de pays non requis):";
 
 "Add" = "Ajouter";
 
@@ -178,3 +178,17 @@
 "This contact number already exists." = "Ce numéro de contact existe déjà.";
 
 "terms" = "";
+
+"Instructions" = "Entrez votre e-mail et nous vous enverrons un lien avec des instructions pour réinitialiser votre mot de passe";
+
+"Reset Password" = "Réinitialiser le mot de passe";
+
+"Forgot Email" = "Si vous avez oublié votre e-mail ou ne recevez pas de lien, contactez notre équipe d'assistance";
+
+"Forgot" = "Si vous avez oublié votre email ou ne recevez pas de lien ";
+
+"Support Team" = "contactez notre équipe d'assistance";
+
+// succes message fr forgot password
+
+"Email Sent" = "Nous venons de vous envoyer un e-mail de réinitialisation de mot de passe. Veuillez vérifier votre boîte de réception et suivre les instructions pour réinitialiser votre mot de passe";

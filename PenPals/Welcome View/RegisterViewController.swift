@@ -59,6 +59,9 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        termsButton.titleLabel?.lineBreakMode = .byWordWrapping
+        termsButton.titleLabel?.textAlignment = .center
+        
         //Localization
         signUpLabel.text = NSLocalizedString("Sign Up", comment: "")
         firstNameLabel.text = NSLocalizedString("First Name", comment: "")

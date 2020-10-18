@@ -138,8 +138,8 @@
 "hours" = "horas";
 
 "Add Friend" = "Agregar amigo";
-
-"Please enter phone number" = "Introduzca el número de teléfono:";
+ 
+"Please enter phone number" = "Introduzca el número de teléfono (Código de país no necesario):";
 
 "Add" = "Sumar";
 
@@ -154,3 +154,17 @@
 "Contact exists" = "Contacto ya existe";
 
 "This contact number already exists." = "Este número de contacto ya existe.";
+
+"Instructions" = "Ingrese su correo electrónico y le enviaremos un enlace con instrucciones sobre cómo restablecer su contraseña";
+
+"Reset Password" = "Restablecer la contraseña";
+
+"Forgot Email" = "Si ha olvidado su correo electrónico o no recibe un enlace, comuníquese con nuestro equipo de soporte";
+
+"Forgot" = "Si ha olvidado su correo electrónico o no recibe un enlace ";
+
+"Support Team" = "contacta con nuestro equipo de soporte";
+
+// succes message fr forgot password
+
+"Email Sent" = "Le acabamos de enviar un correo electrónico para restablecer la contraseña. Revise su bandeja de entrada y siga las instrucciones para restablecer su contraseña";

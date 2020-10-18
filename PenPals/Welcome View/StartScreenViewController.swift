@@ -21,7 +21,7 @@ class StartScreenViewController: UIViewController {
         //Localization
         loginButton.setTitle(NSLocalizedString("Login", comment: ""), for: .normal)
         signUpButton.setTitle(NSLocalizedString("Sign Up", comment: ""), for: .normal)
-        versionLabel.text = NSLocalizedString("Version", comment: "")
+//        versionLabel.text = "Version"
         
         //set app version
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {

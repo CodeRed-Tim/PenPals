@@ -16,6 +16,10 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var contactTextView: UITextView!
+    @IBOutlet weak var forgotPasswordLabel: UILabel!
+    @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
     
     var user: FUser?
     
@@ -33,9 +37,11 @@ class ForgotPasswordViewController: UIViewController {
     
     func updateTextView() {
         
+        contactTextView.text = NSLocalizedString("Forgot Email", comment: "")
+        
         let path = "https://www.slateofficial.com/"
         let text = contactTextView.text ?? ""
-        let attributedString = NSAttributedString.makeHyperLink(for: path, in: text, as: "contact our Support Team")
+        let attributedString = NSAttributedString.makeHyperLink(for: path, in: text, as: NSLocalizedString("Support Team", comment: ""))
         let font = contactTextView.font
         let textColor = contactTextView.textColor
         let align = contactTextView.textAlignment
@@ -43,6 +49,13 @@ class ForgotPasswordViewController: UIViewController {
         contactTextView.font = font
         contactTextView.textColor = textColor
         contactTextView.textAlignment = align
+        
+        forgotPasswordLabel.text = NSLocalizedString("Forgot Password", comment: "")
+        instructionsLabel.text = NSLocalizedString("Instructions", comment: "")
+        emailLabel.text = NSLocalizedString("Email", comment: "")
+        emailTextField.placeholder = NSLocalizedString("Email", comment: "")
+        resetPasswordButton.setTitle(NSLocalizedString("Reset Password", comment: ""), for: .normal)
+        
         
     }
     
@@ -81,7 +94,7 @@ class ForgotPasswordViewController: UIViewController {
             //show success message
             
             self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-            self.hud.textLabel.text = "We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password"
+            self.hud.textLabel.text = NSLocalizedString("Email Sent", comment: "")
             self.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
             self.hud.show(in: self.view)
             self.hud.dismiss(afterDelay: 2.5)

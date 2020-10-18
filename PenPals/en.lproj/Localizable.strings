@@ -80,8 +80,6 @@
 
 "Add Friend" = "Add Friend";
 
-"Please enter phone number" = "Please enter phone number:";
-
 "Add" = "Add";
 
 "Contact Added Successfully." = "Contact Added Successfully.";
@@ -95,3 +93,21 @@
 "Contact exists" = "Contact exists";
 
 "This contact number already exists." = "This contact number already exists.";
+
+// Forgot password
+
+"Please enter phone number" = "Please enter phone number (Country Code not needed):";
+
+"Instructions" = "Enter your email and we'll send a link with instructions on how to reset your password";
+
+"Reset Password" = "Reset Password";
+
+"Forgot Email" = "If you've forgotten your email or don't recieve a link contact our Support Team";
+
+"Forgot" = "If you've forgotten your email or don't recieve a link ";
+
+"Support Team" = "contact our Support Team";
+
+// succes message fr forgot password
+
+"Email Sent" = "We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password";

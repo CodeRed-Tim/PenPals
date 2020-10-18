@@ -139,7 +139,7 @@
 
 "Add Friend" = "添加好友";
 
-"Please enter phone number" = "请输入电话号码：";
+"Please enter phone number" = "请输入电话号码（不需要国家代码）：";
 
 "Add" = "加";
 
@@ -156,3 +156,17 @@
 "This contact number already exists." = "该联系电话已经存在";
 
 "terms" = "";
+
+"Instructions" = "输入您的电子邮件，我们将发送一个链接，其中包含有关如何重设密码的说明";
+
+"Reset Password" = "重设密码";
+
+"Forgot Email" = "如果您忘记了电子邮件或没有收到链接，请联系我们的支持团队";
+
+"Forgot" = "如果您忘记了电子邮件或没有收到链接";
+
+"Support Team" = "联系我们的支持团队";
+
+// succes message fr forgot password
+
+"Email Sent" = "我们刚刚给您发送了密码重置电子邮件。 请检查您的收件箱，然后按照说明重设密码";
