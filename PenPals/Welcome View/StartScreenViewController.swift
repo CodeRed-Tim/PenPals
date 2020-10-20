@@ -29,6 +29,24 @@ class StartScreenViewController: UIViewController {
             versionNumLabel.text = version
         }
         
+        view.backgroundColor = CustomColor.customBackgroundColor
+        
+        
+//        view.backgroundColor =
+//        // 1
+//        UIColor { traitCollection in
+//          // 2
+//          switch traitCollection.userInterfaceStyle {
+//          case .dark:
+//            // 3
+//            return UIColor(displayP3Red: 1, green: 29, blue: 39, alpha: 1)
+//          default:
+//            // 4
+//            return UIColor(displayP3Red: 102, green: 154, blue: 204, alpha: 1)
+//          }
+//        }
+
+        
     }
 
 }

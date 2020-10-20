@@ -50,6 +50,9 @@ class SetTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         tableView.tableFooterView = UIView()
         
+        navigationController?.navigationBar.backgroundColor = CustomColor.settingsBackgroundColor
+        view.backgroundColor = CustomColor.settingsBackgroundColor
+        
         navigationItem.title = NSLocalizedString("Settings", comment: "")
         
         tabBarController?.tabBar.items?[0].title = NSLocalizedString("Chats", comment: "")

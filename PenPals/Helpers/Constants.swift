@@ -127,7 +127,7 @@ public let kLONGITUDE = "longitude"
 
 
 //message status
-public let kDELIVERED = "delivered"
+public let kDELIVERED = "Delivered"
 public let kREAD = "read"
 public let kREADDATE = "readDate"
 public let kDELETED = "deleted"
@@ -151,3 +151,11 @@ public let kWITHUSERAVATAR = "withUserAvatar"
 //translation
 public let kLANGUAGE = "language"
 public let kTMESSAGE = "tMessage"
+
+enum CustomColor {
+    
+    static let customBackgroundColor  = UIColor(named: "BackgroundColor")
+    static let settingsBackgroundColor = UIColor(named: "SettingsColor")
+//    static let customButtonColor      = UIColor(named: "ButtonBackgroundColor")
+//    static let customLabelColor       = UIColor(named: "LabelColor")
+}

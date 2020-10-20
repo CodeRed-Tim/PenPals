@@ -83,9 +83,10 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             
         }
         
-        alert.addAction(add)
+        
         let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default) { (alertAction) in }
         alert.addAction(cancel)
+        alert.addAction(add)
         self.present(alert, animated:true, completion: nil)
         
     }

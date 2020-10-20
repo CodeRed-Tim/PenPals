@@ -65,7 +65,7 @@ class ProfileViewTableViewController: UITableViewController {
         if currentBlockedIds.contains(user!.objectId) {
             
             // find the index of the currently blocked user in the blockedUsers array
-            currentBlockedIds.remove(at: currentBlockedIds.index(of: user!.objectId)!)
+            currentBlockedIds.remove(at: currentBlockedIds.firstIndex(of: user!.objectId)!)
         } else {
             // or add them to the blocked array
             currentBlockedIds.append(user!.objectId)

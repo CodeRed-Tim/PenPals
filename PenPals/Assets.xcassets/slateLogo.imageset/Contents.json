@@ -6,12 +6,45 @@
       "scale" : "1x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "c6268b13-b6b8-4996-825a-e760582fa910_200x200.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
       "filename" : "Icon-60@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "c6268b13-b6b8-4996-825a-e760582fa910_200x200-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
       "filename" : "Icon-60@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "c6268b13-b6b8-4996-825a-e760582fa910_200x200-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
