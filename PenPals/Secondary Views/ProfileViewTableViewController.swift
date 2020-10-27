@@ -18,6 +18,7 @@ class ProfileViewTableViewController: UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var messageButtonOutlet: UIButton!
     @IBOutlet weak var blockButtonOutlet: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     
     // user that is passed through to get the correct contact view
     var user: FUser?
@@ -83,6 +84,36 @@ class ProfileViewTableViewController: UITableViewController {
         
         blockUser(userToBlock: user!)
     }
+    
+    var isFriendRemovedSuccessfully = false
+    
+    @IBAction func removeUserButtonPressed(_ sender: Any) {
+        
+        var currentFriends = FUser.currentUser()!.friendListIds
+               
+               if currentFriends.contains(user!.objectId) {
+                   isFriendRemovedSuccessfully = true
+                   currentFriends.remove(at: currentFriends.firstIndex(of: user!.objectId)!)
+               }
+               
+               updateCurrentUserInFirestore(withValues: [kFRIENDLISTIDS : currentFriends]) { (error) in
+                   
+                   if error != nil {
+                       self.isFriendRemovedSuccessfully = false
+                       print("error updating user \(error!.localizedDescription)")
+                       return
+                   }
+                
+                self.updateRemoveStatus()
+                   
+               }
+        
+        
+    }
+    
+    //MARK: Background refresh
+    
+    
     
     // MARK: - Table view data source
     
@@ -162,6 +193,27 @@ class ProfileViewTableViewController: UITableViewController {
             blockButtonOutlet.setTitle(NSLocalizedString("Unblock User", comment: ""), for: .normal)
         } else {
             blockButtonOutlet.setTitle(NSLocalizedString("Block User", comment: ""), for: .normal)
+        }
+    }
+    
+    func updateRemoveStatus() {
+        
+        // if it is not the current user logged in
+        if user!.objectId != FUser.currentId() {
+            removeButton.isHidden = false
+            messageButtonOutlet.isHidden = false
+        } else {
+            removeButton.isHidden = true
+            messageButtonOutlet.isHidden = true
+        }
+        
+        // if the user is in the current user's array of blocked users
+        if FUser.currentUser()!.friendListIds.contains(user!.objectId) {
+            removeButton.setTitle("Remove User", for: .normal)
+        } else {
+            removeButton.setTitle("Removed", for: .normal)
+            removeButton.setTitleColor(.lightGray, for: .normal)
+            messageButtonOutlet.setTitleColor(.lightGray, for: .normal)
         }
     }
     

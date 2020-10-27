@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import JGProgressHUD
 
 class ContactsTableViewController: UITableViewController, UISearchResultsUpdating, ContactsTableViewCellDelegate {
@@ -18,9 +19,13 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     var allUsersGrouped = NSDictionary() as! [String : [FUser]]
     var sectionTitleList : [String] = []
     
+    var currentFriendListIds = FUser.currentUser()!.friendListIds
+    
     var hud = JGProgressHUD(style: .dark)
     
     let searchController = UISearchController(searchResultsController: nil)
+    
+    @IBOutlet var contactsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +43,17 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         tabBarController?.tabBar.items?[0].title = NSLocalizedString("Chats", comment: "")
         tabBarController?.tabBar.items?[1].title = NSLocalizedString("Your Friends", comment: "")
         tabBarController?.tabBar.items?[2].title = NSLocalizedString("Settings", comment: "")
-
-        
         
         self.loadTheFriendUsers()
         //loadUsers()
         setupButtons()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadTheFriendUsers()
+        contactsTableView?.reloadData()
         
     }
     
@@ -52,7 +62,26 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         print("addFriendButtonPressed")
         addFriend()
     }
-//    @objc func inviteButtonPressed() {
+    
+    @IBAction func refreshController(_ sender: UIRefreshControl) {
+        
+        getUsersFromFirestore(withIds:  FUser.currentUser()!.friendListIds) { (allFriendUsers) in
+            
+            self.hud.dismiss()
+            
+            self.allUsers = allFriendUsers
+            
+            self.splitDataIntoSections()
+            self.tableView.reloadData()
+            
+        }
+        
+        loadTheFriendUsers()
+        contactsTableView?.reloadData()
+        sender.endRefreshing()
+    }
+    
+    //    @objc func inviteButtonPressed() {
 //
 //        let text = "Hey! Lets chat on PenPal \(kAPPURL)"
 //
@@ -224,6 +253,39 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         profileVC.user = user
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
+    //Mark: Remove Friend
+    
+//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//
+//        let deleteAction = UIContextualAction(style: .destructive, title: nil) {
+//            (_, _, completionHandler) in
+//            // remove contact
+//
+//            self.allUsers.remove(at: indexPath.row)
+//
+//
+//            self.tableView.reloadData()
+//
+//
+//            completionHandler(true)
+//        }
+//
+//        deleteAction.image = UIImage(systemName: "trash")
+//        deleteAction.backgroundColor = .systemRed
+//        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+//        return configuration
+//    }
+    
+//    func removeFriend(friendDictionary: [FUser]) {
+//
+//        if let friendId = friendArray[kFRIENDLISTIDS] {
+//
+//            reference(.User).document(friendId as! String).delete()
+//
+//        }
+//    }
+    
+    //MARK: Add Friend
     
     var isnumberNotFound = true
     var isFriendExists = false
@@ -277,14 +339,13 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
                         if fUser.phoneNumber == phoneNum {
                             print("number added....")
                             self.isnumberNotFound = false
-                            var currentFriendListIds = FUser.currentUser()!.friendListIds
-                        
-                            if currentFriendListIds.contains(fUser.objectId) {
+                            
+                            if self.currentFriendListIds.contains(fUser.objectId) {
                                 self.isFriendExists = true
                             } else {
-                                currentFriendListIds.append(fUser.objectId)
+                                self.currentFriendListIds.append(fUser.objectId)
                                 self.isFriendAddedSuccessfully = true
-                                updateCurrentUserInFirestore(withValues: [kFRIENDLISTIDS : currentFriendListIds]) { (error) in
+                                updateCurrentUserInFirestore(withValues: [kFRIENDLISTIDS : self.currentFriendListIds]) { (error) in
                                     if error != nil {
                                         self.isFriendAddedSuccessfully = false
                                         print("error updating user \(error!.localizedDescription)")
@@ -304,24 +365,24 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             }
             
             if self.isnumberNotFound {
+                self.hud.dismiss()
                 self.numberNotFoundAlert()
                 self.isnumberNotFound = true
                 
-            }
-            
-            if self.isFriendExists {
+            } else if self.isFriendExists {
+                self.hud.dismiss()
                 self.friendAlreadyExistsAlert()
                 self.isFriendExists = false
                 self.isnumberNotFound = true
                 
-            }
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.loadTheFriendUsers()
-                self.hud.dismiss()
-                if self.isFriendAddedSuccessfully {
-                    self.friendAddSuccessAlert()
-                    self.isFriendAddedSuccessfully = false
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.loadTheFriendUsers()
+                    self.hud.dismiss()
+                    if self.isFriendAddedSuccessfully {
+                        self.friendAddSuccessAlert()
+                        self.isFriendAddedSuccessfully = false
+                    }
                 }
             }
         }
@@ -468,7 +529,8 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     fileprivate func splitDataIntoSections() {
         
         var sectionTitle: String = ""
-        
+        self.sectionTitleList.removeAll()
+        self.allUsersGrouped.removeAll()
         //loop through all users
         for i in 0..<self.allUsers.count {
             
@@ -479,16 +541,17 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             
             let firstCharString = "\(firstChar)"
             
-            if firstCharString != sectionTitle {
-                
-                sectionTitle = firstCharString
+            sectionTitle = firstCharString
+            if !sectionTitleList.contains(firstCharString) {
                 
                 self.allUsersGrouped[sectionTitle] = []
                 
                 self.sectionTitleList.append(sectionTitle)
+                let array = self.sectionTitleList.sorted(by: <)
+                self.sectionTitleList = array
             }
             
-            self.allUsersGrouped[firstCharString]?.append(currentUser)
+            self.allUsersGrouped[sectionTitle]?.append(currentUser)
         }
     }
     
@@ -533,4 +596,3 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
 }
-  
