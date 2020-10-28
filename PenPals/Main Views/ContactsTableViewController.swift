@@ -253,38 +253,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         profileVC.user = user
         self.navigationController?.pushViewController(profileVC, animated: true)
     }
-    //Mark: Remove Friend
-    
-//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//
-//        let deleteAction = UIContextualAction(style: .destructive, title: nil) {
-//            (_, _, completionHandler) in
-//            // remove contact
-//
-//            self.allUsers.remove(at: indexPath.row)
-//
-//
-//            self.tableView.reloadData()
-//
-//
-//            completionHandler(true)
-//        }
-//
-//        deleteAction.image = UIImage(systemName: "trash")
-//        deleteAction.backgroundColor = .systemRed
-//        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-//        return configuration
-//    }
-    
-//    func removeFriend(friendDictionary: [FUser]) {
-//
-//        if let friendId = friendArray[kFRIENDLISTIDS] {
-//
-//            reference(.User).document(friendId as! String).delete()
-//
-//        }
-//    }
-    
+
     //MARK: Add Friend
     
     var isnumberNotFound = true

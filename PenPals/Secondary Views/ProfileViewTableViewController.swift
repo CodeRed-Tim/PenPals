@@ -122,6 +122,9 @@ class ProfileViewTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 2 {
+            return 2
+        }
         return 1
     }
     
@@ -165,6 +168,7 @@ class ProfileViewTableViewController: UITableViewController {
 
             
             updateBlockStatus()
+            updateRemoveStatus()
             
             imageFromData(pictureData: user!.avatar) { (avatarImage) in
                 if avatarImage != nil {

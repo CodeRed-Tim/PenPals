@@ -84,7 +84,9 @@ class SetTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == 0 {
+            return 1
+        } else if section == 1 {
             return 4
         }
         return 2

@@ -18,6 +18,8 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating, 
     var allUsersGrouped = NSDictionary() as! [String : [FUser]]
     var sectionTitleList : [String] = []
     
+    var currentFriendListIds = FUser.currentUser()!.friendListIds
+    
     var hud = JGProgressHUD(style: .dark)
     
     let searchController = UISearchController(searchResultsController: nil)
@@ -283,29 +285,31 @@ class UsersTableViewController: UITableViewController, UISearchResultsUpdating, 
     fileprivate func splitDataIntoSections() {
         
         var sectionTitle: String = ""
-        
-        //loop through all users
-        for i in 0..<self.allUsers.count {
-            
-            let currentUser = self.allUsers[i]
-            
-            //get first character of user's name
-            let firstChar = currentUser.firstname.first!
-            
-            let firstCharString = "\(firstChar)"
-            
-            if firstCharString != sectionTitle {
+            self.sectionTitleList.removeAll()
+            self.allUsersGrouped.removeAll()
+            //loop through all users
+            for i in 0..<self.allUsers.count {
+                
+                let currentUser = self.allUsers[i]
+                
+                //get first character of user's name
+                let firstChar = currentUser.firstname.first!
+                
+                let firstCharString = "\(firstChar)"
                 
                 sectionTitle = firstCharString
+                if !sectionTitleList.contains(firstCharString) {
+                    
+                    self.allUsersGrouped[sectionTitle] = []
+                    
+                    self.sectionTitleList.append(sectionTitle)
+                    let array = self.sectionTitleList.sorted(by: <)
+                    self.sectionTitleList = array
+                }
                 
-                self.allUsersGrouped[sectionTitle] = []
-                
-                self.sectionTitleList.append(sectionTitle)
+                self.allUsersGrouped[sectionTitle]?.append(currentUser)
             }
-            
-            self.allUsersGrouped[firstCharString]?.append(currentUser)
         }
-    }
     
     //MARK: UserTableViewCellDelegate
     
