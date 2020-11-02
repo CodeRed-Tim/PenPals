@@ -41,7 +41,6 @@
 		225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */; };
 		225D8D7F23ED4584007E0273 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */; };
 		225E0362250969A2004817F5 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E0361250969A2004817F5 /* GalleryCollectionViewController.swift */; };
-		225FEA1424D09F90004C9DC5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */; };
 		2262B8302538DA11001D68E7 /* NSAttributedSTringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262B82F2538DA11001D68E7 /* NSAttributedSTringExtension.swift */; };
 		2265A1912504B90C00E38714 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2265A1932504B90C00E38714 /* Localizable.strings */; };
 		2266F00525379C2A005FB84A /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2266F00425379C2A005FB84A /* NotificationService.swift */; };
@@ -50,6 +49,7 @@
 		227B4C772412320500A0C235 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227B4C762412320500A0C235 /* ChatsViewController.swift */; };
 		229C8653242B0A8000088609 /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8652242B0A8000088609 /* UsersTableViewController.swift */; };
 		229C8658242B322400088609 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229C8657242B322400088609 /* Recent.swift */; };
+		246583AB254FF82E00F5C709 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 246583AA254FF82E00F5C709 /* GoogleService-Info.plist */; };
 		7FD8D586BD220DC49719199C /* Pods_PenPals.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC54522BD168A5A6AE1AE5D4 /* Pods_PenPals.framework */; };
 		BF9C68DC7463E79124F4874D /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42EC6031051502FD7E2B521D /* Pods_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
@@ -129,7 +129,6 @@
 		225D8D7823ED4495007E0273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		225D8D7E23ED4584007E0273 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		225E0361250969A2004817F5 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
-		225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2262B82F2538DA11001D68E7 /* NSAttributedSTringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedSTringExtension.swift; sourceTree = "<group>"; };
 		2265A1882504B47A00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		2265A1892504B47B00E38714 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -149,6 +148,7 @@
 		228E05132509AE6100C09E79 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		229C8652242B0A8000088609 /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		229C8657242B322400088609 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		246583AA254FF82E00F5C709 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		42EC6031051502FD7E2B521D /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84411BB3C22C5F387E12C459 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		A5842AB9FD6BB234419926F5 /* Pods-PenPals.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PenPals.release.xcconfig"; path = "Target Support Files/Pods-PenPals/Pods-PenPals.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,7 +272,7 @@
 				225D8D7323ED4495007E0273 /* Assets.xcassets */,
 				225D8D7523ED4495007E0273 /* LaunchScreen.storyboard */,
 				225D8D7823ED4495007E0273 /* Info.plist */,
-				225FEA1324D09F90004C9DC5 /* GoogleService-Info.plist */,
+				246583AA254FF82E00F5C709 /* GoogleService-Info.plist */,
 				2265A1932504B90C00E38714 /* Localizable.strings */,
 			);
 			path = PenPals;
@@ -438,7 +438,7 @@
 			files = (
 				2265A1912504B90C00E38714 /* Localizable.strings in Resources */,
 				225D8D7723ED4495007E0273 /* LaunchScreen.storyboard in Resources */,
-				225FEA1424D09F90004C9DC5 /* GoogleService-Info.plist in Resources */,
+				246583AB254FF82E00F5C709 /* GoogleService-Info.plist in Resources */,
 				225D8D7423ED4495007E0273 /* Assets.xcassets in Resources */,
 				225D8D7223ED4494007E0273 /* Main.storyboard in Resources */,
 			);
