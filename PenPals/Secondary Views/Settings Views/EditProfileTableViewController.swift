@@ -11,7 +11,7 @@ import JGProgressHUD
 import ImagePicker
 import Gallery
 
-class EditProfileTableViewController: UITableViewController, ImagePickerDelegate {
+class EditProfileTableViewController: UITableViewController,  UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     @IBOutlet weak var saveButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -20,8 +20,10 @@ class EditProfileTableViewController: UITableViewController, ImagePickerDelegate
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet var avatarTapGesturerecognizer: UITapGestureRecognizer!
     
-    var avatarImage: UIImage?
+    var imagePicker = UIImagePickerController()
+    var images: [UIImage] = []
     var gallery: GalleryController!
+    var avatarImage: UIImage?
     
     var hud = JGProgressHUD(style: .dark)
     
@@ -112,15 +114,37 @@ class EditProfileTableViewController: UITableViewController, ImagePickerDelegate
     }
     
     @IBAction func avatarTap(_ sender: Any) {
-        
-        let imagePicker = ImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.imageLimit = 1
-        
-        self.present(imagePicker, animated: true, completion: nil)
-
+        presentPicker()
     }
     
+    func presentPicker() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            avatarImage = imageSelected
+            avatarImageView.image = imageSelected
+            avatarImageView.image = avatarImage?.circleMasked
+            
+        }
+        
+        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            avatarImage = imageOriginal
+            avatarImageView.image = imageOriginal
+            avatarImageView.image = avatarImage?.circleMasked
+        }
+        
+        avatarImageView.image = avatarImage!.fixedOrientation()
+        avatarImageView.image = avatarImageView.image?.circleMasked
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
     
     //MARK: SetUpUI
     
@@ -145,25 +169,4 @@ class EditProfileTableViewController: UITableViewController, ImagePickerDelegate
         
     }
     
-    //MARK: ImagePickerDelegate
-    
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
-        if images.count > 0 {
-            self.avatarImage = images.first!
-            self.avatarImageView.image = self.avatarImage!.circleMasked
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }
-

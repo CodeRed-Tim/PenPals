@@ -8,14 +8,11 @@
 
 import UIKit
 import JGProgressHUD
-import ImagePicker
 import PasswordTextField
 import FlagPhoneNumber
 import CountryPickerView
 
-class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, ImagePickerDelegate {
-
-    
+class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var firstNameLabel: UILabel!
@@ -41,6 +38,11 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var languagePicker: UIPickerView!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var termsButton: UIButton!
+    
+    @IBOutlet weak var registerScrollView: UIScrollView!
+    
+    var myImageView: UIImageView!
+    var myImage: UIImage!
     
     weak var cpvTextField: CountryPickerView!
     let cpvInternal = CountryPickerView()
@@ -100,31 +102,17 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         languagePicker.selectRow(startIndex!, inComponent: 0, animated: true)
         
-        //MARK: code for country flag cocoapods implementation
-//        let cp = CountryPickerView(frame: CGRect(x: 0, y: 0, width: 1000, height: 200))
-////        cp.delegate = self
-////        cp.dataSource = self
-//        [ cpvTextField, cpvInternal].forEach {
-//            $0?.dataSource = self
-//        }
-//
-//        cpvInternal.delegate = self
-//
-////        cellImageViewSize(in: cp)
-//
-//        phoneNumberTextField.leftView = cp
-//        phoneNumberTextField.leftViewMode = .always
-//
-//        self.cpvTextField = cp
-//
-//        cpvTextField.tag = 2
-//
-//
+//        scrollViewDidScroll(scrollView: registerScrollView)
+        
+        
     }
-//
-//    func cellImageViewSize(in countryPickerView: CountryPickerView) -> CGSize {
-//        return cpvTextField.flagImageView.sizeThatFits(CGSize(width: 2000, height: 2000))
-//    }
+
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if scrollView.contentOffset.x>0 {
+            scrollView.contentOffset.x = 0
+        }
+    }
+    
     //MARK: Picker menu functions
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -147,13 +135,17 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func avatarImageTapped(_ sender: Any) {
         
-        let imagePickerController = ImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.imageLimit = 1
-        
-        present(imagePickerController, animated: true, completion: nil)
-        dismissKeyboard()
-        
+        avatarImageView.clipsToBounds = true
+        avatarImageView.isUserInteractionEnabled = true
+        presentPicker()
+    }
+    
+    func presentPicker() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        picker.delegate = self
+        self.present(picker, animated: true, completion: nil)
     }
     
     func validatePhone(value: String) -> Bool {
@@ -269,8 +261,6 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 let avatarImg = avatarInitials.jpegData(compressionQuality: 0.7)
                 let avatar = avatarImg!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
                 
-                
-                
                 tempDictionary[kAVATAR] = avatar
                 
                 self.finishRegistration(withValues: tempDictionary)
@@ -278,7 +268,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             
         } else {
             
-            let avatarData = avatarImage?.jpegData(compressionQuality: 0.5)
+            let avatarData = avatarImageView.image!.jpegData(compressionQuality: 0.1)
             let avatar = avatarData!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
             
             tempDictionary[kAVATAR] = avatar
@@ -396,28 +386,7 @@ class RegisterViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         passwordTextField.text = ""
         confirmPasswordTextField.text = ""
     }
-    
-    //MARK: IMage PIcker Delegate
-    
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        
-        if images.count > 0 {
-            self.avatarImage = images.first!
-            self.avatarImageView.image = self.avatarImage?.circleMasked
-        }
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        self.dismiss(animated: true, completion: nil)
-    }
+
 }
 
 extension String {
@@ -429,27 +398,6 @@ extension String {
         self = self.capitalizingFirstLetter()
     }
 }
-
-extension RegisterViewController: CountryPickerViewDelegate {
-    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
-        // Only countryPickerInternal has it's delegate set
-        let title = "Selected Country"
-        let message = "Name: \(country.name) \nCode: \(country.code) \nPhone: \(country.phoneCode)"
-//        showAlert(title: title, message: message)
-    }
-}
-
-extension RegisterViewController: CountryPickerViewDataSource {
-    
-    func navigationTitle(in countryPickerView: CountryPickerView) -> String? {
-        return NSLocalizedString("Select a Country", comment: "")
-    }
-        
-    func searchBarPosition(in countryPickerView: CountryPickerView) -> SearchBarPosition {
-        return .tableViewHeader
-    }
-}
-
 
 extension UITextField {
     func showDoneButtonOnKeyboard() {
@@ -465,5 +413,93 @@ extension UITextField {
         doneToolbar.sizeToFit()
         
         inputAccessoryView = doneToolbar
+    }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let imageSelected = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            avatarImage = imageSelected
+            avatarImageView.image = imageSelected
+            avatarImageView.image = avatarImage?.circleMasked
+            
+        }
+        
+        if let imageOriginal = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            avatarImage = imageOriginal
+            avatarImageView.image = imageOriginal
+            avatarImageView.image = avatarImage?.circleMasked
+        }
+        
+        avatarImageView.image = avatarImage!.fixedOrientation()
+        avatarImageView.image = avatarImageView.image?.circleMasked
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UIImage {
+
+    func fixedOrientation() -> UIImage? {
+        guard imageOrientation != UIImage.Orientation.up else {
+        // This is default orientation, don't need to do anything
+        return self.copy() as? UIImage
+    }
+
+    guard let cgImage = self.cgImage else {
+        // CGImage is not available
+        return nil
+    }
+
+    guard let colorSpace = cgImage.colorSpace, let ctx = CGContext(data: nil, width: Int(size.width), height: Int(size.height), bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 0, space: colorSpace, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else {
+        return nil // Not able to create CGContext
+    }
+
+    var transform: CGAffineTransform = CGAffineTransform.identity
+
+    switch imageOrientation {
+    case .down, .downMirrored:
+        transform = transform.translatedBy(x: size.width, y: size.height)
+        transform = transform.rotated(by: CGFloat.pi)
+    case .left, .leftMirrored:
+        transform = transform.translatedBy(x: size.width, y: 0)
+        transform = transform.rotated(by: CGFloat.pi / 2.0)
+    case .right, .rightMirrored:
+        transform = transform.translatedBy(x: 0, y: size.height)
+        transform = transform.rotated(by: CGFloat.pi / -2.0)
+    case .up, .upMirrored:
+        break
+    @unknown default:
+        break
+    }
+
+    // Flip image one more time if needed to, this is to prevent flipped image
+    switch imageOrientation {
+    case .upMirrored, .downMirrored:
+        transform = transform.translatedBy(x: size.width, y: 0)
+        transform = transform.scaledBy(x: -1, y: 1)
+    case .leftMirrored, .rightMirrored:
+        transform = transform.translatedBy(x: size.height, y: 0)
+        transform = transform.scaledBy(x: -1, y: 1)
+    case .up, .down, .left, .right:
+        break
+    @unknown default:
+        break
+    }
+
+    ctx.concatenate(transform)
+
+    switch imageOrientation {
+    case .left, .leftMirrored, .right, .rightMirrored:
+        ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.height, height: size.width))
+    default:
+        ctx.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        break
+    }
+
+    guard let newCGImage = ctx.makeImage() else { return nil }
+    return UIImage.init(cgImage: newCGImage, scale: 1, orientation: .up)
     }
 }

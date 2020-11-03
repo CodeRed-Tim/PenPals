@@ -192,3 +192,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "Ti abbiamo appena inviato un'e-mail di reimpostazione della password. Controlla la tua casella di posta e segui le istruzioni per reimpostare la password";
+
+"Remove User" = "Rimuovi utente";
+
+"Removed" = "Rimosso";
+
+"Translating Messages" = "Traduzione dei messaggi ...";

@@ -192,3 +192,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "Nous venons de vous envoyer un e-mail de réinitialisation de mot de passe. Veuillez vérifier votre boîte de réception et suivre les instructions pour réinitialiser votre mot de passe";
+
+"Remove User" = "Supprimer l'utilisateur";
+
+"Removed" = "Supprimé";
+
+"Translating Messages" = "Traduction des messages ...";

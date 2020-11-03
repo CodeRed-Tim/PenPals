@@ -170,3 +170,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "我们刚刚给您发送了密码重置电子邮件。 请检查您的收件箱，然后按照说明重设密码";
+
+"Remove User" = "删除用户";
+
+"Removed" = "删除用户";
+
+"Translating Messages" = "翻译消息...";

@@ -168,3 +168,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "Le acabamos de enviar un correo electrónico para restablecer la contraseña. Revise su bandeja de entrada y siga las instrucciones para restablecer su contraseña";
+
+"Remove User" = "Eliminar usuario";
+
+"Removed" = "Remoto";
+
+"Translating Messages" = "Traducción de mensajes ...";

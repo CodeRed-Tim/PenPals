@@ -61,7 +61,7 @@ class SetTableViewController: UITableViewController {
         
         blockedUsersButton.setTitle(NSLocalizedString("Blocked Users", comment: ""), for: .normal)
         showAvatarLabel.text = NSLocalizedString("Show Avatar", comment: "")
-        cleanCacheButton.setTitle(NSLocalizedString("Clean Casche", comment: ""), for: .normal)
+        cleanCacheButton.setTitle(NSLocalizedString("Clean Cache", comment: ""), for: .normal)
         tellFriendButton.setTitle(NSLocalizedString("Tell a Friend", comment: ""), for: .normal)
         
         

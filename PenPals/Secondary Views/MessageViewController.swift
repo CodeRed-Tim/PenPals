@@ -145,6 +145,19 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("", for: .normal)
         self.inputToolbar.contentView.rightBarButtonItem.isEnabled = true
         
+        //header size
+        self.collectionView?.collectionViewLayout.sectionInset = UIEdgeInsets(top: 800, left: 0, bottom: 0, right: 0)
+
+        
+    }
+    
+    func addViewOnTop() {
+        let selectableView = UIView(frame: CGRect(x: 0, y: 60, width: self.view.bounds.width, height: 40))
+        selectableView.backgroundColor = .red
+        let randomViewLabel = UILabel(frame: CGRect(x: 20, y: 10, width: 100, height: 16))
+        randomViewLabel.text = "RandomView"
+        selectableView.addSubview(randomViewLabel)
+        view.addSubview(selectableView)
     }
     
     //MARK: JSQMessages Data Source functions (required)
@@ -531,7 +544,7 @@ class MessageViewController: JSQMessagesViewController, UIImagePickerControllerD
     func loadMessages() {
         
         hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Translating Messages..."
+        hud.textLabel.text = NSLocalizedString("Translating Messages", comment: "")
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 2.0, animated: true)
         

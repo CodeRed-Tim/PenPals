@@ -92,7 +92,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FEp-AG-HmQ">
                                 <rect key="frame" x="47" y="318" width="320" height="34"/>
-                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" name="TextBox"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Leb-Di-IEK"/>
                                     <constraint firstAttribute="width" constant="320" id="yNA-Iq-rVo"/>
@@ -202,11 +202,13 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAK-38-07Q">
                                 <rect key="frame" x="50" y="284" width="291" height="34"/>
+                                <color key="backgroundColor" name="TextBox"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLw-mR-A06" customClass="PasswordTextField" customModule="PasswordTextField">
                                 <rect key="frame" x="50" y="375" width="291" height="34"/>
+                                <color key="backgroundColor" name="TextBox"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                 <userDefinedRuntimeAttributes>
@@ -357,11 +359,13 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jtp-GV-7XS">
                                                 <rect key="frame" x="18" y="298" width="382" height="34"/>
+                                                <color key="backgroundColor" name="TextBox"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N8F-QN-lKG" customClass="PasswordTextField" customModule="PasswordTextField">
                                                 <rect key="frame" x="18" y="454" width="382" height="34"/>
+                                                <color key="backgroundColor" name="TextBox"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                 <userDefinedRuntimeAttributes>
@@ -398,6 +402,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vC7-VW-p1h">
                                                 <rect key="frame" x="18" y="225" width="162" height="34"/>
+                                                <color key="backgroundColor" name="TextBox"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="fiO-lT-HPU"/>
                                                     <constraint firstAttribute="width" constant="162" id="mpl-dq-hdF"/>
@@ -407,6 +412,7 @@
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1z-3G-Nn3">
                                                 <rect key="frame" x="204" y="225" width="196" height="34"/>
+                                                <color key="backgroundColor" name="TextBox"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" textContentType="family-name"/>
                                             </textField>
@@ -445,6 +451,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SWP-MV-zBy" customClass="PasswordTextField" customModule="PasswordTextField">
                                                 <rect key="frame" x="18" y="526" width="382" height="34"/>
+                                                <color key="backgroundColor" name="TextBox"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                 <userDefinedRuntimeAttributes>
@@ -480,6 +487,7 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lfw-YO-Ca8">
                                                 <rect key="frame" x="18" y="369" width="382" height="34"/>
+                                                <color key="backgroundColor" name="TextBox"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
                                             </textField>
@@ -641,6 +649,7 @@
                         <outlet property="phoneNumberLabel" destination="6YH-AS-ykm" id="RcT-Xr-70e"/>
                         <outlet property="phoneNumberTextField" destination="Lfw-YO-Ca8" id="GB6-dP-va2"/>
                         <outlet property="registerButton" destination="d66-Ms-N5T" id="Zlw-aa-jhA"/>
+                        <outlet property="registerScrollView" destination="z9i-YM-OgV" id="HtX-cZ-hMa"/>
                         <outlet property="selectLabel" destination="Ndw-rm-R0x" id="6ye-Fb-ZtJ"/>
                         <outlet property="selectPpLabel" destination="1Nb-cx-ZtP" id="aih-Xp-XPz"/>
                         <outlet property="signUpLabel" destination="fkq-5E-aal" id="BlW-FW-uzv"/>
@@ -777,6 +786,7 @@
                                                 <constraint firstItem="Cpu-2R-GRW" firstAttribute="leading" secondItem="f16-Xs-HRG" secondAttribute="trailing" constant="50" id="zaw-KK-4jh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CellColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -789,7 +799,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRW-z6-RAf">
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRW-z6-RAf">
                                                     <rect key="frame" x="27" y="6" width="361" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Ae9-HV-MwE"/>
@@ -808,6 +818,7 @@
                                                 <constraint firstItem="ZRW-z6-RAf" firstAttribute="top" secondItem="ndt-Ip-PEe" secondAttribute="top" constant="6" id="gHl-sp-kAH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CellColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -840,6 +851,7 @@
                                                 <constraint firstItem="YtK-th-Zd6" firstAttribute="leading" secondItem="KmG-Lc-hCI" secondAttribute="leading" constant="20" id="gyH-HC-sDi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CellColor"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="kQq-x3-dls">
                                         <rect key="frame" x="0.0" y="347" width="414" height="43.5"/>
@@ -866,6 +878,7 @@
                                                 <constraint firstItem="a9u-GR-Zh1" firstAttribute="centerY" secondItem="Y5R-Mr-VyF" secondAttribute="centerY" id="zSi-sh-eeS"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="CellColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -882,6 +895,7 @@
                         <outlet property="fullNameLabel" destination="LBO-ZO-ysB" id="boB-WR-bFH"/>
                         <outlet property="languageLabel" destination="Cpu-2R-GRW" id="6is-Jb-Ila"/>
                         <outlet property="messageButtonOutlet" destination="ZRW-z6-RAf" id="eki-bo-v8f"/>
+                        <outlet property="messageCell" destination="eqU-UI-3rC" id="Yme-OQ-eSL"/>
                         <outlet property="phoneLabel" destination="13B-66-mdQ" id="6va-T0-c0f"/>
                         <outlet property="removeButton" destination="a9u-GR-Zh1" id="8X3-wO-LmT"/>
                     </connections>
@@ -1778,10 +1792,9 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2cf-k7-8w9"/>
         <segue reference="beo-eV-go1"/>
         <segue reference="dLB-gr-IBS"/>
-        <segue reference="Mx7-7N-LtR"/>
+        <segue reference="obE-gn-IYX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Back" width="25" height="25"/>
@@ -1795,6 +1808,9 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
         <namedColor name="BackgroundColor">
             <color red="0.41200000047683716" green="0.60399997234344482" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="CellColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="GalleryBackground">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1807,15 +1823,15 @@ Jarlsberg jarlsberg the big cheese. The big cheese cut the cheese swiss chalk an
         <namedColor name="SmallTextOutline">
             <color red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TextBox">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="TextColor">
             <color red="0.81960784313725488" green="0.84313725490196079" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TextOutlineColor">
             <color red="0.40000000000000002" green="0.60392156862745094" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="groupTableViewBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

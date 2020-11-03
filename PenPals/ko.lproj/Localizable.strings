@@ -181,3 +181,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "비밀번호 재설정 이메일을 방금 보냈습니다. 받은 편지함을 확인하고 지침에 따라 암호를 재설정하십시오.";
+
+"Remove User" = "사용자 제거";
+
+"Removed" = "제거됨";
+
+"Translating Messages" = "메시지 번역 중 ...";

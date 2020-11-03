@@ -192,3 +192,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "Wir haben Ihnen gerade eine E-Mail zum Zurücksetzen des Passworts gesendet. Bitte überprüfen Sie Ihren Posteingang und befolgen Sie die Anweisungen, um Ihr Passwort zurückzusetzen";
+
+"Remove User" = "Benutzer entfernen";
+
+"Removed" = "Entfernt";
+
+"Translating Messages" = "Nachrichten übersetzen ...";

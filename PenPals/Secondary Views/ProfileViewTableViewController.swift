@@ -20,6 +20,10 @@ class ProfileViewTableViewController: UITableViewController {
     @IBOutlet weak var blockButtonOutlet: UIButton!
     @IBOutlet weak var removeButton: UIButton!
     
+    @IBOutlet weak var messageCell: UITableViewCell!
+    
+    var cell: UITableViewCell!
+    
     // user that is passed through to get the correct contact view
     var user: FUser?
     var hud = JGProgressHUD(style: .dark)
@@ -29,7 +33,8 @@ class ProfileViewTableViewController: UITableViewController {
         
         messageButtonOutlet.setTitle(NSLocalizedString("Message", comment: ""), for: .normal)
         blockButtonOutlet.setTitle(NSLocalizedString("Block User", comment: ""), for: .normal)
-        
+        removeButton.setTitle(NSLocalizedString("Remove User", comment: ""), for: .normal)
+                
         // when view is opened..
         setupUI()
         
@@ -213,9 +218,9 @@ class ProfileViewTableViewController: UITableViewController {
         
         // if the user is in the current user's array of blocked users
         if FUser.currentUser()!.friendListIds.contains(user!.objectId) {
-            removeButton.setTitle("Remove User", for: .normal)
+            removeButton.setTitle(NSLocalizedString("Remove User", comment: ""), for: .normal)
         } else {
-            removeButton.setTitle("Removed", for: .normal)
+            removeButton.setTitle(NSLocalizedString("Removed", comment: ""), for: .normal)
             removeButton.setTitleColor(.lightGray, for: .normal)
             messageButtonOutlet.setTitleColor(.lightGray, for: .normal)
         }
@@ -264,4 +269,25 @@ class ProfileViewTableViewController: UITableViewController {
         }
     }
     
+}
+
+extension UIView {
+    func addBorderTop(size: CGFloat, color: UIColor) {
+        addBorderUtility(x: 0, y: 0, width: frame.width, height: size, color: color)
+    }
+    func addBorderBottom(size: CGFloat, color: UIColor) {
+        addBorderUtility(x: 0, y: frame.height - size, width: frame.width, height: size, color: color)
+    }
+    func addBorderLeft(size: CGFloat, color: UIColor) {
+        addBorderUtility(x: 0, y: 0, width: size, height: frame.height, color: color)
+    }
+    func addBorderRight(size: CGFloat, color: UIColor) {
+        addBorderUtility(x: frame.width - size, y: 0, width: size, height: frame.height, color: color)
+    }
+    private func addBorderUtility(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat, color: UIColor) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: x, y: y, width: width, height: height)
+        layer.addSublayer(border)
+    }
 }

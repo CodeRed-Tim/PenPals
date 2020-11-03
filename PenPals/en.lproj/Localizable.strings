@@ -111,3 +111,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "We have just sent you a password reset email. Please check your inbox and follow the instructions to reset your password";
+
+"Remove User" = "Remove User";
+
+"Removed" = "Removed";
+
+"Translating Messages" = "Translating Messages...";

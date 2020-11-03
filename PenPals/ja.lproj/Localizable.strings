@@ -192,3 +192,9 @@
 // succes message fr forgot password
 
 "Email Sent" = "パスワードリセットのメールをお送りしました。 受信トレイを確認し、指示に従ってパスワードをリセットしてください";
+
+"Remove User" = "ユーザーを削除";
+
+"Removed" = "削除されました";
+
+"Translating Messages" = "メッセージの翻訳...";
